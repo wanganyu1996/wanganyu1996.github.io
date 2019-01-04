@@ -1,0 +1,1082 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    
+
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="[Redis] Redis常见知识点总结, Anyu Blog">
+    <meta name="description" content="
+
+一、Redis 是什么
+二、五种基本类型
+1. STRING
+2. LIST
+3. SET
+4. HASH
+5. ZSET
+
+
+三、键的过期时间
+四、发布与订阅
+五、事务
+六、持久化
+1. 快照持久化
+2. AOF 持久化
+
+
+七、复制">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>[Redis] Redis常见知识点总结 | Anyu Blog</title>
+    <link rel="icon" type="image/png" href="/avatar.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+</head>
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="container">
+            <div class="nav-wrapper">
+                <div class="brand-logo">
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <img src="/medias/logo.png" class="logo-img hide-on-small-only">
+                        
+                        <span class="logo-span">Anyu Blog</span>
+                    </a>
+                </div>
+                
+
+<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a id="toggleSearch" class="waves-effect waves-light">
+            <i id="searchIcon" class="mdi-action-search"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div class="side-nav" id="mobile-nav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Anyu Blog</div>
+        <div class="logo-desc">
+            
+            莫道征途路漫漫 愿效江水去不还 大势所向天地宽 终究奔涌归浩瀚
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+    <div class="social-link"><a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:wanganyu1996@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+
+<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+    <i class="fa fa-rss"></i>
+</a>
+</div>
+</div>
+
+            </div>
+        </div>
+
+        
+        <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewbox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+    </svg>
+</a>
+        
+    </nav>
+</header>
+
+
+
+
+
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        [Redis] Redis常见知识点总结
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            
+            <div class="article-tag">
+                
+                <a href="/tags/Redis/" target="_blank">
+                    <span class="chip bg-color">Redis</span>
+                </a>
+                
+            </div>
+            
+            <div class="post-info">
+                
+
+                <span class="post-date">
+                    <i class="fa fa-clock-o fa-fw"></i>2018-08-17
+                </span>
+				
+				
+                    <span id="busuanzi_container_page_pv" class="post-read">
+                    <i class="fa fa-eye fa-fw"></i>阅读 <span id="busuanzi_value_page_pv"></span>
+				
+            </span></div>
+        </div>
+        <hr>
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <!-- GFM-TOC -->
+<ul>
+<li><a href="#一redis-是什么">一、Redis 是什么</a></li>
+<li><a href="#二五种基本类型">二、五种基本类型</a><ul>
+<li><a href="#1-string">1. STRING</a></li>
+<li><a href="#2-list">2. LIST</a></li>
+<li><a href="#3-set">3. SET</a></li>
+<li><a href="#4-hash">4. HASH</a></li>
+<li><a href="#5-zset">5. ZSET</a></li>
+</ul>
+</li>
+<li><a href="#三键的过期时间">三、键的过期时间</a></li>
+<li><a href="#四发布与订阅">四、发布与订阅</a></li>
+<li><a href="#五事务">五、事务</a></li>
+<li><a href="#六持久化">六、持久化</a><ul>
+<li><a href="#1-快照持久化">1. 快照持久化</a></li>
+<li><a href="#2-aof-持久化">2. AOF 持久化</a></li>
+</ul>
+</li>
+<li><a href="#七复制">七、复制</a><ul>
+<li><a href="#从服务器连接主服务器的过程">从服务器连接主服务器的过程</a></li>
+<li><a href="#主从链">主从链</a></li>
+</ul>
+</li>
+<li><a href="#八处理故障">八、处理故障</a></li>
+<li><a href="#九分片">九、分片</a><ul>
+<li><a href="#1-客户端分片">1. 客户端分片</a></li>
+<li><a href="#2-代理分片">2. 代理分片</a></li>
+<li><a href="#3-服务器分片">3. 服务器分片</a></li>
+</ul>
+</li>
+<li><a href="#十事件">十、事件</a><ul>
+<li><a href="#事件类型">事件类型</a></li>
+<li><a href="#事件的调度与执行">事件的调度与执行</a></li>
+</ul>
+</li>
+<li><a href="#十一redis-与-memcached-的区别">十一、Redis 与 Memcached 的区别</a><ul>
+<li><a href="#数据类型">数据类型</a></li>
+<li><a href="#数据持久化">数据持久化</a></li>
+<li><a href="#分布式">分布式</a></li>
+<li><a href="#内存管理机制">内存管理机制</a></li>
+</ul>
+</li>
+<li><a href="#十二redis-适用场景">十二、Redis 适用场景</a><ul>
+<li><a href="#缓存">缓存</a></li>
+<li><a href="#消息队列">消息队列</a></li>
+<li><a href="#计数器">计数器</a></li>
+<li><a href="#好友关系">好友关系</a></li>
+</ul>
+</li>
+<li><a href="#十三数据淘汰策略">十三、数据淘汰策略</a></li>
+<li><a href="#十四一个简单的论坛系统分析">十四、一个简单的论坛系统分析</a><ul>
+<li><a href="#文章信息">文章信息</a></li>
+<li><a href="#点赞功能">点赞功能</a></li>
+<li><a href="#对文章进行排序">对文章进行排序</a></li>
+</ul>
+</li>
+<li><a href="#参考资料">参考资料</a><!-- GFM-TOC -->
+</li>
+</ul>
+<h1 id="一、Redis-是什么"><a href="#一、Redis-是什么" class="headerlink" title="一、Redis 是什么"></a>一、Redis 是什么</h1><p>Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。</p>
+<p>五种类型数据类型为：字符串、列表、集合、有序集合、散列表。</p>
+<p>Redis 支持很多特性，例如将内存中的数据持久化到硬盘中，使用复制来扩展读性能，使用分片来扩展写性能。</p>
+<h1 id="二、五种基本类型"><a href="#二、五种基本类型" class="headerlink" title="二、五种基本类型"></a>二、五种基本类型</h1><table>
+<thead>
+<tr>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">可以存储的值</th>
+<th style="text-align:center">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">STRING</td>
+<td style="text-align:center">字符串、整数或者浮点数</td>
+<td style="text-align:center">对整个字符串或者字符串的其中一部分执行操作<br> 对整数和浮点数执行自增或者自减操作</td>
+</tr>
+<tr>
+<td style="text-align:center">LIST</td>
+<td style="text-align:center">链表</td>
+<td style="text-align:center">从两端压入或者弹出元素<br> 读取单个或者多个元素<br> 进行修剪，只保留一个范围内的元素</td>
+</tr>
+<tr>
+<td style="text-align:center">SET</td>
+<td style="text-align:center">无序集合</td>
+<td style="text-align:center">添加、获取、移除单个元素<br> 检查一个元素是否存在于集合中<br> 计算交集、并集、差集<br> 从集合里面随机获取元素</td>
+</tr>
+<tr>
+<td style="text-align:center">HASH</td>
+<td style="text-align:center">包含键值对的无序散列表</td>
+<td style="text-align:center">添加、获取、移除单个键值对<br> 获取所有键值对<br> 检查某个键是否存在</td>
+</tr>
+<tr>
+<td style="text-align:center">ZSET</td>
+<td style="text-align:center">有序集合</td>
+<td style="text-align:center">添加、获取、删除元素<br> 根据分值范围或者成员来获取元素<br> 计算一个键的排名</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><a href="https://redislabs.com/ebook/part-1-getting-started/chapter-1-getting-to-know-redis/1-2-what-redis-data-structures-look-like/" target="_blank" rel="noopener">What Redis data structures look like</a></p>
+</blockquote>
+<h2 id="1-STRING"><a href="#1-STRING" class="headerlink" title="1. STRING"></a>1. STRING</h2><p><div align="center"> <img src="../pics//6019b2db-bc3e-4408-b6d8-96025f4481d6.png" width="400"> </div><br></p>
+<pre class=" language-html"><code class="language-html">> set hello world
+OK
+> get hello
+"world"
+> del hello
+(integer) 1
+> get hello
+(nil)
+</code></pre>
+<h2 id="2-LIST"><a href="#2-LIST" class="headerlink" title="2. LIST"></a>2. LIST</h2><p><div align="center"> <img src="../pics//fb327611-7e2b-4f2f-9f5b-38592d408f07.png" width="400"> </div><br></p>
+<pre class=" language-html"><code class="language-html">> rpush list-key item
+(integer) 1
+> rpush list-key item2
+(integer) 2
+> rpush list-key item
+(integer) 3
+
+> lrange list-key 0 -1
+1) "item"
+2) "item2"
+3) "item"
+
+> lindex list-key 1
+"item2"
+
+> lpop list-key
+"item"
+
+> lrange list-key 0 -1
+1) "item2"
+2) "item"
+</code></pre>
+<h2 id="3-SET"><a href="#3-SET" class="headerlink" title="3. SET"></a>3. SET</h2><p><div align="center"> <img src="../pics//cd5fbcff-3f35-43a6-8ffa-082a93ce0f0e.png" width="400"> </div><br></p>
+<pre class=" language-html"><code class="language-html">> sadd set-key item
+(integer) 1
+> sadd set-key item2
+(integer) 1
+> sadd set-key item3
+(integer) 1
+> sadd set-key item
+(integer) 0
+
+> smembers set-key
+1) "item"
+2) "item2"
+3) "item3"
+
+> sismember set-key item4
+(integer) 0
+> sismember set-key item
+(integer) 1
+
+> srem set-key item2
+(integer) 1
+> srem set-key item2
+(integer) 0
+
+> smembers set-key
+1) "item"
+2) "item3"
+</code></pre>
+<h2 id="4-HASH"><a href="#4-HASH" class="headerlink" title="4. HASH"></a>4. HASH</h2><p><div align="center"> <img src="../pics//7bd202a7-93d4-4f3a-a878-af68ae25539a.png" width="400"> </div><br></p>
+<pre class=" language-html"><code class="language-html">> hset hash-key sub-key1 value1
+(integer) 1
+> hset hash-key sub-key2 value2
+(integer) 1
+> hset hash-key sub-key1 value1
+(integer) 0
+
+> hgetall hash-key
+1) "sub-key1"
+2) "value1"
+3) "sub-key2"
+4) "value2"
+
+> hdel hash-key sub-key2
+(integer) 1
+> hdel hash-key sub-key2
+(integer) 0
+
+> hget hash-key sub-key1
+"value1"
+
+> hgetall hash-key
+1) "sub-key1"
+2) "value1"
+</code></pre>
+<h2 id="5-ZSET"><a href="#5-ZSET" class="headerlink" title="5. ZSET"></a>5. ZSET</h2><p><div align="center"> <img src="../pics//1202b2d6-9469-4251-bd47-ca6034fb6116.png" width="400"> </div><br></p>
+<pre class=" language-html"><code class="language-html">> zadd zset-key 728 member1
+(integer) 1
+> zadd zset-key 982 member0
+(integer) 1
+> zadd zset-key 982 member0
+(integer) 0
+
+> zrange zset-key 0 -1 withscores
+1) "member1"
+2) "728"
+3) "member0"
+4) "982"
+
+> zrangebyscore zset-key 0 800 withscores
+1) "member1"
+2) "728"
+
+> zrem zset-key member1
+(integer) 1
+> zrem zset-key member1
+(integer) 0
+
+> zrange zset-key 0 -1 withscores
+1) "member0"
+2) "982"
+</code></pre>
+<h1 id="三、键的过期时间"><a href="#三、键的过期时间" class="headerlink" title="三、键的过期时间"></a>三、键的过期时间</h1><p>Redis 可以为每个键设置过期时间，当键过期时，会自动删除该键。</p>
+<p>对于散列表这种容器，只能为整个键设置过期时间（整个散列表），而不能为键里面的单个元素设置过期时间。</p>
+<p>过期时间对于清理缓存数据非常有用。</p>
+<h1 id="四、发布与订阅"><a href="#四、发布与订阅" class="headerlink" title="四、发布与订阅"></a>四、发布与订阅</h1><p>发布与订阅实际上是观察者模式，订阅者订阅了频道之后，发布者向频道发送字符串消息会被所有订阅者接收到。</p>
+<p>发布与订阅有一些问题，很少使用它，而是使用替代的解决方案。问题如下：</p>
+<ol>
+<li>如果订阅者读取消息的速度很慢，会使得消息不断积压在发布者的输出缓存区中，造成内存占用过多；</li>
+<li>如果订阅者在执行订阅的过程中网络出现问题，那么就会丢失断线期间发送的所有消息。</li>
+</ol>
+<h1 id="五、事务"><a href="#五、事务" class="headerlink" title="五、事务"></a>五、事务</h1><p>Redis 最简单的事务实现方式是使用 MULTI 和 EXEC 命令将事务操作包围起来。</p>
+<p>MULTI 和 EXEC 中的操作将会一次性发送给服务器，而不是一条一条发送，这种方式称为流水线，它可以减少客户端与服务器之间的网络通信次数从而提升性能。</p>
+<h1 id="六、持久化"><a href="#六、持久化" class="headerlink" title="六、持久化"></a>六、持久化</h1><p>Redis 是内存型数据库，为了保证数据在断电后不会丢失，需要将内存中的数据持久化到硬盘上。</p>
+<h2 id="1-快照持久化"><a href="#1-快照持久化" class="headerlink" title="1. 快照持久化"></a>1. 快照持久化</h2><p>将某个时间点的所有数据都存放到硬盘上。</p>
+<p>可以将快照复制到其它服务器从而创建具有相同数据的服务器副本。</p>
+<p>如果系统发生故障，将会丢失最后一次创建快照之后的数据。并且如果数据量很大，保存快照的时间也会很长。</p>
+<h2 id="2-AOF-持久化"><a href="#2-AOF-持久化" class="headerlink" title="2. AOF 持久化"></a>2. AOF 持久化</h2><p>AOF 持久化将写命令添加到 AOF 文件（Append Only File）的末尾。</p>
+<p>对硬盘的文件进行写入时，写入的内容首先会被存储到缓冲区，然后由操作系统决定什么时候将该内容同步到硬盘，用户可以调用 file.flush() 方法请求操作系统尽快将缓冲区存储的数据同步到硬盘。因此将写命令添加到 AOF 文件时，要根据需求来保证何时将添加的数据同步到硬盘上，有以下同步选项：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">选项</th>
+<th style="text-align:center">同步频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">always</td>
+<td style="text-align:center">每个写命令都同步</td>
+</tr>
+<tr>
+<td style="text-align:center">everysec</td>
+<td style="text-align:center">每秒同步一次</td>
+</tr>
+<tr>
+<td style="text-align:center">no</td>
+<td style="text-align:center">让操作系统来决定何时同步</td>
+</tr>
+</tbody>
+</table>
+<p>always 选项会严重减低服务器的性能；everysec 选项比较合适，可以保证系统奔溃时只会丢失一秒左右的数据，并且 Redis 每秒执行一次同步对服务器性能几乎没有任何影响；no 选项并不能给服务器性能带来多大的提升，而且也会增加系统奔溃时数据丢失的数量。</p>
+<p>随着服务器写请求的增多，AOF 文件会越来越大；Redis 提供了一种将 AOF 重写的特性，能够去除 AOF 文件中的冗余写命令。</p>
+<h1 id="七、复制"><a href="#七、复制" class="headerlink" title="七、复制"></a>七、复制</h1><p>通过使用 slaveof host port 命令来让一个服务器成为另一个服务器的从服务器。</p>
+<p>一个从服务器只能有一个主服务器，并且不支持主主复制。</p>
+<h2 id="从服务器连接主服务器的过程"><a href="#从服务器连接主服务器的过程" class="headerlink" title="从服务器连接主服务器的过程"></a>从服务器连接主服务器的过程</h2><ol>
+<li><p>主服务器创建快照文件，发送给从服务器，并在发送期间使用缓冲区记录执行的写命令。快照文件发送完毕之后，开始向从服务器发送存储在缓冲区中的写命令；</p>
+</li>
+<li><p>从服务器丢弃所有旧数据，载入主服务器发来的快照文件，之后从服务器开始接受主服务器发来的写命令；</p>
+</li>
+<li><p>主服务器每执行一次写命令，就向从服务器发送相同的写命令。</p>
+</li>
+</ol>
+<h2 id="主从链"><a href="#主从链" class="headerlink" title="主从链"></a>主从链</h2><p>随着负载不断上升，主服务器可能无法很快地更新所有从服务器，或者重新连接和重新同步从服务器将导致系统超载。为了解决这个问题，可以创建一个中间层来分担主服务器的复制工作。中间层的服务器是最上层服务器的从服务器，又是最下层服务器的主服务器。</p>
+<p><div align="center"> <img src="../pics//395a9e83-b1a1-4a1d-b170-d081e7bb5bab.png" width="600"> </div><br></p>
+<h1 id="八、处理故障"><a href="#八、处理故障" class="headerlink" title="八、处理故障"></a>八、处理故障</h1><p>要用到持久化文件来恢复服务器的数据。</p>
+<p>持久化文件可能因为服务器出错也有错误，因此要先对持久化文件进行验证和修复。对 AOF 文件就行验证和修复很容易，修复操作将第一个出错命令和其后的所有命令都删除；但是只能验证快照文件，无法对快照文件进行修复，因为快照文件进行了压缩，出现在快照文件中间的错误可能会导致整个快照文件的剩余部分无法读取。</p>
+<p>当主服务器出现故障时，Redis 常用的做法是新开一台服务器作为主服务器，具体步骤如下：假设 A 为主服务器，B 为从服务器，当 A 出现故障时，让 B 生成一个快照文件，将快照文件发送给 C，并让 C 恢复快照文件的数据。最后，让 B 成为 C 的从服务器。</p>
+<h1 id="九、分片"><a href="#九、分片" class="headerlink" title="九、分片"></a>九、分片</h1><p>Redis 中的分片类似于 MySQL 的分表操作，分片是将数据划分为多个部分的方法，对数据的划分可以基于键包含的 ID、基于键的哈希值，或者基于以上两者的某种组合。通过对数据进行分片，用户可以将数据存储到多台机器里面，也可以从多台机器里面获取数据，这种方法在解决某些问题时可以获得线性级别的性能提升。</p>
+<p>假设有 4 个 Reids 实例 R0，R1，R2，R3，还有很多表示用户的键 user:1，user:2，… 等等，有不同的方式来选择一个指定的键存储在哪个实例中。最简单的方式是范围分片，例如用户 id 从 0~1000 的存储到实例 R0 中，用户 id 从 1001~2000 的存储到实例 R1 中，等等。但是这样需要维护一张映射范围表，维护操作代价很高。还有一种方式是哈希分片，使用 CRC32 哈希函数将键转换为一个数字，再对实例数量求模就能知道应该存储的实例。</p>
+<h2 id="1-客户端分片"><a href="#1-客户端分片" class="headerlink" title="1. 客户端分片"></a>1. 客户端分片</h2><p>客户端使用一致性哈希等算法决定键应当分布到哪个节点。</p>
+<h2 id="2-代理分片"><a href="#2-代理分片" class="headerlink" title="2. 代理分片"></a>2. 代理分片</h2><p>将客户端请求发送到代理上，由代理转发请求到正确的节点上。</p>
+<h2 id="3-服务器分片"><a href="#3-服务器分片" class="headerlink" title="3. 服务器分片"></a>3. 服务器分片</h2><p>Redis Cluster。</p>
+<h1 id="十、事件"><a href="#十、事件" class="headerlink" title="十、事件"></a>十、事件</h1><h2 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h2><h3 id="1-文件事件"><a href="#1-文件事件" class="headerlink" title="1. 文件事件"></a>1. 文件事件</h3><p>服务器有许多套接字，事件产生时会对这些套接字进行操作，服务器通过监听套接字来处理事件。常见的文件事件有：客户端的连接事件；客户端的命令请求事件；服务器向客户端返回命令结果的事件；</p>
+<h3 id="2-时间事件"><a href="#2-时间事件" class="headerlink" title="2. 时间事件"></a>2. 时间事件</h3><p>又分为两类：定时事件是让一段程序在指定的时间之内执行一次；周期性时间是让一段程序每隔指定时间就执行一次。</p>
+<h2 id="事件的调度与执行"><a href="#事件的调度与执行" class="headerlink" title="事件的调度与执行"></a>事件的调度与执行</h2><p>服务器需要不断监听文件事件的套接字才能得到待处理的文件事件，但是不能监听太久，否则时间事件无法在规定的时间内执行，因此监听时间应该根据距离现在最近的时间事件来决定。</p>
+<p>事件调度与执行由 aeProcessEvents 函数负责，伪代码如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">aeProcessEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># 获取到达时间离当前时间最接近的时间事件</span>
+    time_event <span class="token operator">=</span> aeSearchNearestTimer<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 计算最接近的时间事件距离到达还有多少毫秒</span>
+    remaind_ms <span class="token operator">=</span> time_event<span class="token punctuation">.</span>when <span class="token operator">-</span> unix_ts_now<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 如果事件已到达，那么 remaind_ms 的值可能为负数，将它设为 0</span>
+    <span class="token keyword">if</span> remaind_ms <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        remaind_ms <span class="token operator">=</span> <span class="token number">0</span>
+
+    <span class="token comment" spellcheck="true"># 根据 remaind_ms 的值，创建 timeval</span>
+    timeval <span class="token operator">=</span> create_timeval_with_ms<span class="token punctuation">(</span>remaind_ms<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 阻塞并等待文件事件产生，最大阻塞时间由传入的 timeval 决定</span>
+    aeApiPoll<span class="token punctuation">(</span>timeval<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 处理所有已产生的文件事件</span>
+    procesFileEvents<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 处理所有已到达的时间事件</span>
+    processTimeEvents<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>将 aeProcessEvents 函数置于一个循环里面，加上初始化和清理函数，就构成了 Redis 服务器的主函数，伪代码如下：</p>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+    <span class="token comment" spellcheck="true"># 初始化服务器</span>
+    init_server<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 一直处理事件，直到服务器关闭为止</span>
+    <span class="token keyword">while</span> server_is_not_shutdown<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        aeProcessEvents<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true"># 服务器关闭，执行清理操作</span>
+    clean_server<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<p>从事件处理的角度来看，服务器运行流程如下：</p>
+<p><div align="center"> <img src="../pics//73b73189-9e95-47e5-91d0-9378b8462e15.png"> </div><br></p>
+<h1 id="十一、Redis-与-Memcached-的区别"><a href="#十一、Redis-与-Memcached-的区别" class="headerlink" title="十一、Redis 与 Memcached 的区别"></a>十一、Redis 与 Memcached 的区别</h1><p>两者都是非关系型内存键值数据库。有以下主要不同：</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Memcached 仅支持字符串类型，而 Redis 支持五种不同种类的数据类型，使得它可以更灵活地解决问题。</p>
+<h2 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h2><p>Redis 支持两种持久化策略：RDB 快照和 AOF 日志，而 Memcached 不支持持久化。</p>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><p>Memcached 不支持分布式，只能通过在客户端使用像一致性哈希这样的分布式算法来实现分布式存储，这种方式在存储和查询时都需要先在客户端计算一次数据所在的节点。</p>
+<p>Redis Cluster 实现了分布式的支持。</p>
+<h2 id="内存管理机制"><a href="#内存管理机制" class="headerlink" title="内存管理机制"></a>内存管理机制</h2><p>在 Redis 中，并不是所有数据都一直存储在内存中，可以将一些很久没用的 value 交换到磁盘。而 Memcached 的数据则会一直在内存中。</p>
+<p>Memcached 将内存分割成特定长度的块来存储数据，以完全解决内存碎片的问题，但是这种方式会使得内存的利用率不高，例如块的大小为 128 bytes，只存储 100 bytes 的数据，那么剩下的 28 bytes 就浪费掉了。</p>
+<h1 id="十二、Redis-适用场景"><a href="#十二、Redis-适用场景" class="headerlink" title="十二、Redis 适用场景"></a>十二、Redis 适用场景</h1><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>s使用 Redis 作为缓存，将热点数据放到内存中。</p>
+<h2 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h2><p>Redis 的 List 类型是双向链表，很适合用于消息队列。</p>
+<h2 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a>计数器</h2><p>Redis 这种内存数据库才能支持计数器的频繁读写操作。</p>
+<h2 id="好友关系"><a href="#好友关系" class="headerlink" title="好友关系"></a>好友关系</h2><p>使用 set 类型的交集很容易就可以知道两个用户的共同好友。</p>
+<h1 id="十三、数据淘汰策略"><a href="#十三、数据淘汰策略" class="headerlink" title="十三、数据淘汰策略"></a>十三、数据淘汰策略</h1><p>可以设置内存最大使用量，当内存使用量超过时施行淘汰策略，具体有 6 种淘汰策略。</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>volatile-lru</td>
+<td>从已设置过期时间的数据集中挑选最近最少使用的数据淘汰</td>
+</tr>
+<tr>
+<td>volatile-ttl</td>
+<td>从已设置过期时间的数据集中挑选将要过期的数据淘汰</td>
+</tr>
+<tr>
+<td>volatile-random</td>
+<td>从已设置过期时间的数据集中任意选择数据淘汰</td>
+</tr>
+<tr>
+<td>allkeys-lru</td>
+<td>从所有数据集中挑选最近最少使用的数据淘汰</td>
+</tr>
+<tr>
+<td>allkeys-random</td>
+<td>从所有数据集中任意选择数据进行淘汰</td>
+</tr>
+<tr>
+<td>no-envicition</td>
+<td>禁止驱逐数据</td>
+</tr>
+</tbody>
+</table>
+<p>如果使用 Redis 来缓存数据时，要保证所有数据都是热点数据，可以将内存最大使用量设置为热点数据占用的内存量，然后启用 allkeys-lru 淘汰策略，将最近最少使用的数据淘汰。</p>
+<h1 id="十四、一个简单的论坛系统分析"><a href="#十四、一个简单的论坛系统分析" class="headerlink" title="十四、一个简单的论坛系统分析"></a>十四、一个简单的论坛系统分析</h1><p>该论坛系统功能如下：</p>
+<ul>
+<li>可以发布文章；</li>
+<li>可以对文章进行点赞；</li>
+<li>在首页可以按文章的发布时间或者文章的点赞数进行排序显示；</li>
+</ul>
+<h2 id="文章信息"><a href="#文章信息" class="headerlink" title="文章信息"></a>文章信息</h2><p>文章包括标题、作者、赞数等信息，在关系型数据库中很容易构建一张表来存储这些信息，在 Redis 中可以使用 HASH 来存储每种信息以及其对应的值的映射。</p>
+<p>Redis 没有关系型数据库中的表这一概念来将同类型的数据存放在一起，而是使用命名空间的方式来实现这一功能。键名的前面部分存储命名空间，后面部分的内容存储 ID，通常使用 : 来进行分隔。例如下面的 HASH 的键名为 article:92617，其中 article 为命名空间，ID 为 92617。</p>
+<p><div align="center"> <img src="../pics//7c54de21-e2ff-402e-bc42-4037de1c1592.png" width="400"> </div><br></p>
+<h2 id="点赞功能"><a href="#点赞功能" class="headerlink" title="点赞功能"></a>点赞功能</h2><p>当有用户为一篇文章点赞时，除了要对该文章的 votes 字段进行加 1 操作，还必须记录该用户已经对该文章进行了点赞，防止用户点赞次数超过 1。可以建立文章的已投票用户集合来进行记录。</p>
+<p>为了节约内存，规定一篇文章发布满一周之后，就不能再对它进行投票，而文章的已投票集合也会被删除，可以为文章的已投票集合设置一个一周的过期时间就能实现这个规定。</p>
+<p><div align="center"> <img src="../pics//485fdf34-ccf8-4185-97c6-17374ee719a0.png" width="400"> </div><br></p>
+<h2 id="对文章进行排序"><a href="#对文章进行排序" class="headerlink" title="对文章进行排序"></a>对文章进行排序</h2><p>为了按发布时间和点赞数进行排序，可以建立一个文章发布时间的有序集合和一个文章点赞数的有序集合。（下图中的 score 就是这里所说的点赞数；下面所示的有序集合分值并不直接是时间和点赞数，而是根据时间和点赞数间接计算出来的）</p>
+<p><div align="center"> <img src="../pics//f7d170a3-e446-4a64-ac2d-cb95028f81a8.png" width="800"> </div><br></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li>Carlson J L. Redis in Action[J]. Media.johnwiley.com.au, 2013.</li>
+<li>黄健宏. Redis 设计与实现 [M]. 机械工业出版社, 2014.</li>
+<li><a href="https://redislabs.com/ebook/foreword/" target="_blank" rel="noopener">REDIS IN ACTION</a></li>
+<li><a href="http://www.cnblogs.com/loveincode/p/7411911.html" target="_blank" rel="noopener">论述 Redis 和 Memcached 的差异</a></li>
+<li><a href="http://wiki.jikexueyuan.com/project/redis-guide" target="_blank" rel="noopener">Redis 3.0 中文版- 分片</a></li>
+<li><a href="http://www.scienjus.com/redis-use-case/" target="_blank" rel="noopener">Redis 应用场景</a></li>
+</ul>
+
+            </div>
+            <hr>
+
+            
+            <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.88rem;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff;
+        background-color: #22AB38;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff;
+        background-color: #019FE8;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a class="reward-link btn-floating btn-large waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close"><i class="fa fa-close"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs">
+                        <li class="tab wechat-tab waves-effect waves-light"><a class="active" href="#wechat">微信</a></li>
+                        <li class="tab alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                    </ul>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#reward .reward-link').on('click', function () {
+            $('#rewardModal').openModal();
+        });
+
+        $('#rewardModal .close').on('click', function () {
+            $('#rewardModal').closeModal();
+        });
+    });
+</script>
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">转载请注明: </span>
+                    <a href="http://yoursite.com" class="b-link-green">Anyu Blog</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/08/17/redis/redis-introduce/" class="b-link-green">[Redis] Redis常见知识点总结</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="card">
+                <a href="/2018/09/07/redis/redis-introduction/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Redis Redis介绍">
+                        
+                        <span class="card-title">Redis Redis介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">一、redis是什么？（what）Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。它支持字符串、哈希表、列表、集合、有序集合，位图，hyperloglogs等数据类型。内置复制、Lua脚本</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Redis/" class="post-category" target="_blank">
+                                    Redis
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
+                    </a>
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="card">
+                <a href="/2018/04/17/redis/redis-cluster/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="[Redis] Redis集群模式部署">
+                        
+                        <span class="card-title">[Redis] Redis集群模式部署</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">1. Redis部署
+以下以Linux系统为例
+
+1.1 下载和编译$ wget http://download.redis.io/releases/redis-4.0.7.tar.gz
+$ tar xzf redis-4.0.7.tar.</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            An yu
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+    
+
+</main>
+
+
+ <!-- require APlayer -->
+                
+                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+                    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+
+                    <div class="aplayer" data-id="2579380321" data-server="netease" data-type="playlist" data-fixed="true">
+                    </div>
+                
+
+                
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
+            <!--基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+            -->
+            
+			
+                <br>
+                <span id="busuanzi_container_site_pv">
+                    本站总访问量 <span id="busuanzi_value_site_pv" style="color: #fff;"></span> 次,&nbsp;
+                </span>
+				<span id="busuanzi_container_site_uv">
+                    访客数 <span id="busuanzi_value_site_uv" style="color: #fff;"></span> 人.
+                </span>
+			
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:wanganyu1996@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
+
+<a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+    <i class="fa fa-rss"></i>
+</a>
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title">搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+</script>
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/js/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+    <script src="/libs/others/clicklove.js"></script>
+
+
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+
+
+</body>
+</html>
