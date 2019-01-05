@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://yoursite.com/2017/08/13/hello-world/</loc>
+    <lastmod>2019-01-04</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2018/09/07/redis/redis-introduction/</loc>
+    <lastmod>2019-01-04</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2018/08/17/redis/redis-introduce/</loc>
+    <lastmod>2018-12-28</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/</loc>
+    <lastmod>2018-12-19</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2018/12/09/mq-knowledge/why-mq/</loc>
+    <lastmod>2018-12-16</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2018/12/08/distributed-system/zookeeper-application-scenarios/</loc>
+    <lastmod>2018-12-09</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2017/08/13/database/mysql-commonds/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2018/04/17/redis/redis-cluster/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2018/04/17/redis/redis-sentinel/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>
+</urlset>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/13/hello-world/</loc>
+    
+    <lastmod>2019-01-04T12:48:42.922Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/09/07/redis/redis-introduction/</loc>
+    
+    <lastmod>2019-01-04T12:41:21.359Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/friends/index.html</loc>
+    
+    <lastmod>2019-01-04T12:27:20.851Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2019-01-01T13:24:40.294Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2019-01-01T13:24:02.645Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2019-01-01T13:23:28.148Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/08/17/redis/redis-introduce/</loc>
+    
+    <lastmod>2018-12-28T13:07:54.555Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/</loc>
+    
+    <lastmod>2018-12-19T14:44:23.579Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/12/09/mq-knowledge/why-mq/</loc>
+    
+    <lastmod>2018-12-16T13:47:44.978Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/12/08/distributed-system/zookeeper-application-scenarios/</loc>
+    
+    <lastmod>2018-12-09T12:24:30.426Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/08/13/database/mysql-commonds/</loc>
+    
+    <lastmod>2018-11-20T12:18:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/17/redis/redis-cluster/</loc>
+    
+    <lastmod>2018-11-20T12:18:44.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/04/17/redis/redis-sentinel/</loc>
+    
+    <lastmod>2018-11-20T12:18:44.000Z</lastmod>
+    
+  </url>
+  
+</urlset>
