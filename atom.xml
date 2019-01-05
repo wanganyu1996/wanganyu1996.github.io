@@ -5,9 +5,9 @@
   <subtitle>Anyu Blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://www.wanganyu1996.com/"/>
   <updated>2018-12-19T14:44:23.579Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://www.wanganyu1996.com/</id>
   
   <author>
     <name>An yu</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>「消息队列」 如何保证消息队列的高可用？</title>
-    <link href="http://yoursite.com/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/"/>
-    <id>http://yoursite.com/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/</id>
+    <link href="http://www.wanganyu1996.com/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/"/>
+    <id>http://www.wanganyu1996.com/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/</id>
     <published>2018-12-11T04:26:24.000Z</published>
     <updated>2018-12-19T14:44:23.579Z</updated>
     
@@ -37,14 +37,14 @@
     </summary>
     
     
-      <category term="消息队列" scheme="http://yoursite.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
   </entry>
   
   <entry>
     <title>「消息队列」 为什么使用消息队列</title>
-    <link href="http://yoursite.com/2018/12/09/mq-knowledge/why-mq/"/>
-    <id>http://yoursite.com/2018/12/09/mq-knowledge/why-mq/</id>
+    <link href="http://www.wanganyu1996.com/2018/12/09/mq-knowledge/why-mq/"/>
+    <id>http://www.wanganyu1996.com/2018/12/09/mq-knowledge/why-mq/</id>
     <published>2018-12-09T14:26:24.000Z</published>
     <updated>2018-12-16T13:47:44.978Z</updated>
     
@@ -61,14 +61,14 @@
     </summary>
     
     
-      <category term="消息队列" scheme="http://yoursite.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
   </entry>
   
   <entry>
     <title>[分布式] Zookeeper</title>
-    <link href="http://yoursite.com/2018/12/08/distributed-system/zookeeper-application-scenarios/"/>
-    <id>http://yoursite.com/2018/12/08/distributed-system/zookeeper-application-scenarios/</id>
+    <link href="http://www.wanganyu1996.com/2018/12/08/distributed-system/zookeeper-application-scenarios/"/>
+    <id>http://www.wanganyu1996.com/2018/12/08/distributed-system/zookeeper-application-scenarios/</id>
     <published>2018-12-08T02:50:57.000Z</published>
     <updated>2018-12-09T12:24:30.426Z</updated>
     
@@ -86,14 +86,14 @@
     </summary>
     
     
-      <category term="分布式" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
   <entry>
     <title>Redis Redis介绍</title>
-    <link href="http://yoursite.com/2018/09/07/redis/redis-introduction/"/>
-    <id>http://yoursite.com/2018/09/07/redis/redis-introduction/</id>
+    <link href="http://www.wanganyu1996.com/2018/09/07/redis/redis-introduction/"/>
+    <id>http://www.wanganyu1996.com/2018/09/07/redis/redis-introduction/</id>
     <published>2018-09-07T01:25:00.000Z</published>
     <updated>2019-01-04T12:41:21.359Z</updated>
     
@@ -109,19 +109,19 @@
     
     </summary>
     
-      <category term="Redis" scheme="http://yoursite.com/categories/Redis/"/>
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
     
     
-      <category term="分布式" scheme="http://yoursite.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
-      <category term="Redis" scheme="http://yoursite.com/tags/Redis/"/>
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>[Redis] Redis常见知识点总结</title>
-    <link href="http://yoursite.com/2018/08/17/redis/redis-introduce/"/>
-    <id>http://yoursite.com/2018/08/17/redis/redis-introduce/</id>
+    <link href="http://www.wanganyu1996.com/2018/08/17/redis/redis-introduce/"/>
+    <id>http://www.wanganyu1996.com/2018/08/17/redis/redis-introduce/</id>
     <published>2018-08-17T13:26:24.000Z</published>
     <updated>2018-12-28T13:07:54.555Z</updated>
     
@@ -142,14 +142,14 @@
     </summary>
     
     
-      <category term="Redis" scheme="http://yoursite.com/tags/Redis/"/>
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>[Redis] Redis集群模式部署</title>
-    <link href="http://yoursite.com/2018/04/17/redis/redis-cluster/"/>
-    <id>http://yoursite.com/2018/04/17/redis/redis-cluster/</id>
+    <link href="http://www.wanganyu1996.com/2018/04/17/redis/redis-cluster/"/>
+    <id>http://www.wanganyu1996.com/2018/04/17/redis/redis-cluster/</id>
     <published>2018-04-17T13:26:24.000Z</published>
     <updated>2018-11-20T12:18:44.000Z</updated>
     
@@ -166,14 +166,14 @@
     </summary>
     
     
-      <category term="Redis" scheme="http://yoursite.com/tags/Redis/"/>
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>[Redis] Redis哨兵模式部署</title>
-    <link href="http://yoursite.com/2018/04/17/redis/redis-sentinel/"/>
-    <id>http://yoursite.com/2018/04/17/redis/redis-sentinel/</id>
+    <link href="http://www.wanganyu1996.com/2018/04/17/redis/redis-sentinel/"/>
+    <id>http://www.wanganyu1996.com/2018/04/17/redis/redis-sentinel/</id>
     <published>2018-04-17T12:26:24.000Z</published>
     <updated>2018-11-20T12:18:44.000Z</updated>
     
@@ -190,14 +190,14 @@
     </summary>
     
     
-      <category term="Redis" scheme="http://yoursite.com/tags/Redis/"/>
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>[Database] Mysql常用命令</title>
-    <link href="http://yoursite.com/2017/08/13/hello-world/"/>
-    <id>http://yoursite.com/2017/08/13/hello-world/</id>
+    <link href="http://www.wanganyu1996.com/2017/08/13/hello-world/"/>
+    <id>http://www.wanganyu1996.com/2017/08/13/hello-world/</id>
     <published>2017-08-13T02:50:57.000Z</published>
     <updated>2019-01-04T12:48:42.922Z</updated>
     
@@ -214,14 +214,14 @@
     </summary>
     
     
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://www.wanganyu1996.com/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>[Database] Mysql常用命令</title>
-    <link href="http://yoursite.com/2017/08/13/database/mysql-commonds/"/>
-    <id>http://yoursite.com/2017/08/13/database/mysql-commonds/</id>
+    <link href="http://www.wanganyu1996.com/2017/08/13/database/mysql-commonds/"/>
+    <id>http://www.wanganyu1996.com/2017/08/13/database/mysql-commonds/</id>
     <published>2017-08-13T02:50:57.000Z</published>
     <updated>2018-11-20T12:18:44.000Z</updated>
     
@@ -238,7 +238,7 @@
     </summary>
     
     
-      <category term="Database" scheme="http://yoursite.com/tags/Database/"/>
+      <category term="Database" scheme="http://www.wanganyu1996.com/tags/Database/"/>
     
   </entry>
   

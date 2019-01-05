@@ -1,0 +1,3 @@
+http://www.wanganyu1996.com/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/
+http://www.wanganyu1996.com/2018/12/09/mq-knowledge/why-mq/
+http://www.wanganyu1996.com/2018/12/08/distributed-system/zookeeper-application-scenarios/
