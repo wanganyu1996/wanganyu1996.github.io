@@ -19,13 +19,13 @@
     <loc>http://www.wanganyu1996.com/2018/12/08/distributed-system/zookeeper-application-scenarios/</loc>
     <lastmod>2018-12-09</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/2018/04/17/redis/redis-sentinel/</loc>
-    <lastmod>2018-11-20</lastmod>
-  </url>  <url>
     <loc>http://www.wanganyu1996.com/2017/08/13/database/mysql-commonds/</loc>
     <lastmod>2018-11-20</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/2018/04/17/redis/redis-cluster/</loc>
+    <lastmod>2018-11-20</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/2018/04/17/redis/redis-sentinel/</loc>
     <lastmod>2018-11-20</lastmod>
   </url>
 </urlset>
