@@ -5,10 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="「消息队列」 如何保证消息队列的高可用？, Anyu Blog">
-    <meta name="description" content="面试题如何保证消息队列的高可用？
-面试官心理分析如果有人问到你 MQ 的知识，高可用是必问的。上一讲提到，MQ 会导致系统可用性降低。所以只要你用了 MQ，接下来问的一些要点肯定就是围绕着 MQ 的那些缺点怎么来解决了。
-要是你傻乎乎的就干">
+    <meta name="keywords" content="[分布式] Zookeeper, 若愚博客">
+    <meta name="description" content="面试题zookeeper 都有哪些使用场景？
+面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>「消息队列」 如何保证消息队列的高可用？ | Anyu Blog</title>
+    <title>[分布式] Zookeeper | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -43,7 +42,7 @@
                         
                         <img src="/medias/mylogo.png" class="logo-img hide-on-small-only">
                         
-                        <span class="logo-span">Anyu Blog</span>
+                        <span class="logo-span">若愚博客</span>
                     </a>
                 </div>
                 
@@ -119,7 +118,7 @@
         
         <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Anyu Blog</div>
+        <div class="logo-name">若愚博客</div>
         <div class="logo-desc">
             
             莫道征途路漫漫 愿效江水去不还 大势所向天地宽 终究奔涌归浩瀚
@@ -281,7 +280,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        「消息队列」 如何保证消息队列的高可用？
+                        [分布式] Zookeeper
                     </div>
                 </div>
             </div>
@@ -301,8 +300,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/消息队列/" target="_blank">
-                    <span class="chip bg-color">消息队列</span>
+                <a href="/tags/分布式/" target="_blank">
+                    <span class="chip bg-color">分布式</span>
                 </a>
                 
             </div>
@@ -311,7 +310,7 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-11
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-08
                 </span>
 				
 				
@@ -323,33 +322,25 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>如何保证消息队列的高可用？</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>如果有人问到你 MQ 的知识，<strong>高可用是必问的</strong>。<a href="/docs/high-concurrency/why-mq.md">上一讲</a>提到，MQ 会导致<strong>系统可用性降低</strong>。所以只要你用了 MQ，接下来问的一些要点肯定就是围绕着 MQ 的那些缺点怎么来解决了。</p>
-<p>要是你傻乎乎的就干用了一个 MQ，各种问题从来没考虑过，那你就杯具了，面试官对你的印象就是，只会简单使用一些技术，没任何思考，马上对你的印象就不太好了。这样的同学招进来要是做个 20k 薪资以内的普通小弟还凑合，要是做薪资 20k+ 的高工，那就惨了，让你设计个系统，里面肯定一堆坑，出了事故公司受损失，团队一起背锅。</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>这个问题这么问是很好的，因为不能问你 Kafka 的高可用性怎么保证？ActiveMQ 的高可用性怎么保证？一个面试官要是这么问就显得很没水平，人家可能用的就是 RabbitMQ，没用过 Kafka，你上来问人家 Kafka 干什么？这不是摆明了刁难人么。</p>
-<p>所以有水平的面试官，问的是 MQ 的高可用性怎么保证？这样就是你用过哪个 MQ，你就说说你对那个 MQ 的高可用性的理解。</p>
-<h3 id="RabbitMQ-的高可用性"><a href="#RabbitMQ-的高可用性" class="headerlink" title="RabbitMQ 的高可用性"></a>RabbitMQ 的高可用性</h3><p>RabbitMQ 是比较有代表性的，因为是<strong>基于主从</strong>（非分布式）做高可用性的，我们就以 RabbitMQ 为例子讲解第一种 MQ 的高可用性怎么实现。</p>
-<p>RabbitMQ 有三种模式：单机模式、普通集群模式、镜像集群模式。</p>
-<h4 id="单机模式"><a href="#单机模式" class="headerlink" title="单机模式"></a>单机模式</h4><p>单机模式，就是 Demo 级别的，一般就是你本地启动了玩玩儿的😄，没人生产用单机模式。</p>
-<h4 id="普通集群模式（无高可用性）"><a href="#普通集群模式（无高可用性）" class="headerlink" title="普通集群模式（无高可用性）"></a>普通集群模式（无高可用性）</h4><p>普通集群模式，意思就是在多台机器上启动多个 RabbitMQ 实例，每个机器启动一个。但是你<strong>创建的 queue，只会放在一个 RabbitMQ 实例上</strong>，但是每个实例都同步 queue 的元数据（元数据可以认为是 queue 的一些配置信息，通过元数据，可以找到 queue 所在实例）。你消费的时候，实际上如果连接到了另外一个实例，那么那个实例会从 queue 所在实例上拉取数据过来。</p>
-<p><img src="/img/mq-7.png" alt="mq-7"></p>
-<p>这种方式确实很麻烦，也不怎么好，<strong>没做到所谓的分布式</strong>，就是个普通集群。因为这导致你要么消费者每次随机连接一个实例然后拉取数据，要么固定连接那个 queue 所在实例消费数据，前者有<strong>数据拉取的开销</strong>，后者导致<strong>单实例性能瓶颈</strong>。</p>
-<p>而且如果那个放 queue 的实例宕机了，会导致接下来其他实例就无法从那个实例拉取，如果你<strong>开启了消息持久化</strong>，让 RabbitMQ 落地存储消息的话，<strong>消息不一定会丢</strong>，得等这个实例恢复了，然后才可以继续从这个 queue 拉取数据。</p>
-<p>所以这个事儿就比较尴尬了，这就<strong>没有什么所谓的高可用性</strong>，<strong>这方案主要是提高吞吐量的</strong>，就是说让集群中多个节点来服务某个 queue 的读写操作。</p>
-<h4 id="镜像集群模式（高可用性）"><a href="#镜像集群模式（高可用性）" class="headerlink" title="镜像集群模式（高可用性）"></a>镜像集群模式（高可用性）</h4><p>这种模式，才是所谓的 RabbitMQ 的高可用模式，跟普通集群模式不一样的是，你创建的 queue，无论元数据还是 queue 里的消息都会<strong>存在于多个实例上</strong>，然后每次你写消息到 queue 的时候，都会自动把<strong>消息同步</strong>到多个实例的 queue 上。</p>
-<p><img src="/img/mq-8.png" alt="mq-8"></p>
-<p>这样的话，好处在于，你任何一个机器宕机了，没事儿，别的机器都可以用。坏处在于，第一，这个性能开销也太大了吧，消息同步所有机器，导致网络带宽压力和消耗很重！第二，这么玩儿，就<strong>没有扩展性可言</strong>了，如果某个 queue 负载很重，你加机器，新增的机器也包含了这个 queue 的所有数据，并没有办法线性扩展你的 queue。</p>
-<p>那么<strong>如何开启这个镜像集群模式</strong>呢？其实很简单，RabbitMQ 有很好的管理控制台，就是在后台新增一个策略，这个策略是<strong>镜像集群模式的策略</strong>，指定的时候可以要求数据同步到所有节点的，也可以要求同步到指定数量的节点，再次创建 queue 的时候，应用这个策略，就会自动将数据同步到其他的节点上去了。</p>
-<h3 id="Kafka-的高可用性"><a href="#Kafka-的高可用性" class="headerlink" title="Kafka 的高可用性"></a>Kafka 的高可用性</h3><p>Kafka 一个最基本的架构认识：多个 broker 组成，每个 broker 是一个节点；你创建一个 topic，这个 topic 可以划分为多个 partition，每个 partition 可以存在于不同的 broker 上，每个 partition 就放一部分数据。</p>
-<p>这就是<strong>天然的分布式消息队列</strong>，就是说一个 topic 的数据，是<strong>分散放在多个机器上的，每个机器就放一部分数据</strong>。</p>
-<p>实际上 RabbmitMQ 之类的，并不是分布式消息队列，它就是传统的消息队列，只不过提供了一些集群、HA(High Availability, 高可用性)的机制而已，因为无论怎么玩儿，RabbitMQ 一个 queue 的数据都是放在一个节点里的，镜像集群下，也是每个节点都放这个 queue 的完整数据。</p>
-<p>Kafka 0.8 以前，是没有 HA 机制的，就是任何一个 broker 宕机了，那个 broker 上的 partition 就废了，没法写也没法读，没有什么高可用性可言。</p>
-<p>Kafka 0.8 以后，提供了 HA 机制，就是 replica（复制品） 副本机制。每个 partition 的数据都会同步到其它机器上，形成自己的多个 replica 副本。然后所有 replica 会选举一个 leader 出来，那么生产和消费都跟这个 leader 打交道，然后其他 replica 就是 follower。写的时候，leader 会负责把数据同步到所有 follower 上去，读的时候就直接读 leader 上的数据即可。只能读写 leader？很简单，<strong>要是你可以随意读写每个 follower，那么就要 care 数据一致性的问题</strong>，系统复杂度太高，很容易出问题。Kafka 会均匀的将一个 partition 的所有 replica 分布在不同的机器上，这样才可以提高容错性。</p>
-<p><img src="/img/mq-9.png" alt="mq-9"></p>
-<p>这么搞，就有所谓的<strong>高可用性</strong>了，因为如果某个 broker 宕机了，没事儿，那个 broker上面的 partition 在其他机器上都有副本的，如果这上面有某个 partition 的 leader，那么此时会<strong>重新选举</strong>一个新的 leader 出来，大家继续读写那个新的 leader 即可。这就有所谓的高可用性了。</p>
-<p><strong>写数据</strong>的时候，生产者就写 leader，然后 leader 将数据落地写本地磁盘，接着其他 follower 自己主动从 leader 来 pull 数据。一旦所有 follower 同步好数据了，就会发送 ack 给 leader，leader 收到所有 follower 的 ack 之后，就会返回写成功的消息给生产者。（当然，这只是其中一种模式，还可以适当调整这个行为）</p>
-<p><strong>消费</strong>的时候，只会从 leader 去读，但是只有当一个消息已经被所有 follower 都同步成功返回 ack 的时候，这个消息才会被消费者读到。</p>
-<p>看到这里，相信你大致明白了 Kafka 是如何保证高可用机制的了，对吧？不至于一无所知，现场还能给面试官画画图。要是遇上面试官确实是 Kafka 高手，深挖了问，那你只能说不好意思，太深入的你没研究过┭┮﹏┭┮。</p>
+                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>zookeeper 都有哪些使用场景？</p>
+<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。</p>
+<p>分布式锁这个东西，很常用的，你做 Java系统开发，分布式系统，可能会有一些场景会用到。最常用的分布式锁就是基于 zookeeper 来实现的。</p>
+<p>其实说实话，问这个问题，一般就是看看你是否了解 zookeeper，因为 zk 是分布式系统中很常见的一个基础系统。而且问的话常问的就是说 zk 的使用场景是什么？看你知道不知道一些基本的使用场景。但是其实 zk 挖深了自然是可以问的很深很深的。</p>
+<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>大致来说，zk 的使用场景如下，我就举几个简单的，大家能说几个就好了：</p>
+<ul>
+<li>分布式协调</li>
+<li>分布式锁</li>
+<li>元数据/配置信息管理</li>
+<li>HA高可用性</li>
+</ul>
+<h3 id="分布式协调"><a href="#分布式协调" class="headerlink" title="分布式协调"></a>分布式协调</h3><p>这个其实是 zk 很经典的一个用法，简单来说，就好比，你 A 系统发送个请求到 mq，然后 B 系统消息消费之后处理了。那 A 系统如何知道 B 系统的处理结果？用 zk 就可以实现分布式系统之间的协调工作。A 系统发送请求之后可以在 zk 上<strong>对某个节点的值注册个监听器</strong>，一旦 B 系统处理完了就修改 zk 那个节点的值，A 立马就可以收到通知，完美解决。</p>
+<p>  <img src="https://res.cloudinary.com/dijk2pkfa/image/upload/v1544358082/zookeeper-distributed-coordination.png"></p>
+<h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><p>举个栗子。对某一个数据连续发出两个修改操作，两台机器同时收到了请求，但是只能一台机器先执行完另外一个机器再执行。那么此时就可以使用 zk 分布式锁，一个机器接收到了请求之后先获取 zk 上的一把分布式锁，就是可以去创建一个 znode，接着执行操作；然后另外一个机器也<strong>尝试去创建</strong>那个 znode，结果发现自己创建不了，因为被别人创建了，那只能等着，等第一个机器执行完了自己再执行。</p>
+<p><img src="/img/zookeeper-distributed-lock-demo.png" alt="zookeeper-distributed-lock-demo"></p>
+<h3 id="元数据-配置信息管理"><a href="#元数据-配置信息管理" class="headerlink" title="元数据/配置信息管理"></a>元数据/配置信息管理</h3><p>zk 可以用作很多系统的配置信息的管理，比如 kafka、storm 等等很多分布式系统都会选用 zk 来做一些元数据、配置信息的管理，包括 dubbo 注册中心不也支持 zk 么？</p>
+<p><img src="/img/zookeeper-meta-data-manage.png" alt="zookeeper-meta-data-manage"></p>
+<h3 id="HA高可用性"><a href="#HA高可用性" class="headerlink" title="HA高可用性"></a>HA高可用性</h3><p>这个应该是很常见的，比如 hadoop、hdfs、yarn 等很多大数据系统，都选择基于 zk 来开发 HA 高可用机制，就是一个<strong>重要进程一般会做主备</strong>两个，主进程挂了立马通过 zk 感知到切换到备用进程。</p>
+<p><img src="/img/zookeeper-active-standby.png" alt="zookeeper-active-standby"></p>
 
             </div>
             <hr>
@@ -486,9 +477,9 @@
             <div class="reprint">
                 <p>
                     <span class="reprint-tip">转载请注明: </span>
-                    <a href="http://www.wanganyu1996.com" class="b-link-green">Anyu Blog</a>
+                    <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/" class="b-link-green">「消息队列」 如何保证消息队列的高可用？</a>
+                    <a href="/distributed-system/zookeeper-application-scenarios.html" class="b-link-green">[分布式] Zookeeper</a>
                 </p>
             </div>
         </div>
@@ -510,51 +501,9 @@
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">本篇</div>
+            <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/12/11/mq-knowledge/how-to-ensure-high-availability-of-message-queues/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="「消息队列」 如何保证消息队列的高可用？">
-                        
-                        <span class="card-title">「消息队列」 如何保证消息队列的高可用？</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息队列的高可用？
-面试官心理分析如果有人问到你 MQ 的知识，高可用是必问的。上一讲提到，MQ 会导致系统可用性降低。所以只要你用了 MQ，接下来问的一些要点肯定就是围绕着 MQ 的那些缺点怎么来解决了。
-要是你傻乎乎的就干</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-11
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            An yu
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/消息队列/" target="_blank">
-                        <span class="chip bg-color">消息队列</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">下一篇</div>
-            <div class="card">
-                <a href="/2018/12/09/mq-knowledge/why-mq/">
+                <a href="/mq-knowledge/why-mq.html">
                     <div class="card-image">
                         
                         
@@ -573,13 +522,13 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
 
 第一，你知不知道你们系统里为什么要用消</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            An yu
+                            若愚
                             
                         </span>
                     </div>
@@ -589,6 +538,53 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                     
                     <a href="/tags/消息队列/" target="_blank">
                         <span class="chip bg-color">消息队列</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="card">
+                <a href="/redis/redis-introduction.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Redis Redis介绍">
+                        
+                        <span class="card-title">Redis Redis介绍</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">一、redis是什么？（what）Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。它支持字符串、哈希表、列表、集合、有序集合，位图，hyperloglogs等数据类型。内置复制、Lua脚本</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Redis/" class="post-category" target="_blank">
+                                    Redis
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>

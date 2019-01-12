@@ -5,8 +5,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="[Database] Mysql常用命令, Anyu Blog">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Redis Redis介绍, 若愚博客">
+    <meta name="description" content="一、redis是什么？（what）Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。它支持字符串、哈希表、列表、集合、有序集合，位图，hyperloglogs等数据类型。内置复制、Lua脚本">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>[Database] Mysql常用命令 | Anyu Blog</title>
+    <title>Redis Redis介绍 | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -41,7 +41,7 @@
                         
                         <img src="/medias/mylogo.png" class="logo-img hide-on-small-only">
                         
-                        <span class="logo-span">Anyu Blog</span>
+                        <span class="logo-span">若愚博客</span>
                     </a>
                 </div>
                 
@@ -117,7 +117,7 @@
         
         <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Anyu Blog</div>
+        <div class="logo-name">若愚博客</div>
         <div class="logo-desc">
             
             莫道征途路漫漫 愿效江水去不还 大势所向天地宽 终究奔涌归浩瀚
@@ -279,7 +279,7 @@
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        [Database] Mysql常用命令
+                        Redis Redis介绍
                     </div>
                 </div>
             </div>
@@ -299,17 +299,31 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/Hexo/" target="_blank">
-                    <span class="chip bg-color">Hexo</span>
+                <a href="/tags/Redis/" target="_blank">
+                    <span class="chip bg-color">Redis</span>
+                </a>
+                
+                <a href="/tags/分布式/" target="_blank">
+                    <span class="chip bg-color">分布式</span>
                 </a>
                 
             </div>
             
             <div class="post-info">
                 
+                <span class="post-cate">
+                <!--<span class="post-cate" style="margin-right: 0px">-->
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Redis/" class="post-category" target="_blank">
+                        Redis
+                    </a>
+                    
+                </span>
+                
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2017-08-13
+                    <i class="fa fa-clock-o fa-fw"></i>2018-09-07
                 </span>
 				
 				
@@ -321,20 +335,62 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+                <h2 id="一、redis是什么？（what）"><a href="#一、redis是什么？（what）" class="headerlink" title="一、redis是什么？（what）"></a>一、redis是什么？（what）</h2><p>Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。它支持字符串、哈希表、列表、集合、有序集合，位图，hyperloglogs等数据类型。内置复制、Lua脚本、LRU收回、事务以及不同级别磁盘持久化功能，同时通过Redis Sentinel提供高可用，通过Redis Cluster提供自动分区。</p>
+<p>Redis是一个开源的使用ANSI C语言编写、遵守BSD协议、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API。</p>
+<h2 id="二、为什么使用redis？（why）"><a href="#二、为什么使用redis？（why）" class="headerlink" title="二、为什么使用redis？（why）"></a>二、为什么使用redis？（why）</h2><h3 id="（一）redis的特点"><a href="#（一）redis的特点" class="headerlink" title="（一）redis的特点"></a>（一）redis的特点</h3><ol>
+<li>Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用。</li>
+<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储。</li>
+<li>Redis支持数据的备份，即master-slave模式的数据备份。</li>
+</ol>
+<h3 id="（二）redis的优势"><a href="#（二）redis的优势" class="headerlink" title="（二）redis的优势"></a>（二）redis的优势</h3><ol>
+<li>性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
+<li>丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
+<li>原子 – Redis的所有操作都是原子性的，同时Redis还支持对几个操作全并后的原子性执行。</li>
+<li>丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ol>
+<h3 id="（三）redis与其他key-value存储有什么不同"><a href="#（三）redis与其他key-value存储有什么不同" class="headerlink" title="（三）redis与其他key-value存储有什么不同"></a>（三）redis与其他key-value存储有什么不同</h3><ol>
+<li>Redis有着更为复杂的数据结构并且提供对他们的原子性操作，Redis的数据类型都是基于基本数据结构的同时对程序员透明，无需进行额外的抽象。</li>
+<li>Redis运行在内存中但是可以持久化到磁盘，所以在对不同数据集进行高速读写时需要权衡内存，应为数据量不能大于硬件内存。</li>
+<li>相比在磁盘上相同的复杂的数据结构，在内存中操作起来非常简单，这样Redis可以做很多内部复杂性很强的事情。</li>
+<li>在磁盘格式方面他们是紧凑的以追加的方式产生的，因为他们并不需要进行随机访问。</li>
+</ol>
+<h2 id="三、如何使用redis？（how）"><a href="#三、如何使用redis？（how）" class="headerlink" title="三、如何使用redis？（how）"></a>三、如何使用redis？（how）</h2><h3 id="（一）redis的数据类型"><a href="#（一）redis的数据类型" class="headerlink" title="（一）redis的数据类型"></a>（一）redis的数据类型</h3><table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>概念</th>
+<th>常用命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>String(字符串)</td>
+<td>key-value型</td>
+<td>SET ，GET</td>
+</tr>
+<tr>
+<td>Hash(哈希)</td>
+<td>field-value,适用于存储对象类型（对象名-对象属性值）</td>
+<td>HMSET，HEGTALL</td>
+</tr>
+<tr>
+<td>List(列表)</td>
+<td>string类型的有序列表，按照插入顺序排序</td>
+<td>lpush，lrange</td>
+</tr>
+<tr>
+<td>Set(集合)</td>
+<td>string类型的无序集合</td>
+<td>sadd，smembers</td>
+</tr>
+<tr>
+<td>zset(sorted set：有序集合)</td>
+<td>string类型元素的集合,且不允许重复的成员。每个元素关联一个double值来进行排序，double值可以重复但元素不能重复。</td>
+<td>zadd，ZRANGEBYSCORE</td>
+</tr>
+</tbody>
+</table>
+<h3 id="（二）redis常用命令"><a href="#（二）redis常用命令" class="headerlink" title="（二）redis常用命令"></a>（二）redis常用命令</h3>
             </div>
             <hr>
 
@@ -470,9 +526,9 @@
             <div class="reprint">
                 <p>
                     <span class="reprint-tip">转载请注明: </span>
-                    <a href="http://www.wanganyu1996.com" class="b-link-green">Anyu Blog</a>
+                    <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/08/13/hello-world/" class="b-link-green">[Database] Mysql常用命令</a>
+                    <a href="/redis/redis-introduction.html" class="b-link-green">Redis Redis介绍</a>
                 </p>
             </div>
         </div>
@@ -496,30 +552,26 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/04/17/redis/redis-sentinel/">
+                <a href="/distributed-system/zookeeper-application-scenarios.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="[Redis] Redis哨兵模式部署">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="[分布式] Zookeeper">
                         
-                        <span class="card-title">[Redis] Redis哨兵模式部署</span>
+                        <span class="card-title">[分布式] Zookeeper</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. 部署Redis集群redis的安装及配置参考[redis部署]
-
-本文以创建一主二从的集群为例。
-
-1.1 部署与配置先创建sentinel目录，在该目录下创建8000，8001，8002三个以端口号命名的目录。
-mkdir sent</div>
+                    <div class="summary">面试题zookeeper 都有哪些使用场景？
+面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-17
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-08
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            An yu
+                            若愚
                             
                         </span>
                     </div>
@@ -527,8 +579,8 @@ mkdir sent</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
@@ -540,27 +592,44 @@ mkdir sent</div>
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2017/08/13/database/mysql-commonds/">
+                <a href="/redis/redis-introduce.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="[Database] Mysql常用命令">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="[Redis] Redis常见知识点总结">
                         
-                        <span class="card-title">[Database] Mysql常用命令</span>
+                        <span class="card-title">[Redis] Redis常见知识点总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">1. 系统管理1.1. 连接mysql格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －</div>
+                    <div class="summary">
+
+一、Redis 是什么
+二、五种基本类型
+1. STRING
+2. LIST
+3. SET
+4. HASH
+5. ZSET
+
+
+三、键的过期时间
+四、发布与订阅
+五、事务
+六、持久化
+1. 快照持久化
+2. AOF 持久化
+
+
+七、复制</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            An yu
+                            若愚
                             
                         </span>
                     </div>
@@ -568,8 +637,8 @@ mkdir sent</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Database/" target="_blank">
-                        <span class="chip bg-color">Database</span>
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>

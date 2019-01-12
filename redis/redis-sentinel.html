@@ -5,10 +5,13 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="[Database] Mysql常用命令, Anyu Blog">
-    <meta name="description" content="1. 系统管理1.1. 连接mysql格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －">
+    <meta name="keywords" content="[Redis] Redis哨兵模式部署, 若愚博客">
+    <meta name="description" content="1. 部署Redis集群redis的安装及配置参考[redis部署]
+
+本文以创建一主二从的集群为例。
+
+1.1 部署与配置先创建sentinel目录，在该目录下创建8000，8001，8002三个以端口号命名的目录。
+mkdir sent">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>[Database] Mysql常用命令 | Anyu Blog</title>
+    <title>[Redis] Redis哨兵模式部署 | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -43,7 +46,7 @@
                         
                         <img src="/medias/mylogo.png" class="logo-img hide-on-small-only">
                         
-                        <span class="logo-span">Anyu Blog</span>
+                        <span class="logo-span">若愚博客</span>
                     </a>
                 </div>
                 
@@ -119,7 +122,7 @@
         
         <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Anyu Blog</div>
+        <div class="logo-name">若愚博客</div>
         <div class="logo-desc">
             
             莫道征途路漫漫 愿效江水去不还 大势所向天地宽 终究奔涌归浩瀚
@@ -275,13 +278,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        [Database] Mysql常用命令
+                        [Redis] Redis哨兵模式部署
                     </div>
                 </div>
             </div>
@@ -301,8 +304,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/Database/" target="_blank">
-                    <span class="chip bg-color">Database</span>
+                <a href="/tags/Redis/" target="_blank">
+                    <span class="chip bg-color">Redis</span>
                 </a>
                 
             </div>
@@ -311,7 +314,7 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2017-08-13
+                    <i class="fa fa-clock-o fa-fw"></i>2018-04-17
                 </span>
 				
 				
@@ -323,142 +326,354 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-系统管理"><a href="#1-系统管理" class="headerlink" title="1. 系统管理"></a>1. 系统管理</h2><h3 id="1-1-连接mysql"><a href="#1-1-连接mysql" class="headerlink" title="1.1. 连接mysql"></a>1.1. 连接mysql</h3><p>格式： mysql -h主机地址 -u用户名 －p用户密码</p>
-<p>连接本地：mysql -h<code>localhost/127.0.0.1</code> -u用户名 －p用户密码</p>
-<p>连接远程：mysql -h<code>主机地址</code> -u用户名 －p用户密码<br>退出连接：exit</p>
-<h3 id="1-2-备份数据库"><a href="#1-2-备份数据库" class="headerlink" title="1.2. 备份数据库"></a>1.2. 备份数据库</h3><p><strong>1.导出整个数据库</strong></p>
-<p>导出文件默认是存在mysql\bin目录下</p>
-<p>mysqldump -u 用户名 -p 数据库名 ` 导出的文件名</p>
-<p>mysqldump -u user_name -p123456 database_name ` outfile_name.sql</p>
-<p><strong>2.导出一个表</strong></p>
-<p>mysqldump -u 用户名 -p 数据库名 表名` 导出的文件名</p>
-<p>mysqldump -u user_name -p database_name table_name ` outfile_name.sql</p>
-<p><strong>3.导出一个数据库结构</strong></p>
-<p>mysqldump -u user_name -p -d –add-drop-table database_name ` outfile_name.sql</p>
-<p>-d 没有数据 –add-drop-table 在每个create语句之前增加一个drop table</p>
-<p><strong>4.带语言参数导出</strong></p>
-<p>mysqldump -uroot -p –default-character-set=latin1 –set-charset=gbk –skip-opt database_name ` outfile_name.sql</p>
-<p><strong>5、导入数据库</strong></p>
-<p>mysql -u root –p ` [备份文件的保存路径] 或者source [备份文件的保存路径]</p>
-<h3 id="1-3-用户管理"><a href="#1-3-用户管理" class="headerlink" title="1.3. 用户管理"></a>1.3. 用户管理</h3><p><strong>1、创建用户</strong></p>
-<p>​    create user ‘用户名‘@’IP地址’ identified by ‘密码’;</p>
-<p><strong>2、删除用户</strong></p>
-<p>​    drop user ‘用户名‘@’IP地址’;</p>
-<p>​    delete from user where user=’用户名’ and host=’localhost’;</p>
-<p><strong>3、修改用户</strong></p>
-<p>​    rename user ‘用户名‘@’IP地址’; to ‘新用户名‘@’IP地址’;;</p>
-<p><strong>4、修改密码</strong></p>
-<p>​    set password for ‘用户名‘@’IP地址’ = Password(‘新密码’)</p>
-<p>​    mysqladmin -u用户名 -p旧密码 password 新密码</p>
-<h3 id="1-4-权限管理"><a href="#1-4-权限管理" class="headerlink" title="1.4. 权限管理"></a>1.4. 权限管理</h3><h4 id="1-4-1-grant"><a href="#1-4-1-grant" class="headerlink" title="1.4.1. grant"></a>1.4.1. grant</h4><p><strong>1、grant 权限 on 数据库对象 to 用户</strong></p>
-<p>数据库对象的格式为<code>database</code>.<code>table</code>。<code>database</code>.<em>：表示授权数据库对象该数据库的所有表；</em>.*：表示授权数据库对象为所有数据库的所有表。</p>
-<p>grant all privileges on <em>.</em> to <code>user</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;如果<code>ip</code>为’%’表示不限制IP。</p>
-<p><strong>2、撤销权限</strong>：</p>
-<p>revoke all on <em>.</em> from <code>user</code>@<code>ip</code>; </p>
-<h4 id="1-4-2-普通数据库用户"><a href="#1-4-2-普通数据库用户" class="headerlink" title="1.4.2. 普通数据库用户"></a>1.4.2. 普通数据库用户</h4><p>查询、插入、更新、删除 数据库中所有表数据的权利</p>
-<p>grant select, insert, update, delete on testdb.* to <code>user</code>@’<code>ip</code>‘;</p>
-<h4 id="1-4-3-DBA-用户"><a href="#1-4-3-DBA-用户" class="headerlink" title="1.4.3. DBA 用户"></a>1.4.3. DBA 用户</h4><p><strong>1、授权</strong></p>
-<p>grant all privileges on <em>.</em> to <code>dba</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;</p>
-<p><strong>2、刷新系统权限</strong></p>
-<p>flush privileges;</p>
-<h4 id="1-4-4-查看用户权限"><a href="#1-4-4-查看用户权限" class="headerlink" title="1.4.4. 查看用户权限"></a>1.4.4. 查看用户权限</h4><p>1、查看当前用户（自己）权限</p>
-<p>show grants;</p>
-<p>2、查看指定MySQL 用户权限</p>
-<p>show grants for <code>user</code>@<code>localhost</code>;</p>
-<p>3、查看user和host</p>
-<p>select user,host from mysql.user order by user;</p>
-<h4 id="1-4-5-权限列表"><a href="#1-4-5-权限列表" class="headerlink" title="1.4.5. 权限列表"></a>1.4.5. 权限列表</h4><p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578472/article/database/permission.jpg" alt="img"></p>
-<h4 id="1-4-6-查看主从关系"><a href="#1-4-6-查看主从关系" class="headerlink" title="1.4.6. 查看主从关系"></a>1.4.6. 查看主从关系</h4><p>登录主机：show slave hosts;</p>
-<p>登录从机：show slave status;</p>
-<h2 id="2-数据库操作"><a href="#2-数据库操作" class="headerlink" title="2. 数据库操作"></a>2. 数据库操作</h2><p><strong>1、创建数据库</strong></p>
-<p>create database <code>数据库名</code></p>
-<p><strong>2、显示数据库</strong></p>
-<p>show databases</p>
-<p><strong>3、删除数据</strong></p>
-<p>drop database <code>数据库名</code></p>
-<h2 id="3-数据表操作"><a href="#3-数据表操作" class="headerlink" title="3. 数据表操作"></a>3. 数据表操作</h2><p><strong>1、创建表</strong></p>
+                <h2 id="1-部署Redis集群"><a href="#1-部署Redis集群" class="headerlink" title="1. 部署Redis集群"></a>1. 部署Redis集群</h2><p>redis的安装及配置参考[redis部署]</p>
 <blockquote>
-<p>create table 表名(</p>
-<p>​    列名  类型  是否可以为空，</p>
-<p>​    列名  类型  是否可以为空</p>
-<p>)ENGINE=InnoDB DEFAULT CHARSET=utf8</p>
+<p>本文以创建一主二从的集群为例。</p>
 </blockquote>
-<ul>
-<li>默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值</li>
-<li>自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）注意：1、对于自增列，必须是索引（含主键）2、对于自增可以设置步长和起始值</li>
-<li>主键，一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。</li>
-</ul>
-<p><strong>2、查看表</strong></p>
-<p>show tables;                    # 查看数据库全部表</p>
-<p>select * from 表名;             # 查看表所有内容</p>
-<p><strong>3、删除表</strong></p>
-<p>drop table 表名</p>
-<p><strong>4、清空表内容</strong></p>
-<p>delete from 表名</p>
-<p>truncate table 表名</p>
-<p><strong>5、查看表结构</strong></p>
-<p>desc 表名</p>
-<p><strong>6、修改表</strong></p>
-<blockquote>
-<p>添加列：   alter table 表名 add 列名 类型</p>
-<p>删除列：   alter table 表名 drop column 列名</p>
-<p>修改列：</p>
-<p>​          alter table 表名 modify column 列名 类型;  – 类型</p>
-<p>​          alter table 表名 change 原列名 新列名 类型; – 列名，类型</p>
-<p>添加主键：</p>
-<p>​          alter table 表名 add primary key(列名);</p>
-<p>删除主键：</p>
-<p>​          alter table 表名 drop primary key;</p>
-<p>​          alter table 表名  modify  列名 int, drop primary key;</p>
-<p>添加外键： alter table 从表 add constraint 外键名称（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);</p>
-<p>删除外键： alter table 表名 drop foreign key 外键名称</p>
-<p>修改默认值：ALTER TABLE testalter_tbl ALTER i SET DEFAULT 1000;</p>
-<p>删除默认值：ALTER TABLE testalter_tbl ALTER i DROP DEFAULT;</p>
-</blockquote>
-<h2 id="4-表内容操作"><a href="#4-表内容操作" class="headerlink" title="4. 表内容操作"></a>4. 表内容操作</h2><h3 id="4-1-增"><a href="#4-1-增" class="headerlink" title="4.1. 增"></a>4.1. 增</h3><blockquote>
-<p>insert into 表 (列名,列名…) values (值,值,…)</p>
-<p>insert into 表 (列名,列名…) values (值,值,…),(值,值,值…)</p>
-<p>insert into 表 (列名,列名…) select (列名,列名…) from 表</p>
-<p>例：</p>
-<p>​    insert into tab1(name,email) values(‘zhangyanlin’,‘zhangyanlin8851@<a href="http://163.com/" target="_blank" rel="noopener">163.com</a>‘)</p>
-</blockquote>
-<h3 id="4-2-删"><a href="#4-2-删" class="headerlink" title="4.2. 删"></a>4.2. 删</h3><blockquote>
-<p>delete from 表                                      # 删除表里全部数据</p>
-<p>delete from 表 where id＝1 and name＝’zhangyanlin’   # 删除ID =1 和name=’zhangyanlin’ 那一行数据</p>
-</blockquote>
-<h3 id="4-3-改"><a href="#4-3-改" class="headerlink" title="4.3. 改"></a>4.3. 改</h3><blockquote>
-<p>update 表 set name ＝ ‘zhangyanlin’ where id`1</p>
-</blockquote>
-<h3 id="4-4-查"><a href="#4-4-查" class="headerlink" title="4.4. 查"></a>4.4. 查</h3><blockquote>
-<p>select * from 表</p>
-<p>select * from 表 where id ` 1</p>
-<p>select nid,name,gender as gg from 表 where id ` 1</p>
-</blockquote>
-<h3 id="4-5-条件判断"><a href="#4-5-条件判断" class="headerlink" title="4.5. 条件判断"></a>4.5. 条件判断</h3><h4 id="4-5-1-where"><a href="#4-5-1-where" class="headerlink" title="4.5.1. where"></a>4.5.1. where</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where id <span class="token string">`1 and name!='huwh' and num =12;
-select * from `</span>table<span class="token string">` where id between 5 and 6;
-select * from `</span>table<span class="token string">` where id in (11,22,33);
-select * from `</span>table<span class="token string">` where id not in (11,22,33);
-select * from `</span>table<span class="token string">` where id in (select nid from `</span>table`<span class="token punctuation">)</span>
+<h3 id="1-1-部署与配置"><a href="#1-1-部署与配置" class="headerlink" title="1.1 部署与配置"></a>1.1 部署与配置</h3><p>先创建<code>sentinel</code>目录，在该目录下创建<code>8000</code>，<code>8001</code>，<code>8002</code>三个以端口号命名的目录。</p>
+<pre class=" language-shell"><code class="language-shell">mkdir sentinel
+cd sentinel
+mkdir 8000 8001 8002 
 </code></pre>
-<h4 id="4-5-2-通配符like"><a href="#4-5-2-通配符like" class="headerlink" title="4.5.2. 通配符like"></a>4.5.2. 通配符like</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu%'</span><span class="token punctuation">;</span>   #hu开头
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu_'</span>    #hu开头后接一个字符
+<p>在对应端口号目录中创建<code>redis.conf</code>的文件，配置文件中的端口号<code>port</code>参数改为对应目录的端口号。配置如下：</p>
+<pre class=" language-shell"><code class="language-shell"># 守护进程模式
+daemonize yes
+
+# pid file
+pidfile /var/run/redis.pid
+
+# 监听端口
+port 8000
+
+# TCP接收队列长度，受/proc/sys/net/core/somaxconn和tcp_max_syn_backlog这两个内核参数的影响
+tcp-backlog 511
+
+# 一个客户端空闲多少秒后关闭连接(0代表禁用，永不关闭)
+timeout 0
+
+# 如果非零，则设置SO_KEEPALIVE选项来向空闲连接的客户端发送ACK
+tcp-keepalive 60
+
+# 指定服务器调试等级
+# 可能值：
+# debug （大量信息，对开发/测试有用）
+# verbose （很多精简的有用信息，但是不像debug等级那么多）
+# notice （适量的信息，基本上是你生产环境中需要的）
+# warning （只有很重要/严重的信息会记录下来）
+loglevel notice
+
+# 指明日志文件名
+logfile "./redis8000.log"
+
+# 设置数据库个数
+databases 16
+
+# 会在指定秒数和数据变化次数之后把数据库写到磁盘上
+# 900秒（15分钟）之后，且至少1次变更
+# 300秒（5分钟）之后，且至少10次变更
+# 60秒之后，且至少10000次变更
+save 900 1
+save 300 10
+save 60 10000
+
+
+# 默认如果开启RDB快照(至少一条save指令)并且最新的后台保存失败，Redis将会停止接受写操作
+# 这将使用户知道数据没有正确的持久化到硬盘，否则可能没人注意到并且造成一些灾难
+stop-writes-on-bgsave-error yes
+
+# 当导出到 .rdb 数据库时是否用LZF压缩字符串对象
+rdbcompression yes
+
+# 版本5的RDB有一个CRC64算法的校验和放在了文件的最后。这将使文件格式更加可靠。
+rdbchecksum yes
+
+# 持久化数据库的文件名
+dbfilename dump.rdb
+
+# 工作目录
+dir ./
+
+# 当master服务设置了密码保护时，slave服务连接master的密码
+masterauth 0234kz9*l
+
+# 当一个slave失去和master的连接，或者同步正在进行中，slave的行为可以有两种：
+#
+# 1) 如果 slave-serve-stale-data 设置为 "yes" (默认值)，slave会继续响应客户端请求，
+# 可能是正常数据，或者是过时了的数据，也可能是还没获得值的空数据。
+# 2) 如果 slave-serve-stale-data 设置为 "no"，slave会回复"正在从master同步
+# （SYNC with master in progress）"来处理各种请求，除了 INFO 和 SLAVEOF 命令。
+slave-serve-stale-data yes
+
+# 你可以配置salve实例是否接受写操作。可写的slave实例可能对存储临时数据比较有用(因为写入salve
+# 的数据在同master同步之后将很容易被删除
+slave-read-only yes
+
+# 是否在slave套接字发送SYNC之后禁用 TCP_NODELAY？
+# 如果你选择“yes”Redis将使用更少的TCP包和带宽来向slaves发送数据。但是这将使数据传输到slave
+# 上有延迟，Linux内核的默认配置会达到40毫秒
+# 如果你选择了 "no" 数据传输到salve的延迟将会减少但要使用更多的带宽
+repl-disable-tcp-nodelay no
+
+# slave的优先级是一个整数展示在Redis的Info输出中。如果master不再正常工作了，哨兵将用它来
+# 选择一个slave提升=升为master。
+# 优先级数字小的salve会优先考虑提升为master，所以例如有三个slave优先级分别为10，100，25，
+# 哨兵将挑选优先级最小数字为10的slave。
+# 0作为一个特殊的优先级，标识这个slave不能作为master，所以一个优先级为0的slave永远不会被
+# 哨兵挑选提升为master
+slave-priority 100
+
+
+# 密码验证
+# 警告：因为Redis太快了，所以外面的人可以尝试每秒150k的密码来试图破解密码。这意味着你需要
+# 一个高强度的密码，否则破解太容易了
+requirepass 0234kz9*l
+
+# redis实例最大占用内存，不要用比设置的上限更多的内存。一旦内存使用达到上限，Redis会根据选定的回收策略（参见：
+# maxmemmory-policy）删除key
+maxmemory 3gb
+
+# 最大内存策略：如果达到内存限制了，Redis如何选择删除key。你可以在下面五个行为里选：
+# volatile-lru -> 根据LRU算法删除带有过期时间的key。
+# allkeys-lru -> 根据LRU算法删除任何key。
+# volatile-random -> 根据过期设置来随机删除key, 具备过期时间的key。
+# allkeys->random -> 无差别随机删, 任何一个key。
+# volatile-ttl -> 根据最近过期时间来删除（辅以TTL）, 这是对于有过期时间的key
+# noeviction -> 谁也不删，直接在写操作时返回错误。
+maxmemory-policy volatile-lru
+
+# 默认情况下，Redis是异步的把数据导出到磁盘上。这种模式在很多应用里已经足够好，但Redis进程
+# 出问题或断电时可能造成一段时间的写操作丢失(这取决于配置的save指令)。
+#
+# AOF是一种提供了更可靠的替代持久化模式，例如使用默认的数据写入文件策略（参见后面的配置）
+# 在遇到像服务器断电或单写情况下Redis自身进程出问题但操作系统仍正常运行等突发事件时，Redis
+# 能只丢失1秒的写操作。
+#
+# AOF和RDB持久化能同时启动并且不会有问题。
+# 如果AOF开启，那么在启动时Redis将加载AOF文件，它更能保证数据的可靠性。
+appendonly no
+
+# aof文件名
+appendfilename "appendonly.aof"
+
+# fsync() 系统调用告诉操作系统把数据写到磁盘上，而不是等更多的数据进入输出缓冲区。
+# 有些操作系统会真的把数据马上刷到磁盘上；有些则会尽快去尝试这么做。
+#
+# Redis支持三种不同的模式：
+#
+# no：不要立刻刷，只有在操作系统需要刷的时候再刷。比较快。
+# always：每次写操作都立刻写入到aof文件。慢，但是最安全。
+# everysec：每秒写一次。折中方案。
+appendfsync everysec
+
+# 如果AOF的同步策略设置成 "always" 或者 "everysec"，并且后台的存储进程（后台存储或写入AOF
+# 日志）会产生很多磁盘I/O开销。某些Linux的配置下会使Redis因为 fsync()系统调用而阻塞很久。
+# 注意，目前对这个情况还没有完美修正，甚至不同线程的 fsync() 会阻塞我们同步的write(2)调用。
+#
+# 为了缓解这个问题，可以用下面这个选项。它可以在 BGSAVE 或 BGREWRITEAOF 处理时阻止主进程进行fsync()。
+#
+# 这就意味着如果有子进程在进行保存操作，那么Redis就处于"不可同步"的状态。
+# 这实际上是说，在最差的情况下可能会丢掉30秒钟的日志数据。（默认Linux设定）
+#
+# 如果你有延时问题把这个设置成"yes"，否则就保持"no"，这是保存持久数据的最安全的方式。
+no-appendfsync-on-rewrite yes
+
+# 自动重写AOF文件
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+
+# AOF文件可能在尾部是不完整的（这跟system关闭有问题，尤其是mount ext4文件系统时
+# 没有加上data=ordered选项。只会发生在os死时，redis自己死不会不完整）。
+# 那redis重启时load进内存的时候就有问题了。
+# 发生的时候，可以选择redis启动报错，并且通知用户和写日志，或者load尽量多正常的数据。
+# 如果aof-load-truncated是yes，会自动发布一个log给客户端然后load（默认）。
+# 如果是no，用户必须手动redis-check-aof修复AOF文件才可以。
+# 注意，如果在读取的过程中，发现这个aof是损坏的，服务器也是会退出的，
+# 这个选项仅仅用于当服务器尝试读取更多的数据但又找不到相应的数据时。
+aof-load-truncated yes
+
+# Lua 脚本的最大执行时间，毫秒为单位
+lua-time-limit 5000
+
+# Redis慢查询日志可以记录超过指定时间的查询
+slowlog-log-slower-than 10000
+
+# 这个长度没有限制。只是要主要会消耗内存。你可以通过 SLOWLOG RESET 来回收内存。
+slowlog-max-len 128
+
+# redis延时监控系统在运行时会采样一些操作，以便收集可能导致延时的数据根源。
+# 通过 LATENCY命令 可以打印一些图样和获取一些报告，方便监控
+# 这个系统仅仅记录那个执行时间大于或等于预定时间（毫秒）的操作,
+# 这个预定时间是通过latency-monitor-threshold配置来指定的，
+# 当设置为0时，这个监控系统处于停止状态
+latency-monitor-threshold 0
+
+# Redis能通知 Pub/Sub 客户端关于键空间发生的事件，默认关闭
+notify-keyspace-events ""
+
+# 当hash只有少量的entry时，并且最大的entry所占空间没有超过指定的限制时，会用一种节省内存的
+# 数据结构来编码。可以通过下面的指令来设定限制
+hash-max-ziplist-entries 512
+hash-max-ziplist-value 64
+
+# 与hash似，数据元素较少的list，可以用另一种方式来编码从而节省大量空间。
+# 这种特殊的方式只有在符合下面限制时才可以用
+list-max-ziplist-entries 512
+list-max-ziplist-value 64
+
+# set有一种特殊编码的情况：当set数据全是十进制64位有符号整型数字构成的字符串时。
+# 下面这个配置项就是用来设置set使用这种编码来节省内存的最大长度。
+set-max-intset-entries 512
+
+# 与hash和list相似，有序集合也可以用一种特别的编码方式来节省大量空间。
+# 这种编码只适合长度和元素都小于下面限制的有序集合
+zset-max-ziplist-entries 128
+zset-max-ziplist-value 64
+
+# HyperLogLog稀疏结构表示字节的限制。该限制包括
+# 16个字节的头。当HyperLogLog使用稀疏结构表示
+# 这些限制，它会被转换成密度表示。
+# 值大于16000是完全没用的，因为在该点
+# 密集的表示是更多的内存效率。
+# 建议值是3000左右，以便具有的内存好处, 减少内存的消耗
+hll-sparse-max-bytes 3000
+
+# 启用哈希刷新，每100个CPU毫秒会拿出1个毫秒来刷新Redis的主哈希表（顶级键值映射表）
+activerehashing yes
+
+# 客户端的输出缓冲区的限制，可用于强制断开那些因为某种原因从服务器读取数据的速度不够快的客户端
+client-output-buffer-limit normal 0 0 0
+client-output-buffer-limit slave 256mb 64mb 60
+client-output-buffer-limit pubsub 32mb 8mb 60
+
+# 默认情况下，“hz”的被设定为10。提高该值将在Redis空闲时使用更多的CPU时，但同时当有多个key
+# 同时到期会使Redis的反应更灵敏，以及超时可以更精确地处理
+hz 10
+
+# 当一个子进程重写AOF文件时，如果启用下面的选项，则文件每生成32M数据会被同步
+aof-rewrite-incremental-fsync yes
 </code></pre>
-<h4 id="4-5-3-限制limit"><a href="#4-5-3-限制limit" class="headerlink" title="4.5.3. 限制limit"></a>4.5.3. 限制limit</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span><span class="token punctuation">;</span>   #前<span class="token number">5</span>行
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span>  #从第四行开始的<span class="token number">5</span>行
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span> offset <span class="token number">4</span><span class="token punctuation">;</span>#从第四行开始的<span class="token number">5</span>行
+<h3 id="1-2-配置主从关系"><a href="#1-2-配置主从关系" class="headerlink" title="1.2 配置主从关系"></a>1.2 配置主从关系</h3><p><strong>1、启动实例</strong></p>
+<p>三个Redis实例配置相同，分别启动三个Redis实例。建议将<code>redis-server</code>、<code>redis-cli</code>、<code>redis-sentinel</code>的二进制复制到<code>/usr/local/bin</code>的目录下。</p>
+<pre class=" language-shell"><code class="language-shell">cd 8000
+redis-server redis.conf
 </code></pre>
-<h4 id="4-5-4-排序asc，desc"><a href="#4-5-4-排序asc，desc" class="headerlink" title="4.5.4. 排序asc，desc"></a>4.5.4. 排序asc，desc</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 asc<span class="token punctuation">;</span>            #跟据“列”从小到大排序（不指定默认为从小到大排序）
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 desc<span class="token punctuation">;</span>           #根据“列”从大到小排序
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列<span class="token number">1</span> desc<span class="token punctuation">,</span>列<span class="token number">2</span> asc<span class="token punctuation">;</span>  #根据“列<span class="token number">1</span>”从大到小排序，如果相同则按“列<span class="token number">2</span>”从小到大排序
+<p><strong>2、配置主从关系</strong></p>
+<p>例如，将8000端口实例设为主，8001和8002端口的实例设为从。</p>
+<p>则分别登录8001和8002的实例，执行<code>slaveof &lt;MASTER_IP&gt; &lt;MASTER_PORT&gt;</code>命令。</p>
+<p>例如：</p>
+<pre class=" language-shell"><code class="language-shell">[root@kube-node-1 8000]# redis-cli -c -p 8001 -a 0234kz9*l
+127.0.0.1:8001> slaveof 127.0.0.1 8000
+OK
 </code></pre>
-<h4 id="4-5-5-分组group-by"><a href="#4-5-5-分组group-by" class="headerlink" title="4.5.5. 分组group by"></a>4.5.5. 分组group by</h4><p>group by 必须在where之后，order by之前。</p>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> num<span class="token punctuation">,</span>from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span>     
-<span class="token keyword">select</span> num<span class="token punctuation">,</span>nid from <span class="token string">`table`</span> group by num<span class="token punctuation">,</span>nid<span class="token punctuation">;</span>
-<span class="token keyword">select</span> num from <span class="token string">`table`</span> where nid <span class="token string">` 10 group by num,nid order nid desc;
-select num,nid,count(*),sum(score),max(score) from `</span>table<span class="token string">` group by num;
-select num from `</span>table<span class="token string">` group by num having max(id) `</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token keyword">select</span> num from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span>
+<p><strong>3、检查集群状态</strong></p>
+<p>登录master和slave实例，执行<code>info replication</code>查看集群状态。</p>
+<p>Master</p>
+<pre class=" language-shell"><code class="language-shell">[root@kube-node-1 8000]# redis-cli -c -p 8000 -a 0234kz9*l
+127.0.0.1:8000> info replication
+# Replication
+role:master
+connected_slaves:2
+slave0:ip=127.0.0.1,port=8001,state=online,offset=2853,lag=0
+slave1:ip=127.0.0.1,port=8002,state=online,offset=2853,lag=0
+master_replid:4f8331d5f180a4669241ab0dd97e43508abd6d8f
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:2853
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:2853
 </code></pre>
+<p>Slave</p>
+<pre class=" language-shell"><code class="language-shell">[root@kube-node-1 8000]# redis-cli -c -p 8001 -a 0234kz9*l
+127.0.0.1:8001> info replication
+# Replication
+role:slave
+master_host:127.0.0.1
+master_port:8000
+master_link_status:up
+master_last_io_seconds_ago:3
+master_sync_in_progress:0
+slave_repl_offset:2909
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_replid:4f8331d5f180a4669241ab0dd97e43508abd6d8f
+master_replid2:0000000000000000000000000000000000000000
+master_repl_offset:2909
+second_repl_offset:-1
+repl_backlog_active:1
+repl_backlog_size:1048576
+repl_backlog_first_byte_offset:1
+repl_backlog_histlen:2909
+</code></pre>
+<p>也可以往master写数据，从slave读取数据来验证。</p>
+<h2 id="2-部署sentinel集群"><a href="#2-部署sentinel集群" class="headerlink" title="2. 部署sentinel集群"></a>2. 部署sentinel集群</h2><h3 id="2-1-部署与配置"><a href="#2-1-部署与配置" class="headerlink" title="2.1 部署与配置"></a>2.1 部署与配置</h3><p>在之前创建的<code>sentinel</code>目录中场景sentinel端口号命名的目录<code>28000</code>，<code>28001</code>，<code>28002</code>。</p>
+<pre class=" language-shell"><code class="language-shell">cd sentinel
+mkdir 28000 28001 28002 
+</code></pre>
+<p>在对应端口号目录中创建<code>redis.conf</code>的文件，配置文件中的端口号<code>port</code>参数改为对应目录的端口号。配置如下：</p>
+<pre class=" language-shell"><code class="language-shell">port 28000
+sentinel monitor mymaster 127.0.0.1 8000 2
+sentinel down-after-milliseconds mymaster 60000
+sentinel failover-timeout mymaster 180000
+sentinel parallel-syncs mymaster 1
+</code></pre>
+<h3 id="2-2-启动sentinel实例"><a href="#2-2-启动sentinel实例" class="headerlink" title="2.2 启动sentinel实例"></a>2.2 启动sentinel实例</h3><pre class=" language-shell"><code class="language-shell">#& 表示后台运行的方式
+redis-sentinel sentinel.conf &
+</code></pre>
+<h3 id="2-3-查看状态"><a href="#2-3-查看状态" class="headerlink" title="2.3 查看状态"></a>2.3 查看状态</h3><p>使用<code>sentinel masters</code>命令查看监控的master节点。</p>
+<pre class=" language-shell"><code class="language-shell">[root@kube-node-1 28000]# redis-cli -c -p 28000 -a 0234kz9*l
+127.0.0.1:28000>
+127.0.0.1:28000> ping
+PONG
+127.0.0.1:28000>
+127.0.0.1:28000> sentinel masters
+1)  1) "name"
+    2) "mymaster"
+    3) "ip"
+    4) "127.0.0.1"
+    5) "port"
+    6) "8000"
+    7) "runid"
+    8) ""
+    9) "flags"
+   10) "s_down,master,disconnected"
+   11) "link-pending-commands"
+   12) "0"
+   13) "link-refcount"
+   14) "1"
+   15) "last-ping-sent"
+   16) "187539"
+   17) "last-ok-ping-reply"
+   18) "187539"
+   19) "last-ping-reply"
+   20) "3943"
+   21) "s-down-time"
+   22) "127491"
+   23) "down-after-milliseconds"
+   24) "60000"
+   25) "info-refresh"
+   26) "1517346914642"
+   27) "role-reported"
+   28) "master"
+   29) "role-reported-time"
+   30) "187539"
+   31) "config-epoch"
+   32) "0"
+   33) "num-slaves"
+   34) "0"
+   35) "num-other-sentinels"
+   36) "0"
+   37) "quorum"
+   38) "2"
+   39) "failover-timeout"
+   40) "180000"
+   41) "parallel-syncs"
+   42) "1"
+</code></pre>
+<p>参考文章：</p>
+<p><a href="https://redis.io/topics/sentinel" target="_blank" rel="noopener">https://redis.io/topics/sentinel</a></p>
 
             </div>
             <hr>
@@ -595,9 +810,9 @@ select num from `</span>table<span class="token string">` group by num having ma
             <div class="reprint">
                 <p>
                     <span class="reprint-tip">转载请注明: </span>
-                    <a href="http://www.wanganyu1996.com" class="b-link-green">Anyu Blog</a>
+                    <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2017/08/13/database/mysql-commonds/" class="b-link-green">[Database] Mysql常用命令</a>
+                    <a href="/redis/redis-sentinel.html" class="b-link-green">[Redis] Redis哨兵模式部署</a>
                 </p>
             </div>
         </div>
@@ -621,7 +836,50 @@ select num from `</span>table<span class="token string">` group by num having ma
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2017/08/13/hello-world/">
+                <a href="/redis/redis-cluster.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="[Redis] Redis集群模式部署">
+                        
+                        <span class="card-title">[Redis] Redis集群模式部署</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">1. Redis部署
+以下以Linux系统为例
+
+1.1 下载和编译$ wget http://download.redis.io/releases/redis-4.0.7.tar.gz
+$ tar xzf redis-4.0.7.tar.</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            若愚
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="card">
+                <a href="/hello-world.html">
                     <div class="card-image">
                         
                         
@@ -633,13 +891,13 @@ select num from `</span>table<span class="token string">` group by num having ma
                 <div class="card-content article-content">
                     <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            An yu
+                            若愚
                             
                         </span>
                     </div>
@@ -649,48 +907,6 @@ select num from `</span>table<span class="token string">` group by num having ma
                     
                     <a href="/tags/Hexo/" target="_blank">
                         <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">本篇</div>
-            <div class="card">
-                <a href="/2017/08/13/database/mysql-commonds/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="[Database] Mysql常用命令">
-                        
-                        <span class="card-title">[Database] Mysql常用命令</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">1. 系统管理1.1. 连接mysql格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-user fa-fw"></i>
-                            An yu
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Database/" target="_blank">
-                        <span class="chip bg-color">Database</span>
                     </a>
                     
                 </div>

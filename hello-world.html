@@ -5,9 +5,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="[分布式] Zookeeper, Anyu Blog">
-    <meta name="description" content="面试题zookeeper 都有哪些使用场景？
-面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其">
+    <meta name="keywords" content="[Database] Mysql常用命令, 若愚博客">
+    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>[分布式] Zookeeper | Anyu Blog</title>
+    <title>[Database] Mysql常用命令 | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -42,7 +41,7 @@
                         
                         <img src="/medias/mylogo.png" class="logo-img hide-on-small-only">
                         
-                        <span class="logo-span">Anyu Blog</span>
+                        <span class="logo-span">若愚博客</span>
                     </a>
                 </div>
                 
@@ -118,7 +117,7 @@
         
         <img src="/medias/mylogo.png" class="logo-img circle responsive-img">
         
-        <div class="logo-name">Anyu Blog</div>
+        <div class="logo-name">若愚博客</div>
         <div class="logo-desc">
             
             莫道征途路漫漫 愿效江水去不还 大势所向天地宽 终究奔涌归浩瀚
@@ -274,13 +273,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        [分布式] Zookeeper
+                        [Database] Mysql常用命令
                     </div>
                 </div>
             </div>
@@ -300,8 +299,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/分布式/" target="_blank">
-                    <span class="chip bg-color">分布式</span>
+                <a href="/tags/Hexo/" target="_blank">
+                    <span class="chip bg-color">Hexo</span>
                 </a>
                 
             </div>
@@ -310,7 +309,7 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-08
+                    <i class="fa fa-clock-o fa-fw"></i>2017-08-13
                 </span>
 				
 				
@@ -322,25 +321,19 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>zookeeper 都有哪些使用场景？</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。</p>
-<p>分布式锁这个东西，很常用的，你做 Java系统开发，分布式系统，可能会有一些场景会用到。最常用的分布式锁就是基于 zookeeper 来实现的。</p>
-<p>其实说实话，问这个问题，一般就是看看你是否了解 zookeeper，因为 zk 是分布式系统中很常见的一个基础系统。而且问的话常问的就是说 zk 的使用场景是什么？看你知道不知道一些基本的使用场景。但是其实 zk 挖深了自然是可以问的很深很深的。</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>大致来说，zk 的使用场景如下，我就举几个简单的，大家能说几个就好了：</p>
-<ul>
-<li>分布式协调</li>
-<li>分布式锁</li>
-<li>元数据/配置信息管理</li>
-<li>HA高可用性</li>
-</ul>
-<h3 id="分布式协调"><a href="#分布式协调" class="headerlink" title="分布式协调"></a>分布式协调</h3><p>这个其实是 zk 很经典的一个用法，简单来说，就好比，你 A 系统发送个请求到 mq，然后 B 系统消息消费之后处理了。那 A 系统如何知道 B 系统的处理结果？用 zk 就可以实现分布式系统之间的协调工作。A 系统发送请求之后可以在 zk 上<strong>对某个节点的值注册个监听器</strong>，一旦 B 系统处理完了就修改 zk 那个节点的值，A 立马就可以收到通知，完美解决。</p>
-<p>  <img src="https://res.cloudinary.com/dijk2pkfa/image/upload/v1544358082/zookeeper-distributed-coordination.png"></p>
-<h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><p>举个栗子。对某一个数据连续发出两个修改操作，两台机器同时收到了请求，但是只能一台机器先执行完另外一个机器再执行。那么此时就可以使用 zk 分布式锁，一个机器接收到了请求之后先获取 zk 上的一把分布式锁，就是可以去创建一个 znode，接着执行操作；然后另外一个机器也<strong>尝试去创建</strong>那个 znode，结果发现自己创建不了，因为被别人创建了，那只能等着，等第一个机器执行完了自己再执行。</p>
-<p><img src="/img/zookeeper-distributed-lock-demo.png" alt="zookeeper-distributed-lock-demo"></p>
-<h3 id="元数据-配置信息管理"><a href="#元数据-配置信息管理" class="headerlink" title="元数据/配置信息管理"></a>元数据/配置信息管理</h3><p>zk 可以用作很多系统的配置信息的管理，比如 kafka、storm 等等很多分布式系统都会选用 zk 来做一些元数据、配置信息的管理，包括 dubbo 注册中心不也支持 zk 么？</p>
-<p><img src="/img/zookeeper-meta-data-manage.png" alt="zookeeper-meta-data-manage"></p>
-<h3 id="HA高可用性"><a href="#HA高可用性" class="headerlink" title="HA高可用性"></a>HA高可用性</h3><p>这个应该是很常见的，比如 hadoop、hdfs、yarn 等很多大数据系统，都选择基于 zk 来开发 HA 高可用机制，就是一个<strong>重要进程一般会做主备</strong>两个，主进程挂了立马通过 zk 感知到切换到备用进程。</p>
-<p><img src="/img/zookeeper-active-standby.png" alt="zookeeper-active-standby"></p>
+                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
             </div>
             <hr>
@@ -477,9 +470,9 @@
             <div class="reprint">
                 <p>
                     <span class="reprint-tip">转载请注明: </span>
-                    <a href="http://www.wanganyu1996.com" class="b-link-green">Anyu Blog</a>
+                    <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/12/08/distributed-system/zookeeper-application-scenarios/" class="b-link-green">[分布式] Zookeeper</a>
+                    <a href="/hello-world.html" class="b-link-green">[Database] Mysql常用命令</a>
                 </p>
             </div>
         </div>
@@ -503,32 +496,30 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/12/09/mq-knowledge/why-mq/">
+                <a href="/redis/redis-sentinel.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="「消息队列」 为什么使用消息队列">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="[Redis] Redis哨兵模式部署">
                         
-                        <span class="card-title">「消息队列」 为什么使用消息队列</span>
+                        <span class="card-title">[Redis] Redis哨兵模式部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题
-为什么使用消息队列？
-消息队列有什么优点和缺点？
-Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？
+                    <div class="summary">1. 部署Redis集群redis的安装及配置参考[redis部署]
 
-面试官心理分析其实面试官主要是想看看：
+本文以创建一主二从的集群为例。
 
-第一，你知不知道你们系统里为什么要用消</div>
+1.1 部署与配置先创建sentinel目录，在该目录下创建8000，8001，8002三个以端口号命名的目录。
+mkdir sent</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-04-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
-                            An yu
+                            若愚
                             
                         </span>
                     </div>
@@ -536,8 +527,8 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/消息队列/" target="_blank">
-                        <span class="chip bg-color">消息队列</span>
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
@@ -549,29 +540,27 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2018/09/07/redis/redis-introduction/">
+                <a href="/database/mysql-commonds.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Redis Redis介绍">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="[Database] Mysql常用命令">
                         
-                        <span class="card-title">Redis Redis介绍</span>
+                        <span class="card-title">[Database] Mysql常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、redis是什么？（what）Redis是一个开源（BSD许可），内存存储的数据结构服务器，可用作数据库，高速缓存和消息队列代理。它支持字符串、哈希表、列表、集合、有序集合，位图，hyperloglogs等数据类型。内置复制、Lua脚本</div>
+                    <div class="summary">1. 系统管理1.1. 连接mysql格式： mysql -h主机地址 -u用户名 －p用户密码
+连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
+连接远程：mysql -h主机地址 -u用户名 －</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            若愚
                             
                         </span>
                     </div>
@@ -579,12 +568,8 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/分布式/" target="_blank">
-                        <span class="chip bg-color">分布式</span>
-                    </a>
-                    
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/Database/" target="_blank">
+                        <span class="chip bg-color">Database</span>
                     </a>
                     
                 </div>
