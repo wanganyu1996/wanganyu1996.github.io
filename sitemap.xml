@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.wanganyu1996.com/hello-world.html</loc>
+    <loc>http://www.wanganyu1996.com/redis/redis-introduce.html</loc>
     
-    <lastmod>2019-01-04T12:48:42.922Z</lastmod>
+    <lastmod>2019-01-13T10:08:36.970Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-introduction.html</loc>
+    <loc>http://www.wanganyu1996.com/hello-world.html</loc>
     
-    <lastmod>2019-01-04T12:41:21.359Z</lastmod>
+    <lastmod>2019-01-04T12:48:42.922Z</lastmod>
     
   </url>
   
@@ -44,13 +44,6 @@
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-introduce.html</loc>
-    
-    <lastmod>2018-12-28T13:07:54.555Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</loc>
     
     <lastmod>2018-12-19T14:44:23.579Z</lastmod>
@@ -72,21 +65,7 @@
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-cluster.html</loc>
-    
-    <lastmod>2018-11-20T12:18:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.wanganyu1996.com/database/mysql-commonds.html</loc>
-    
-    <lastmod>2018-11-20T12:18:44.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-sentinel.html</loc>
     
     <lastmod>2018-11-20T12:18:44.000Z</lastmod>
     
