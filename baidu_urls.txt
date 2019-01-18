@@ -2,5 +2,5 @@ http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-mess
 http://www.wanganyu1996.com/mq-knowledge/why-mq.html
 http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html
 http://www.wanganyu1996.com/hello-world.html
-http://www.wanganyu1996.com/database/mysql-commonds.html
 http://www.wanganyu1996.com/redis/redis-introduce.html
+http://www.wanganyu1996.com/database/mysql-commonds.html

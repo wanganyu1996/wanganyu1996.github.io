@@ -115,6 +115,32 @@
   </entry>
   
   <entry>
+    <title>Redis 常用知识点总结</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-introduce.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-introduce.html</id>
+    <published>2017-08-13T02:50:57.000Z</published>
+    <updated>2019-01-18T14:37:21.426Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h2&gt;&lt;p&gt;Redis
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[Database] Mysql常用命令</title>
     <link href="http://www.wanganyu1996.com/database/mysql-commonds.html"/>
     <id>http://www.wanganyu1996.com/database/mysql-commonds.html</id>
@@ -135,32 +161,6 @@
     
     
       <category term="Database" scheme="http://www.wanganyu1996.com/tags/Database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis 常用知识点总结</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-introduce.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-introduce.html</id>
-    <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-01-14T15:04:47.011Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;一、Redis-是什么&quot;&gt;&lt;a href=&quot;#一、Redis-是什么&quot; class=&quot;headerlink&quot; title=&quot;一、Redis 是什么&quot;&gt;&lt;/a&gt;一、Redis 是什么&lt;/h2&gt;&lt;p&gt;Redis
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
