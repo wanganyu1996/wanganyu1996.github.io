@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
+    <lastmod>2019-01-18</lastmod>
+  </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-introduce.html</loc>
     <lastmod>2019-01-18</lastmod>
   </url>  <url>
@@ -9,9 +12,6 @@
   </url>  <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</loc>
     <lastmod>2018-12-19</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
-    <lastmod>2018-12-16</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html</loc>
     <lastmod>2018-12-09</lastmod>
