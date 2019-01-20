@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wanganyu1996.com/"/>
-  <updated>2019-01-20T14:04:28.670Z</updated>
+  <updated>2019-01-20T14:15:18.430Z</updated>
   <id>http://www.wanganyu1996.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>「消息队列」 如何保证消息队列的高可用？</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</id>
-    <published>2018-12-11T04:26:24.000Z</published>
-    <updated>2019-01-20T14:04:28.670Z</updated>
+    <title>「消息队列」 为什么使用消息队列</title>
+    <link href="http://www.wanganyu1996.com/mq-knowledge/why-mq.html"/>
+    <id>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</id>
+    <published>2018-12-09T14:26:24.000Z</published>
+    <updated>2019-01-20T14:15:18.430Z</updated>
     
     <summary type="html">
     
@@ -29,8 +29,7 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息队列的高可用？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot;
         
       
     
@@ -42,11 +41,11 @@
   </entry>
   
   <entry>
-    <title>「消息队列」 为什么使用消息队列</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/why-mq.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</id>
+    <title>「消息队列」 如何保证消息不被重复消费</title>
+    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html"/>
+    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</id>
     <published>2018-12-09T14:26:24.000Z</published>
-    <updated>2019-01-20T13:35:26.882Z</updated>
+    <updated>2019-01-20T15:32:44.084Z</updated>
     
     <summary type="html">
     
@@ -54,7 +53,8 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
         
       
     
@@ -87,6 +87,31 @@
     
     
       <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>「消息队列」 如何保证消息队列的高可用？</title>
+    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html"/>
+    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</id>
+    <published>2018-11-11T04:26:24.000Z</published>
+    <updated>2019-01-20T14:15:22.996Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息队列的高可用？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
   </entry>
   

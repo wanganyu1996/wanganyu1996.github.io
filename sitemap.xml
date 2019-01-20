@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
+    
+    <lastmod>2019-01-20T15:32:44.084Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</loc>
     
-    <lastmod>2019-01-20T14:04:28.670Z</lastmod>
+    <lastmod>2019-01-20T14:15:22.996Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
     
-    <lastmod>2019-01-20T13:35:26.882Z</lastmod>
+    <lastmod>2019-01-20T14:15:18.430Z</lastmod>
     
   </url>
   
