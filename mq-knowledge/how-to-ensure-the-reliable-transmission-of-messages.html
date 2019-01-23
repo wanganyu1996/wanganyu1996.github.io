@@ -5,10 +5,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="[Database] Mysql常用命令, 若愚博客">
-    <meta name="description" content="1. 系统管理1.1. 连接mysql格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －">
+    <meta name="keywords" content="如何保证消息的可靠性传输？, 若愚博客">
+    <meta name="description" content="面试题如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？
+面试官心理分析这个是肯定的，用 MQ 有个基本原则，就是数据不能多一条，也不能少一条，不能多，就是前面说的重复消费和幂等性问题。不能少，就是说这数据别搞丢了。那这个问题你必须">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>[Database] Mysql常用命令 | 若愚博客</title>
+    <title>如何保证消息的可靠性传输？ | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -275,13 +274,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/img/wallhaven-644594.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        [Database] Mysql常用命令
+                        如何保证消息的可靠性传输？
                     </div>
                 </div>
             </div>
@@ -392,8 +391,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/Database/" target="_blank">
-                    <span class="chip bg-color">Database</span>
+                <a href="/tags/消息队列/" target="_blank">
+                    <span class="chip bg-color">消息队列</span>
                 </a>
                 
             </div>
@@ -402,7 +401,7 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2017-08-13
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-09
                 </span>
 				
 				
@@ -414,142 +413,56 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-系统管理"><a href="#1-系统管理" class="headerlink" title="1. 系统管理"></a>1. 系统管理</h2><h3 id="1-1-连接mysql"><a href="#1-1-连接mysql" class="headerlink" title="1.1. 连接mysql"></a>1.1. 连接mysql</h3><p>格式： mysql -h主机地址 -u用户名 －p用户密码</p>
-<p>连接本地：mysql -h<code>localhost/127.0.0.1</code> -u用户名 －p用户密码</p>
-<p>连接远程：mysql -h<code>主机地址</code> -u用户名 －p用户密码<br>退出连接：exit</p>
-<h3 id="1-2-备份数据库"><a href="#1-2-备份数据库" class="headerlink" title="1.2. 备份数据库"></a>1.2. 备份数据库</h3><p><strong>1.导出整个数据库</strong></p>
-<p>导出文件默认是存在mysql\bin目录下</p>
-<p>mysqldump -u 用户名 -p 数据库名 ` 导出的文件名</p>
-<p>mysqldump -u user_name -p123456 database_name ` outfile_name.sql</p>
-<p><strong>2.导出一个表</strong></p>
-<p>mysqldump -u 用户名 -p 数据库名 表名` 导出的文件名</p>
-<p>mysqldump -u user_name -p database_name table_name ` outfile_name.sql</p>
-<p><strong>3.导出一个数据库结构</strong></p>
-<p>mysqldump -u user_name -p -d –add-drop-table database_name ` outfile_name.sql</p>
-<p>-d 没有数据 –add-drop-table 在每个create语句之前增加一个drop table</p>
-<p><strong>4.带语言参数导出</strong></p>
-<p>mysqldump -uroot -p –default-character-set=latin1 –set-charset=gbk –skip-opt database_name ` outfile_name.sql</p>
-<p><strong>5、导入数据库</strong></p>
-<p>mysql -u root –p ` [备份文件的保存路径] 或者source [备份文件的保存路径]</p>
-<h3 id="1-3-用户管理"><a href="#1-3-用户管理" class="headerlink" title="1.3. 用户管理"></a>1.3. 用户管理</h3><p><strong>1、创建用户</strong></p>
-<p>​    create user ‘用户名‘@’IP地址’ identified by ‘密码’;</p>
-<p><strong>2、删除用户</strong></p>
-<p>​    drop user ‘用户名‘@’IP地址’;</p>
-<p>​    delete from user where user=’用户名’ and host=’localhost’;</p>
-<p><strong>3、修改用户</strong></p>
-<p>​    rename user ‘用户名‘@’IP地址’; to ‘新用户名‘@’IP地址’;;</p>
-<p><strong>4、修改密码</strong></p>
-<p>​    set password for ‘用户名‘@’IP地址’ = Password(‘新密码’)</p>
-<p>​    mysqladmin -u用户名 -p旧密码 password 新密码</p>
-<h3 id="1-4-权限管理"><a href="#1-4-权限管理" class="headerlink" title="1.4. 权限管理"></a>1.4. 权限管理</h3><h4 id="1-4-1-grant"><a href="#1-4-1-grant" class="headerlink" title="1.4.1. grant"></a>1.4.1. grant</h4><p><strong>1、grant 权限 on 数据库对象 to 用户</strong></p>
-<p>数据库对象的格式为<code>database</code>.<code>table</code>。<code>database</code>.<em>：表示授权数据库对象该数据库的所有表；</em>.*：表示授权数据库对象为所有数据库的所有表。</p>
-<p>grant all privileges on <em>.</em> to <code>user</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;如果<code>ip</code>为’%’表示不限制IP。</p>
-<p><strong>2、撤销权限</strong>：</p>
-<p>revoke all on <em>.</em> from <code>user</code>@<code>ip</code>; </p>
-<h4 id="1-4-2-普通数据库用户"><a href="#1-4-2-普通数据库用户" class="headerlink" title="1.4.2. 普通数据库用户"></a>1.4.2. 普通数据库用户</h4><p>查询、插入、更新、删除 数据库中所有表数据的权利</p>
-<p>grant select, insert, update, delete on testdb.* to <code>user</code>@’<code>ip</code>‘;</p>
-<h4 id="1-4-3-DBA-用户"><a href="#1-4-3-DBA-用户" class="headerlink" title="1.4.3. DBA 用户"></a>1.4.3. DBA 用户</h4><p><strong>1、授权</strong></p>
-<p>grant all privileges on <em>.</em> to <code>dba</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;</p>
-<p><strong>2、刷新系统权限</strong></p>
-<p>flush privileges;</p>
-<h4 id="1-4-4-查看用户权限"><a href="#1-4-4-查看用户权限" class="headerlink" title="1.4.4. 查看用户权限"></a>1.4.4. 查看用户权限</h4><p>1、查看当前用户（自己）权限</p>
-<p>show grants;</p>
-<p>2、查看指定MySQL 用户权限</p>
-<p>show grants for <code>user</code>@<code>localhost</code>;</p>
-<p>3、查看user和host</p>
-<p>select user,host from mysql.user order by user;</p>
-<h4 id="1-4-5-权限列表"><a href="#1-4-5-权限列表" class="headerlink" title="1.4.5. 权限列表"></a>1.4.5. 权限列表</h4><p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578472/article/database/permission.jpg" alt="img"></p>
-<h4 id="1-4-6-查看主从关系"><a href="#1-4-6-查看主从关系" class="headerlink" title="1.4.6. 查看主从关系"></a>1.4.6. 查看主从关系</h4><p>登录主机：show slave hosts;</p>
-<p>登录从机：show slave status;</p>
-<h2 id="2-数据库操作"><a href="#2-数据库操作" class="headerlink" title="2. 数据库操作"></a>2. 数据库操作</h2><p><strong>1、创建数据库</strong></p>
-<p>create database <code>数据库名</code></p>
-<p><strong>2、显示数据库</strong></p>
-<p>show databases</p>
-<p><strong>3、删除数据</strong></p>
-<p>drop database <code>数据库名</code></p>
-<h2 id="3-数据表操作"><a href="#3-数据表操作" class="headerlink" title="3. 数据表操作"></a>3. 数据表操作</h2><p><strong>1、创建表</strong></p>
-<blockquote>
-<p>create table 表名(</p>
-<p>​    列名  类型  是否可以为空，</p>
-<p>​    列名  类型  是否可以为空</p>
-<p>)ENGINE=InnoDB DEFAULT CHARSET=utf8</p>
-</blockquote>
+                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？</p>
+<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个是肯定的，用 MQ 有个基本原则，就是<strong>数据不能多一条，也不能少一条</strong>，不能多，就是前面说的<a href="/docs/high-concurrency/how-to-ensure-that-messages-are-not-repeatedly-consumed.md">重复消费和幂等性问题</a>。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。</p>
+<p>如果说你这个是用 MQ 来传递非常核心的消息，比如说计费、扣费的一些消息，那必须确保这个 MQ 传递过程中<strong>绝对不会把计费消息给弄丢</strong>。</p>
+<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>数据的丢失问题，可能出现在生产者、MQ、消费者中，咱们从 RabbitMQ 和 Kafka 分别来分析一下吧。</p>
+<h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><p><img src="/images/rabbitmq-message-lose.png" alt="rabbitmq-message-lose"></p>
+<h4 id="生产者弄丢了数据"><a href="#生产者弄丢了数据" class="headerlink" title="生产者弄丢了数据"></a>生产者弄丢了数据</h4><p>生产者将数据发送到 RabbitMQ 的时候，可能数据就在半路给搞丢了，因为网络问题啥的，都有可能。</p>
+<p>此时可以选择用 RabbitMQ 提供的事务功能，就是生产者<strong>发送数据之前</strong>开启 RabbitMQ 事务<code>channel.txSelect</code>，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务<code>channel.txRollback</code>，然后重试发送消息；如果收到了消息，那么可以提交事务<code>channel.txCommit</code>。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 开启事务</span>
+channel<span class="token punctuation">.</span>txSelect
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 这里发送消息</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    channel<span class="token punctuation">.</span>txRollback
+
+    <span class="token comment" spellcheck="true">// 这里再次重发这条消息</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 提交事务</span>
+channel<span class="token punctuation">.</span>txCommit
+</code></pre>
+<p>但是问题是，RabbitMQ 事务机制（同步）一搞，基本上<strong>吞吐量会下来，因为太耗性能</strong>。</p>
+<p>所以一般来说，如果你要确保说写 RabbitMQ 的消息别丢，可以开启 <code>confirm</code> 模式，在生产者那里设置开启 <code>confirm</code> 模式之后，你每次写的消息都会分配一个唯一的 id，然后如果写入了 RabbitMQ 中，RabbitMQ 会给你回传一个 <code>ack</code> 消息，告诉你说这个消息 ok 了。如果 RabbitMQ 没能处理这个消息，会回调你的一个 <code>nack</code> 接口，告诉你这个消息接收失败，你可以重试。而且你可以结合这个机制自己在内存里维护每个消息 id 的状态，如果超过一定时间还没接收到这个消息的回调，那么你可以重发。</p>
+<p>事务机制和 <code>cnofirm</code> 机制最大的不同在于，<strong>事务机制是同步的</strong>，你提交一个事务之后会<strong>阻塞</strong>在那儿，但是 <code>confirm</code> 机制是<strong>异步</strong>的，你发送个消息之后就可以发送下一个消息，然后那个消息 RabbitMQ 接收了之后会异步回调你的一个接口通知你这个消息接收到了。</p>
+<p>所以一般在生产者这块<strong>避免数据丢失</strong>，都是用 <code>confirm</code> 机制的。</p>
+<h4 id="RabbitMQ-弄丢了数据"><a href="#RabbitMQ-弄丢了数据" class="headerlink" title="RabbitMQ 弄丢了数据"></a>RabbitMQ 弄丢了数据</h4><p>就是 RabbitMQ 自己弄丢了数据，这个你必须<strong>开启 RabbitMQ 的持久化</strong>，就是消息写入之后会持久化到磁盘，哪怕是 RabbitMQ 自己挂了，<strong>恢复之后会自动读取之前存储的数据</strong>，一般数据不会丢。除非极其罕见的是，RabbitMQ 还没持久化，自己就挂了，<strong>可能导致少量数据丢失</strong>，但是这个概率较小。</p>
+<p>设置持久化有<strong>两个步骤</strong>：</p>
 <ul>
-<li>默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值</li>
-<li>自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）注意：1、对于自增列，必须是索引（含主键）2、对于自增可以设置步长和起始值</li>
-<li>主键，一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。</li>
+<li>创建 queue 的时候将其设置为持久化<br><br>这样就可以保证 RabbitMQ 持久化 queue 的元数据，但是它是不会持久化 queue 里的数据的。</li>
+<li>第二个是发送消息的时候将消息的 <code>deliveryMode</code> 设置为 2<br><br>就是将消息设置为持久化的，此时 RabbitMQ 就会将消息持久化到磁盘上去。</li>
 </ul>
-<p><strong>2、查看表</strong></p>
-<p>show tables;                    # 查看数据库全部表</p>
-<p>select * from 表名;             # 查看表所有内容</p>
-<p><strong>3、删除表</strong></p>
-<p>drop table 表名</p>
-<p><strong>4、清空表内容</strong></p>
-<p>delete from 表名</p>
-<p>truncate table 表名</p>
-<p><strong>5、查看表结构</strong></p>
-<p>desc 表名</p>
-<p><strong>6、修改表</strong></p>
-<blockquote>
-<p>添加列：   alter table 表名 add 列名 类型</p>
-<p>删除列：   alter table 表名 drop column 列名</p>
-<p>修改列：</p>
-<p>​          alter table 表名 modify column 列名 类型;  – 类型</p>
-<p>​          alter table 表名 change 原列名 新列名 类型; – 列名，类型</p>
-<p>添加主键：</p>
-<p>​          alter table 表名 add primary key(列名);</p>
-<p>删除主键：</p>
-<p>​          alter table 表名 drop primary key;</p>
-<p>​          alter table 表名  modify  列名 int, drop primary key;</p>
-<p>添加外键： alter table 从表 add constraint 外键名称（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);</p>
-<p>删除外键： alter table 表名 drop foreign key 外键名称</p>
-<p>修改默认值：ALTER TABLE testalter_tbl ALTER i SET DEFAULT 1000;</p>
-<p>删除默认值：ALTER TABLE testalter_tbl ALTER i DROP DEFAULT;</p>
-</blockquote>
-<h2 id="4-表内容操作"><a href="#4-表内容操作" class="headerlink" title="4. 表内容操作"></a>4. 表内容操作</h2><h3 id="4-1-增"><a href="#4-1-增" class="headerlink" title="4.1. 增"></a>4.1. 增</h3><blockquote>
-<p>insert into 表 (列名,列名…) values (值,值,…)</p>
-<p>insert into 表 (列名,列名…) values (值,值,…),(值,值,值…)</p>
-<p>insert into 表 (列名,列名…) select (列名,列名…) from 表</p>
-<p>例：</p>
-<p>​    insert into tab1(name,email) values(‘zhangyanlin’,‘zhangyanlin8851@<a href="http://163.com/" target="_blank" rel="noopener">163.com</a>‘)</p>
-</blockquote>
-<h3 id="4-2-删"><a href="#4-2-删" class="headerlink" title="4.2. 删"></a>4.2. 删</h3><blockquote>
-<p>delete from 表                                      # 删除表里全部数据</p>
-<p>delete from 表 where id＝1 and name＝’zhangyanlin’   # 删除ID =1 和name=’zhangyanlin’ 那一行数据</p>
-</blockquote>
-<h3 id="4-3-改"><a href="#4-3-改" class="headerlink" title="4.3. 改"></a>4.3. 改</h3><blockquote>
-<p>update 表 set name ＝ ‘zhangyanlin’ where id`1</p>
-</blockquote>
-<h3 id="4-4-查"><a href="#4-4-查" class="headerlink" title="4.4. 查"></a>4.4. 查</h3><blockquote>
-<p>select * from 表</p>
-<p>select * from 表 where id ` 1</p>
-<p>select nid,name,gender as gg from 表 where id ` 1</p>
-</blockquote>
-<h3 id="4-5-条件判断"><a href="#4-5-条件判断" class="headerlink" title="4.5. 条件判断"></a>4.5. 条件判断</h3><h4 id="4-5-1-where"><a href="#4-5-1-where" class="headerlink" title="4.5.1. where"></a>4.5.1. where</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where id <span class="token string">`1 and name!='huwh' and num =12;
-select * from `</span>table<span class="token string">` where id between 5 and 6;
-select * from `</span>table<span class="token string">` where id in (11,22,33);
-select * from `</span>table<span class="token string">` where id not in (11,22,33);
-select * from `</span>table<span class="token string">` where id in (select nid from `</span>table`<span class="token punctuation">)</span>
-</code></pre>
-<h4 id="4-5-2-通配符like"><a href="#4-5-2-通配符like" class="headerlink" title="4.5.2. 通配符like"></a>4.5.2. 通配符like</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu%'</span><span class="token punctuation">;</span>   #hu开头
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu_'</span>    #hu开头后接一个字符
-</code></pre>
-<h4 id="4-5-3-限制limit"><a href="#4-5-3-限制limit" class="headerlink" title="4.5.3. 限制limit"></a>4.5.3. 限制limit</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span><span class="token punctuation">;</span>   #前<span class="token number">5</span>行
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span>  #从第四行开始的<span class="token number">5</span>行
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span> offset <span class="token number">4</span><span class="token punctuation">;</span>#从第四行开始的<span class="token number">5</span>行
-</code></pre>
-<h4 id="4-5-4-排序asc，desc"><a href="#4-5-4-排序asc，desc" class="headerlink" title="4.5.4. 排序asc，desc"></a>4.5.4. 排序asc，desc</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 asc<span class="token punctuation">;</span>            #跟据“列”从小到大排序（不指定默认为从小到大排序）
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 desc<span class="token punctuation">;</span>           #根据“列”从大到小排序
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列<span class="token number">1</span> desc<span class="token punctuation">,</span>列<span class="token number">2</span> asc<span class="token punctuation">;</span>  #根据“列<span class="token number">1</span>”从大到小排序，如果相同则按“列<span class="token number">2</span>”从小到大排序
-</code></pre>
-<h4 id="4-5-5-分组group-by"><a href="#4-5-5-分组group-by" class="headerlink" title="4.5.5. 分组group by"></a>4.5.5. 分组group by</h4><p>group by 必须在where之后，order by之前。</p>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> num<span class="token punctuation">,</span>from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span>     
-<span class="token keyword">select</span> num<span class="token punctuation">,</span>nid from <span class="token string">`table`</span> group by num<span class="token punctuation">,</span>nid<span class="token punctuation">;</span>
-<span class="token keyword">select</span> num from <span class="token string">`table`</span> where nid <span class="token string">` 10 group by num,nid order nid desc;
-select num,nid,count(*),sum(score),max(score) from `</span>table<span class="token string">` group by num;
-select num from `</span>table<span class="token string">` group by num having max(id) `</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token keyword">select</span> num from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span>
-</code></pre>
+<p>必须要同时设置这两个持久化才行，RabbitMQ 哪怕是挂了，再次重启，也会从磁盘上重启恢复 queue，恢复这个 queue 里的数据。</p>
+<p>注意，哪怕是你给 RabbitMQ 开启了持久化机制，也有一种可能，就是这个消息写到了 RabbitMQ 中，但是还没来得及持久化到磁盘上，结果不巧，此时 RabbitMQ 挂了，就会导致内存里的一点点数据丢失。</p>
+<p>所以，持久化可以跟生产者那边的 <code>confirm</code> 机制配合起来，只有消息被持久化到磁盘之后，才会通知生产者 <code>ack</code> 了，所以哪怕是在持久化到磁盘之前，RabbitMQ 挂了，数据丢了，生产者收不到 <code>ack</code>，你也是可以自己重发的。</p>
+<h4 id="消费端弄丢了数据"><a href="#消费端弄丢了数据" class="headerlink" title="消费端弄丢了数据"></a>消费端弄丢了数据</h4><p>RabbitMQ 如果丢失了数据，主要是因为你消费的时候，<strong>刚消费到，还没处理，结果进程挂了</strong>，比如重启了，那么就尴尬了，RabbitMQ 认为你都消费了，这数据就丢了。</p>
+<p>这个时候得用 RabbitMQ 提供的 <code>ack</code> 机制，简单来说，就是你必须关闭 RabbitMQ 的自动 <code>ack</code>，可以通过一个 api 来调用就行，然后每次你自己代码里确保处理完的时候，再在程序里 <code>ack</code> 一把。这样的话，如果你还没处理完，不就没有 <code>ack</code> 了？那 RabbitMQ 就认为你还没处理完，这个时候 RabbitMQ 会把这个消费分配给别的 consumer 去处理，消息是不会丢的。</p>
+<p><img src="/images/rabbitmq-message-lose-solution.png" alt="rabbitmq-message-lose-solution"></p>
+<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h4 id="消费端弄丢了数据-1"><a href="#消费端弄丢了数据-1" class="headerlink" title="消费端弄丢了数据"></a>消费端弄丢了数据</h4><p>唯一可能导致消费者弄丢数据的情况，就是说，你消费到了这个消息，然后消费者那边<strong>自动提交了 offset</strong>，让 Kafka 以为你已经消费好了这个消息，但其实你才刚准备处理这个消息，你还没处理，你自己就挂了，此时这条消息就丢咯。</p>
+<p>这不是跟 RabbitMQ 差不多吗，大家都知道 Kafka 会自动提交 offset，那么只要<strong>关闭自动提交</strong> offset，在处理完之后自己手动提交 offset，就可以保证数据不会丢。但是此时确实还是<strong>可能会有重复消费</strong>，比如你刚处理完，还没提交 offset，结果自己挂了，此时肯定会重复消费一次，自己保证幂等性就好了。</p>
+<p>生产环境碰到的一个问题，就是说我们的 Kafka 消费者消费到了数据之后是写到一个内存的 queue 里先缓冲一下，结果有的时候，你刚把消息写入内存 queue，然后消费者会自动提交 offset。然后此时我们重启了系统，就会导致内存 queue 里还没来得及处理的数据就丢失了。</p>
+<h4 id="Kafka-弄丢了数据"><a href="#Kafka-弄丢了数据" class="headerlink" title="Kafka 弄丢了数据"></a>Kafka 弄丢了数据</h4><p>这块比较常见的一个场景，就是 Kafka 某个 broker 宕机，然后重新选举 partition 的 leader。大家想想，要是此时其他的 follower 刚好还有些数据没有同步，结果此时 leader 挂了，然后选举某个 follower 成 leader 之后，不就少了一些数据？这就丢了一些数据啊。</p>
+<p>生产环境也遇到过，我们也是，之前 Kafka 的 leader 机器宕机了，将 follower 切换为 leader 之后，就会发现说这个数据就丢了。</p>
+<p>所以此时一般是要求起码设置如下 4 个参数：</p>
+<ul>
+<li>给 topic 设置 <code>replication.factor</code> 参数：这个值必须大于 1，要求每个 partition 必须有至少 2 个副本。</li>
+<li>在 Kafka 服务端设置 <code>min.insync.replicas</code> 参数：这个值必须大于 1，这个是要求一个 leader 至少感知到有至少一个 follower 还跟自己保持联系，没掉队，这样才能确保 leader 挂了还有一个 follower 吧。</li>
+<li>在 producer 端设置 <code>acks=all</code>：这个是要求每条数据，必须是<strong>写入所有 replica 之后，才能认为是写成功了</strong>。</li>
+<li>在 producer 端设置 <code>retries=MAX</code>（很大很大很大的一个值，无限次重试的意思）：这个是<strong>要求一旦写入失败，就无限重试</strong>，卡在这里了。</li>
+</ul>
+<p>我们生产环境就是按照上述要求配置的，这样配置之后，至少在 Kafka broker 端就可以保证在 leader 所在 broker 发生故障，进行 leader 切换时，数据不会丢失。</p>
+<h4 id="生产者会不会弄丢数据？"><a href="#生产者会不会弄丢数据？" class="headerlink" title="生产者会不会弄丢数据？"></a>生产者会不会弄丢数据？</h4><p>如果按照上述的思路设置了 <code>acks=all</code>，一定不会丢，要求是，你的 leader 接收到消息，所有的 follower 都同步到了消息之后，才认为本次写成功了。如果没满足这个条件，生产者会自动不断的重试，重试无限次。</p>
 
             </div>
             <hr>
@@ -688,7 +601,7 @@ select num from `</span>table<span class="token string">` group by num having ma
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/database/mysql-commonds.html" class="b-link-green">[Database] Mysql常用命令</a>
+                    <a href="/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html" class="b-link-green">如何保证消息的可靠性传输？</a>
                 </p>
             </div>
         </div>
@@ -712,21 +625,20 @@ select num from `</span>table<span class="token string">` group by num having ma
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html">
+                <a href="/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html">
                     <div class="card-image">
                         
-                        <img src="/img/wallhaven-583141.png" class="responsive-img" alt="如何保证消息队列的高可用？">
+                        <img src="/img/wallhaven-716601.jpg" class="responsive-img" alt="如何保证消息不被重复消费">
                         
-                        <span class="card-title">如何保证消息队列的高可用？</span>
+                        <span class="card-title">如何保证消息不被重复消费</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息队列的高可用？
-面试官心理分析如果有人问到你 MQ 的知识，高可用是必问的。上一讲提到，MQ 会导致系统可用性降低。所以只要你用了 MQ，接下来问的一些要点肯定就是围绕着 MQ 的那些缺点怎么来解决了。
-要是你傻乎乎的就干</div>
+                    <div class="summary">面试题如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？
+面试官心理分析其实这是很常见的一个问题，这俩问题基本可以连起来问。既然是消费消息，那肯定要考虑会不会重复消费？能不能避免重复消费？或者重复消费了也别造成系统异常可以吗？这个</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-11
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
                         </span>
                         <span class="publish-author">
                             
@@ -752,30 +664,31 @@ select num from `</span>table<span class="token string">` group by num having ma
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/redis/redis-introduce.html">
+                <a href="/mq-knowledge/why-mq.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/redis/redis-introduce5.jpg" class="responsive-img" alt="Redis 常用知识点总结">
+                        <img src="http://img.wanganyu1996.com//mq/why-mq-731252.jpg" class="responsive-img" alt="为什么使用消息队列">
                         
-                        <span class="card-title">Redis 常用知识点总结</span>
+                        <span class="card-title">为什么使用消息队列</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、概述Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。
-键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。
-Redis 支持很多特性，例如将内存中的数据</div>
+                    <div class="summary">面试题
+为什么使用消息队列？
+消息队列有什么优点和缺点？
+Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？
+
+面试官心理分析其实面试官主要是想看看：
+
+第一，你知不知道你们系统里为什么要用消</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            若愚
                             
                         </span>
                     </div>
@@ -783,8 +696,8 @@ Redis 支持很多特性，例如将内存中的数据</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/消息队列/" target="_blank">
+                        <span class="chip bg-color">消息队列</span>
                     </a>
                     
                 </div>

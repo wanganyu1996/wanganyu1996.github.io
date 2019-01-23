@@ -5,10 +5,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="[Database] Mysql常用命令, 若愚博客">
-    <meta name="description" content="1. 系统管理1.1. 连接mysql格式： mysql -h主机地址 -u用户名 －p用户密码
-连接本地：mysql -hlocalhost/127.0.0.1 -u用户名 －p用户密码
-连接远程：mysql -h主机地址 -u用户名 －">
+    <meta name="keywords" content="如何保证消息的顺序性？, 若愚博客">
+    <meta name="description" content="面试题如何保证消息的顺序性？
+面试官心理分析其实这个也是用 MQ 的时候必问的话题，第一看看你了不了解顺序这个事儿？第二看看你有没有办法保证消息是有顺序的？这是生产系统中常见的问题。
+面试题剖析我举个例子，我们以前做过一个 mysql bi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>[Database] Mysql常用命令 | 若愚博客</title>
+    <title>如何保证消息的顺序性？ | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -275,13 +275,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/img/wallhaven-726934.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        [Database] Mysql常用命令
+                        如何保证消息的顺序性？
                     </div>
                 </div>
             </div>
@@ -392,8 +392,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/Database/" target="_blank">
-                    <span class="chip bg-color">Database</span>
+                <a href="/tags/消息队列/" target="_blank">
+                    <span class="chip bg-color">消息队列</span>
                 </a>
                 
             </div>
@@ -402,7 +402,7 @@
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2017-08-13
+                    <i class="fa fa-clock-o fa-fw"></i>2018-12-09
                 </span>
 				
 				
@@ -414,142 +414,26 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-系统管理"><a href="#1-系统管理" class="headerlink" title="1. 系统管理"></a>1. 系统管理</h2><h3 id="1-1-连接mysql"><a href="#1-1-连接mysql" class="headerlink" title="1.1. 连接mysql"></a>1.1. 连接mysql</h3><p>格式： mysql -h主机地址 -u用户名 －p用户密码</p>
-<p>连接本地：mysql -h<code>localhost/127.0.0.1</code> -u用户名 －p用户密码</p>
-<p>连接远程：mysql -h<code>主机地址</code> -u用户名 －p用户密码<br>退出连接：exit</p>
-<h3 id="1-2-备份数据库"><a href="#1-2-备份数据库" class="headerlink" title="1.2. 备份数据库"></a>1.2. 备份数据库</h3><p><strong>1.导出整个数据库</strong></p>
-<p>导出文件默认是存在mysql\bin目录下</p>
-<p>mysqldump -u 用户名 -p 数据库名 ` 导出的文件名</p>
-<p>mysqldump -u user_name -p123456 database_name ` outfile_name.sql</p>
-<p><strong>2.导出一个表</strong></p>
-<p>mysqldump -u 用户名 -p 数据库名 表名` 导出的文件名</p>
-<p>mysqldump -u user_name -p database_name table_name ` outfile_name.sql</p>
-<p><strong>3.导出一个数据库结构</strong></p>
-<p>mysqldump -u user_name -p -d –add-drop-table database_name ` outfile_name.sql</p>
-<p>-d 没有数据 –add-drop-table 在每个create语句之前增加一个drop table</p>
-<p><strong>4.带语言参数导出</strong></p>
-<p>mysqldump -uroot -p –default-character-set=latin1 –set-charset=gbk –skip-opt database_name ` outfile_name.sql</p>
-<p><strong>5、导入数据库</strong></p>
-<p>mysql -u root –p ` [备份文件的保存路径] 或者source [备份文件的保存路径]</p>
-<h3 id="1-3-用户管理"><a href="#1-3-用户管理" class="headerlink" title="1.3. 用户管理"></a>1.3. 用户管理</h3><p><strong>1、创建用户</strong></p>
-<p>​    create user ‘用户名‘@’IP地址’ identified by ‘密码’;</p>
-<p><strong>2、删除用户</strong></p>
-<p>​    drop user ‘用户名‘@’IP地址’;</p>
-<p>​    delete from user where user=’用户名’ and host=’localhost’;</p>
-<p><strong>3、修改用户</strong></p>
-<p>​    rename user ‘用户名‘@’IP地址’; to ‘新用户名‘@’IP地址’;;</p>
-<p><strong>4、修改密码</strong></p>
-<p>​    set password for ‘用户名‘@’IP地址’ = Password(‘新密码’)</p>
-<p>​    mysqladmin -u用户名 -p旧密码 password 新密码</p>
-<h3 id="1-4-权限管理"><a href="#1-4-权限管理" class="headerlink" title="1.4. 权限管理"></a>1.4. 权限管理</h3><h4 id="1-4-1-grant"><a href="#1-4-1-grant" class="headerlink" title="1.4.1. grant"></a>1.4.1. grant</h4><p><strong>1、grant 权限 on 数据库对象 to 用户</strong></p>
-<p>数据库对象的格式为<code>database</code>.<code>table</code>。<code>database</code>.<em>：表示授权数据库对象该数据库的所有表；</em>.*：表示授权数据库对象为所有数据库的所有表。</p>
-<p>grant all privileges on <em>.</em> to <code>user</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;如果<code>ip</code>为’%’表示不限制IP。</p>
-<p><strong>2、撤销权限</strong>：</p>
-<p>revoke all on <em>.</em> from <code>user</code>@<code>ip</code>; </p>
-<h4 id="1-4-2-普通数据库用户"><a href="#1-4-2-普通数据库用户" class="headerlink" title="1.4.2. 普通数据库用户"></a>1.4.2. 普通数据库用户</h4><p>查询、插入、更新、删除 数据库中所有表数据的权利</p>
-<p>grant select, insert, update, delete on testdb.* to <code>user</code>@’<code>ip</code>‘;</p>
-<h4 id="1-4-3-DBA-用户"><a href="#1-4-3-DBA-用户" class="headerlink" title="1.4.3. DBA 用户"></a>1.4.3. DBA 用户</h4><p><strong>1、授权</strong></p>
-<p>grant all privileges on <em>.</em> to <code>dba</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;</p>
-<p><strong>2、刷新系统权限</strong></p>
-<p>flush privileges;</p>
-<h4 id="1-4-4-查看用户权限"><a href="#1-4-4-查看用户权限" class="headerlink" title="1.4.4. 查看用户权限"></a>1.4.4. 查看用户权限</h4><p>1、查看当前用户（自己）权限</p>
-<p>show grants;</p>
-<p>2、查看指定MySQL 用户权限</p>
-<p>show grants for <code>user</code>@<code>localhost</code>;</p>
-<p>3、查看user和host</p>
-<p>select user,host from mysql.user order by user;</p>
-<h4 id="1-4-5-权限列表"><a href="#1-4-5-权限列表" class="headerlink" title="1.4.5. 权限列表"></a>1.4.5. 权限列表</h4><p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578472/article/database/permission.jpg" alt="img"></p>
-<h4 id="1-4-6-查看主从关系"><a href="#1-4-6-查看主从关系" class="headerlink" title="1.4.6. 查看主从关系"></a>1.4.6. 查看主从关系</h4><p>登录主机：show slave hosts;</p>
-<p>登录从机：show slave status;</p>
-<h2 id="2-数据库操作"><a href="#2-数据库操作" class="headerlink" title="2. 数据库操作"></a>2. 数据库操作</h2><p><strong>1、创建数据库</strong></p>
-<p>create database <code>数据库名</code></p>
-<p><strong>2、显示数据库</strong></p>
-<p>show databases</p>
-<p><strong>3、删除数据</strong></p>
-<p>drop database <code>数据库名</code></p>
-<h2 id="3-数据表操作"><a href="#3-数据表操作" class="headerlink" title="3. 数据表操作"></a>3. 数据表操作</h2><p><strong>1、创建表</strong></p>
-<blockquote>
-<p>create table 表名(</p>
-<p>​    列名  类型  是否可以为空，</p>
-<p>​    列名  类型  是否可以为空</p>
-<p>)ENGINE=InnoDB DEFAULT CHARSET=utf8</p>
-</blockquote>
+                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>如何保证消息的顺序性？</p>
+<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>其实这个也是用 MQ 的时候必问的话题，第一看看你了不了解顺序这个事儿？第二看看你有没有办法保证消息是有顺序的？这是生产系统中常见的问题。</p>
+<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>我举个例子，我们以前做过一个 mysql <code>binlog</code> 同步的系统，压力还是非常大的，日同步数据要达到上亿，就是说数据从一个 mysql 库原封不动地同步到另一个 mysql 库里面去（mysql -&gt; mysql）。常见的一点在于说比如大数据 team，就需要同步一个 mysql 库过来，对公司的业务系统的数据做各种复杂的操作。</p>
+<p>你在 mysql 里增删改一条数据，对应出来了增删改 3 条 <code>binlog</code> 日志，接着这三条 <code>binlog</code> 发送到 MQ 里面，再消费出来依次执行，起码得保证人家是按照顺序来的吧？不然本来是：增加、修改、删除；你楞是换了顺序给执行成删除、修改、增加，不全错了么。</p>
+<p>本来这个数据同步过来，应该最后这个数据被删除了；结果你搞错了这个顺序，最后这个数据保留下来了，数据同步就出错了。</p>
+<p>先看看顺序会错乱的俩场景：</p>
 <ul>
-<li>默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值</li>
-<li>自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）注意：1、对于自增列，必须是索引（含主键）2、对于自增可以设置步长和起始值</li>
-<li>主键，一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。</li>
+<li><strong>RabbitMQ</strong>：一个 queue，多个 consumer。比如，生产者向 RabbitMQ 里发送了三条数据，顺序依次是 data1/data2/data3，压入的是 RabbitMQ 的一个内存队列。有三个消费者分别从 MQ 中消费这三条数据中的一条，结果消费者2先执行完操作，把 data2 存入数据库，然后是 data1/data3。这不明显乱了。</li>
 </ul>
-<p><strong>2、查看表</strong></p>
-<p>show tables;                    # 查看数据库全部表</p>
-<p>select * from 表名;             # 查看表所有内容</p>
-<p><strong>3、删除表</strong></p>
-<p>drop table 表名</p>
-<p><strong>4、清空表内容</strong></p>
-<p>delete from 表名</p>
-<p>truncate table 表名</p>
-<p><strong>5、查看表结构</strong></p>
-<p>desc 表名</p>
-<p><strong>6、修改表</strong></p>
-<blockquote>
-<p>添加列：   alter table 表名 add 列名 类型</p>
-<p>删除列：   alter table 表名 drop column 列名</p>
-<p>修改列：</p>
-<p>​          alter table 表名 modify column 列名 类型;  – 类型</p>
-<p>​          alter table 表名 change 原列名 新列名 类型; – 列名，类型</p>
-<p>添加主键：</p>
-<p>​          alter table 表名 add primary key(列名);</p>
-<p>删除主键：</p>
-<p>​          alter table 表名 drop primary key;</p>
-<p>​          alter table 表名  modify  列名 int, drop primary key;</p>
-<p>添加外键： alter table 从表 add constraint 外键名称（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);</p>
-<p>删除外键： alter table 表名 drop foreign key 外键名称</p>
-<p>修改默认值：ALTER TABLE testalter_tbl ALTER i SET DEFAULT 1000;</p>
-<p>删除默认值：ALTER TABLE testalter_tbl ALTER i DROP DEFAULT;</p>
-</blockquote>
-<h2 id="4-表内容操作"><a href="#4-表内容操作" class="headerlink" title="4. 表内容操作"></a>4. 表内容操作</h2><h3 id="4-1-增"><a href="#4-1-增" class="headerlink" title="4.1. 增"></a>4.1. 增</h3><blockquote>
-<p>insert into 表 (列名,列名…) values (值,值,…)</p>
-<p>insert into 表 (列名,列名…) values (值,值,…),(值,值,值…)</p>
-<p>insert into 表 (列名,列名…) select (列名,列名…) from 表</p>
-<p>例：</p>
-<p>​    insert into tab1(name,email) values(‘zhangyanlin’,‘zhangyanlin8851@<a href="http://163.com/" target="_blank" rel="noopener">163.com</a>‘)</p>
-</blockquote>
-<h3 id="4-2-删"><a href="#4-2-删" class="headerlink" title="4.2. 删"></a>4.2. 删</h3><blockquote>
-<p>delete from 表                                      # 删除表里全部数据</p>
-<p>delete from 表 where id＝1 and name＝’zhangyanlin’   # 删除ID =1 和name=’zhangyanlin’ 那一行数据</p>
-</blockquote>
-<h3 id="4-3-改"><a href="#4-3-改" class="headerlink" title="4.3. 改"></a>4.3. 改</h3><blockquote>
-<p>update 表 set name ＝ ‘zhangyanlin’ where id`1</p>
-</blockquote>
-<h3 id="4-4-查"><a href="#4-4-查" class="headerlink" title="4.4. 查"></a>4.4. 查</h3><blockquote>
-<p>select * from 表</p>
-<p>select * from 表 where id ` 1</p>
-<p>select nid,name,gender as gg from 表 where id ` 1</p>
-</blockquote>
-<h3 id="4-5-条件判断"><a href="#4-5-条件判断" class="headerlink" title="4.5. 条件判断"></a>4.5. 条件判断</h3><h4 id="4-5-1-where"><a href="#4-5-1-where" class="headerlink" title="4.5.1. where"></a>4.5.1. where</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where id <span class="token string">`1 and name!='huwh' and num =12;
-select * from `</span>table<span class="token string">` where id between 5 and 6;
-select * from `</span>table<span class="token string">` where id in (11,22,33);
-select * from `</span>table<span class="token string">` where id not in (11,22,33);
-select * from `</span>table<span class="token string">` where id in (select nid from `</span>table`<span class="token punctuation">)</span>
-</code></pre>
-<h4 id="4-5-2-通配符like"><a href="#4-5-2-通配符like" class="headerlink" title="4.5.2. 通配符like"></a>4.5.2. 通配符like</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu%'</span><span class="token punctuation">;</span>   #hu开头
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu_'</span>    #hu开头后接一个字符
-</code></pre>
-<h4 id="4-5-3-限制limit"><a href="#4-5-3-限制limit" class="headerlink" title="4.5.3. 限制limit"></a>4.5.3. 限制limit</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span><span class="token punctuation">;</span>   #前<span class="token number">5</span>行
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span>  #从第四行开始的<span class="token number">5</span>行
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span> offset <span class="token number">4</span><span class="token punctuation">;</span>#从第四行开始的<span class="token number">5</span>行
-</code></pre>
-<h4 id="4-5-4-排序asc，desc"><a href="#4-5-4-排序asc，desc" class="headerlink" title="4.5.4. 排序asc，desc"></a>4.5.4. 排序asc，desc</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 asc<span class="token punctuation">;</span>            #跟据“列”从小到大排序（不指定默认为从小到大排序）
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 desc<span class="token punctuation">;</span>           #根据“列”从大到小排序
-<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列<span class="token number">1</span> desc<span class="token punctuation">,</span>列<span class="token number">2</span> asc<span class="token punctuation">;</span>  #根据“列<span class="token number">1</span>”从大到小排序，如果相同则按“列<span class="token number">2</span>”从小到大排序
-</code></pre>
-<h4 id="4-5-5-分组group-by"><a href="#4-5-5-分组group-by" class="headerlink" title="4.5.5. 分组group by"></a>4.5.5. 分组group by</h4><p>group by 必须在where之后，order by之前。</p>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> num<span class="token punctuation">,</span>from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span>     
-<span class="token keyword">select</span> num<span class="token punctuation">,</span>nid from <span class="token string">`table`</span> group by num<span class="token punctuation">,</span>nid<span class="token punctuation">;</span>
-<span class="token keyword">select</span> num from <span class="token string">`table`</span> where nid <span class="token string">` 10 group by num,nid order nid desc;
-select num,nid,count(*),sum(score),max(score) from `</span>table<span class="token string">` group by num;
-select num from `</span>table<span class="token string">` group by num having max(id) `</span> <span class="token number">10</span><span class="token punctuation">;</span>
-<span class="token keyword">select</span> num from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span>
-</code></pre>
+<p><img src="/images/rabbitmq-order-01.png" alt="rabbitmq-order-01"></p>
+<ul>
+<li><strong>Kafka</strong>：比如说我们建了一个 topic，有三个 partition。生产者在写的时候，其实可以指定一个 key，比如说我们指定了某个订单 id 作为 key，那么这个订单相关的数据，一定会被分发到同一个 partition 中去，而且这个 partition 中的数据一定是有顺序的。<br>消费者从 partition 中取出来数据的时候，也一定是有顺序的。到这里，顺序还是 ok 的，没有错乱。接着，我们在消费者里可能会搞<strong>多个线程来并发处理消息</strong>。因为如果消费者是单线程消费处理，而处理比较耗时的话，比如处理一条消息耗时几十 ms，那么 1 秒钟只能处理几十条消息，这吞吐量太低了。而多个线程并发跑的话，顺序可能就乱掉了。</li>
+</ul>
+<p><img src="/images/kafka-order-01.png" alt="kafka-order-01"></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h4 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h4><p>拆分多个 queue，每个 queue 一个 consumer，就是多一些 queue 而已，确实是麻烦点；或者就一个 queue 但是对应一个 consumer，然后这个 consumer 内部用内存队列做排队，然后分发给底层不同的 worker 来处理。<br><img src="/images/rabbitmq-order-02.png" alt="rabbitmq-order-02"></p>
+<h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h4><ul>
+<li>一个 topic，一个 partition，一个 consumer，内部单线程消费，单线程吞吐量太低，一般不会用这个。</li>
+<li>写 N 个内存 queue，具有相同 key 的数据都到同一个内存 queue；然后对于 N 个线程，每个线程分别消费一个内存 queue 即可，这样就能保证顺序性。</li>
+</ul>
+<p><img src="/images/kafka-order-02.png" alt="kafka-order-02"></p>
 
             </div>
             <hr>
@@ -688,7 +572,7 @@ select num from `</span>table<span class="token string">` group by num having ma
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/database/mysql-commonds.html" class="b-link-green">[Database] Mysql常用命令</a>
+                    <a href="/mq-knowledge/how-to-ensure-the-order-of-messages.html" class="b-link-green">如何保证消息的顺序性？</a>
                 </p>
             </div>
         </div>
@@ -712,21 +596,20 @@ select num from `</span>table<span class="token string">` group by num having ma
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html">
+                <a href="/mq-knowledge/mq-time-delay-and-expired-failure.html">
                     <div class="card-image">
                         
-                        <img src="/img/wallhaven-583141.png" class="responsive-img" alt="如何保证消息队列的高可用？">
+                        <img src="/img/wallhaven-118181.jpg" class="responsive-img" alt="如何解决消息队列的延时以及过期失效问题？">
                         
-                        <span class="card-title">如何保证消息队列的高可用？</span>
+                        <span class="card-title">如何解决消息队列的延时以及过期失效问题？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息队列的高可用？
-面试官心理分析如果有人问到你 MQ 的知识，高可用是必问的。上一讲提到，MQ 会导致系统可用性降低。所以只要你用了 MQ，接下来问的一些要点肯定就是围绕着 MQ 的那些缺点怎么来解决了。
-要是你傻乎乎的就干</div>
+                    <div class="summary">面试题如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？
+面试官心理分析你看这问法，其实本质针对的场景，都是说，可能你的消费端出了问题，不消费了；或者消费的速度极其慢。接着就坑爹了</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-11
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-09
                         </span>
                         <span class="publish-author">
                             
@@ -752,30 +635,25 @@ select num from `</span>table<span class="token string">` group by num having ma
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/redis/redis-introduce.html">
+                <a href="/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/redis/redis-introduce5.jpg" class="responsive-img" alt="Redis 常用知识点总结">
+                        <img src="/img/wallhaven-716601.jpg" class="responsive-img" alt="如何保证消息不被重复消费">
                         
-                        <span class="card-title">Redis 常用知识点总结</span>
+                        <span class="card-title">如何保证消息不被重复消费</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、概述Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。
-键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。
-Redis 支持很多特性，例如将内存中的数据</div>
+                    <div class="summary">面试题如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？
+面试官心理分析其实这是很常见的一个问题，这俩问题基本可以连起来问。既然是消费消息，那肯定要考虑会不会重复消费？能不能避免重复消费？或者重复消费了也别造成系统异常可以吗？这个</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            若愚
                             
                         </span>
                     </div>
@@ -783,8 +661,8 @@ Redis 支持很多特性，例如将内存中的数据</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/消息队列/" target="_blank">
+                        <span class="chip bg-color">消息队列</span>
                     </a>
                     
                 </div>

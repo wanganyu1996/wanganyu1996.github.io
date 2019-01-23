@@ -2,23 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html</loc>
+    
+    <lastmod>2019-01-23T15:10:09.215Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html</loc>
+    
+    <lastmod>2019-01-23T15:09:15.632Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
     
-    <lastmod>2019-01-20T15:32:44.084Z</lastmod>
+    <lastmod>2019-01-23T15:06:20.737Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</loc>
     
-    <lastmod>2019-01-20T14:15:22.996Z</lastmod>
+    <lastmod>2019-01-23T15:06:10.693Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
     
-    <lastmod>2019-01-20T14:15:18.430Z</lastmod>
+    <lastmod>2019-01-23T15:05:53.177Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</loc>
+    
+    <lastmod>2019-01-23T15:02:02.648Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
+    
+    <lastmod>2019-01-23T14:57:41.060Z</lastmod>
     
   </url>
   
@@ -54,13 +82,6 @@
     <loc>http://www.wanganyu1996.com/categories/index.html</loc>
     
     <lastmod>2019-01-01T13:23:28.148Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html</loc>
-    
-    <lastmod>2018-12-09T12:24:30.426Z</lastmod>
     
   </url>
   

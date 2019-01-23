@@ -5,7 +5,7 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="「消息队列」 为什么使用消息队列, 若愚博客">
+    <meta name="keywords" content="为什么使用消息队列, 若愚博客">
     <meta name="description" content="面试题
 为什么使用消息队列？
 消息队列有什么优点和缺点？
@@ -21,7 +21,7 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>「消息队列」 为什么使用消息队列 | 若愚博客</title>
+    <title>为什么使用消息队列 | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,7 +286,7 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        「消息队列」 为什么使用消息队列
+                        为什么使用消息队列
                     </div>
                 </div>
             </div>
@@ -665,7 +665,7 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/mq-knowledge/why-mq.html" class="b-link-green">「消息队列」 为什么使用消息队列</a>
+                    <a href="/mq-knowledge/why-mq.html" class="b-link-green">为什么使用消息队列</a>
                 </p>
             </div>
         </div>
@@ -687,29 +687,23 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">本篇</div>
+            <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/mq-knowledge/why-mq.html">
+                <a href="/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com//mq/why-mq-731252.jpg" class="responsive-img" alt="「消息队列」 为什么使用消息队列">
+                        <img src="/img/wallhaven-644594.jpg" class="responsive-img" alt="如何保证消息的可靠性传输？">
                         
-                        <span class="card-title">「消息队列」 为什么使用消息队列</span>
+                        <span class="card-title">如何保证消息的可靠性传输？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题
-为什么使用消息队列？
-消息队列有什么优点和缺点？
-Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？
-
-面试官心理分析其实面试官主要是想看看：
-
-第一，你知不知道你们系统里为什么要用消</div>
+                    <div class="summary">面试题如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？
+面试官心理分析这个是肯定的，用 MQ 有个基本原则，就是数据不能多一条，也不能少一条，不能多，就是前面说的重复消费和幂等性问题。不能少，就是说这数据别搞丢了。那这个问题你必须</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -718,7 +712,6 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -735,20 +728,21 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html">
+                <a href="/distributed-system/zookeeper-application-scenarios.html">
                     <div class="card-image">
                         
-                        <img src="/img/wallhaven-716601.jpg" class="responsive-img" alt="「消息队列」 如何保证消息不被重复消费">
                         
-                        <span class="card-title">「消息队列」 如何保证消息不被重复消费</span>
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Zookeeper介绍">
+                        
+                        <span class="card-title">Zookeeper介绍</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？
-面试官心理分析其实这是很常见的一个问题，这俩问题基本可以连起来问。既然是消费消息，那肯定要考虑会不会重复消费？能不能避免重复消费？或者重复消费了也别造成系统异常可以吗？这个</div>
+                    <div class="summary">面试题zookeeper 都有哪些使用场景？
+面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-08
                             </span>
                         <span class="publish-author">
                             
@@ -761,8 +755,8 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/消息队列/" target="_blank">
-                        <span class="chip bg-color">消息队列</span>
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>

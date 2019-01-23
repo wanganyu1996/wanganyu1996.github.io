@@ -1,5 +1,8 @@
-http://www.wanganyu1996.com/mq-knowledge/why-mq.html
+http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html
+http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html
 http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html
+http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html
+http://www.wanganyu1996.com/mq-knowledge/why-mq.html
 http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html
 http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html
 http://www.wanganyu1996.com/database/mysql-commonds.html
