@@ -42,36 +42,11 @@
   </entry>
   
   <entry>
-    <title>如何保证消息的顺序性？</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</id>
-    <published>2018-12-09T14:26:24.000Z</published>
-    <updated>2019-01-23T15:02:02.648Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息的顺序性？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
-        
-      
-    
-    </summary>
-    
-    
-      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何保证消息不被重复消费</title>
     <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html"/>
     <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</id>
     <published>2018-12-09T14:26:24.000Z</published>
-    <updated>2019-01-23T15:06:20.737Z</updated>
+    <updated>2019-01-24T15:38:49.192Z</updated>
     
     <summary type="html">
     
@@ -85,6 +60,8 @@
       
     
     </summary>
+    
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
     
       <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
@@ -106,6 +83,31 @@
         
           &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？&lt;/p&gt;
 &lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何保证消息的顺序性？</title>
+    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html"/>
+    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</id>
+    <published>2018-12-09T14:26:24.000Z</published>
+    <updated>2019-01-23T15:02:02.648Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息的顺序性？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
         
       
     
@@ -170,7 +172,7 @@
     <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html"/>
     <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</id>
     <published>2018-11-11T04:26:24.000Z</published>
-    <updated>2019-01-23T15:06:10.693Z</updated>
+    <updated>2019-01-24T15:39:15.402Z</updated>
     
     <summary type="html">
     
@@ -184,6 +186,8 @@
       
     
     </summary>
+    
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
     
       <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
@@ -219,7 +223,7 @@
     <link href="http://www.wanganyu1996.com/redis/redis-introduce.html"/>
     <id>http://www.wanganyu1996.com/redis/redis-introduce.html</id>
     <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-01-18T14:37:21.426Z</updated>
+    <updated>2019-01-24T15:33:59.255Z</updated>
     
     <summary type="html">
     

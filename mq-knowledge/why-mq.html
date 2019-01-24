@@ -112,7 +112,7 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
     
     <li>
         <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search"></i>
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
         </a>
     </li>
 
@@ -394,27 +394,38 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
-            
-            <div class="article-tag">
-                
-                <a href="/tags/消息队列/" target="_blank">
-                    <span class="chip bg-color">消息队列</span>
-                </a>
-                
+            <div class="row tag-cate">
+                <div class="col s6">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/消息队列/" target="_blank">
+                                <span class="chip bg-color">消息队列</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s6 right-align">
+                    
+                </div>
             </div>
-            
-            <div class="post-info">
-                
 
+            <div class="post-info">
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-12-09
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-12-09
                 </span>
+
+                
 				
 				
                     <span id="busuanzi_container_page_pv" class="post-read">
-                    <i class="fa fa-eye fa-fw"></i>阅读 <span id="busuanzi_value_page_pv"></span>
+                        <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </span>
 				
-            </span></div>
+            </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
@@ -662,7 +673,9 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
 
             <div class="reprint">
                 <p>
-                    <span class="reprint-tip">转载请注明: </span>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
                     <a href="/mq-knowledge/why-mq.html" class="b-link-green">为什么使用消息队列</a>
@@ -687,19 +700,21 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html">
+                <a href="/mq-knowledge/how-to-ensure-the-order-of-messages.html">
                     <div class="card-image">
                         
-                        <img src="/img/wallhaven-644594.jpg" class="responsive-img" alt="如何保证消息的可靠性传输？">
+                        <img src="/img/wallhaven-726934.jpg" class="responsive-img" alt="如何保证消息的顺序性？">
                         
-                        <span class="card-title">如何保证消息的可靠性传输？</span>
+                        <span class="card-title">如何保证消息的顺序性？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？
-面试官心理分析这个是肯定的，用 MQ 有个基本原则，就是数据不能多一条，也不能少一条，不能多，就是前面说的重复消费和幂等性问题。不能少，就是说这数据别搞丢了。那这个问题你必须</div>
+                    <div class="summary">面试题如何保证消息的顺序性？
+面试官心理分析其实这个也是用 MQ 的时候必问的话题，第一看看你了不了解顺序这个事儿？第二看看你有没有办法保证消息是有顺序的？这是生产系统中常见的问题。
+面试题剖析我举个例子，我们以前做过一个 mysql bi</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
@@ -726,7 +741,9 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/distributed-system/zookeeper-application-scenarios.html">
                     <div class="card-image">
@@ -820,10 +837,8 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
     </div>
     <div class="col l3 hide-on-med-and-down">
         <div class="toc-widget">
-            <div class="toc-title">目录</div>
-            <div id="toc-content">
-
-            </div>
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
         </div>
     </div>
 </div>
@@ -872,19 +887,21 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-            <!--基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-            -->
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">若愚</a>
+
+
+            
+
             
 			
                 <br>
                 <span id="busuanzi_container_site_pv">
-                    本站总访问量 <span id="busuanzi_value_site_pv" style="color: #fff;"></span> 次,&nbsp;
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
                 </span>
 				<span id="busuanzi_container_site_uv">
-                    访客数 <span id="busuanzi_value_site_uv" style="color: #fff;"></span> 人.
+                    <i class="fa fa-users"></i>
+                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
 			
         </div>
@@ -912,7 +929,7 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title">搜索</span>
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
             <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
         </div>
         <div id="searchResult"></div>

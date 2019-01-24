@@ -105,7 +105,7 @@
     
     <li>
         <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search"></i>
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
         </a>
     </li>
 
@@ -304,7 +304,9 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
 <div id="tags" class="container chip-container">
     <div class="card">
         <div class="card-content">
-            <div class="tag-title center-align">文章标签</div>
+            <div class="tag-title center-align">
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
+            </div>
             <div class="tag-chips">
                 
                 
@@ -407,6 +409,33 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
                 
                 <div class="article tag-post col s12 m6 l4" data-tags="消息队列" data-aos="fade-up">
                     <div class="card">
+                        <a href="/mq-knowledge/how-to-ensure-the-order-of-messages.html">
+                            <div class="card-image tag-image">
+                                
+                                <img src="/img/wallhaven-726934.jpg" class="responsive-img" alt="如何保证消息的顺序性？">
+                                
+                                <span class="card-title">如何保证消息的顺序性？</span>
+                            </div>
+                        </a>
+                        <div class="card-content article-content">
+                            <div class="publish-info">
+                                <span class="publish-date">
+                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
+                                </span>
+                                <span class="publish-author">
+                                    
+                                    <i class="fa fa-user fa-fw"></i>
+                                    若愚
+                                    
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="article tag-post col s12 m6 l4" data-tags="消息队列" data-aos="fade-up">
+                    <div class="card">
                         <a href="/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html">
                             <div class="card-image tag-image">
                                 
@@ -437,7 +466,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
                         <a href="/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html">
                             <div class="card-image tag-image">
                                 
-                                <img src="/img/wallhaven-716601.jpg" class="responsive-img" alt="如何保证消息不被重复消费">
+                                <img src="http://img.wanganyu1996.com//mq/ensure-that-messages.jpg" class="responsive-img" alt="如何保证消息不被重复消费">
                                 
                                 <span class="card-title">如何保证消息不被重复消费</span>
                             </div>
@@ -449,35 +478,12 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
                                 </span>
                                 <span class="publish-author">
                                     
-                                    <i class="fa fa-user fa-fw"></i>
-                                    若愚
+                                    <i class="fa fa-bookmark fa-fw icon-category"></i>
                                     
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div class="article tag-post col s12 m6 l4" data-tags="消息队列" data-aos="fade-up">
-                    <div class="card">
-                        <a href="/mq-knowledge/how-to-ensure-the-order-of-messages.html">
-                            <div class="card-image tag-image">
-                                
-                                <img src="/img/wallhaven-726934.jpg" class="responsive-img" alt="如何保证消息的顺序性？">
-                                
-                                <span class="card-title">如何保证消息的顺序性？</span>
-                            </div>
-                        </a>
-                        <div class="card-content article-content">
-                            <div class="publish-info">
-                                <span class="publish-date">
-                                    <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
-                                </span>
-                                <span class="publish-author">
+                                    <a href="/categories/消息队列/" class="post-category" target="_blank">
+                                    消息队列
+                                    </a>
                                     
-                                    <i class="fa fa-user fa-fw"></i>
-                                    若愚
                                     
                                 </span>
                             </div>
@@ -491,7 +497,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
                         <a href="/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html">
                             <div class="card-image tag-image">
                                 
-                                <img src="/img/wallhaven-583141.png" class="responsive-img" alt="如何保证消息队列的高可用？">
+                                <img src="http://img.wanganyu1996.com//mq/ensure-high-availability-of-message.jpg" class="responsive-img" alt="如何保证消息队列的高可用？">
                                 
                                 <span class="card-title">如何保证消息队列的高可用？</span>
                             </div>
@@ -503,8 +509,12 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
                                 </span>
                                 <span class="publish-author">
                                     
-                                    <i class="fa fa-user fa-fw"></i>
-                                    若愚
+                                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/消息队列/" class="post-category" target="_blank">
+                                    消息队列
+                                    </a>
+                                    
                                     
                                 </span>
                             </div>
@@ -521,19 +531,21 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-            <!--基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-            -->
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">若愚</a>
+
+
+            
+
             
 			
                 <br>
                 <span id="busuanzi_container_site_pv">
-                    本站总访问量 <span id="busuanzi_value_site_pv" style="color: #fff;"></span> 次,&nbsp;
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
                 </span>
 				<span id="busuanzi_container_site_uv">
-                    访客数 <span id="busuanzi_value_site_uv" style="color: #fff;"></span> 人.
+                    <i class="fa fa-users"></i>
+                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
 			
         </div>
@@ -561,7 +573,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title">搜索</span>
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
             <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
         </div>
         <div id="searchResult"></div>

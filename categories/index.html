@@ -105,7 +105,7 @@
     
     <li>
         <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search"></i>
+            <i id="searchIcon" class="mdi-action-search" title="搜索"></i>
         </a>
     </li>
 
@@ -304,14 +304,24 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
 <div id="category-cloud" class="container chip-container">
     <div class="card">
         <div class="card-content">
-            <div class="tag-title center-align">文章分类</div>
+            <div class="tag-title center-align">
+                <i class="fa fa-bookmark"></i>&nbsp;&nbsp;文章分类
+            </div>
             <div class="tag-chips">
                 
                 
                 
+                <a href="/categories/消息队列/" title="消息队列: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " style="background-color: #F9EBEA;">消息队列
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Redis/" title="Redis: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F9EBEA;">Redis
+                             chip-default " style="background-color: #F5EEF8;">Redis
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -358,7 +368,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
                     color: '#3C4858'
                 }
             },
-            indicator: [{"name":"Redis","max":2}],
+            indicator: [{"name":"消息队列","max":3},{"name":"Redis","max":3}],
             nameGap: 5,
             center: ['50%','55%'],
             radius: '66%'
@@ -369,7 +379,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
             itemStyle: {normal: {areaStyle: {type: 'default'}}},
             data : [
                 {
-                    value : [1],
+                    value : [2,1],
                     name : '文章分类数量'
                 }
             ]
@@ -385,19 +395,21 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-            <!--基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-            -->
+            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">若愚</a>
+
+
+            
+
             
 			
                 <br>
                 <span id="busuanzi_container_site_pv">
-                    本站总访问量 <span id="busuanzi_value_site_pv" style="color: #fff;"></span> 次,&nbsp;
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span> 次,&nbsp;
                 </span>
 				<span id="busuanzi_container_site_uv">
-                    访客数 <span id="busuanzi_value_site_uv" style="color: #fff;"></span> 人.
+                    <i class="fa fa-users"></i>
+                    访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
 			
         </div>
@@ -425,7 +437,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/home/myB
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title">搜索</span>
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
             <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
         </div>
         <div id="searchResult"></div>
