@@ -42,33 +42,6 @@
   </entry>
   
   <entry>
-    <title>如何保证消息不被重复消费</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</id>
-    <published>2018-12-09T14:26:24.000Z</published>
-    <updated>2019-01-24T15:38:49.192Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="消息队列" scheme="http://www.wanganyu1996.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-    
-      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何保证消息的可靠性传输？</title>
     <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html"/>
     <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</id>
@@ -112,6 +85,33 @@
       
     
     </summary>
+    
+    
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何保证消息不被重复消费</title>
+    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html"/>
+    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</id>
+    <published>2018-12-09T14:26:24.000Z</published>
+    <updated>2019-01-24T15:38:49.192Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="消息队列" scheme="http://www.wanganyu1996.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
     
       <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
