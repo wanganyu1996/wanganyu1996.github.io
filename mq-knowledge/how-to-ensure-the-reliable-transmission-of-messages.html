@@ -283,7 +283,7 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/img/wallhaven-644594.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('http://img.wanganyu1996.com//mq/wallhaven-712736.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -402,6 +402,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/分布式/" target="_blank">
+                                <span class="chip bg-color">分布式</span>
+                            </a>
+                        
                             <a href="/tags/消息队列/" target="_blank">
                                 <span class="chip bg-color">消息队列</span>
                             </a>
@@ -411,13 +415,22 @@
                 </div>
                 <div class="col s6 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/消息队列/" class="post-category" target="_blank">
+                                消息队列
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
             <div class="post-info">
                 <span class="post-date">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-12-09
+                    2018-09-09
                 </span>
 
                 
@@ -451,7 +464,7 @@
 <h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个是肯定的，用 MQ 有个基本原则，就是<strong>数据不能多一条，也不能少一条</strong>，不能多，就是前面说的<a href="/docs/high-concurrency/how-to-ensure-that-messages-are-not-repeatedly-consumed.md">重复消费和幂等性问题</a>。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。</p>
 <p>如果说你这个是用 MQ 来传递非常核心的消息，比如说计费、扣费的一些消息，那必须确保这个 MQ 传递过程中<strong>绝对不会把计费消息给弄丢</strong>。</p>
 <h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>数据的丢失问题，可能出现在生产者、MQ、消费者中，咱们从 RabbitMQ 和 Kafka 分别来分析一下吧。</p>
-<h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><p><img src="/images/rabbitmq-message-lose.png" alt="rabbitmq-message-lose"></p>
+<h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><p><img src="http://img.wanganyu1996.com//mqrabbitmq-message-lose.png" alt="rabbitmq-message-lose"></p>
 <h4 id="生产者弄丢了数据"><a href="#生产者弄丢了数据" class="headerlink" title="生产者弄丢了数据"></a>生产者弄丢了数据</h4><p>生产者将数据发送到 RabbitMQ 的时候，可能数据就在半路给搞丢了，因为网络问题啥的，都有可能。</p>
 <p>此时可以选择用 RabbitMQ 提供的事务功能，就是生产者<strong>发送数据之前</strong>开启 RabbitMQ 事务<code>channel.txSelect</code>，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务<code>channel.txRollback</code>，然后重试发送消息；如果收到了消息，那么可以提交事务<code>channel.txCommit</code>。</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 开启事务</span>
@@ -482,7 +495,7 @@ channel<span class="token punctuation">.</span>txCommit
 <p>所以，持久化可以跟生产者那边的 <code>confirm</code> 机制配合起来，只有消息被持久化到磁盘之后，才会通知生产者 <code>ack</code> 了，所以哪怕是在持久化到磁盘之前，RabbitMQ 挂了，数据丢了，生产者收不到 <code>ack</code>，你也是可以自己重发的。</p>
 <h4 id="消费端弄丢了数据"><a href="#消费端弄丢了数据" class="headerlink" title="消费端弄丢了数据"></a>消费端弄丢了数据</h4><p>RabbitMQ 如果丢失了数据，主要是因为你消费的时候，<strong>刚消费到，还没处理，结果进程挂了</strong>，比如重启了，那么就尴尬了，RabbitMQ 认为你都消费了，这数据就丢了。</p>
 <p>这个时候得用 RabbitMQ 提供的 <code>ack</code> 机制，简单来说，就是你必须关闭 RabbitMQ 的自动 <code>ack</code>，可以通过一个 api 来调用就行，然后每次你自己代码里确保处理完的时候，再在程序里 <code>ack</code> 一把。这样的话，如果你还没处理完，不就没有 <code>ack</code> 了？那 RabbitMQ 就认为你还没处理完，这个时候 RabbitMQ 会把这个消费分配给别的 consumer 去处理，消息是不会丢的。</p>
-<p><img src="/images/rabbitmq-message-lose-solution.png" alt="rabbitmq-message-lose-solution"></p>
+<p><img src="http://img.wanganyu1996.com//mq/rabbitmq-message-lose-solution.png" alt="rabbitmq-message-lose-solution"></p>
 <h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h4 id="消费端弄丢了数据-1"><a href="#消费端弄丢了数据-1" class="headerlink" title="消费端弄丢了数据"></a>消费端弄丢了数据</h4><p>唯一可能导致消费者弄丢数据的情况，就是说，你消费到了这个消息，然后消费者那边<strong>自动提交了 offset</strong>，让 Kafka 以为你已经消费好了这个消息，但其实你才刚准备处理这个消息，你还没处理，你自己就挂了，此时这条消息就丢咯。</p>
 <p>这不是跟 RabbitMQ 差不多吗，大家都知道 Kafka 会自动提交 offset，那么只要<strong>关闭自动提交</strong> offset，在处理完之后自己手动提交 offset，就可以保证数据不会丢。但是此时确实还是<strong>可能会有重复消费</strong>，比如你刚处理完，还没提交 offset，结果自己挂了，此时肯定会重复消费一次，自己保证幂等性就好了。</p>
 <p>生产环境碰到的一个问题，就是说我们的 Kafka 消费者消费到了数据之后是写到一个内存的 queue 里先缓冲一下，结果有的时候，你刚把消息写入内存 queue，然后消费者会自动提交 offset。然后此时我们重启了系统，就会导致内存 queue 里还没来得及处理的数据就丢失了。</p>
@@ -665,7 +678,7 @@ channel<span class="token punctuation">.</span>txCommit
                 <a href="/mq-knowledge/mq-time-delay-and-expired-failure.html">
                     <div class="card-image">
                         
-                        <img src="/img/wallhaven-118181.jpg" class="responsive-img" alt="如何解决消息队列的延时以及过期失效问题？">
+                        <img src="http://img.wanganyu1996.com//mq/mq-time-delay-and-expired-failure-285087.jpg" class="responsive-img" alt="如何解决消息队列的延时以及过期失效问题？">
                         
                         <span class="card-title">如何解决消息队列的延时以及过期失效问题？</span>
                     </div>
@@ -675,12 +688,16 @@ channel<span class="token punctuation">.</span>txCommit
 面试官心理分析你看这问法，其实本质针对的场景，都是说，可能你的消费端出了问题，不消费了；或者消费的速度极其慢。接着就坑爹了</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-09
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-12
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            若愚
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/消息队列/" class="post-category" target="_blank">
+                                    消息队列
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -706,7 +723,7 @@ channel<span class="token punctuation">.</span>txCommit
                 <a href="/mq-knowledge/how-to-ensure-the-order-of-messages.html">
                     <div class="card-image">
                         
-                        <img src="/img/wallhaven-726934.jpg" class="responsive-img" alt="如何保证消息的顺序性？">
+                        <img src="http://img.wanganyu1996.com//mq/how-to-ensure-the-order-of-messages-641373.png" class="responsive-img" alt="如何保证消息的顺序性？">
                         
                         <span class="card-title">如何保证消息的顺序性？</span>
                     </div>
@@ -717,12 +734,16 @@ channel<span class="token punctuation">.</span>txCommit
 面试题剖析我举个例子，我们以前做过一个 mysql bi</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-12-09
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-14
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            若愚
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/消息队列/" class="post-category" target="_blank">
+                                    消息队列
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -853,7 +874,7 @@ channel<span class="token punctuation">.</span>txCommit
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">17.7k</span>
+                <span class="white-color">18.5k</span>
             
 
             

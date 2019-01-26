@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
+    
+    <lastmod>2019-01-26T12:13:46.461Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-design.html</loc>
+    
+    <lastmod>2019-01-26T11:34:32.963Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</loc>
     
-    <lastmod>2019-01-24T15:39:15.402Z</lastmod>
+    <lastmod>2019-01-26T11:34:13.572Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html</loc>
+    
+    <lastmod>2019-01-26T11:34:00.387Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</loc>
+    
+    <lastmod>2019-01-26T11:33:31.352Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
     
-    <lastmod>2019-01-24T15:38:49.192Z</lastmod>
+    <lastmod>2019-01-26T11:33:19.710Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
+    
+    <lastmod>2019-01-26T11:22:12.104Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html</loc>
+    
+    <lastmod>2019-01-25T15:26:43.644Z</lastmod>
     
   </url>
   
@@ -19,41 +61,6 @@
     <loc>http://www.wanganyu1996.com/redis/redis-introduce.html</loc>
     
     <lastmod>2019-01-24T15:33:59.255Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html</loc>
-    
-    <lastmod>2019-01-23T15:10:09.215Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html</loc>
-    
-    <lastmod>2019-01-23T15:09:15.632Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
-    
-    <lastmod>2019-01-23T15:05:53.177Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</loc>
-    
-    <lastmod>2019-01-23T15:02:02.648Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
-    
-    <lastmod>2019-01-23T14:57:41.060Z</lastmod>
     
   </url>
   
