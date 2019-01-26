@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/redis/redis-persistence.html</loc>
+    
+    <lastmod>2019-01-26T15:00:44.230Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
     
-    <lastmod>2019-01-26T12:13:46.461Z</lastmod>
+    <lastmod>2019-01-26T13:02:01.172Z</lastmod>
     
   </url>
   

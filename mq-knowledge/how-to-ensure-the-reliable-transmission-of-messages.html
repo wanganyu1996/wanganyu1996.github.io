@@ -461,7 +461,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个是肯定的，用 MQ 有个基本原则，就是<strong>数据不能多一条，也不能少一条</strong>，不能多，就是前面说的<a href="/docs/high-concurrency/how-to-ensure-that-messages-are-not-repeatedly-consumed.md">重复消费和幂等性问题</a>。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。</p>
+<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个是肯定的，用 MQ 有个基本原则，就是<strong>数据不能多一条，也不能少一条</strong>，不能多，就是前面说的<a href="/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html">重复消费和幂等性问题</a>。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。</p>
 <p>如果说你这个是用 MQ 来传递非常核心的消息，比如说计费、扣费的一些消息，那必须确保这个 MQ 传递过程中<strong>绝对不会把计费消息给弄丢</strong>。</p>
 <h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>数据的丢失问题，可能出现在生产者、MQ、消费者中，咱们从 RabbitMQ 和 Kafka 分别来分析一下吧。</p>
 <h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><p><img src="http://img.wanganyu1996.com//mqrabbitmq-message-lose.png" alt="rabbitmq-message-lose"></p>
@@ -874,7 +874,7 @@ channel<span class="token punctuation">.</span>txCommit
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">18.5k</span>
+                <span class="white-color">20.5k</span>
             
 
             
