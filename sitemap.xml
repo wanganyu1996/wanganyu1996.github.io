@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
+    
+    <lastmod>2019-01-28T12:56:03.004Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-persistence.html</loc>
     
     <lastmod>2019-01-26T15:00:44.230Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</loc>
     
     <lastmod>2019-01-26T11:33:31.352Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
-    
-    <lastmod>2019-01-26T11:33:19.710Z</lastmod>
     
   </url>
   
