@@ -89,9 +89,9 @@
       
         <tags>
             
-            <tag> 消息队列 </tag>
-            
             <tag> 分布式 </tag>
+            
+            <tag> 消息队列 </tag>
             
         </tags>
       
@@ -116,9 +116,9 @@
       
         <tags>
             
-            <tag> 消息队列 </tag>
-            
             <tag> 分布式 </tag>
+            
+            <tag> 消息队列 </tag>
             
         </tags>
       
@@ -168,9 +168,9 @@
       
         <tags>
             
-            <tag> 消息队列 </tag>
-            
             <tag> 分布式 </tag>
+            
+            <tag> 消息队列 </tag>
             
         </tags>
       
@@ -245,9 +245,9 @@
       
         <tags>
             
-            <tag> 消息队列 </tag>
-            
             <tag> 分布式 </tag>
+            
+            <tag> 消息队列 </tag>
             
         </tags>
       
@@ -273,25 +273,6 @@
         <tags>
             
             <tag> Redis </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>[Database] Mysql常用命令</title>
-      <link href="/database/mysql-commonds.html"/>
-      <url>/database/mysql-commonds.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="1-系统管理"><a href="#1-系统管理" class="headerlink" title="1. 系统管理"></a>1. 系统管理</h2><h3 id="1-1-连接mysql"><a href="#1-1-连接mysql" class="headerlink" title="1.1. 连接mysql"></a>1.1. 连接mysql</h3><p>格式： mysql -h主机地址 -u用户名 －p用户密码</p><p>连接本地：mysql -h<code>localhost/127.0.0.1</code> -u用户名 －p用户密码</p><p>连接远程：mysql -h<code>主机地址</code> -u用户名 －p用户密码<br>退出连接：exit</p><h3 id="1-2-备份数据库"><a href="#1-2-备份数据库" class="headerlink" title="1.2. 备份数据库"></a>1.2. 备份数据库</h3><p><strong>1.导出整个数据库</strong></p><p>导出文件默认是存在mysql\bin目录下</p><p>mysqldump -u 用户名 -p 数据库名 ` 导出的文件名</p><p>mysqldump -u user_name -p123456 database_name ` outfile_name.sql</p><p><strong>2.导出一个表</strong></p><p>mysqldump -u 用户名 -p 数据库名 表名` 导出的文件名</p><p>mysqldump -u user_name -p database_name table_name ` outfile_name.sql</p><p><strong>3.导出一个数据库结构</strong></p><p>mysqldump -u user_name -p -d –add-drop-table database_name ` outfile_name.sql</p><p>-d 没有数据 –add-drop-table 在每个create语句之前增加一个drop table</p><p><strong>4.带语言参数导出</strong></p><p>mysqldump -uroot -p –default-character-set=latin1 –set-charset=gbk –skip-opt database_name ` outfile_name.sql</p><p><strong>5、导入数据库</strong></p><p>mysql -u root –p ` [备份文件的保存路径] 或者source [备份文件的保存路径]</p><h3 id="1-3-用户管理"><a href="#1-3-用户管理" class="headerlink" title="1.3. 用户管理"></a>1.3. 用户管理</h3><p><strong>1、创建用户</strong></p><p>​    create user ‘用户名‘@’IP地址’ identified by ‘密码’;</p><p><strong>2、删除用户</strong></p><p>​    drop user ‘用户名‘@’IP地址’;</p><p>​    delete from user where user=’用户名’ and host=’localhost’;</p><p><strong>3、修改用户</strong></p><p>​    rename user ‘用户名‘@’IP地址’; to ‘新用户名‘@’IP地址’;;</p><p><strong>4、修改密码</strong></p><p>​    set password for ‘用户名‘@’IP地址’ = Password(‘新密码’)</p><p>​    mysqladmin -u用户名 -p旧密码 password 新密码</p><h3 id="1-4-权限管理"><a href="#1-4-权限管理" class="headerlink" title="1.4. 权限管理"></a>1.4. 权限管理</h3><h4 id="1-4-1-grant"><a href="#1-4-1-grant" class="headerlink" title="1.4.1. grant"></a>1.4.1. grant</h4><p><strong>1、grant 权限 on 数据库对象 to 用户</strong></p><p>数据库对象的格式为<code>database</code>.<code>table</code>。<code>database</code>.<em>：表示授权数据库对象该数据库的所有表；</em>.*：表示授权数据库对象为所有数据库的所有表。</p><p>grant all privileges on <em>.</em> to <code>user</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;如果<code>ip</code>为’%’表示不限制IP。</p><p><strong>2、撤销权限</strong>：</p><p>revoke all on <em>.</em> from <code>user</code>@<code>ip</code>; </p><h4 id="1-4-2-普通数据库用户"><a href="#1-4-2-普通数据库用户" class="headerlink" title="1.4.2. 普通数据库用户"></a>1.4.2. 普通数据库用户</h4><p>查询、插入、更新、删除 数据库中所有表数据的权利</p><p>grant select, insert, update, delete on testdb.* to <code>user</code>@’<code>ip</code>‘;</p><h4 id="1-4-3-DBA-用户"><a href="#1-4-3-DBA-用户" class="headerlink" title="1.4.3. DBA 用户"></a>1.4.3. DBA 用户</h4><p><strong>1、授权</strong></p><p>grant all privileges on <em>.</em> to <code>dba</code>@’<code>ip</code>‘ identified by ‘<code>passwd</code>‘;</p><p><strong>2、刷新系统权限</strong></p><p>flush privileges;</p><h4 id="1-4-4-查看用户权限"><a href="#1-4-4-查看用户权限" class="headerlink" title="1.4.4. 查看用户权限"></a>1.4.4. 查看用户权限</h4><p>1、查看当前用户（自己）权限</p><p>show grants;</p><p>2、查看指定MySQL 用户权限</p><p>show grants for <code>user</code>@<code>localhost</code>;</p><p>3、查看user和host</p><p>select user,host from mysql.user order by user;</p><h4 id="1-4-5-权限列表"><a href="#1-4-5-权限列表" class="headerlink" title="1.4.5. 权限列表"></a>1.4.5. 权限列表</h4><p><img src="https://res.cloudinary.com/dqxtn0ick/image/upload/v1510578472/article/database/permission.jpg" alt="img"></p><h4 id="1-4-6-查看主从关系"><a href="#1-4-6-查看主从关系" class="headerlink" title="1.4.6. 查看主从关系"></a>1.4.6. 查看主从关系</h4><p>登录主机：show slave hosts;</p><p>登录从机：show slave status;</p><h2 id="2-数据库操作"><a href="#2-数据库操作" class="headerlink" title="2. 数据库操作"></a>2. 数据库操作</h2><p><strong>1、创建数据库</strong></p><p>create database <code>数据库名</code></p><p><strong>2、显示数据库</strong></p><p>show databases</p><p><strong>3、删除数据</strong></p><p>drop database <code>数据库名</code></p><h2 id="3-数据表操作"><a href="#3-数据表操作" class="headerlink" title="3. 数据表操作"></a>3. 数据表操作</h2><p><strong>1、创建表</strong></p><blockquote><p>create table 表名(</p><p>​    列名  类型  是否可以为空，</p><p>​    列名  类型  是否可以为空</p><p>)ENGINE=InnoDB DEFAULT CHARSET=utf8</p></blockquote><ul><li>默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值</li><li>自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）注意：1、对于自增列，必须是索引（含主键）2、对于自增可以设置步长和起始值</li><li>主键，一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。</li></ul><p><strong>2、查看表</strong></p><p>show tables;                    # 查看数据库全部表</p><p>select * from 表名;             # 查看表所有内容</p><p><strong>3、删除表</strong></p><p>drop table 表名</p><p><strong>4、清空表内容</strong></p><p>delete from 表名</p><p>truncate table 表名</p><p><strong>5、查看表结构</strong></p><p>desc 表名</p><p><strong>6、修改表</strong></p><blockquote><p>添加列：   alter table 表名 add 列名 类型</p><p>删除列：   alter table 表名 drop column 列名</p><p>修改列：</p><p>​          alter table 表名 modify column 列名 类型;  – 类型</p><p>​          alter table 表名 change 原列名 新列名 类型; – 列名，类型</p><p>添加主键：</p><p>​          alter table 表名 add primary key(列名);</p><p>删除主键：</p><p>​          alter table 表名 drop primary key;</p><p>​          alter table 表名  modify  列名 int, drop primary key;</p><p>添加外键： alter table 从表 add constraint 外键名称（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);</p><p>删除外键： alter table 表名 drop foreign key 外键名称</p><p>修改默认值：ALTER TABLE testalter_tbl ALTER i SET DEFAULT 1000;</p><p>删除默认值：ALTER TABLE testalter_tbl ALTER i DROP DEFAULT;</p></blockquote><h2 id="4-表内容操作"><a href="#4-表内容操作" class="headerlink" title="4. 表内容操作"></a>4. 表内容操作</h2><h3 id="4-1-增"><a href="#4-1-增" class="headerlink" title="4.1. 增"></a>4.1. 增</h3><blockquote><p>insert into 表 (列名,列名…) values (值,值,…)</p><p>insert into 表 (列名,列名…) values (值,值,…),(值,值,值…)</p><p>insert into 表 (列名,列名…) select (列名,列名…) from 表</p><p>例：</p><p>​    insert into tab1(name,email) values(‘zhangyanlin’,‘zhangyanlin8851@<a href="http://163.com/" target="_blank" rel="noopener">163.com</a>‘)</p></blockquote><h3 id="4-2-删"><a href="#4-2-删" class="headerlink" title="4.2. 删"></a>4.2. 删</h3><blockquote><p>delete from 表                                      # 删除表里全部数据</p><p>delete from 表 where id＝1 and name＝’zhangyanlin’   # 删除ID =1 和name=’zhangyanlin’ 那一行数据</p></blockquote><h3 id="4-3-改"><a href="#4-3-改" class="headerlink" title="4.3. 改"></a>4.3. 改</h3><blockquote><p>update 表 set name ＝ ‘zhangyanlin’ where id`1</p></blockquote><h3 id="4-4-查"><a href="#4-4-查" class="headerlink" title="4.4. 查"></a>4.4. 查</h3><blockquote><p>select * from 表</p><p>select * from 表 where id ` 1</p><p>select nid,name,gender as gg from 表 where id ` 1</p></blockquote><h3 id="4-5-条件判断"><a href="#4-5-条件判断" class="headerlink" title="4.5. 条件判断"></a>4.5. 条件判断</h3><h4 id="4-5-1-where"><a href="#4-5-1-where" class="headerlink" title="4.5.1. where"></a>4.5.1. where</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where id <span class="token string">`1 and name!='huwh' and num =12;select * from `</span>table<span class="token string">` where id between 5 and 6;select * from `</span>table<span class="token string">` where id in (11,22,33);select * from `</span>table<span class="token string">` where id not in (11,22,33);select * from `</span>table<span class="token string">` where id in (select nid from `</span>table`<span class="token punctuation">)</span></code></pre><h4 id="4-5-2-通配符like"><a href="#4-5-2-通配符like" class="headerlink" title="4.5.2. 通配符like"></a>4.5.2. 通配符like</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu%'</span><span class="token punctuation">;</span>   #hu开头<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> where name like <span class="token string">'hu_'</span>    #hu开头后接一个字符</code></pre><h4 id="4-5-3-限制limit"><a href="#4-5-3-限制limit" class="headerlink" title="4.5.3. 限制limit"></a>4.5.3. 限制limit</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span><span class="token punctuation">;</span>   #前<span class="token number">5</span>行<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span>  #从第四行开始的<span class="token number">5</span>行<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> limit <span class="token number">5</span> offset <span class="token number">4</span><span class="token punctuation">;</span>#从第四行开始的<span class="token number">5</span>行</code></pre><h4 id="4-5-4-排序asc，desc"><a href="#4-5-4-排序asc，desc" class="headerlink" title="4.5.4. 排序asc，desc"></a>4.5.4. 排序asc，desc</h4><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 asc<span class="token punctuation">;</span>            #跟据“列”从小到大排序（不指定默认为从小到大排序）<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列 desc<span class="token punctuation">;</span>           #根据“列”从大到小排序<span class="token keyword">select</span> <span class="token operator">*</span> from <span class="token string">`table`</span> order by 列<span class="token number">1</span> desc<span class="token punctuation">,</span>列<span class="token number">2</span> asc<span class="token punctuation">;</span>  #根据“列<span class="token number">1</span>”从大到小排序，如果相同则按“列<span class="token number">2</span>”从小到大排序</code></pre><h4 id="4-5-5-分组group-by"><a href="#4-5-5-分组group-by" class="headerlink" title="4.5.5. 分组group by"></a>4.5.5. 分组group by</h4><p>group by 必须在where之后，order by之前。</p><pre class=" language-go"><code class="language-go"><span class="token keyword">select</span> num<span class="token punctuation">,</span>from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span>     <span class="token keyword">select</span> num<span class="token punctuation">,</span>nid from <span class="token string">`table`</span> group by num<span class="token punctuation">,</span>nid<span class="token punctuation">;</span><span class="token keyword">select</span> num from <span class="token string">`table`</span> where nid <span class="token string">` 10 group by num,nid order nid desc;select num,nid,count(*),sum(score),max(score) from `</span>table<span class="token string">` group by num;select num from `</span>table<span class="token string">` group by num having max(id) `</span> <span class="token number">10</span><span class="token punctuation">;</span><span class="token keyword">select</span> num from <span class="token string">`table`</span> group by num<span class="token punctuation">;</span></code></pre>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Database </tag>
             
         </tags>
       
