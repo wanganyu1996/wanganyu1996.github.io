@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-high-availability-of-message-queues.html</loc>
+    
+    <lastmod>2019-02-09T14:10:50.913Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html</loc>
+    
+    <lastmod>2019-02-09T13:46:51.424Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
     
-    <lastmod>2019-02-05T15:27:47.974Z</lastmod>
+    <lastmod>2019-02-08T13:57:21.514Z</lastmod>
     
   </url>
   
@@ -16,7 +30,7 @@
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
     
     <lastmod>2019-01-28T12:56:03.004Z</lastmod>
     
@@ -30,44 +44,30 @@
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
     
     <lastmod>2019-01-26T13:02:01.172Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-design.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</loc>
     
     <lastmod>2019-01-26T11:34:32.963Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</loc>
-    
-    <lastmod>2019-01-26T11:34:13.572Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html</loc>
     
     <lastmod>2019-01-26T11:34:00.387Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</loc>
     
     <lastmod>2019-01-26T11:33:31.352Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
-    
-    <lastmod>2019-01-26T11:22:12.104Z</lastmod>
     
   </url>
   

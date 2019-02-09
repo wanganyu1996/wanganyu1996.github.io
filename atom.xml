@@ -103,7 +103,7 @@
     <link href="http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html"/>
     <id>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</id>
     <published>2018-11-18T13:55:00.000Z</published>
-    <updated>2019-02-05T15:27:47.974Z</updated>
+    <updated>2019-02-08T13:57:21.514Z</updated>
     
     <summary type="html">
     
@@ -126,8 +126,8 @@
   
   <entry>
     <title>如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/mq-design.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/mq-design.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</id>
     <published>2018-10-15T01:26:24.000Z</published>
     <updated>2019-01-26T11:34:32.963Z</updated>
     
@@ -155,10 +155,10 @@
   
   <entry>
     <title>如何保证消息队列的高可用？</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-high-availability-of-message-queues.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-high-availability-of-message-queues.html</id>
     <published>2018-10-12T01:26:24.000Z</published>
-    <updated>2019-01-26T11:34:13.572Z</updated>
+    <updated>2019-02-09T14:10:50.913Z</updated>
     
     <summary type="html">
     
@@ -184,8 +184,8 @@
   
   <entry>
     <title>如何解决消息队列的延时以及过期失效问题？</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html</id>
     <published>2018-09-12T01:26:24.000Z</published>
     <updated>2019-01-26T11:34:00.387Z</updated>
     
@@ -211,8 +211,8 @@
   
   <entry>
     <title>如何保证消息的可靠性传输？</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html</id>
     <published>2018-09-09T01:26:24.000Z</published>
     <updated>2019-01-26T13:02:01.172Z</updated>
     
@@ -240,8 +240,8 @@
   
   <entry>
     <title>如何保证消息的顺序性？</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</id>
     <published>2018-08-14T01:26:24.000Z</published>
     <updated>2019-01-26T11:33:31.352Z</updated>
     
@@ -267,8 +267,8 @@
   
   <entry>
     <title>如何保证消息不被重复消费</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</id>
     <published>2018-08-12T01:26:24.000Z</published>
     <updated>2019-01-28T12:56:03.004Z</updated>
     
@@ -294,10 +294,10 @@
   
   <entry>
     <title>为什么使用消息队列</title>
-    <link href="http://www.wanganyu1996.com/mq-knowledge/why-mq.html"/>
-    <id>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html</id>
     <published>2018-08-09T01:26:24.000Z</published>
-    <updated>2019-01-26T11:22:12.104Z</updated>
+    <updated>2019-02-09T13:46:51.424Z</updated>
     
     <summary type="html">
     

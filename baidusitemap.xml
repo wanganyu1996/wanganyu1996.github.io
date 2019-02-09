@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-high-availability-of-message-queues.html</loc>
+    <lastmod>2019-02-09</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html</loc>
+    <lastmod>2019-02-09</lastmod>
+  </url>  <url>
     <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
-    <lastmod>2019-02-05</lastmod>
+    <lastmod>2019-02-08</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/distributed-system/distributed-lock-redis-vs-zookeeper.html</loc>
     <lastmod>2019-02-01</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
     <lastmod>2019-01-28</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-persistence.html</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-design.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-high-availability-of-message-queues.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/mq-time-delay-and-expired-failure.html</loc>
-    <lastmod>2019-01-26</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/how-to-ensure-the-order-of-messages.html</loc>
-    <lastmod>2019-01-26</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/mq-knowledge/why-mq.html</loc>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html</loc>
