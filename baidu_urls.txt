@@ -1,4 +1,5 @@
 http://www.wanganyu1996.com/redis/redis-persistence.html
+http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html
 http://www.wanganyu1996.com/distributed-system/distributed-lock-redis-vs-zookeeper.html
 http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html
 http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html
