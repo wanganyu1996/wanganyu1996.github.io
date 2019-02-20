@@ -1,5 +1,5 @@
-http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html
 http://www.wanganyu1996.com/redis/redis-persistence.html
+http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html
 http://www.wanganyu1996.com/distributed-system/distributed-lock-redis-vs-zookeeper.html
 http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html
 http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html
@@ -11,3 +11,4 @@ http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.
 http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html
 http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html
 http://www.wanganyu1996.com/redis/redis-introduce.html
+http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html

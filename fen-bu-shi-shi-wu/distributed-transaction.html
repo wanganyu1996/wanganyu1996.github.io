@@ -453,7 +453,7 @@
 <p>这个方案，我们很少用，一般来说<strong>某个系统内部如果出现跨多个库</strong>的这么一个操作，是<strong>不合规</strong>的。我可以给大家介绍一下， 现在微服务，一个大的系统分成几十个甚至几百个服务。一般来说，我们的规定和规范，是要求<strong>每个服务只能操作自己对应的一个数据库</strong>。</p>
 <p>如果你要操作别的服务对应的库，不允许直连别的服务的库，违反微服务架构的规范，你随便交叉胡乱访问，几百个服务的话，全体乱套，这样的一套服务是没法管理的，没法治理的，可能会出现数据被别人改错，自己的库被别人写挂等情况。</p>
 <p>如果你要操作别人的服务的库，你必须是通过<strong>调用别的服务的接口</strong>来实现，绝对不允许交叉访问别人的数据库。</p>
-<p><img src="/images/distributed-transaction-XA.png" alt="distributed-transacion-XA"></p>
+<p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-XA.png" alt="distributed-transacion-XA"></p>
 <h3 id="TCC-方案"><a href="#TCC-方案" class="headerlink" title="TCC 方案"></a>TCC 方案</h3><p>TCC 的全称是：Try、Confirm、Cancel。</p>
 <ul>
 <li>Try 阶段：这个阶段说的是对各个服务的资源做检测以及对资源进行<strong>锁定或者预留</strong>。</li>
@@ -464,7 +464,7 @@
 <p>比如说我们，一般来说跟<strong>钱</strong>相关的，跟钱打交道的，<strong>支付</strong>、<strong>交易</strong>相关的场景，我们会用 TCC，严格保证分布式事务要么全部成功，要么全部自动回滚，严格保证资金的正确性，保证在资金上不会出现问题。</p>
 <p>而且最好是你的各个业务执行的时间都比较短。</p>
 <p>但是说实话，一般尽量别这么搞，自己手写回滚逻辑，或者是补偿逻辑，实在太恶心了，那个业务代码很难维护。</p>
-<p><img src="/images/distributed-transaction-TCC.png" alt="distributed-transacion-TCC"></p>
+<p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-TCC.png" alt="distributed-transacion-TCC"></p>
 <h3 id="本地消息表"><a href="#本地消息表" class="headerlink" title="本地消息表"></a>本地消息表</h3><p>本地消息表其实是国外的 ebay 搞出来的这么一套思想。</p>
 <p>这个大概意思是这样的：</p>
 <ol>
@@ -476,7 +476,7 @@
 <li>这个方案保证了最终一致性，哪怕 B 事务失败了，但是 A 会不断重发消息，直到 B 那边成功为止。</li>
 </ol>
 <p>这个方案说实话最大的问题就在于<strong>严重依赖于数据库的消息表来管理事务</strong>啥的，会导致如果是高并发场景咋办呢？咋扩展呢？所以一般确实很少用。</p>
-<p><img src="/images/distributed-transaction-local-message-table.png" alt="distributed-transaction-local-message-table"></p>
+<p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-local-message-table.png" alt="distributed-transaction-local-message-table"></p>
 <h3 id="可靠消息最终一致性方案"><a href="#可靠消息最终一致性方案" class="headerlink" title="可靠消息最终一致性方案"></a>可靠消息最终一致性方案</h3><p>这个的意思，就是干脆不要用本地的消息表了，直接基于 MQ 来实现事务。比如阿里的 RocketMQ 就支持消息事务。</p>
 <p>大概的意思就是：</p>
 <ol>
@@ -487,7 +487,7 @@
 <li>这个方案里，要是系统 B 的事务失败了咋办？重试咯，自动不断重试直到成功，如果实在是不行，要么就是针对重要的资金类业务进行回滚，比如 B 系统本地回滚后，想办法通知系统 A 也回滚；或者是发送报警由人工来手工回滚和补偿。</li>
 <li>这个还是比较合适的，目前国内互联网公司大都是这么玩儿的，要不你举用 RocketMQ 支持的，要不你就自己基于类似 ActiveMQ？RabbitMQ？自己封装一套类似的逻辑出来，总之思路就是这样子的。</li>
 </ol>
-<p><img src="/images/distributed-transaction-reliable-message.png" alt="distributed-transaction-reliable-message"></p>
+<p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-reliable-message.png" alt="distributed-transaction-reliable-message"></p>
 <h3 id="最大努力通知方案"><a href="#最大努力通知方案" class="headerlink" title="最大努力通知方案"></a>最大努力通知方案</h3><p>这个方案的大致意思就是：</p>
 <ol>
 <li>系统 A 本地事务执行完之后，发送个消息到 MQ；</li>
@@ -661,55 +661,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
-            <div class="card">
-                <a href="/fen-bu-shi-shi-wu/distributed-transaction.html">
-                    <div class="card-image">
-                        
-                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-746630.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
-                        
-                        <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">问题分布式事务了解吗？你们是如何解决分布式事务问题的？
-面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
-现在面试，分布式系统成了</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/分布式事务/" class="post-category" target="_blank">
-                                    分布式事务
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/分布式事务/" target="_blank">
-                        <span class="chip bg-color">分布式事务</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
                 <a href="/redis/redis-persistence.html">
                     <div class="card-image">
@@ -723,9 +675,9 @@
                     <div class="summary">面试题redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？
 面试官心理分析redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -740,6 +692,55 @@
                 </div>
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/distributed-system/distributed-lock-redis-vs-zookeeper.html">
+                    <div class="card-image">
+                        
+                        <img src="http://img.wanganyu1996.com//zookeeper/distributed-lock-redis-vs-zookeeper-695047.png" class="responsive-img" alt="分布式锁的两种实现方式及对比">
+                        
+                        <span class="card-title">分布式锁的两种实现方式及对比</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">面试题一般实现分布式锁都有哪些方式？使用 redis 如何设计分布式锁？使用 zk 来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？
+面试官心理分析其实一般问问题，都是这么问的，先问问你 zk，然后其实是要过度到 zk 关联的</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            若愚
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
+                    </a>
+                    
+                    <a href="/tags/Zookeeper/" target="_blank">
+                        <span class="chip bg-color">Zookeeper</span>
+                    </a>
                     
                     <a href="/tags/Redis/" target="_blank">
                         <span class="chip bg-color">Redis</span>
@@ -866,7 +867,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">27k</span>
+                <span class="white-color">27.8k</span>
             
 
             
