@@ -2,7 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</loc>
-    <lastmod>2019-02-20</lastmod>
+    <lastmod>2019-02-23</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</loc>
+    <lastmod>2019-02-23</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html</loc>
     <lastmod>2019-02-20</lastmod>
@@ -15,9 +18,6 @@
   </url>  <url>
     <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
     <lastmod>2019-02-08</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/distributed-system/distributed-lock-redis-vs-zookeeper.html</loc>
-    <lastmod>2019-02-01</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
     <lastmod>2019-01-28</lastmod>
@@ -36,9 +36,6 @@
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</loc>
     <lastmod>2019-01-26</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/distributed-system/zookeeper-application-scenarios.html</loc>
-    <lastmod>2019-01-25</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-introduce.html</loc>
     <lastmod>2019-01-24</lastmod>
