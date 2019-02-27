@@ -4,9 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="如何保证消息的可靠性传输？, 若愚博客">
-    <meta name="description" content="面试题如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？
-面试官心理分析这个是肯定的，用 MQ 有个基本原则，就是数据不能多一条，也不能少一条，不能多，就是前面说的重复消费和幂等性问题。不能少，就是说这数据别搞丢了。那这个问题你必须">
+    <meta name="keywords" content="MySQL主从复制原理, 若愚博客">
+    <meta name="description" content="面试题你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL 主从同步的延时问题？
+面试官心理分析高并发这个阶段，肯定是需要做读写分离的，啥意思？因为实际上大部分的互联网公">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>如何保证消息的可靠性传输？ | 若愚博客</title>
+    <title>MySQL主从复制原理 | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -284,13 +284,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('http://img.wanganyu1996.com//mq/wallhaven-712736.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('http://img.wanganyu1996.com//mysql/2207.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        如何保证消息的可靠性传输？
+                        MySQL主从复制原理
                     </div>
                 </div>
             </div>
@@ -386,8 +386,8 @@
                                 <span class="chip bg-color">分布式</span>
                             </a>
                         
-                            <a href="/tags/消息队列/" target="_blank">
-                                <span class="chip bg-color">消息队列</span>
+                            <a href="/tags/Mysql/" target="_blank">
+                                <span class="chip bg-color">Mysql</span>
                             </a>
                         
                     </div>
@@ -395,36 +395,27 @@
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/消息队列/" class="post-category" target="_blank">
-                                消息队列
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-09-09
+                    2019-01-12
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2.1k
+                        1.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        7 分
+                        4 分
                     </div>
                     
                 
@@ -440,56 +431,29 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个是肯定的，用 MQ 有个基本原则，就是<strong>数据不能多一条，也不能少一条</strong>，不能多，就是前面说的<a href="/mq-knowledge/how-to-ensure-that-messages-are-not-repeatedly-consumed.html">重复消费和幂等性问题</a>。不能少，就是说这数据别搞丢了。那这个问题你必须得考虑一下。</p>
-<p>如果说你这个是用 MQ 来传递非常核心的消息，比如说计费、扣费的一些消息，那必须确保这个 MQ 传递过程中<strong>绝对不会把计费消息给弄丢</strong>。</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>数据的丢失问题，可能出现在生产者、MQ、消费者中，咱们从 RabbitMQ 和 Kafka 分别来分析一下吧。</p>
-<h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><p><img src="http://img.wanganyu1996.com//mqrabbitmq-message-lose.png" alt="rabbitmq-message-lose"></p>
-<h4 id="生产者弄丢了数据"><a href="#生产者弄丢了数据" class="headerlink" title="生产者弄丢了数据"></a>生产者弄丢了数据</h4><p>生产者将数据发送到 RabbitMQ 的时候，可能数据就在半路给搞丢了，因为网络问题啥的，都有可能。</p>
-<p>此时可以选择用 RabbitMQ 提供的事务功能，就是生产者<strong>发送数据之前</strong>开启 RabbitMQ 事务<code>channel.txSelect</code>，然后发送消息，如果消息没有成功被 RabbitMQ 接收到，那么生产者会收到异常报错，此时就可以回滚事务<code>channel.txRollback</code>，然后重试发送消息；如果收到了消息，那么可以提交事务<code>channel.txCommit</code>。</p>
-<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 开启事务</span>
-channel<span class="token punctuation">.</span>txSelect
-<span class="token keyword">try</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 这里发送消息</span>
-<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    channel<span class="token punctuation">.</span>txRollback
-
-    <span class="token comment" spellcheck="true">// 这里再次重发这条消息</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">// 提交事务</span>
-channel<span class="token punctuation">.</span>txCommit
+                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL 主从同步的延时问题？</p>
+<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>高并发这个阶段，肯定是需要做读写分离的，啥意思？因为实际上大部分的互联网公司，一些网站，或者是 app，其实都是读多写少。所以针对这个情况，就是写一个主库，但是主库挂多个从库，然后从多个从库来读，那不就可以支撑更高的读并发压力了吗？</p>
+<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="如何实现-MySQL-的读写分离？"><a href="#如何实现-MySQL-的读写分离？" class="headerlink" title="如何实现 MySQL 的读写分离？"></a>如何实现 MySQL 的读写分离？</h3><p>其实很简单，就是基于主从复制架构，简单来说，就搞一个主库，挂多个从库，然后我们就单单只是写主库，然后主库会自动把数据给同步到从库上去。</p>
+<h3 id="MySQL-主从复制原理的是啥？"><a href="#MySQL-主从复制原理的是啥？" class="headerlink" title="MySQL 主从复制原理的是啥？"></a>MySQL 主从复制原理的是啥？</h3><p>主库将变更写入 binlog 日志，然后从库连接到主库之后，从库有一个 IO 线程，将主库的 binlog 日志拷贝到自己本地，写入一个 relay 中继日志中。接着从库中有一个 SQL 线程会从中继日志读取 binlog，然后执行 binlog 日志中的内容，也就是在自己本地再次执行一遍 SQL，这样就可以保证自己跟主库的数据是一样的。</p>
+<p><img src="http://img.wanganyu1996.com//mysql/mysql-master-slave.png" alt=""></p>
+<p>这里有一个非常重要的一点，就是从库同步主库数据的过程是串行化的，也就是说主库上并行的操作，在从库上会串行执行。所以这就是一个非常重要的点了，由于从库从主库拷贝日志以及串行执行 SQL 的特点，在高并发场景下，从库的数据一定会比主库慢一些，是<strong>有延时</strong>的。所以经常出现，刚写入主库的数据可能是读不到的，要过几十毫秒，甚至几百毫秒才能读取到。</p>
+<p>而且这里还有另外一个问题，就是如果主库突然宕机，然后恰好数据还没同步到从库，那么有些数据可能在从库上是没有的，有些数据可能就丢失了。</p>
+<p>所以 MySQL 实际上在这一块有两个机制，一个是<strong>半同步复制</strong>，用来解决主库数据丢失问题；一个是<strong>并行复制</strong>，用来解决主从同步延时问题。</p>
+<p>这个所谓<strong>半同步复制</strong>，也叫 <code>semi-sync</code> 复制，指的就是主库写入 binlog 日志之后，就会将<strong>强制</strong>此时立即将数据同步到从库，从库将日志写入自己本地的 relay log 之后，接着会返回一个 ack 给主库，主库接收到<strong>至少一个从库</strong>的 ack 之后才会认为写操作完成了。</p>
+<p>所谓<strong>并行复制</strong>，指的是从库开启多个线程，并行读取 relay log 中不同库的日志，然后<strong>并行重放不同库的日志</strong>，这是库级别的并行。</p>
+<h3 id="MySQL-主从同步延时问题（精华）"><a href="#MySQL-主从同步延时问题（精华）" class="headerlink" title="MySQL 主从同步延时问题（精华）"></a>MySQL 主从同步延时问题（精华）</h3><p>以前线上确实处理过因为主从同步延时问题而导致的线上的 bug，属于小型的生产事故。</p>
+<p>是这个么场景。有个同学是这样写代码逻辑的。先插入一条数据，再把它查出来，然后更新这条数据。在生产环境高峰期，写并发达到了 2000/s，这个时候，主从复制延时大概是在小几十毫秒。线上会发现，每天总有那么一些数据，我们期望更新一些重要的数据状态，但在高峰期时候却没更新。用户跟客服反馈，而客服就会反馈给我们。</p>
+<p>我们通过 MySQL 命令：</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">show</span> <span class="token keyword">status</span>
 </code></pre>
-<p>但是问题是，RabbitMQ 事务机制（同步）一搞，基本上<strong>吞吐量会下来，因为太耗性能</strong>。</p>
-<p>所以一般来说，如果你要确保说写 RabbitMQ 的消息别丢，可以开启 <code>confirm</code> 模式，在生产者那里设置开启 <code>confirm</code> 模式之后，你每次写的消息都会分配一个唯一的 id，然后如果写入了 RabbitMQ 中，RabbitMQ 会给你回传一个 <code>ack</code> 消息，告诉你说这个消息 ok 了。如果 RabbitMQ 没能处理这个消息，会回调你的一个 <code>nack</code> 接口，告诉你这个消息接收失败，你可以重试。而且你可以结合这个机制自己在内存里维护每个消息 id 的状态，如果超过一定时间还没接收到这个消息的回调，那么你可以重发。</p>
-<p>事务机制和 <code>cnofirm</code> 机制最大的不同在于，<strong>事务机制是同步的</strong>，你提交一个事务之后会<strong>阻塞</strong>在那儿，但是 <code>confirm</code> 机制是<strong>异步</strong>的，你发送个消息之后就可以发送下一个消息，然后那个消息 RabbitMQ 接收了之后会异步回调你的一个接口通知你这个消息接收到了。</p>
-<p>所以一般在生产者这块<strong>避免数据丢失</strong>，都是用 <code>confirm</code> 机制的。</p>
-<h4 id="RabbitMQ-弄丢了数据"><a href="#RabbitMQ-弄丢了数据" class="headerlink" title="RabbitMQ 弄丢了数据"></a>RabbitMQ 弄丢了数据</h4><p>就是 RabbitMQ 自己弄丢了数据，这个你必须<strong>开启 RabbitMQ 的持久化</strong>，就是消息写入之后会持久化到磁盘，哪怕是 RabbitMQ 自己挂了，<strong>恢复之后会自动读取之前存储的数据</strong>，一般数据不会丢。除非极其罕见的是，RabbitMQ 还没持久化，自己就挂了，<strong>可能导致少量数据丢失</strong>，但是这个概率较小。</p>
-<p>设置持久化有<strong>两个步骤</strong>：</p>
+<p>查看 <code>Seconds_Behind_Master</code>，可以看到从库复制主库的数据落后了几 ms。</p>
+<p>一般来说，如果主从延迟较为严重，有以下解决方案：</p>
 <ul>
-<li>创建 queue 的时候将其设置为持久化<br><br>这样就可以保证 RabbitMQ 持久化 queue 的元数据，但是它是不会持久化 queue 里的数据的。</li>
-<li>第二个是发送消息的时候将消息的 <code>deliveryMode</code> 设置为 2<br><br>就是将消息设置为持久化的，此时 RabbitMQ 就会将消息持久化到磁盘上去。</li>
+<li>分库，将一个主库拆分为多个主库，每个主库的写并发就减少了几倍，此时主从延迟可以忽略不计。</li>
+<li>打开 MySQL 支持的并行复制，多个库并行复制。如果说某个库的写入并发就是特别高，单库写并发达到了 2000/s，并行复制还是没意义。</li>
+<li>重写代码，写代码的同学，要慎重，插入数据时立马查询可能查不到。</li>
+<li>如果确实是存在必须先插入，立马要求就查询到，然后立马就要反过来执行一些操作，对这个查询<strong>设置直连主库</strong>。<strong>不推荐</strong>这种方法，你这么搞导致读写分离的意义就丧失了。</li>
 </ul>
-<p>必须要同时设置这两个持久化才行，RabbitMQ 哪怕是挂了，再次重启，也会从磁盘上重启恢复 queue，恢复这个 queue 里的数据。</p>
-<p>注意，哪怕是你给 RabbitMQ 开启了持久化机制，也有一种可能，就是这个消息写到了 RabbitMQ 中，但是还没来得及持久化到磁盘上，结果不巧，此时 RabbitMQ 挂了，就会导致内存里的一点点数据丢失。</p>
-<p>所以，持久化可以跟生产者那边的 <code>confirm</code> 机制配合起来，只有消息被持久化到磁盘之后，才会通知生产者 <code>ack</code> 了，所以哪怕是在持久化到磁盘之前，RabbitMQ 挂了，数据丢了，生产者收不到 <code>ack</code>，你也是可以自己重发的。</p>
-<h4 id="消费端弄丢了数据"><a href="#消费端弄丢了数据" class="headerlink" title="消费端弄丢了数据"></a>消费端弄丢了数据</h4><p>RabbitMQ 如果丢失了数据，主要是因为你消费的时候，<strong>刚消费到，还没处理，结果进程挂了</strong>，比如重启了，那么就尴尬了，RabbitMQ 认为你都消费了，这数据就丢了。</p>
-<p>这个时候得用 RabbitMQ 提供的 <code>ack</code> 机制，简单来说，就是你必须关闭 RabbitMQ 的自动 <code>ack</code>，可以通过一个 api 来调用就行，然后每次你自己代码里确保处理完的时候，再在程序里 <code>ack</code> 一把。这样的话，如果你还没处理完，不就没有 <code>ack</code> 了？那 RabbitMQ 就认为你还没处理完，这个时候 RabbitMQ 会把这个消费分配给别的 consumer 去处理，消息是不会丢的。</p>
-<p><img src="http://img.wanganyu1996.com//mq/rabbitmq-message-lose-solution.png" alt="rabbitmq-message-lose-solution"></p>
-<h3 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h3><h4 id="消费端弄丢了数据-1"><a href="#消费端弄丢了数据-1" class="headerlink" title="消费端弄丢了数据"></a>消费端弄丢了数据</h4><p>唯一可能导致消费者弄丢数据的情况，就是说，你消费到了这个消息，然后消费者那边<strong>自动提交了 offset</strong>，让 Kafka 以为你已经消费好了这个消息，但其实你才刚准备处理这个消息，你还没处理，你自己就挂了，此时这条消息就丢咯。</p>
-<p>这不是跟 RabbitMQ 差不多吗，大家都知道 Kafka 会自动提交 offset，那么只要<strong>关闭自动提交</strong> offset，在处理完之后自己手动提交 offset，就可以保证数据不会丢。但是此时确实还是<strong>可能会有重复消费</strong>，比如你刚处理完，还没提交 offset，结果自己挂了，此时肯定会重复消费一次，自己保证幂等性就好了。</p>
-<p>生产环境碰到的一个问题，就是说我们的 Kafka 消费者消费到了数据之后是写到一个内存的 queue 里先缓冲一下，结果有的时候，你刚把消息写入内存 queue，然后消费者会自动提交 offset。然后此时我们重启了系统，就会导致内存 queue 里还没来得及处理的数据就丢失了。</p>
-<h4 id="Kafka-弄丢了数据"><a href="#Kafka-弄丢了数据" class="headerlink" title="Kafka 弄丢了数据"></a>Kafka 弄丢了数据</h4><p>这块比较常见的一个场景，就是 Kafka 某个 broker 宕机，然后重新选举 partition 的 leader。大家想想，要是此时其他的 follower 刚好还有些数据没有同步，结果此时 leader 挂了，然后选举某个 follower 成 leader 之后，不就少了一些数据？这就丢了一些数据啊。</p>
-<p>生产环境也遇到过，我们也是，之前 Kafka 的 leader 机器宕机了，将 follower 切换为 leader 之后，就会发现说这个数据就丢了。</p>
-<p>所以此时一般是要求起码设置如下 4 个参数：</p>
-<ul>
-<li>给 topic 设置 <code>replication.factor</code> 参数：这个值必须大于 1，要求每个 partition 必须有至少 2 个副本。</li>
-<li>在 Kafka 服务端设置 <code>min.insync.replicas</code> 参数：这个值必须大于 1，这个是要求一个 leader 至少感知到有至少一个 follower 还跟自己保持联系，没掉队，这样才能确保 leader 挂了还有一个 follower 吧。</li>
-<li>在 producer 端设置 <code>acks=all</code>：这个是要求每条数据，必须是<strong>写入所有 replica 之后，才能认为是写成功了</strong>。</li>
-<li>在 producer 端设置 <code>retries=MAX</code>（很大很大很大的一个值，无限次重试的意思）：这个是<strong>要求一旦写入失败，就无限重试</strong>，卡在这里了。</li>
-</ul>
-<p>我们生产环境就是按照上述要求配置的，这样配置之后，至少在 Kafka broker 端就可以保证在 leader 所在 broker 发生故障，进行 leader 切换时，数据不会丢失。</p>
-<h4 id="生产者会不会弄丢数据？"><a href="#生产者会不会弄丢数据？" class="headerlink" title="生产者会不会弄丢数据？"></a>生产者会不会弄丢数据？</h4><p>如果按照上述的思路设置了 <code>acks=all</code>，一定不会丢，要求是，你的 leader 接收到消息，所有的 follower 都同步到了消息之后，才认为本次写成功了。如果没满足这个条件，生产者会自动不断的重试，重试无限次。</p>
 
             </div>
             <hr>
@@ -630,7 +594,7 @@ channel<span class="token punctuation">.</span>txCommit
                     </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html" class="b-link-green">如何保证消息的可靠性传输？</a>
+                    <a href="/mysql/mysql-read-write-separation.html" class="b-link-green">MySQL主从复制原理</a>
                 </p>
             </div>
         </div>
@@ -655,27 +619,28 @@ channel<span class="token punctuation">.</span>txCommit
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html">
+                <a href="/fen-bu-shi-shi-wu/distributed-transaction.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com//mq/mq-time-delay-and-expired-failure-285087.jpg" class="responsive-img" alt="如何解决消息队列的延时以及过期失效问题？">
+                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-746630.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
                         
-                        <span class="card-title">如何解决消息队列的延时以及过期失效问题？</span>
+                        <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？
-面试官心理分析你看这问法，其实本质针对的场景，都是说，可能你的消费端出了问题，不消费了；或者消费的速度极其慢。接着就坑爹了</div>
+                    <div class="summary">问题分布式事务了解吗？你们是如何解决分布式事务问题的？
+面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
+现在面试，分布式系统成了</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-12
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/消息队列/" class="post-category" target="_blank">
-                                    消息队列
+                            <a href="/categories/分布式事务/" class="post-category" target="_blank">
+                                    分布式事务
                                 </a>
                             
                             
@@ -685,8 +650,8 @@ channel<span class="token punctuation">.</span>txCommit
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/消息队列/" target="_blank">
-                        <span class="chip bg-color">消息队列</span>
+                    <a href="/tags/分布式事务/" target="_blank">
+                        <span class="chip bg-color">分布式事务</span>
                     </a>
                     
                 </div>
@@ -700,30 +665,25 @@ channel<span class="token punctuation">.</span>txCommit
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html">
+                <a href="/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com//mq/how-to-ensure-the-order-of-messages-641373.png" class="responsive-img" alt="如何保证消息的顺序性？">
+                        <img src="http://img.wanganyu1996.com//zookeeper/distributed-lock-redis-vs-zookeeper-695047.png" class="responsive-img" alt="分布式锁的两种实现方式及对比">
                         
-                        <span class="card-title">如何保证消息的顺序性？</span>
+                        <span class="card-title">分布式锁的两种实现方式及对比</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息的顺序性？
-面试官心理分析其实这个也是用 MQ 的时候必问的话题，第一看看你了不了解顺序这个事儿？第二看看你有没有办法保证消息是有顺序的？这是生产系统中常见的问题。
-面试题剖析我举个例子，我们以前做过一个 mysql bi</div>
+                    <div class="summary">面试题一般实现分布式锁都有哪些方式？使用 redis 如何设计分布式锁？使用 zk 来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？
+面试官心理分析其实一般问问题，都是这么问的，先问问你 zk，然后其实是要过度到 zk 关联的</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-14
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/消息队列/" class="post-category" target="_blank">
-                                    消息队列
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            若愚
                             
                         </span>
                     </div>
@@ -731,8 +691,16 @@ channel<span class="token punctuation">.</span>txCommit
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/消息队列/" target="_blank">
-                        <span class="chip bg-color">消息队列</span>
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
+                    </a>
+                    
+                    <a href="/tags/Zookeeper/" target="_blank">
+                        <span class="chip bg-color">Zookeeper</span>
+                    </a>
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
