@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</loc>
+    
+    <lastmod>2019-03-02T13:04:08.168Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</loc>
+    
+    <lastmod>2019-03-02T12:16:26.577Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html</loc>
+    
+    <lastmod>2019-03-02T12:02:49.101Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/redis/redis-zong-jie.html</loc>
+    
+    <lastmod>2019-03-02T12:02:32.811Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html</loc>
+    
+    <lastmod>2019-03-01T15:41:59.697Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
     
     <lastmod>2019-02-28T15:46:39.351Z</lastmod>
@@ -12,13 +47,6 @@
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</loc>
     
     <lastmod>2019-02-28T15:44:32.101Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html</loc>
-    
-    <lastmod>2019-02-28T15:44:22.800Z</lastmod>
     
   </url>
   
@@ -79,13 +107,6 @@
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-persistence.html</loc>
-    
-    <lastmod>2019-01-26T15:00:44.230Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html</loc>
     
     <lastmod>2019-01-26T11:34:00.387Z</lastmod>
@@ -96,13 +117,6 @@
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</loc>
     
     <lastmod>2019-01-26T11:33:31.352Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-introduce.html</loc>
-    
-    <lastmod>2019-01-24T15:33:59.255Z</lastmod>
     
   </url>
   

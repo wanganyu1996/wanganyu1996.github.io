@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</loc>
+    <lastmod>2019-03-02</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</loc>
+    <lastmod>2019-03-02</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html</loc>
+    <lastmod>2019-03-02</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/redis/redis-zong-jie.html</loc>
+    <lastmod>2019-03-02</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html</loc>
+    <lastmod>2019-03-01</lastmod>
+  </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
     <lastmod>2019-02-28</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</loc>
-    <lastmod>2019-02-28</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html</loc>
     <lastmod>2019-02-28</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</loc>
@@ -34,16 +46,10 @@
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</loc>
     <lastmod>2019-01-28</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-persistence.html</loc>
-    <lastmod>2019-01-26</lastmod>
-  </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html</loc>
     <lastmod>2019-01-26</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</loc>
     <lastmod>2019-01-26</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-introduce.html</loc>
-    <lastmod>2019-01-24</lastmod>
   </url>
 </urlset>

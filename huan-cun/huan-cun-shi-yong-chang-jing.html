@@ -4,9 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis 的持久化有哪几种方式？, 若愚博客">
-    <meta name="description" content="面试题redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？
-面试官心理分析redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 ">
+    <meta name="keywords" content="缓存使用场景介绍, 若愚博客">
+    <meta name="description" content="问题项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？
+面试官心理分析这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。
+只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis 的持久化有哪几种方式？ | 若愚博客</title>
+    <title>缓存使用场景介绍 | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -258,13 +259,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com//redis/redis-persistence-25.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/home/home.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis 的持久化有哪几种方式？
+                        缓存使用场景介绍
                     </div>
                 </div>
             </div>
@@ -356,8 +357,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/分布式/" target="_blank">
+                                <span class="chip bg-color">分布式</span>
+                            </a>
+                        
                             <a href="/tags/Redis/" target="_blank">
                                 <span class="chip bg-color">Redis</span>
+                            </a>
+                        
+                            <a href="/tags/缓存/" target="_blank">
+                                <span class="chip bg-color">缓存</span>
                             </a>
                         
                     </div>
@@ -387,14 +396,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        2k
+                        702
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        2 分
                     </div>
                     
                 
@@ -410,44 +419,27 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 redis 的持久化机制，将数据写入内存的同时，异步的慢慢的将数据写入磁盘文件里，进行持久化。</p>
-<p>如果 redis 宕机重启，自动从磁盘上加载之前持久化的一些数据就可以了，也许会丢失少许数据，但是至少不会将所有数据都弄丢。</p>
-<p>这个其实一样，针对的都是 redis 的生产环境可能遇到的一些问题，就是 redis 要是挂了再重启，内存里的数据不就全丢了？能不能重启的时候把数据给恢复了？</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>持久化主要是做灾难恢复、数据恢复，也可以归类到高可用的一个环节中去，比如你 redis 整个挂了，然后 redis 就不可用了，你要做的事情就是让 redis 变得可用，尽快变得可用。</p>
-<p>重启 redis，尽快让它堆外提供服务，如果没做数据备份，这时候 redis 启动了，也不可用啊，数据都没了。</p>
-<p>很可能说，大量的请求过来，缓存全部无法命中，在 redis 里根本找不到数据，这个时候就死定了，出现<strong>缓存雪崩</strong>问题。所有请求没有在 redis 命中，就会去 mysql 数据库这种数据源头中去找，一下子 mysql 承接高并发，然后就挂了…</p>
-<p>如果你把 redis 持久化做好，备份和恢复方案做到企业级的程度，那么即使你的 redis 故障了，也可以通过备份数据，快速恢复，一旦恢复立即对外提供服务。</p>
-<h3 id="redis-持久化的两种方式"><a href="#redis-持久化的两种方式" class="headerlink" title="redis 持久化的两种方式"></a>redis 持久化的两种方式</h3><ul>
-<li>RDB：RDB 持久化机制，是对 redis 中的数据执行<strong>周期性</strong>的持久化。</li>
-<li>AOF：AOF 机制对每条写入命令作为日志，以 <code>append-only</code> 的模式写入一个日志文件中，在 redis 重启的时候，可以通过<strong>回放</strong> AOF 日志中的写入指令来重新构建整个数据集。</li>
+                <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？</p>
+<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。</p>
+<p>只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？</p>
+<p>这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试官一个合理的解答，那面试官对你印象肯定不太好，觉得你平时思考太少，就知道干活儿。</p>
+<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="项目中缓存是如何使用的？"><a href="#项目中缓存是如何使用的？" class="headerlink" title="项目中缓存是如何使用的？"></a>项目中缓存是如何使用的？</h3><p>这个，需要结合自己项目的业务来。</p>
+<h3 id="为什么要用缓存？"><a href="#为什么要用缓存？" class="headerlink" title="为什么要用缓存？"></a>为什么要用缓存？</h3><p>用缓存，主要有两个用途：<strong>高性能</strong>、<strong>高并发</strong>。</p>
+<h4 id="高性能"><a href="#高性能" class="headerlink" title="高性能"></a>高性能</h4><p>假设这么个场景，你有个操作，一个请求过来，吭哧吭哧你各种乱七八糟操作 mysql，半天查出来一个结果，耗时 600ms。但是这个结果可能接下来几个小时都不会变了，或者变了也可以不用立即反馈给用户。那么此时咋办？</p>
+<p>缓存啊，折腾 600ms 查出来的结果，扔缓存里，一个 key 对应一个 value，下次再有人查，别走 mysql 折腾 600ms 了，直接从缓存里，通过一个 key 查出来一个 value，2ms 搞定。性能提升 300 倍。</p>
+<p>就是说对于一些需要复杂操作耗时查出来的结果，且确定后面不怎么变化，但是有很多读请求，那么结果直接放在缓存，后面直接读缓存就好。</p>
+<h4 id="高并发"><a href="#高并发" class="headerlink" title="高并发"></a>高并发</h4><p>mysql 这么重的数据库，压根儿设计不是让你玩儿高并发的，虽然也可以玩儿，但是天然支持不好。mysql 单机支撑到 <code>2000QPS</code> 也开始容易报警了。</p>
+<p>所以要是你有个系统，高峰期一秒钟过来的请求有 1万，那一个 mysql 单机绝对会死掉。你这个时候就只能上缓存，把很多数据放缓存，别放 mysql。缓存功能简单，说白了就是 key-value 式操作，单机支撑的并发量轻松一秒几万十几万，支撑高并发 so easy。单机承载并发量是 mysql 单机的几十倍。</p>
+<blockquote>
+<p>缓存是走内存的，内存天然就支撑高并发。</p>
+</blockquote>
+<h3 id="用了缓存之后会有什么不良后果？"><a href="#用了缓存之后会有什么不良后果？" class="headerlink" title="用了缓存之后会有什么不良后果？"></a>用了缓存之后会有什么不良后果？</h3><p>常见的缓存问题有以下几个：</p>
+<ul>
+<li><a href="/docs/high-concurrency/redis-consistence.md">缓存与数据库双写不一致</a></li>
+<li><a href="/docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md">缓存雪崩、缓存穿透</a></li>
+<li><a href="/docs/high-concurrency/redis-cas.md">缓存并发竞争</a></li>
 </ul>
-<p>通过 RDB 或 AOF，都可以将 redis 内存中的数据给持久化到磁盘上面来，然后可以将这些数据备份到别的地方去，比如说阿里云等云服务。</p>
-<p>如果 redis 挂了，服务器上的内存和磁盘上的数据都丢了，可以从云服务上拷贝回来之前的数据，放到指定的目录中，然后重新启动 redis，redis 就会自动根据持久化数据文件中的数据，去恢复内存中的数据，继续对外提供服务。</p>
-<p>如果同时使用 RDB 和 AOF 两种持久化机制，那么在 redis 重启的时候，会使用 <strong>AOF</strong> 来重新构建数据，因为 AOF 中的<strong>数据更加完整</strong>。</p>
-<h4 id="RDB-优缺点"><a href="#RDB-优缺点" class="headerlink" title="RDB 优缺点"></a>RDB 优缺点</h4><ul>
-<li>RDB会生成多个数据文件，每个数据文件都代表了某一个时刻中 redis 的数据，这种多个数据文件的方式，<strong>非常适合做冷备</strong>，可以将这种完整的数据文件发送到一些远程的安全存储上去，比如说 Amazon 的 S3 云服务上去，在国内可以是阿里云的 ODPS 分布式存储上，以预定好的备份策略来定期备份redis中的数据。</li>
-<li>RDB 对 redis 对外提供的读写服务，影响非常小，可以让 redis <strong>保持高性能</strong>，因为 redis 主进程只需要 fork 一个子进程，让子进程执行磁盘 IO 操作来进行 RDB 持久化即可。</li>
-<li><p>相对于 AOF 持久化机制来说，直接基于 RDB 数据文件来重启和恢复 redis 进程，更加快速。</p>
-</li>
-<li><p>如果想要在 redis 故障时，尽可能少的丢失数据，那么 RDB 没有 AOF 好。一般来说，RDB 数据快照文件，都是每隔 5 分钟，或者更长时间生成一次，这个时候就得接受一旦 redis 进程宕机，那么会丢失最近 5 分钟的数据。</p>
-</li>
-<li>RDB 每次在 fork 子进程来执行 RDB 快照数据文件生成的时候，如果数据文件特别大，可能会导致对客户端提供的服务暂停数毫秒，或者甚至数秒。</li>
-</ul>
-<h4 id="AOF-优缺点"><a href="#AOF-优缺点" class="headerlink" title="AOF 优缺点"></a>AOF 优缺点</h4><ul>
-<li>AOF 可以更好的保护数据不丢失，一般 AOF 会每隔 1 秒，通过一个后台线程执行一次<code>fsync</code>操作，最多丢失 1 秒钟的数据。</li>
-<li>AOF 日志文件以 <code>append-only</code> 模式写入，所以没有任何磁盘寻址的开销，写入性能非常高，而且文件不容易破损，即使文件尾部破损，也很容易修复。</li>
-<li>AOF 日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在 <code>rewrite</code> log 的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的 merge 后的日志文件 ready 的时候，再交换新老日志文件即可。</li>
-<li>AOF 日志文件的命令通过非常可读的方式进行记录，这个特性非常<strong>适合做灾难性的误删除的紧急恢复</strong>。比如某人不小心用 <code>flushall</code> 命令清空了所有数据，只要这个时候后台 <code>rewrite</code> 还没有发生，那么就可以立即拷贝 AOF 文件，将最后一条 <code>flushall</code> 命令给删了，然后再将该 <code>AOF</code> 文件放回去，就可以通过恢复机制，自动恢复所有数据。</li>
-<li>对于同一份数据来说，AOF 日志文件通常比 RDB 数据快照文件更大。</li>
-<li>AOF 开启后，支持的写 QPS 会比 RDB 支持的写 QPS 低，因为 AOF 一般会配置成每秒 <code>fsync</code> 一次日志文件，当然，每秒一次 <code>fsync</code>，性能也还是很高的。（如果实时写入，那么 QPS 会大降，redis 性能会大大降低）</li>
-<li>以前 AOF 发生过 bug，就是通过 AOF 记录的日志，进行数据恢复的时候，没有恢复一模一样的数据出来。所以说，类似 AOF 这种较为复杂的基于命令日志/merge/回放的方式，比基于 RDB 每次持久化一份完整的数据快照文件的方式，更加脆弱一些，容易有 bug。不过 AOF 就是为了避免 rewrite 过程导致的 bug，因此每次 rewrite 并不是基于旧的指令日志进行 merge 的，而是<strong>基于当时内存中的数据进行指令的重新构建</strong>，这样健壮性会好很多。</li>
-</ul>
-<h3 id="RDB和AOF到底该如何选择"><a href="#RDB和AOF到底该如何选择" class="headerlink" title="RDB和AOF到底该如何选择"></a>RDB和AOF到底该如何选择</h3><ul>
-<li>不要仅仅使用 RDB，因为那样会导致你丢失很多数据</li>
-<li>也不要仅仅使用 AOF，因为那样有两个问题，第一，你通过 AOF 做冷备，没有 RDB 做冷备，来的恢复速度更快; 第二，RDB 每次简单粗暴生成数据快照，更加健壮，可以避免 AOF 这种复杂的备份和恢复机制的 bug。</li>
-<li>redis 支持同时开启开启两种持久化方式，我们可以综合使用 AOF 和 RDB 两种持久化机制，用 AOF 来保证数据不丢失，作为数据恢复的第一选择; 用 RDB 来做不同程度的冷备，在 AOF 文件都丢失或损坏不可用的时候，还可以使用 RDB 来进行快速的数据恢复。</li>
-</ul>
+<p>后面再详细说明。</p>
 
             </div>
             <hr>
@@ -595,7 +587,7 @@
                     </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/redis/redis-persistence.html" class="b-link-green">redis 的持久化有哪几种方式？</a>
+                    <a href="/huan-cun/huan-cun-shi-yong-chang-jing.html" class="b-link-green">缓存使用场景介绍</a>
                 </p>
             </div>
         </div>
@@ -618,10 +610,55 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/fen-bu-shi-shi-wu/distributed-transaction.html">
+                    <div class="card-image">
+                        
+                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-746630.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
+                        
+                        <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary">问题分布式事务了解吗？你们是如何解决分布式事务问题的？
+面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
+现在面试，分布式系统成了</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/分布式事务/" class="post-category" target="_blank">
+                                    分布式事务
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/分布式事务/" target="_blank">
+                        <span class="chip bg-color">分布式事务</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/redis/redis-persistence.html">
+                <a href="/redis/redis-chi-jiu-hua.html">
                     <div class="card-image">
                         
                         <img src="http://img.wanganyu1996.com//redis/redis-persistence-25.jpg" class="responsive-img" alt="redis 的持久化有哪几种方式？">
@@ -648,58 +685,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/Redis/" target="_blank">
                         <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/fen-bu-shi-shi-wu/distributed-transaction.html">
-                    <div class="card-image">
-                        
-                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/distributed-transaction-746630.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
-                        
-                        <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">问题分布式事务了解吗？你们是如何解决分布式事务问题的？
-面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
-现在面试，分布式系统成了</div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/分布式事务/" class="post-category" target="_blank">
-                                    分布式事务
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/分布式事务/" target="_blank">
-                        <span class="chip bg-color">分布式事务</span>
                     </a>
                     
                 </div>
@@ -823,7 +813,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">31.4k</span>
+                <span class="white-color">33.2k</span>
             
 
             
