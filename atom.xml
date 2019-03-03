@@ -48,33 +48,6 @@
   </entry>
   
   <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-03-02T12:02:49.101Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
     <title>分布式事务的的五种解决方案及优劣对比</title>
     <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html"/>
     <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html</id>
@@ -98,6 +71,33 @@
     
     
       <category term="分布式事务" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-03-02T12:02:49.101Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   

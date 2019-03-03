@@ -8,8 +8,22 @@
  </head>
  <body>
   <div id="app"></div>
-  <script type="text/javascript" src="./static/js/manifest.2ea7f203776a45017ade.js"></script>
+  <script type="text/javascript" src="./static/js/manifest.4d58ce573a8228781f25.js"></script>
   <script type="text/javascript" src="./static/js/vendor.1238791dbc82476562b4.js"></script>
-  <script type="text/javascript" src="./static/js/app.d91d1f55d04f25eb32ee.js"></script>
+  <script type="text/javascript" src="./static/js/app.447b8ebfb3f03a0ea49d.js"></script> 
  </body>
 </html>
+
+
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = 'd849716abb5c157a569d0d0475f7c2c54b35ec7bd09b7b46467a30376c3dcb02';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
