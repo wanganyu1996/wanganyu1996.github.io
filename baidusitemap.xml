@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard-method.html</loc>
+    <lastmod>2019-03-04</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html</loc>
+    <lastmod>2019-03-04</lastmod>
+  </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</loc>
     <lastmod>2019-03-02</lastmod>
   </url>  <url>
@@ -12,9 +18,6 @@
   </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-zong-jie.html</loc>
     <lastmod>2019-03-02</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html</loc>
-    <lastmod>2019-03-01</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html</loc>
     <lastmod>2019-02-28</lastmod>

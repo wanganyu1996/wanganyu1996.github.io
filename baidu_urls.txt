@@ -1,5 +1,5 @@
-http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html
 http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html
+http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html
 http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html
 http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html
 http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html
@@ -15,3 +15,4 @@ http://www.wanganyu1996.com/redis/redis-zong-jie.html
 http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html
 http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html
 http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html
+http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard-method.html

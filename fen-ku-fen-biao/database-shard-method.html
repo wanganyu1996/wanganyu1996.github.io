@@ -4,12 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。, 若愚博客">
-    <meta name="description" content="面试题如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。
-面试官心理分析其实聊到这个问题，一般面试官要考察两块：
-
-你有没有对某一个消息队列做过较为深入的原理的了解，或者从整体了解把握住一个消息队列的架构原理。
-看看你的设计能力，">
+    <meta name="keywords" content="如何设计才可以让系统从未分库分表动态切换到分库分表上？, 若愚博客">
+    <meta name="description" content="问题现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？
+面试官心理分析你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。 | 若愚博客</title>
+    <title>如何设计才可以让系统从未分库分表动态切换到分库分表上？ | 若愚博客</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -274,13 +271,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com//mq/mq-design-637140.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/326780-P9JGF8-718.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。
+                        如何设计才可以让系统从未分库分表动态切换到分库分表上？
                     </div>
                 </div>
             </div>
@@ -376,8 +373,12 @@
                                 <span class="chip bg-color">分布式</span>
                             </a>
                         
-                            <a href="/tags/消息队列/" target="_blank">
-                                <span class="chip bg-color">消息队列</span>
+                            <a href="/tags/MySQL/" target="_blank">
+                                <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                            <a href="/tags/分库分表/" target="_blank">
+                                <span class="chip bg-color">分库分表</span>
                             </a>
                         
                     </div>
@@ -388,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/消息队列/" class="post-category" target="_blank">
-                                消息队列
+                            <a href="/categories/分库分表/" class="post-category" target="_blank">
+                                分库分表
                             </a>
                         
                     </div>
@@ -400,14 +401,14 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-10-15
+                    2017-01-13
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        779
+                        860
                     </div>
                     
 
@@ -430,26 +431,22 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>其实聊到这个问题，一般面试官要考察两块：</p>
-<ul>
-<li>你有没有对某一个消息队列做过较为深入的原理的了解，或者从整体了解把握住一个消息队列的架构原理。</li>
-<li>看看你的设计能力，给你一个常见的系统，就是消息队列系统，看看你能不能从全局把握一下整体架构设计，给出一些关键点出来。</li>
-</ul>
-<p>说实话，问类似问题的时候，大部分人基本都会蒙，因为平时从来没有思考过类似的问题，大多数人就是平时埋头用，从来不去思考背后的一些东西。类似的问题，比如，如果让你来设计一个 Spring 框架你会怎么做？如果让你来设计一个 Dubbo 框架你会怎么做？如果让你来设计一个 MyBatis 框架你会怎么做？</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>其实回答这类问题，说白了，不求你看过那技术的源码，起码你要大概知道那个技术的基本原理、核心组成部分、基本架构构成，然后参照一些开源的技术把一个系统设计出来的思路说一下就好。</p>
-<p>比如说这个消息队列系统，我们从以下几个角度来考虑一下：</p>
-<ul>
-<li><p>首先这个 mq 得支持可伸缩性吧，就是需要的时候快速扩容，就可以增加吞吐量和容量，那怎么搞？设计个分布式的系统呗，参照一下 kafka 的设计理念，broker -&gt; topic -&gt; partition，每个 partition 放一个机器，就存一部分数据。如果现在资源不够了，简单啊，给 topic 增加 partition，然后做数据迁移，增加机器，不就可以存放更多数据，提供更高的吞吐量了？</p>
-</li>
-<li><p>其次你得考虑一下这个 mq 的数据要不要落地磁盘吧？那肯定要了，落磁盘才能保证别进程挂了数据就丢了。那落磁盘的时候怎么落啊？顺序写，这样就没有磁盘随机读写的寻址开销，磁盘顺序读写的性能是很高的，这就是 kafka 的思路。</p>
-</li>
-<li><p>其次你考虑一下你的 mq 的可用性啊？这个事儿，具体参考之前可用性那个环节讲解的 kafka 的高可用保障机制。多副本 -&gt; leader &amp; follower -&gt; broker 挂了重新选举 leader 即可对外服务。</p>
-</li>
-<li><p>能不能支持数据 0 丢失啊？可以的，参考我们之前说的那个 kafka 数据零丢失方案。</p>
-</li>
-</ul>
-<p>mq 肯定是很复杂的，面试官问你这个问题，其实是个开放题，他就是看看你有没有从架构角度整体构思和设计的思维以及能力。确实这个问题可以刷掉一大批人，因为大部分人平时不思考这些东西。</p>
+                <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表<strong>动态切换</strong>到分库分表上？</p>
+<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直拆分、分表），那问题来了，你接下来该怎么把你那个单库单表的系统给迁移到分库分表上去？</p>
+<p>所以这都是一环扣一环的，就是看你有没有全流程经历过这个过程。</p>
+<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>这个其实从 low 到高大上有好几种方案，我们都玩儿过，我都给你说一下。</p>
+<h3 id="停机迁移方案"><a href="#停机迁移方案" class="headerlink" title="停机迁移方案"></a>停机迁移方案</h3><p>我先给你说一个最 low 的方案，就是很简单，大家伙儿凌晨 12 点开始运维，网站或者 app 挂个公告，说 0 点到早上 6 点进行运维，无法访问。</p>
+<p>接着到 0 点停机，系统停掉，没有流量写入了，此时老的单库单表数据库静止了。然后你之前得写好一个<strong>导数的一次性工具</strong>，此时直接跑起来，然后将单库单表的数据哗哗哗读出来，写到分库分表里面去。</p>
+<p>导数完了之后，就 ok 了，修改系统的数据库连接配置啥的，包括可能代码和 SQL 也许有修改，那你就用最新的代码，然后直接启动连到新的分库分表上去。</p>
+<p>验证一下，ok了，完美，大家伸个懒腰，看看看凌晨 4 点钟的北京夜景，打个滴滴回家吧。</p>
+<p>但是这个方案比较 low，谁都能干，我们来看看高大上一点的方案。</p>
+<p><img src="/images/database-shard-method-1.png" alt="database-shard-method-1"></p>
+<h3 id="双写迁移方案"><a href="#双写迁移方案" class="headerlink" title="双写迁移方案"></a>双写迁移方案</h3><p>这个是我们常用的一种迁移方案，比较靠谱一些，不用停机，不用看北京凌晨 4 点的风景。</p>
+<p>简单来说，就是在线上系统里面，之前所有写库的地方，增删改操作，<strong>除了对老库增删改，都加上对新库的增删改</strong>，这就是所谓的<strong>双写</strong>，同时写俩库，老库和新库。</p>
+<p>然后<strong>系统部署</strong>之后，新库数据差太远，用之前说的导数工具，跑起来读老库数据写新库，写的时候要根据 gmt_modified 这类字段判断这条数据最后修改的时间，除非是读出来的数据在新库里没有，或者是比新库的数据新才会写。简单来说，就是不允许用老数据覆盖新数据。</p>
+<p>导完一轮之后，有可能数据还是存在不一致，那么就程序自动做一轮校验，比对新老库每个表的每条数据，接着如果有不一样的，就针对那些不一样的，从老库读数据再次写。反复循环，直到两个库每个表的数据都完全一致为止。</p>
+<p>接着当数据完全一致了，就 ok 了，基于仅仅使用分库分表的最新代码，重新部署一次，不就仅仅基于分库分表在操作了么，还没有几个小时的停机时间，很稳。所以现在基本玩儿数据迁移之类的，都是这么干的。</p>
+<p><img src="/images/database-shard-method-2.png" alt="database-shard-method-2"></p>
 
             </div>
             <hr>
@@ -597,7 +594,7 @@
                     </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/xiao-xi-dui-lie/mq-design.html" class="b-link-green">如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。</a>
+                    <a href="/fen-ku-fen-biao/database-shard-method.html" class="b-link-green">如何设计才可以让系统从未分库分表动态切换到分库分表上？</a>
                 </p>
             </div>
         </div>
@@ -622,26 +619,27 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/duo-xian-cheng/cpu-duo-ji-huan-cun.html">
+                <a href="/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html">
                     <div class="card-image">
                         
-                        <img src="/img/wallhaven-535202.jpg" class="responsive-img" alt="CPU多级缓存">
+                        <img src="http://img.wanganyu1996.com//zookeeper/588938-PMEDDW-884.jpg" class="responsive-img" alt="zookeeper 都有哪些使用场景">
                         
-                        <span class="card-title">CPU多级缓存</span>
+                        <span class="card-title">zookeeper 都有哪些使用场景</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一、什么是CPU缓存1. CPU缓存的来历众所周知,CPU是计算机的大脑，它负责执行程序的指令，而内存负责存数据, 包括程序自身的数据。在很多年前，CPU的频率与内存总线的频率在同一层面上。内存的访问速度仅比寄存器慢一些。但是，这一局面在上</div>
+                    <div class="summary">面试题zookeeper 都有哪些使用场景？
+面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-11-18
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/多线程/" class="post-category" target="_blank">
-                                    多线程
+                            <a href="/categories/Zookeeper/" class="post-category" target="_blank">
+                                    Zookeeper
                                 </a>
                             
                             
@@ -651,8 +649,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CPU缓存/" target="_blank">
-                        <span class="chip bg-color">CPU缓存</span>
+                    <a href="/tags/Zookeeper/" target="_blank">
+                        <span class="chip bg-color">Zookeeper</span>
                     </a>
                     
                 </div>
@@ -663,37 +661,37 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/xiao-xi-dui-lie/how-to-ensure-high-availability-of-message-queues.html">
+                <a href="/fen-ku-fen-biao/database-shard-method.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com//mq/how-to-ensure-high-availability-of-message-queues-13468.jpg" class="responsive-img" alt="如何保证消息队列的高可用？">
+                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/326780-P9JGF8-718.jpg" class="responsive-img" alt="如何设计才可以让系统从未分库分表动态切换到分库分表上？">
                         
-                        <span class="card-title">如何保证消息队列的高可用？</span>
+                        <span class="card-title">如何设计才可以让系统从未分库分表动态切换到分库分表上？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息队列的高可用？
-面试官心理分析如果有人问到你 MQ 的知识，高可用是必问的。上一讲提到，MQ 会导致系统可用性降低。所以只要你用了 MQ，接下来问的一些要点肯定就是围绕着 MQ 的那些缺点怎么来解决了。
-要是你傻乎乎的就干</div>
+                    <div class="summary">问题现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？
+面试官心理分析你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/消息队列/" class="post-category" target="_blank">
-                                    消息队列
+                            <a href="/categories/分库分表/" class="post-category" target="_blank">
+                                    分库分表
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -701,8 +699,12 @@
                         <span class="chip bg-color">分布式</span>
                     </a>
                     
-                    <a href="/tags/消息队列/" target="_blank">
-                        <span class="chip bg-color">消息队列</span>
+                    <a href="/tags/MySQL/" target="_blank">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
+                    <a href="/tags/分库分表/" target="_blank">
+                        <span class="chip bg-color">分库分表</span>
                     </a>
                     
                 </div>
