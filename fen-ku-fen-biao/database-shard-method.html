@@ -440,13 +440,13 @@
 <p>导数完了之后，就 ok 了，修改系统的数据库连接配置啥的，包括可能代码和 SQL 也许有修改，那你就用最新的代码，然后直接启动连到新的分库分表上去。</p>
 <p>验证一下，ok了，完美，大家伸个懒腰，看看看凌晨 4 点钟的北京夜景，打个滴滴回家吧。</p>
 <p>但是这个方案比较 low，谁都能干，我们来看看高大上一点的方案。</p>
-<p><img src="/images/database-shard-method-1.png" alt="database-shard-method-1"></p>
+<p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard-method-1.png" alt=""></p>
 <h3 id="双写迁移方案"><a href="#双写迁移方案" class="headerlink" title="双写迁移方案"></a>双写迁移方案</h3><p>这个是我们常用的一种迁移方案，比较靠谱一些，不用停机，不用看北京凌晨 4 点的风景。</p>
 <p>简单来说，就是在线上系统里面，之前所有写库的地方，增删改操作，<strong>除了对老库增删改，都加上对新库的增删改</strong>，这就是所谓的<strong>双写</strong>，同时写俩库，老库和新库。</p>
 <p>然后<strong>系统部署</strong>之后，新库数据差太远，用之前说的导数工具，跑起来读老库数据写新库，写的时候要根据 gmt_modified 这类字段判断这条数据最后修改的时间，除非是读出来的数据在新库里没有，或者是比新库的数据新才会写。简单来说，就是不允许用老数据覆盖新数据。</p>
 <p>导完一轮之后，有可能数据还是存在不一致，那么就程序自动做一轮校验，比对新老库每个表的每条数据，接着如果有不一样的，就针对那些不一样的，从老库读数据再次写。反复循环，直到两个库每个表的数据都完全一致为止。</p>
 <p>接着当数据完全一致了，就 ok 了，基于仅仅使用分库分表的最新代码，重新部署一次，不就仅仅基于分库分表在操作了么，还没有几个小时的停机时间，很稳。所以现在基本玩儿数据迁移之类的，都是这么干的。</p>
-<p><img src="/images/database-shard-method-2.png" alt="database-shard-method-2"></p>
+<p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard-method-2.png" alt=""></p>
 
             </div>
             <hr>
@@ -661,20 +661,20 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/fen-ku-fen-biao/database-shard-method.html">
+                <a href="/fen-ku-fen-biao/database-shard.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/326780-P9JGF8-718.jpg" class="responsive-img" alt="如何设计才可以让系统从未分库分表动态切换到分库分表上？">
+                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/4619.jpg" class="responsive-img" alt="为什么要分库分表？">
                         
-                        <span class="card-title">如何设计才可以让系统从未分库分表动态切换到分库分表上？</span>
+                        <span class="card-title">为什么要分库分表？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">问题现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？
-面试官心理分析你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直</div>
+                    <div class="summary">面试题为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？
+面试官心理分析其实这块肯定是扯到高并发了，因为分库分</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
@@ -691,7 +691,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
