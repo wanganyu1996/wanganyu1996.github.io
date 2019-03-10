@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wanganyu1996.com/"/>
-  <updated>2019-03-02T12:02:49.101Z</updated>
+  <updated>2019-03-02T12:16:26.577Z</updated>
   <id>http://www.wanganyu1996.com/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-03-02T12:02:49.101Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
   
   <entry>
     <title>缓存使用场景介绍</title>
@@ -66,9 +39,9 @@
       <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
     
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
     
@@ -149,9 +122,9 @@
     </summary>
     
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
@@ -184,11 +157,11 @@
   </entry>
   
   <entry>
-    <title>如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。</title>
+    <title>如果进行消息队列的架构设计？</title>
     <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html"/>
     <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</id>
     <published>2018-10-15T01:26:24.000Z</published>
-    <updated>2019-02-28T15:44:32.101Z</updated>
+    <updated>2019-03-10T14:36:25.198Z</updated>
     
     <summary type="html">
     
@@ -196,8 +169,8 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如果进行消息队列的架构设计？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
         
       
     
@@ -214,10 +187,10 @@
   
   <entry>
     <title>如何保证消息队列的高可用？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-high-availability-of-message-queues.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-high-availability-of-message-queues.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-dui-lie-de-gao-ke-yong.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-dui-lie-de-gao-ke-yong.html</id>
     <published>2018-10-12T01:26:24.000Z</published>
-    <updated>2019-02-09T14:10:50.913Z</updated>
+    <updated>2019-03-10T14:30:43.100Z</updated>
     
     <summary type="html">
     
@@ -243,10 +216,10 @@
   
   <entry>
     <title>如何解决消息队列的延时以及过期失效问题？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-time-delay-and-expired-failure.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-jie-jue-xiao-xi-dui-lie-de-yan-shi-yi-ji-guo-qi-shi-xiao-wen-ti.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-jie-jue-xiao-xi-dui-lie-de-yan-shi-yi-ji-guo-qi-shi-xiao-wen-ti.html</id>
     <published>2018-09-12T01:26:24.000Z</published>
-    <updated>2019-01-26T11:34:00.387Z</updated>
+    <updated>2019-03-10T14:30:54.215Z</updated>
     
     <summary type="html">
     
@@ -270,10 +243,10 @@
   
   <entry>
     <title>如何保证消息的可靠性传输？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-reliable-transmission-of-messages.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-ke-kao-xing-chuan-shu.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-ke-kao-xing-chuan-shu.html</id>
     <published>2018-09-09T01:26:24.000Z</published>
-    <updated>2019-02-28T15:46:39.351Z</updated>
+    <updated>2019-03-10T14:31:48.320Z</updated>
     
     <summary type="html">
     
@@ -326,10 +299,10 @@
   
   <entry>
     <title>如何保证消息不被重复消费</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-that-messages-are-not-repeatedly-consumed.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html</id>
     <published>2018-08-12T01:26:24.000Z</published>
-    <updated>2019-01-28T12:56:03.004Z</updated>
+    <updated>2019-03-10T14:31:14.224Z</updated>
     
     <summary type="html">
     
@@ -384,7 +357,7 @@
     <link href="http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html"/>
     <id>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</id>
     <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-03-02T13:04:08.168Z</updated>
+    <updated>2019-03-10T14:17:26.162Z</updated>
     
     <summary type="html">
     
@@ -429,33 +402,6 @@
     
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>zookeeper 都有哪些使用场景</title>
-    <link href="http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html"/>
-    <id>http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</id>
-    <published>2017-01-13T02:50:57.000Z</published>
-    <updated>2019-02-23T12:18:53.124Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;zookeeper 都有哪些使用场景？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/categories/Zookeeper/"/>
-    
-    
-      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
   </entry>
   
@@ -516,6 +462,33 @@
       <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
     
       <category term="分库分表" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zookeeper 都有哪些使用场景</title>
+    <link href="http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html"/>
+    <id>http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</id>
+    <published>2017-01-13T02:50:57.000Z</published>
+    <updated>2019-02-23T12:18:53.124Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;zookeeper 都有哪些使用场景？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/categories/Zookeeper/"/>
+    
+    
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
   </entry>
   
