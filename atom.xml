@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wanganyu1996.com/"/>
-  <updated>2019-03-02T12:16:26.577Z</updated>
+  <updated>2019-03-17T01:41:09.061Z</updated>
   <id>http://www.wanganyu1996.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>分布式事务的的五种解决方案及优劣对比</title>
+    <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html"/>
+    <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-03-17T01:41:09.061Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;分布式事务了解吗？你们是如何解决分布式事务问题的？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="分布式事务" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+    
+      <category term="分布式事务" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>缓存使用场景介绍</title>
@@ -44,33 +71,6 @@
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
       <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分布式事务的的五种解决方案及优劣对比</title>
-    <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html"/>
-    <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-02-20T14:45:19.903Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;分布式事务了解吗？你们是如何解决分布式事务问题的？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="分布式事务" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
-    
-    
-      <category term="分布式事务" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
     
   </entry>
   
@@ -135,7 +135,7 @@
     <link href="http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html"/>
     <id>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</id>
     <published>2018-11-18T13:55:00.000Z</published>
-    <updated>2019-02-08T13:57:21.514Z</updated>
+    <updated>2019-03-17T01:45:14.635Z</updated>
     
     <summary type="html">
     
@@ -158,10 +158,10 @@
   
   <entry>
     <title>如果进行消息队列的架构设计？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html</id>
     <published>2018-10-15T01:26:24.000Z</published>
-    <updated>2019-03-10T14:36:25.198Z</updated>
+    <updated>2019-03-17T01:45:28.879Z</updated>
     
     <summary type="html">
     
@@ -242,11 +242,11 @@
   </entry>
   
   <entry>
-    <title>如何保证消息的可靠性传输？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-ke-kao-xing-chuan-shu.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-ke-kao-xing-chuan-shu.html</id>
+    <title>如何处理消息丢失的问题？</title>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html</id>
     <published>2018-09-09T01:26:24.000Z</published>
-    <updated>2019-03-10T14:31:48.320Z</updated>
+    <updated>2019-03-15T12:58:02.071Z</updated>
     
     <summary type="html">
     
@@ -254,8 +254,8 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
+          &lt;h2 id=&quot;问题题&quot;&gt;&lt;a href=&quot;#问题题&quot; class=&quot;headerlink&quot; title=&quot;问题题&quot;&gt;&lt;/a&gt;问题题&lt;/h2&gt;&lt;p&gt;如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？&lt;/p&gt;
+&lt;h2 id=&quot;初步分析&quot;&gt;&lt;a href=&quot;#初步分析&quot;
         
       
     
@@ -272,10 +272,10 @@
   
   <entry>
     <title>如何保证消息的顺序性？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-xing.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-xing.html</id>
     <published>2018-08-14T01:26:24.000Z</published>
-    <updated>2019-01-26T11:33:31.352Z</updated>
+    <updated>2019-03-17T01:45:38.114Z</updated>
     
     <summary type="html">
     

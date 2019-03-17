@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/mq-design.html</loc>
-    <lastmod>2019-03-10</lastmod>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-xing.html</loc>
+    <lastmod>2019-03-17</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-ke-kao-xing-chuan-shu.html</loc>
-    <lastmod>2019-03-10</lastmod>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</loc>
+    <lastmod>2019-03-17</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html</loc>
+    <lastmod>2019-03-15</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html</loc>
     <lastmod>2019-03-10</lastmod>
@@ -40,16 +49,7 @@
     <loc>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</loc>
     <lastmod>2019-02-23</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/distributed-transaction.html</loc>
-    <lastmod>2019-02-20</lastmod>
-  </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html</loc>
     <lastmod>2019-02-09</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
-    <lastmod>2019-02-08</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/how-to-ensure-the-order-of-messages.html</loc>
-    <lastmod>2019-01-26</lastmod>
   </url>
 </urlset>
