@@ -13,5 +13,5 @@ http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.
 http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html
 http://www.wanganyu1996.com/redis/redis-zong-jie.html
 http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard-method.html
-http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html
 http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html
+http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html
