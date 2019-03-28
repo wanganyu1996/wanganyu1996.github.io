@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>如何设计才可以让系统从未分库分表动态切换到分库分表上？ | 若愚博客</title>
-    <link rel="icon" type="image/png" href="http://img.wanganyu1996.com//ruoyu/logo.png">
+    <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -95,15 +95,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-handshake-o"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
@@ -171,15 +162,6 @@
                 <i class="fa fa-fw fa-user"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-handshake-o"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -254,19 +236,6 @@
 
 </header>
 
-
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
 
 
 
@@ -357,9 +326,28 @@
     #toc-content .is-active-link::before {
         background-color: #42b983;
     }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
 </style>
 <div class="row">
-    <div class="col s12 m12 l9">
+    <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
@@ -404,20 +392,6 @@
                     2017-01-13
                 </div>
 
-                
-                    
-                    <div class="info-break-policy">
-                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        860
-                    </div>
-                    
-
-                    
-                    <div class="info-break-policy">
-                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        2 分
-                    </div>
-                    
                 
 				
 				
@@ -615,55 +589,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
-            <div class="card">
-                <a href="/redis/redis-zong-jie.html">
-                    <div class="card-image">
-                        
-                        <img src="http://img.wanganyu1996.com/redis/redis-introduce5.jpg" class="responsive-img" alt="Redis 常用知识点总结">
-                        
-                        <span class="card-title">Redis 常用知识点总结</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary">一、概述Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。
-键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。
-Redis 支持很多特性，例如将内存中的数据</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
             <div class="card">
                 <a href="/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html">
                     <div class="card-image">
@@ -674,12 +602,12 @@ Redis 支持很多特性，例如将内存中的数据</div>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题zookeeper 都有哪些使用场景？
+                    <div class="summary block-with-text">面试题zookeeper 都有哪些使用场景？
 面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -697,6 +625,60 @@ Redis 支持很多特性，例如将内存中的数据</div>
                     
                     <a href="/tags/Zookeeper/" target="_blank">
                         <span class="chip bg-color">Zookeeper</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+            </div>
+            <div class="card">
+                <a href="/fen-ku-fen-biao/database-shard-method.html">
+                    <div class="card-image">
+                        
+                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/326780-P9JGF8-718.jpg" class="responsive-img" alt="如何设计才可以让系统从未分库分表动态切换到分库分表上？">
+                        
+                        <span class="card-title">如何设计才可以让系统从未分库分表动态切换到分库分表上？</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">问题现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？
+面试官心理分析你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/分库分表/" class="post-category" target="_blank">
+                                    分库分表
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/" target="_blank">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
+                    <a href="/tags/分库分表/" target="_blank">
+                        <span class="chip bg-color">分库分表</span>
                     </a>
                     
                 </div>
@@ -758,13 +740,22 @@ Redis 支持很多特性，例如将内存中的数据</div>
 
                 
     </div>
-    <div class="col l3 hide-on-med-and-down">
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
             <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
     </div>
 </div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
 
 <script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
@@ -802,6 +793,43 @@ Redis 支持很多特性，例如将内存中的数据</div>
                 $tocWidget.removeClass('toc-fixed');
             }
         });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
     });
 </script>
     
@@ -813,14 +841,9 @@ Redis 支持很多特性，例如将内存中的数据</div>
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-            <!--
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-            -->
 
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">32.1k</span>
+
+
             
 
             
@@ -840,24 +863,15 @@ Redis 支持很多特性，例如将内存中的数据</div>
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:2508635478@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2508635478" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:wanganyu1996@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fa fa-rss"></i>

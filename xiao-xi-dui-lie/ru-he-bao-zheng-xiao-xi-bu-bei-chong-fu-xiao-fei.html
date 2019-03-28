@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>如何保证消息不被重复消费 | 若愚博客</title>
-    <link rel="icon" type="image/png" href="http://img.wanganyu1996.com//ruoyu/logo.png">
+    <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -95,15 +95,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-handshake-o"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
@@ -171,15 +162,6 @@
                 <i class="fa fa-fw fa-user"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-handshake-o"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -254,19 +236,6 @@
 
 </header>
 
-
-<script src="/libs/cryptojs/crypto-js.min.js"></script>
-<script>
-    (function() {
-        let pwd = '';
-        if (pwd && pwd.length > 0) {
-            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
-                location.href = '/';
-            }
-        }
-    })();
-</script>
 
 
 
@@ -357,9 +326,28 @@
     #toc-content .is-active-link::before {
         background-color: #42b983;
     }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
 </style>
 <div class="row">
-    <div class="col s12 m12 l9">
+    <div id="main-content" class="col s12 m12 l9">
         <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
@@ -396,20 +384,6 @@
                     2018-08-12
                 </div>
 
-                
-                    
-                    <div class="info-break-policy">
-                        <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.3k
-                    </div>
-                    
-
-                    
-                    <div class="info-break-policy">
-                        <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        4 分
-                    </div>
-                    
                 
 				
 				
@@ -615,7 +589,7 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
@@ -628,7 +602,7 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题如何保证消息的顺序性？
+                    <div class="summary block-with-text">面试题如何保证消息的顺序性？
 面试官心理分析其实这个也是用 MQ 的时候必问的话题，第一看看你了不了解顺序这个事儿？第二看看你有没有办法保证消息是有顺序的？这是生产系统中常见的问题。
 面试题剖析我举个例子，我们以前做过一个 mysql bi</div>
                     <div class="publish-info">
@@ -660,7 +634,7 @@
         </div>
         
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
@@ -674,7 +648,7 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">面试题
+                    <div class="summary block-with-text">面试题
 为什么使用消息队列？
 消息队列有什么优点和缺点？
 Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？
@@ -768,13 +742,22 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
 
                 
     </div>
-    <div class="col l3 hide-on-med-and-down">
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
             <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
             <div id="toc-content"></div>
         </div>
     </div>
 </div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
 
 <script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
@@ -812,6 +795,43 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                 $tocWidget.removeClass('toc-fixed');
             }
         });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).slideUp(500);
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).slideDown(500);
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
     });
 </script>
     
@@ -823,14 +843,9 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-            <!--
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-            -->
 
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">32.1k</span>
+
+
             
 
             
@@ -850,24 +865,15 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:2508635478@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2508635478" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:wanganyu1996@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fa fa-rss"></i>

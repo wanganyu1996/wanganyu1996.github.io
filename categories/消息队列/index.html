@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>分类: 消息队列 | 若愚博客</title>
-    <link rel="icon" type="image/png" href="http://img.wanganyu1996.com//ruoyu/logo.png">
+    <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -94,15 +94,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-handshake-o"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
@@ -170,15 +161,6 @@
                 <i class="fa fa-fw fa-user"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-handshake-o"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -293,9 +275,17 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 
                 
                 
+                <a href="/categories/MySQL/" title="MySQL: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " style="background-color: #F9EBEA;">MySQL
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Redis/" title="Redis: 3">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F9EBEA;">Redis
+                             chip-default " style="background-color: #F5EEF8;">Redis
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -303,15 +293,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 
                 <a href="/categories/Zookeeper/" title="Zookeeper: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F5EEF8;">Zookeeper
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/MySQL/" title="MySQL: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #D5F5E3;">MySQL
+                             chip-default " style="background-color: #D5F5E3;">Zookeeper
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -359,7 +341,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
     <article id="articles" class="container articles">
         <div class="row tags-posts">
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html">
                         <div class="card-image tag-image">
@@ -370,7 +352,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
                                 如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。
                             
@@ -408,7 +390,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-dui-lie-de-gao-ke-yong.html">
                         <div class="card-image tag-image">
@@ -419,10 +401,11 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
                                 面试题如何保证消息队列的高可用？
-面试官心理分析如果有人问到你 MQ 的知识，高可用是必问的。上一讲提到，MQ 会导致系统可用性降低。所以只
+面试官心理分析如果有人问到你 MQ 的知识，高可用是必问的。上一讲提到，MQ 会导致系统可用性降低。所以只要你用了 MQ，接下来问的一些要点肯定就是围绕着 MQ 的那些缺点怎么来解决了。
+要是你傻乎乎的就干
                             
                         </div>
                         <div class="publish-info">
@@ -458,7 +441,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/xiao-xi-dui-lie/ru-he-jie-jue-xiao-xi-dui-lie-de-yan-shi-yi-ji-guo-qi-shi-xiao-wen-ti.html">
                         <div class="card-image tag-image">
@@ -469,10 +452,10 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
                                 面试题如何解决消息队列的延时以及过期失效问题？消息队列满了以后该怎么处理？有几百万消息持续积压几小时，说说怎么解决？
-面试官心理分析你看这问
+面试官心理分析你看这问法，其实本质针对的场景，都是说，可能你的消费端出了问题，不消费了；或者消费的速度极其慢。接着就坑爹了
                             
                         </div>
                         <div class="publish-info">
@@ -504,7 +487,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html">
                         <div class="card-image tag-image">
@@ -515,7 +498,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
                                 如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？
                             
@@ -553,7 +536,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-xing.html">
                         <div class="card-image tag-image">
@@ -564,10 +547,11 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
                                 面试题如何保证消息的顺序性？
-面试官心理分析其实这个也是用 MQ 的时候必问的话题，第一看看你了不了解顺序这个事儿？第二看看你有没有办法保证
+面试官心理分析其实这个也是用 MQ 的时候必问的话题，第一看看你了不了解顺序这个事儿？第二看看你有没有办法保证消息是有顺序的？这是生产系统中常见的问题。
+面试题剖析我举个例子，我们以前做过一个 mysql bi
                             
                         </div>
                         <div class="publish-info">
@@ -599,7 +583,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html">
                         <div class="card-image tag-image">
@@ -610,10 +594,10 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
                                 面试题如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？
-面试官心理分析其实这是很常见的一个问题，这俩问题基本可以连起来问。既然是
+面试官心理分析其实这是很常见的一个问题，这俩问题基本可以连起来问。既然是消费消息，那肯定要考虑会不会重复消费？能不能避免重复消费？或者重复消费了也别造成系统异常可以吗？这个
                             
                         </div>
                         <div class="publish-info">
@@ -645,7 +629,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 </div>
             </div>
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html">
                         <div class="card-image tag-image">
@@ -656,12 +640,16 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
                                 面试题
 为什么使用消息队列？
 消息队列有什么优点和缺点？
-Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以
+Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？
+
+面试官心理分析其实面试官主要是想看看：
+
+第一，你知不知道你们系统里为什么要用消
                             
                         </div>
                         <div class="publish-info">
@@ -706,14 +694,9 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-            <!--
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-            -->
 
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">32.1k</span>
+
+
             
 
             
@@ -733,24 +716,15 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:2508635478@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2508635478" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:wanganyu1996@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fa fa-rss"></i>

@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>分类: 多线程 | 若愚博客</title>
-    <link rel="icon" type="image/png" href="http://img.wanganyu1996.com//ruoyu/logo.png">
+    <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -94,15 +94,6 @@
         </a>
     </li>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-handshake-o"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
-    
     <li>
         <a href="#searchModal" class="modal-trigger waves-effect waves-light">
             <i id="searchIcon" class="fa fa-search" title="搜索"></i>
@@ -170,15 +161,6 @@
                 <i class="fa fa-fw fa-user"></i>
                 
                 关于
-            </a>
-        </li>
-        
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-handshake-o"></i>
-                
-                友情链接
             </a>
         </li>
         
@@ -293,9 +275,17 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 
                 
                 
+                <a href="/categories/MySQL/" title="MySQL: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " style="background-color: #F9EBEA;">MySQL
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/Redis/" title="Redis: 3">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F9EBEA;">Redis
+                             chip-default " style="background-color: #F5EEF8;">Redis
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -303,15 +293,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 
                 <a href="/categories/Zookeeper/" title="Zookeeper: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #F5EEF8;">Zookeeper
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/MySQL/" title="MySQL: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #D5F5E3;">MySQL
+                             chip-default " style="background-color: #D5F5E3;">Zookeeper
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -359,7 +341,7 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
     <article id="articles" class="container articles">
         <div class="row tags-posts">
             
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
                     <a href="/duo-xian-cheng/cpu-duo-ji-huan-cun.html">
                         <div class="card-image tag-image">
@@ -370,9 +352,9 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                         </div>
                     </a>
                     <div class="card-content article-content">
-                        <div class="summary">
+                        <div class="summary block-with-text">
                             
-                                一、什么是CPU缓存1. CPU缓存的来历众所周知,CPU是计算机的大脑，它负责执行程序的指令，而内存负责存数据, 包括程序自身的数据。在很
+                                一、什么是CPU缓存1. CPU缓存的来历众所周知,CPU是计算机的大脑，它负责执行程序的指令，而内存负责存数据, 包括程序自身的数据。在很多年前，CPU的频率与内存总线的频率在同一层面上。内存的访问速度仅比寄存器慢一些。但是，这一局面在上
                             
                         </div>
                         <div class="publish-info">
@@ -413,14 +395,9 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
             &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-            <!--
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-            -->
 
-            
-                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">32.1k</span>
+
+
             
 
             
@@ -440,24 +417,15 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com//ruoyu/i
                 
             
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fa fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:2508635478@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2508635478" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
-
-
+        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/wanganyu1996" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <i class="fa fa-github"></i>
+</a>
+<a href="mailto:wanganyu1996@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+    <i class="fa fa-envelope-open"></i>
+</a>
+<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 2508635478" data-position="top" data-delay="50">
+    <i class="fa fa-qq"></i>
+</a>
 
     <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
         <i class="fa fa-rss"></i>
