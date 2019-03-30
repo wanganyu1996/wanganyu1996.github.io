@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wanganyu1996.com/"/>
-  <updated>2019-03-02T12:16:26.577Z</updated>
+  <updated>2019-03-30T14:50:46.855Z</updated>
   <id>http://www.wanganyu1996.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-03-30T14:50:46.855Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
   
   <entry>
     <title>缓存使用场景介绍</title>
@@ -39,9 +66,9 @@
       <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
     
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
     
@@ -122,9 +149,9 @@
     </summary>
     
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
@@ -298,11 +325,11 @@
   </entry>
   
   <entry>
-    <title>如何保证消息不被重复消费</title>
+    <title>如何保证消息不被重复消费？</title>
     <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html"/>
     <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html</id>
     <published>2018-08-12T01:26:24.000Z</published>
-    <updated>2019-03-10T14:31:14.224Z</updated>
+    <updated>2019-03-29T14:39:50.193Z</updated>
     
     <summary type="html">
     
@@ -310,8 +337,8 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？&lt;/p&gt;
+&lt;h2 id=&quot;导言&quot;&gt;&lt;a href=&quot;#导言&quot;
         
       
     
@@ -353,11 +380,38 @@
   </entry>
   
   <entry>
-    <title>Redis 常用知识点总结</title>
+    <title>Redis 的过期策略都有哪些？内存淘汰机制都有哪些？手写一下 LRU 代码实现？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-de-guo-qi-ce-lue-yu-lur-shi-xian.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-de-guo-qi-ce-lue-yu-lur-shi-xian.html</id>
+    <published>2018-06-13T02:50:57.000Z</published>
+    <updated>2019-03-30T15:03:18.859Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;redis 的过期策略都有哪些？内存淘汰机制都有哪些？手写一下 LRU 代码实现？&lt;/p&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis常用知识点总结</title>
     <link href="http://www.wanganyu1996.com/redis/redis-zong-jie.html"/>
     <id>http://www.wanganyu1996.com/redis/redis-zong-jie.html</id>
     <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-03-02T12:02:32.811Z</updated>
+    <updated>2019-03-30T15:21:32.767Z</updated>
     
     <summary type="html">
     
@@ -383,7 +437,7 @@
     <link href="http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html"/>
     <id>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</id>
     <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-03-10T14:17:26.162Z</updated>
+    <updated>2019-03-30T15:00:24.091Z</updated>
     
     <summary type="html">
     
@@ -407,10 +461,10 @@
   
   <entry>
     <title>为什么要分库分表？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard.html</id>
+    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
+    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
     <published>2017-01-13T02:50:57.000Z</published>
-    <updated>2019-03-04T15:34:24.875Z</updated>
+    <updated>2019-03-29T15:01:12.214Z</updated>
     
     <summary type="html">
     
@@ -467,7 +521,7 @@
     <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard-method.html"/>
     <id>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard-method.html</id>
     <published>2017-01-13T02:50:57.000Z</published>
-    <updated>2019-03-05T14:50:37.272Z</updated>
+    <updated>2019-03-29T15:01:34.548Z</updated>
     
     <summary type="html">
     
