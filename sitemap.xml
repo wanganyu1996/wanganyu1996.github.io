@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/redis/redis-zong-jie.html</loc>
+    
+    <lastmod>2019-04-04T15:04:43.230Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</loc>
+    
+    <lastmod>2019-04-04T14:53:01.153Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html</loc>
+    
+    <lastmod>2019-03-31T14:03:49.001Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html</loc>
     
     <lastmod>2019-03-31T12:48:21.606Z</lastmod>
@@ -12,13 +33,6 @@
     <loc>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</loc>
     
     <lastmod>2019-03-31T12:18:59.157Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-zong-jie.html</loc>
-    
-    <lastmod>2019-03-30T15:21:32.767Z</lastmod>
     
   </url>
   
@@ -40,20 +54,6 @@
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/database-shard-method.html</loc>
     
     <lastmod>2019-03-29T15:01:34.548Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</loc>
-    
-    <lastmod>2019-03-29T15:01:12.214Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html</loc>
-    
-    <lastmod>2019-03-29T14:39:50.193Z</lastmod>
     
   </url>
   

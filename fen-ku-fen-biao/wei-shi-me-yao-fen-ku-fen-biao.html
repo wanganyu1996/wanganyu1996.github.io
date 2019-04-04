@@ -5,8 +5,8 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="为什么要分库分表？, 若愚博客">
-    <meta name="description" content="面试题为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？
-面试官心理分析其实这块肯定是扯到高并发了，因为分库分">
+    <meta name="description" content="为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？
+其实这块肯定是扯到高并发了，因为分库分表一定是为了支撑高并">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -240,7 +240,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/4619.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -405,9 +405,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>其实这块肯定是扯到<strong>高并发</strong>了，因为分库分表一定是为了<strong>支撑高并发、数据量大</strong>两个问题的。而且现在说实话，尤其是互联网类的公司面试，基本上都会来这么一下，分库分表如此普遍的技术问题，不问实在是不行，而如果你不知道那也实在是说不过去！</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）"><a href="#为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）" class="headerlink" title="为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）"></a>为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）</h3><p>说白了，分库分表是两回事儿，大家可别搞混了，可能是光分库不分表，也可能是光分表不分库，都有可能。</p>
+                <p>为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？</p>
+<p>其实这块肯定是扯到<strong>高并发</strong>了，因为分库分表一定是为了<strong>支撑高并发、数据量大</strong>两个问题的。而且现在说实话，尤其是互联网类的公司面试，基本上都会来这么一下，分库分表如此普遍的技术问题，不问实在是不行，而如果你不知道那也实在是说不过去！</p>
+<h3 id="为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）"><a href="#为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）" class="headerlink" title="为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）"></a>为什么要分库分表？（设计高并发系统的时候，数据库层面该如何设计？）</h3><p>说白了，分库分表是两回事儿，大家可别搞混了，可能是光分库不分表，也可能是光分表不分库，都有可能。</p>
 <p>我先给大家抛出来一个场景。</p>
 <p>假如我们现在是一个小创业公司（或者是一个 BAT 公司刚兴起的一个新部门），现在注册用户就 20 万，每天活跃用户就 1 万，每天单表数据量就 1000，然后高峰期每秒钟并发请求最多就 10。天，就这种系统，随便找一个有几年工作经验的，然后带几个刚培训出来的，随便干干都可以。</p>
 <p>结果没想到我们运气居然这么好，碰上个 CEO 带着我们走上了康庄大道，业务发展迅猛，过了几个月，注册用户数达到了 2000 万！每天活跃用户数 100 万！每天单表数据量 10 万条！高峰期每秒最大请求达到 1000！同时公司还顺带着融资了两轮，进账了几个亿人民币啊！公司估值达到了惊人的几亿美金！这是小独角兽的节奏！</p>
@@ -650,27 +650,27 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html">
+                <a href="/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com//redis/15539578035c9f83ab4c526.jpg" class="responsive-img" alt="为什么 redis 单线程却能支撑高并发？">
+                        <img src="http://img.wanganyu1996.com//zookeeper/588938-PMEDDW-884.jpg" class="responsive-img" alt="zookeeper 都有哪些使用场景">
                         
-                        <span class="card-title">为什么 redis 单线程却能支撑高并发？</span>
+                        <span class="card-title">zookeeper 都有哪些使用场景</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">问题redis 和 memcached 有什么区别？redis 的线程模型是什么？为什么 redis 单线程却能支撑高并发？
-面试官心理分析这个是问 redis 的时候，最基本的问题吧，redis 最基本的一个内部原理和特点，就是 redi</div>
+                    <div class="summary block-with-text">面试题zookeeper 都有哪些使用场景？
+面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-08-13
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
+                            <a href="/categories/Zookeeper/" class="post-category" target="_blank">
+                                    Zookeeper
                                 </a>
                             
                             
@@ -680,8 +680,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/Zookeeper/" target="_blank">
+                        <span class="chip bg-color">Zookeeper</span>
                     </a>
                     
                 </div>
@@ -692,20 +692,20 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
             </div>
             <div class="card">
-                <a href="/fen-ku-fen-biao/database-shard-method.html">
+                <a href="/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/326780-P9JGF8-718.jpg" class="responsive-img" alt="如何设计才可以让系统从未分库分表动态切换到分库分表上？">
+                        <img src="http://img.wanganyu1996.com/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard.jpg" class="responsive-img" alt="为什么要分库分表？">
                         
-                        <span class="card-title">如何设计才可以让系统从未分库分表动态切换到分库分表上？</span>
+                        <span class="card-title">为什么要分库分表？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">问题现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？
-前言你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直拆分、分表</div>
+                    <div class="summary block-with-text">为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？
+其实这块肯定是扯到高并发了，因为分库分表一定是为了支撑高并</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2017-01-13
@@ -722,6 +722,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
