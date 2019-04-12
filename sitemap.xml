@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</loc>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</loc>
     
-    <lastmod>2019-04-12T13:21:22.182Z</lastmod>
+    <lastmod>2019-04-12T13:24:28.401Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</loc>
     
-    <lastmod>2019-04-12T13:21:17.318Z</lastmod>
+    <lastmod>2019-04-12T13:24:21.767Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</loc>
+    
+    <lastmod>2019-04-12T13:24:11.626Z</lastmod>
     
   </url>
   
@@ -19,13 +26,6 @@
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</loc>
     
     <lastmod>2019-04-12T13:21:07.613Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</loc>
-    
-    <lastmod>2019-04-12T13:20:58.869Z</lastmod>
     
   </url>
   

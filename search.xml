@@ -45,36 +45,11 @@
       
         <tags>
             
-            <tag> Redis </tag>
-            
             <tag> 分布式 </tag>
             
-            <tag> 缓存 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>redis 的持久化有哪几种方式？</title>
-      <link href="/redis/redis-chi-jiu-hua-fang-shi.html"/>
-      <url>/redis/redis-chi-jiu-hua-fang-shi.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 redis 的持久化机制，将数据写入内存的同时，异步的慢慢的将数据写入磁盘文件里，进行持久化。</p><p>如果 redis 宕机重启，自动从磁盘上加载之前持久化的一些数据就可以了，也许会丢失少许数据，但是至少不会将所有数据都弄丢。</p><p>这个其实一样，针对的都是 redis 的生产环境可能遇到的一些问题，就是 redis 要是挂了再重启，内存里的数据不就全丢了？能不能重启的时候把数据给恢复了？</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>持久化主要是做灾难恢复、数据恢复，也可以归类到高可用的一个环节中去，比如你 redis 整个挂了，然后 redis 就不可用了，你要做的事情就是让 redis 变得可用，尽快变得可用。</p><p>重启 redis，尽快让它堆外提供服务，如果没做数据备份，这时候 redis 启动了，也不可用啊，数据都没了。</p><p>很可能说，大量的请求过来，缓存全部无法命中，在 redis 里根本找不到数据，这个时候就死定了，出现<strong>缓存雪崩</strong>问题。所有请求没有在 redis 命中，就会去 mysql 数据库这种数据源头中去找，一下子 mysql 承接高并发，然后就挂了…</p><p>如果你把 redis 持久化做好，备份和恢复方案做到企业级的程度，那么即使你的 redis 故障了，也可以通过备份数据，快速恢复，一旦恢复立即对外提供服务。</p><h3 id="redis-持久化的两种方式"><a href="#redis-持久化的两种方式" class="headerlink" title="redis 持久化的两种方式"></a>redis 持久化的两种方式</h3><ul><li>RDB：RDB 持久化机制，是对 redis 中的数据执行<strong>周期性</strong>的持久化。</li><li>AOF：AOF 机制对每条写入命令作为日志，以 <code>append-only</code> 的模式写入一个日志文件中，在 redis 重启的时候，可以通过<strong>回放</strong> AOF 日志中的写入指令来重新构建整个数据集。</li></ul><p>通过 RDB 或 AOF，都可以将 redis 内存中的数据给持久化到磁盘上面来，然后可以将这些数据备份到别的地方去，比如说阿里云等云服务。</p><p>如果 redis 挂了，服务器上的内存和磁盘上的数据都丢了，可以从云服务上拷贝回来之前的数据，放到指定的目录中，然后重新启动 redis，redis 就会自动根据持久化数据文件中的数据，去恢复内存中的数据，继续对外提供服务。</p><p>如果同时使用 RDB 和 AOF 两种持久化机制，那么在 redis 重启的时候，会使用 <strong>AOF</strong> 来重新构建数据，因为 AOF 中的<strong>数据更加完整</strong>。</p><h4 id="RDB-优缺点"><a href="#RDB-优缺点" class="headerlink" title="RDB 优缺点"></a>RDB 优缺点</h4><ul><li>RDB会生成多个数据文件，每个数据文件都代表了某一个时刻中 redis 的数据，这种多个数据文件的方式，<strong>非常适合做冷备</strong>，可以将这种完整的数据文件发送到一些远程的安全存储上去，比如说 Amazon 的 S3 云服务上去，在国内可以是阿里云的 ODPS 分布式存储上，以预定好的备份策略来定期备份redis中的数据。</li><li>RDB 对 redis 对外提供的读写服务，影响非常小，可以让 redis <strong>保持高性能</strong>，因为 redis 主进程只需要 fork 一个子进程，让子进程执行磁盘 IO 操作来进行 RDB 持久化即可。</li><li><p>相对于 AOF 持久化机制来说，直接基于 RDB 数据文件来重启和恢复 redis 进程，更加快速。</p></li><li><p>如果想要在 redis 故障时，尽可能少的丢失数据，那么 RDB 没有 AOF 好。一般来说，RDB 数据快照文件，都是每隔 5 分钟，或者更长时间生成一次，这个时候就得接受一旦 redis 进程宕机，那么会丢失最近 5 分钟的数据。</p></li><li>RDB 每次在 fork 子进程来执行 RDB 快照数据文件生成的时候，如果数据文件特别大，可能会导致对客户端提供的服务暂停数毫秒，或者甚至数秒。</li></ul><h4 id="AOF-优缺点"><a href="#AOF-优缺点" class="headerlink" title="AOF 优缺点"></a>AOF 优缺点</h4><ul><li>AOF 可以更好的保护数据不丢失，一般 AOF 会每隔 1 秒，通过一个后台线程执行一次<code>fsync</code>操作，最多丢失 1 秒钟的数据。</li><li>AOF 日志文件以 <code>append-only</code> 模式写入，所以没有任何磁盘寻址的开销，写入性能非常高，而且文件不容易破损，即使文件尾部破损，也很容易修复。</li><li>AOF 日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在 <code>rewrite</code> log 的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的 merge 后的日志文件 ready 的时候，再交换新老日志文件即可。</li><li>AOF 日志文件的命令通过非常可读的方式进行记录，这个特性非常<strong>适合做灾难性的误删除的紧急恢复</strong>。比如某人不小心用 <code>flushall</code> 命令清空了所有数据，只要这个时候后台 <code>rewrite</code> 还没有发生，那么就可以立即拷贝 AOF 文件，将最后一条 <code>flushall</code> 命令给删了，然后再将该 <code>AOF</code> 文件放回去，就可以通过恢复机制，自动恢复所有数据。</li><li>对于同一份数据来说，AOF 日志文件通常比 RDB 数据快照文件更大。</li><li>AOF 开启后，支持的写 QPS 会比 RDB 支持的写 QPS 低，因为 AOF 一般会配置成每秒 <code>fsync</code> 一次日志文件，当然，每秒一次 <code>fsync</code>，性能也还是很高的。（如果实时写入，那么 QPS 会大降，redis 性能会大大降低）</li><li>以前 AOF 发生过 bug，就是通过 AOF 记录的日志，进行数据恢复的时候，没有恢复一模一样的数据出来。所以说，类似 AOF 这种较为复杂的基于命令日志/merge/回放的方式，比基于 RDB 每次持久化一份完整的数据快照文件的方式，更加脆弱一些，容易有 bug。不过 AOF 就是为了避免 rewrite 过程导致的 bug，因此每次 rewrite 并不是基于旧的指令日志进行 merge 的，而是<strong>基于当时内存中的数据进行指令的重新构建</strong>，这样健壮性会好很多。</li></ul><h3 id="RDB和AOF到底该如何选择"><a href="#RDB和AOF到底该如何选择" class="headerlink" title="RDB和AOF到底该如何选择"></a>RDB和AOF到底该如何选择</h3><ul><li>不要仅仅使用 RDB，因为那样会导致你丢失很多数据</li><li>也不要仅仅使用 AOF，因为那样有两个问题，第一，你通过 AOF 做冷备，没有 RDB 做冷备，来的恢复速度更快; 第二，RDB 每次简单粗暴生成数据快照，更加健壮，可以避免 AOF 这种复杂的备份和恢复机制的 bug。</li><li>redis 支持同时开启开启两种持久化方式，我们可以综合使用 AOF 和 RDB 两种持久化机制，用 AOF 来保证数据不丢失，作为数据恢复的第一选择; 用 RDB 来做不同程度的冷备，在 AOF 文件都丢失或损坏不可用的时候，还可以使用 RDB 来进行快速的数据恢复。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> Redis </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
             <tag> Redis </tag>
+            
+            <tag> 缓存 </tag>
             
         </tags>
       
@@ -108,6 +83,31 @@
     
     
     <entry>
+      <title>redis 的持久化有哪几种方式？</title>
+      <link href="/redis/redis-chi-jiu-hua-fang-shi.html"/>
+      <url>/redis/redis-chi-jiu-hua-fang-shi.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 redis 的持久化机制，将数据写入内存的同时，异步的慢慢的将数据写入磁盘文件里，进行持久化。</p><p>如果 redis 宕机重启，自动从磁盘上加载之前持久化的一些数据就可以了，也许会丢失少许数据，但是至少不会将所有数据都弄丢。</p><p>这个其实一样，针对的都是 redis 的生产环境可能遇到的一些问题，就是 redis 要是挂了再重启，内存里的数据不就全丢了？能不能重启的时候把数据给恢复了？</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>持久化主要是做灾难恢复、数据恢复，也可以归类到高可用的一个环节中去，比如你 redis 整个挂了，然后 redis 就不可用了，你要做的事情就是让 redis 变得可用，尽快变得可用。</p><p>重启 redis，尽快让它堆外提供服务，如果没做数据备份，这时候 redis 启动了，也不可用啊，数据都没了。</p><p>很可能说，大量的请求过来，缓存全部无法命中，在 redis 里根本找不到数据，这个时候就死定了，出现<strong>缓存雪崩</strong>问题。所有请求没有在 redis 命中，就会去 mysql 数据库这种数据源头中去找，一下子 mysql 承接高并发，然后就挂了…</p><p>如果你把 redis 持久化做好，备份和恢复方案做到企业级的程度，那么即使你的 redis 故障了，也可以通过备份数据，快速恢复，一旦恢复立即对外提供服务。</p><h3 id="redis-持久化的两种方式"><a href="#redis-持久化的两种方式" class="headerlink" title="redis 持久化的两种方式"></a>redis 持久化的两种方式</h3><ul><li>RDB：RDB 持久化机制，是对 redis 中的数据执行<strong>周期性</strong>的持久化。</li><li>AOF：AOF 机制对每条写入命令作为日志，以 <code>append-only</code> 的模式写入一个日志文件中，在 redis 重启的时候，可以通过<strong>回放</strong> AOF 日志中的写入指令来重新构建整个数据集。</li></ul><p>通过 RDB 或 AOF，都可以将 redis 内存中的数据给持久化到磁盘上面来，然后可以将这些数据备份到别的地方去，比如说阿里云等云服务。</p><p>如果 redis 挂了，服务器上的内存和磁盘上的数据都丢了，可以从云服务上拷贝回来之前的数据，放到指定的目录中，然后重新启动 redis，redis 就会自动根据持久化数据文件中的数据，去恢复内存中的数据，继续对外提供服务。</p><p>如果同时使用 RDB 和 AOF 两种持久化机制，那么在 redis 重启的时候，会使用 <strong>AOF</strong> 来重新构建数据，因为 AOF 中的<strong>数据更加完整</strong>。</p><h4 id="RDB-优缺点"><a href="#RDB-优缺点" class="headerlink" title="RDB 优缺点"></a>RDB 优缺点</h4><ul><li>RDB会生成多个数据文件，每个数据文件都代表了某一个时刻中 redis 的数据，这种多个数据文件的方式，<strong>非常适合做冷备</strong>，可以将这种完整的数据文件发送到一些远程的安全存储上去，比如说 Amazon 的 S3 云服务上去，在国内可以是阿里云的 ODPS 分布式存储上，以预定好的备份策略来定期备份redis中的数据。</li><li>RDB 对 redis 对外提供的读写服务，影响非常小，可以让 redis <strong>保持高性能</strong>，因为 redis 主进程只需要 fork 一个子进程，让子进程执行磁盘 IO 操作来进行 RDB 持久化即可。</li><li><p>相对于 AOF 持久化机制来说，直接基于 RDB 数据文件来重启和恢复 redis 进程，更加快速。</p></li><li><p>如果想要在 redis 故障时，尽可能少的丢失数据，那么 RDB 没有 AOF 好。一般来说，RDB 数据快照文件，都是每隔 5 分钟，或者更长时间生成一次，这个时候就得接受一旦 redis 进程宕机，那么会丢失最近 5 分钟的数据。</p></li><li>RDB 每次在 fork 子进程来执行 RDB 快照数据文件生成的时候，如果数据文件特别大，可能会导致对客户端提供的服务暂停数毫秒，或者甚至数秒。</li></ul><h4 id="AOF-优缺点"><a href="#AOF-优缺点" class="headerlink" title="AOF 优缺点"></a>AOF 优缺点</h4><ul><li>AOF 可以更好的保护数据不丢失，一般 AOF 会每隔 1 秒，通过一个后台线程执行一次<code>fsync</code>操作，最多丢失 1 秒钟的数据。</li><li>AOF 日志文件以 <code>append-only</code> 模式写入，所以没有任何磁盘寻址的开销，写入性能非常高，而且文件不容易破损，即使文件尾部破损，也很容易修复。</li><li>AOF 日志文件即使过大的时候，出现后台重写操作，也不会影响客户端的读写。因为在 <code>rewrite</code> log 的时候，会对其中的指导进行压缩，创建出一份需要恢复数据的最小日志出来。再创建新日志文件的时候，老的日志文件还是照常写入。当新的 merge 后的日志文件 ready 的时候，再交换新老日志文件即可。</li><li>AOF 日志文件的命令通过非常可读的方式进行记录，这个特性非常<strong>适合做灾难性的误删除的紧急恢复</strong>。比如某人不小心用 <code>flushall</code> 命令清空了所有数据，只要这个时候后台 <code>rewrite</code> 还没有发生，那么就可以立即拷贝 AOF 文件，将最后一条 <code>flushall</code> 命令给删了，然后再将该 <code>AOF</code> 文件放回去，就可以通过恢复机制，自动恢复所有数据。</li><li>对于同一份数据来说，AOF 日志文件通常比 RDB 数据快照文件更大。</li><li>AOF 开启后，支持的写 QPS 会比 RDB 支持的写 QPS 低，因为 AOF 一般会配置成每秒 <code>fsync</code> 一次日志文件，当然，每秒一次 <code>fsync</code>，性能也还是很高的。（如果实时写入，那么 QPS 会大降，redis 性能会大大降低）</li><li>以前 AOF 发生过 bug，就是通过 AOF 记录的日志，进行数据恢复的时候，没有恢复一模一样的数据出来。所以说，类似 AOF 这种较为复杂的基于命令日志/merge/回放的方式，比基于 RDB 每次持久化一份完整的数据快照文件的方式，更加脆弱一些，容易有 bug。不过 AOF 就是为了避免 rewrite 过程导致的 bug，因此每次 rewrite 并不是基于旧的指令日志进行 merge 的，而是<strong>基于当时内存中的数据进行指令的重新构建</strong>，这样健壮性会好很多。</li></ul><h3 id="RDB和AOF到底该如何选择"><a href="#RDB和AOF到底该如何选择" class="headerlink" title="RDB和AOF到底该如何选择"></a>RDB和AOF到底该如何选择</h3><ul><li>不要仅仅使用 RDB，因为那样会导致你丢失很多数据</li><li>也不要仅仅使用 AOF，因为那样有两个问题，第一，你通过 AOF 做冷备，没有 RDB 做冷备，来的恢复速度更快; 第二，RDB 每次简单粗暴生成数据快照，更加健壮，可以避免 AOF 这种复杂的备份和恢复机制的 bug。</li><li>redis 支持同时开启开启两种持久化方式，我们可以综合使用 AOF 和 RDB 两种持久化机制，用 AOF 来保证数据不丢失，作为数据恢复的第一选择; 用 RDB 来做不同程度的冷备，在 AOF 文件都丢失或损坏不可用的时候，还可以使用 RDB 来进行快速的数据恢复。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MySQL主从复制原理</title>
       <link href="/mysql/mysql-read-write-separation.html"/>
       <url>/mysql/mysql-read-write-separation.html</url>
@@ -124,7 +124,7 @@
       
         <tags>
             
-            <tag> MySQL </tag>
+            <tag> Mysql </tag>
             
         </tags>
       
@@ -143,11 +143,11 @@
       
         <tags>
             
-            <tag> Redis </tag>
+            <tag> 分布式 </tag>
             
             <tag> Zookeeper </tag>
             
-            <tag> 分布式 </tag>
+            <tag> Redis </tag>
             
         </tags>
       
@@ -172,9 +172,9 @@
       
         <tags>
             
-            <tag> 多线程 </tag>
-            
             <tag> CPU缓存 </tag>
+            
+            <tag> 多线程 </tag>
             
         </tags>
       
@@ -253,9 +253,9 @@
       
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> 分库分表 </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
       
@@ -493,23 +493,25 @@
     
     
     <entry>
-      <title>zookeeper 都有哪些使用场景</title>
-      <link href="/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html"/>
-      <url>/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</url>
+      <title>如何设计才可以让系统从未分库分表动态切换到分库分表上？</title>
+      <link href="/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html"/>
+      <url>/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</url>
       
-        <content type="html"><![CDATA[<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>zookeeper 都有哪些使用场景？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。</p><p>分布式锁这个东西，很常用的，你做 Java 系统开发，分布式系统，可能会有一些场景会用到。最常用的分布式锁就是基于 zookeeper 来实现的。</p><p>其实说实话，问这个问题，一般就是看看你是否了解 zookeeper，因为 zookeeper 是分布式系统中很常见的一个基础系统。而且问的话常问的就是说 zookeeper 的使用场景是什么？看你知道不知道一些基本的使用场景。但是其实 zookeeper 挖深了自然是可以问的很深很深的。</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>大致来说，zookeeper 的使用场景如下，我就举几个简单的，大家能说几个就好了：</p><ul><li>分布式协调</li><li>分布式锁</li><li>元数据/配置信息管理</li><li>HA高可用性</li></ul><h3 id="分布式协调"><a href="#分布式协调" class="headerlink" title="分布式协调"></a>分布式协调</h3><p>这个其实是 zookeeper 很经典的一个用法，简单来说，就好比，你 A 系统发送个请求到 mq，然后 B 系统消息消费之后处理了。那 A 系统如何知道 B 系统的处理结果？用 zookeeper 就可以实现分布式系统之间的协调工作。A 系统发送请求之后可以在 zookeeper 上<strong>对某个节点的值注册个监听器</strong>，一旦 B 系统处理完了就修改 zookeeper 那个节点的值，A 立马就可以收到通知，完美解决。</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-distributed-coordination.png" alt=""></p><h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><p>举个栗子。对某一个数据连续发出两个修改操作，两台机器同时收到了请求，但是只能一台机器先执行完另外一个机器再执行。那么此时就可以使用 zookeeper 分布式锁，一个机器接收到了请求之后先获取 zookeeper 上的一把分布式锁，就是可以去创建一个 znode，接着执行操作；然后另外一个机器也<strong>尝试去创建</strong>那个 znode，结果发现自己创建不了，因为被别人创建了，那只能等着，等第一个机器执行完了自己再执行。</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-distributed-lock-demo.png" alt=""></p><h3 id="元数据-配置信息管理"><a href="#元数据-配置信息管理" class="headerlink" title="元数据/配置信息管理"></a>元数据/配置信息管理</h3><p>zookeeper 可以用作很多系统的配置信息的管理，比如 kafka、storm 等等很多分布式系统都会选用 zookeeper 来做一些元数据、配置信息的管理，包括 dubbo 注册中心不也支持 zookeeper 么？</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-meta-data-manage.png" alt=""></p><h3 id="HA高可用性"><a href="#HA高可用性" class="headerlink" title="HA高可用性"></a>HA高可用性</h3><p>这个应该是很常见的，比如 hadoop、hdfs、yarn 等很多大数据系统，都选择基于 zookeeper 来开发 HA 高可用机制，就是一个<strong>重要进程一般会做主备</strong>两个，主进程挂了立马通过 zookeeper 感知到切换到备用进程。</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-active-standby.png" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表<strong>动态切换</strong>到分库分表上？</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直拆分、分表），那问题来了，你接下来该怎么把你那个单库单表的系统给迁移到分库分表上去？</p><p>所以这都是一环扣一环的，就是看你有没有全流程经历过这个过程。</p><h2 id="剖析"><a href="#剖析" class="headerlink" title="剖析"></a>剖析</h2><p>这个其实从 low 到高大上有好几种方案，我们都玩儿过，我都给你说一下。</p><h3 id="停机迁移方案"><a href="#停机迁移方案" class="headerlink" title="停机迁移方案"></a>停机迁移方案</h3><p>我先给你说一个最 low 的方案，就是很简单，大家伙儿凌晨 12 点开始运维，网站或者 app 挂个公告，说 0 点到早上 6 点进行运维，无法访问。</p><p>接着到 0 点停机，系统停掉，没有流量写入了，此时老的单库单表数据库静止了。然后你之前得写好一个<strong>导数的一次性工具</strong>，此时直接跑起来，然后将单库单表的数据哗哗哗读出来，写到分库分表里面去。</p><p>导数完了之后，就 ok 了，修改系统的数据库连接配置啥的，包括可能代码和 SQL 也许有修改，那你就用最新的代码，然后直接启动连到新的分库分表上去。</p><p>验证一下，ok了，完美，大家伸个懒腰，看看看凌晨 4 点钟的北京夜景，打个滴滴回家吧。</p><p>但是这个方案比较 low，谁都能干，我们来看看高大上一点的方案。</p><p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard-method-1.png" alt=""></p><h3 id="双写迁移方案"><a href="#双写迁移方案" class="headerlink" title="双写迁移方案"></a>双写迁移方案</h3><p>这个是我们常用的一种迁移方案，比较靠谱一些，不用停机，不用看北京凌晨 4 点的风景。</p><p>简单来说，就是在线上系统里面，之前所有写库的地方，增删改操作，<strong>除了对老库增删改，都加上对新库的增删改</strong>，这就是所谓的<strong>双写</strong>，同时写俩库，老库和新库。</p><p>然后<strong>系统部署</strong>之后，新库数据差太远，用之前说的导数工具，跑起来读老库数据写新库，写的时候要根据 gmt_modified 这类字段判断这条数据最后修改的时间，除非是读出来的数据在新库里没有，或者是比新库的数据新才会写。简单来说，就是不允许用老数据覆盖新数据。</p><p>导完一轮之后，有可能数据还是存在不一致，那么就程序自动做一轮校验，比对新老库每个表的每条数据，接着如果有不一样的，就针对那些不一样的，从老库读数据再次写。反复循环，直到两个库每个表的数据都完全一致为止。</p><p>接着当数据完全一致了，就 ok 了，基于仅仅使用分库分表的最新代码，重新部署一次，不就仅仅基于分库分表在操作了么，还没有几个小时的停机时间，很稳。所以现在基本玩儿数据迁移之类的，都是这么干的。</p><p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard-method-2.png" alt=""></p>]]></content>
       
       
       <categories>
           
-          <category> Zookeeper </category>
+          <category> 分库分表 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> Zookeeper </tag>
+            <tag> Mysql </tag>
+            
+            <tag> 分库分表 </tag>
             
         </tags>
       
@@ -534,7 +536,7 @@
       
         <tags>
             
-            <tag> MySQL </tag>
+            <tag> Mysql </tag>
             
             <tag> 分库分表 </tag>
             
@@ -545,25 +547,23 @@
     
     
     <entry>
-      <title>如何设计才可以让系统从未分库分表动态切换到分库分表上？</title>
-      <link href="/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html"/>
-      <url>/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</url>
+      <title>zookeeper 都有哪些使用场景</title>
+      <link href="/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html"/>
+      <url>/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</url>
       
-        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表<strong>动态切换</strong>到分库分表上？</p><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直拆分、分表），那问题来了，你接下来该怎么把你那个单库单表的系统给迁移到分库分表上去？</p><p>所以这都是一环扣一环的，就是看你有没有全流程经历过这个过程。</p><h2 id="剖析"><a href="#剖析" class="headerlink" title="剖析"></a>剖析</h2><p>这个其实从 low 到高大上有好几种方案，我们都玩儿过，我都给你说一下。</p><h3 id="停机迁移方案"><a href="#停机迁移方案" class="headerlink" title="停机迁移方案"></a>停机迁移方案</h3><p>我先给你说一个最 low 的方案，就是很简单，大家伙儿凌晨 12 点开始运维，网站或者 app 挂个公告，说 0 点到早上 6 点进行运维，无法访问。</p><p>接着到 0 点停机，系统停掉，没有流量写入了，此时老的单库单表数据库静止了。然后你之前得写好一个<strong>导数的一次性工具</strong>，此时直接跑起来，然后将单库单表的数据哗哗哗读出来，写到分库分表里面去。</p><p>导数完了之后，就 ok 了，修改系统的数据库连接配置啥的，包括可能代码和 SQL 也许有修改，那你就用最新的代码，然后直接启动连到新的分库分表上去。</p><p>验证一下，ok了，完美，大家伸个懒腰，看看看凌晨 4 点钟的北京夜景，打个滴滴回家吧。</p><p>但是这个方案比较 low，谁都能干，我们来看看高大上一点的方案。</p><p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard-method-1.png" alt=""></p><h3 id="双写迁移方案"><a href="#双写迁移方案" class="headerlink" title="双写迁移方案"></a>双写迁移方案</h3><p>这个是我们常用的一种迁移方案，比较靠谱一些，不用停机，不用看北京凌晨 4 点的风景。</p><p>简单来说，就是在线上系统里面，之前所有写库的地方，增删改操作，<strong>除了对老库增删改，都加上对新库的增删改</strong>，这就是所谓的<strong>双写</strong>，同时写俩库，老库和新库。</p><p>然后<strong>系统部署</strong>之后，新库数据差太远，用之前说的导数工具，跑起来读老库数据写新库，写的时候要根据 gmt_modified 这类字段判断这条数据最后修改的时间，除非是读出来的数据在新库里没有，或者是比新库的数据新才会写。简单来说，就是不允许用老数据覆盖新数据。</p><p>导完一轮之后，有可能数据还是存在不一致，那么就程序自动做一轮校验，比对新老库每个表的每条数据，接着如果有不一样的，就针对那些不一样的，从老库读数据再次写。反复循环，直到两个库每个表的数据都完全一致为止。</p><p>接着当数据完全一致了，就 ok 了，基于仅仅使用分库分表的最新代码，重新部署一次，不就仅仅基于分库分表在操作了么，还没有几个小时的停机时间，很稳。所以现在基本玩儿数据迁移之类的，都是这么干的。</p><p><img src="http://img.wanganyu1996.com//%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/database-shard-method-2.png" alt=""></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h2><p>zookeeper 都有哪些使用场景？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。</p><p>分布式锁这个东西，很常用的，你做 Java 系统开发，分布式系统，可能会有一些场景会用到。最常用的分布式锁就是基于 zookeeper 来实现的。</p><p>其实说实话，问这个问题，一般就是看看你是否了解 zookeeper，因为 zookeeper 是分布式系统中很常见的一个基础系统。而且问的话常问的就是说 zookeeper 的使用场景是什么？看你知道不知道一些基本的使用场景。但是其实 zookeeper 挖深了自然是可以问的很深很深的。</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>大致来说，zookeeper 的使用场景如下，我就举几个简单的，大家能说几个就好了：</p><ul><li>分布式协调</li><li>分布式锁</li><li>元数据/配置信息管理</li><li>HA高可用性</li></ul><h3 id="分布式协调"><a href="#分布式协调" class="headerlink" title="分布式协调"></a>分布式协调</h3><p>这个其实是 zookeeper 很经典的一个用法，简单来说，就好比，你 A 系统发送个请求到 mq，然后 B 系统消息消费之后处理了。那 A 系统如何知道 B 系统的处理结果？用 zookeeper 就可以实现分布式系统之间的协调工作。A 系统发送请求之后可以在 zookeeper 上<strong>对某个节点的值注册个监听器</strong>，一旦 B 系统处理完了就修改 zookeeper 那个节点的值，A 立马就可以收到通知，完美解决。</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-distributed-coordination.png" alt=""></p><h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><p>举个栗子。对某一个数据连续发出两个修改操作，两台机器同时收到了请求，但是只能一台机器先执行完另外一个机器再执行。那么此时就可以使用 zookeeper 分布式锁，一个机器接收到了请求之后先获取 zookeeper 上的一把分布式锁，就是可以去创建一个 znode，接着执行操作；然后另外一个机器也<strong>尝试去创建</strong>那个 znode，结果发现自己创建不了，因为被别人创建了，那只能等着，等第一个机器执行完了自己再执行。</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-distributed-lock-demo.png" alt=""></p><h3 id="元数据-配置信息管理"><a href="#元数据-配置信息管理" class="headerlink" title="元数据/配置信息管理"></a>元数据/配置信息管理</h3><p>zookeeper 可以用作很多系统的配置信息的管理，比如 kafka、storm 等等很多分布式系统都会选用 zookeeper 来做一些元数据、配置信息的管理，包括 dubbo 注册中心不也支持 zookeeper 么？</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-meta-data-manage.png" alt=""></p><h3 id="HA高可用性"><a href="#HA高可用性" class="headerlink" title="HA高可用性"></a>HA高可用性</h3><p>这个应该是很常见的，比如 hadoop、hdfs、yarn 等很多大数据系统，都选择基于 zookeeper 来开发 HA 高可用机制，就是一个<strong>重要进程一般会做主备</strong>两个，主进程挂了立马通过 zookeeper 感知到切换到备用进程。</p><p><img src="http://img.wanganyu1996.com//zookeeper/zookeeper-active-standby.png" alt=""></p>]]></content>
       
       
       <categories>
           
-          <category> 分库分表 </category>
+          <category> Zookeeper </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> MySQL </tag>
-            
-            <tag> 分库分表 </tag>
+            <tag> Zookeeper </tag>
             
         </tags>
       
