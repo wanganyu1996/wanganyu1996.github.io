@@ -43,33 +43,6 @@
   </entry>
   
   <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-03-31T12:18:59.157Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
     <title>缓存使用场景介绍</title>
     <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
     <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
@@ -97,6 +70,33 @@
       <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-03-31T12:18:59.157Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
@@ -132,7 +132,7 @@
     <link href="http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html"/>
     <id>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</id>
     <published>2019-01-12T02:50:57.000Z</published>
-    <updated>2019-04-12T13:17:56.695Z</updated>
+    <updated>2019-04-12T13:21:22.182Z</updated>
     
     <summary type="html">
     
@@ -148,8 +148,6 @@
     
       <category term="MySQL" scheme="http://www.wanganyu1996.com/categories/MySQL/"/>
     
-    
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
     
@@ -177,9 +175,9 @@
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
@@ -205,9 +203,9 @@
       <category term="多线程" scheme="http://www.wanganyu1996.com/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
     
-      <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
-    
       <category term="多线程" scheme="http://www.wanganyu1996.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
@@ -270,6 +268,35 @@
   </entry>
   
   <entry>
+    <title>分库分表之后，id 主键如何处理？</title>
+    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html"/>
+    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</id>
+    <published>2018-09-13T02:50:57.000Z</published>
+    <updated>2019-04-12T13:21:07.613Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分库分表之后，id 主键如何处理？&lt;/p&gt;
+&lt;p&gt;其实这是分库分表之后你必然要面对的一个问题，就是 id 咋生成？因为要是分成多个表之后，每个表都是从 1 开始累加，那肯定不对啊，需要一个&lt;strong&gt;全局唯一&lt;/strong&gt;的 id
+        
+      
+    
+    </summary>
+    
+      <category term="分库分表" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
+    
+      <category term="分库分表" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何保证缓存与数据库的双写一致性？</title>
     <link href="http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html"/>
     <id>http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html</id>
@@ -293,37 +320,6 @@
     
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分库分表之后，id 主键如何处理？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</id>
-    <published>2018-09-13T02:50:57.000Z</published>
-    <updated>2019-04-12T13:17:07.473Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;分库分表之后，id 主键如何处理？&lt;/p&gt;
-&lt;p&gt;其实这是分库分表之后你必然要面对的一个问题，就是 id 咋生成？因为要是分成多个表之后，每个表都是从 1 开始累加，那肯定不对啊，需要一个&lt;strong&gt;全局唯一&lt;/strong&gt;的 id
-        
-      
-    
-    </summary>
-    
-      <category term="分库分表" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
-    
-    
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
-    
-      <category term="分库分表" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
     
   </entry>
   
@@ -546,11 +542,11 @@
   </entry>
   
   <entry>
-    <title>为什么要分库分表？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
+    <title>zookeeper 都有哪些使用场景</title>
+    <link href="http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html"/>
+    <id>http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</id>
     <published>2017-01-13T02:50:57.000Z</published>
-    <updated>2019-04-12T13:17:37.335Z</updated>
+    <updated>2019-02-23T12:18:53.124Z</updated>
     
     <summary type="html">
     
@@ -558,21 +554,17 @@
       
         
         
-          &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;
-&lt;p&gt;其实这块肯定是扯到&lt;strong&gt;高并发&lt;/strong&gt;了，因为分库分表一定
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;zookeeper 都有哪些使用场景？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
         
       
     
     </summary>
     
-      <category term="分库分表" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/categories/Zookeeper/"/>
     
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
-    
-      <category term="分库分表" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
   </entry>
   
