@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</loc>
+    <lastmod>2019-04-12</lastmod>
+  </url>  <url>
     <loc>http://www.wanganyu1996.com/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html</loc>
     <lastmod>2019-04-06</lastmod>
   </url>  <url>
@@ -39,9 +42,6 @@
   </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</loc>
     <lastmod>2019-03-30</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</loc>
-    <lastmod>2019-03-17</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-xing.html</loc>
     <lastmod>2019-03-17</lastmod>
