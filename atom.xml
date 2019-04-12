@@ -43,60 +43,6 @@
   </entry>
   
   <entry>
-    <title>分布式事务的的五种解决方案及优劣对比</title>
-    <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html"/>
-    <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-04T15:36:47.723Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;分布式事务了解吗？你们是如何解决分布式事务问题的？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="分布式事务" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
-    
-    
-      <category term="分布式事务" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-03-31T12:18:59.157Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
     <title>缓存使用场景介绍</title>
     <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
     <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
@@ -128,11 +74,65 @@
   </entry>
   
   <entry>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-03-31T12:18:59.157Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分布式事务的的五种解决方案及优劣对比</title>
+    <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html"/>
+    <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-04-04T15:36:47.723Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;分布式事务了解吗？你们是如何解决分布式事务问题的？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="分布式事务" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+    
+      <category term="分布式事务" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MySQL主从复制原理</title>
     <link href="http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html"/>
     <id>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</id>
     <published>2019-01-12T02:50:57.000Z</published>
-    <updated>2019-04-12T13:31:31.636Z</updated>
+    <updated>2019-04-12T13:36:09.135Z</updated>
     
     <summary type="html">
     
@@ -268,35 +268,6 @@
   </entry>
   
   <entry>
-    <title>分库分表之后，id 主键如何处理？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</id>
-    <published>2018-09-13T02:50:57.000Z</published>
-    <updated>2019-04-12T13:31:49.685Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;分库分表之后，id 主键如何处理？&lt;/p&gt;
-&lt;p&gt;其实这是分库分表之后你必然要面对的一个问题，就是 id 咋生成？因为要是分成多个表之后，每个表都是从 1 开始累加，那肯定不对啊，需要一个&lt;strong&gt;全局唯一&lt;/strong&gt;的 id
-        
-      
-    
-    </summary>
-    
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/categories/MySQL/"/>
-    
-    
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
-    
-      <category term="分库分表" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
-    
-  </entry>
-  
-  <entry>
     <title>如何保证缓存与数据库的双写一致性？</title>
     <link href="http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html"/>
     <id>http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html</id>
@@ -320,6 +291,35 @@
     
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分库分表之后，id 主键如何处理？</title>
+    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html"/>
+    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</id>
+    <published>2018-09-13T02:50:57.000Z</published>
+    <updated>2019-04-12T13:42:02.075Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分库分表之后，id 主键如何处理？&lt;/p&gt;
+&lt;p&gt;其实这是分库分表之后你必然要面对的一个问题，就是 id 咋生成？因为要是分成多个表之后，每个表都是从 1 开始累加，那肯定不对啊，需要一个&lt;strong&gt;全局唯一&lt;/strong&gt;的 id
+        
+      
+    
+    </summary>
+    
+      <category term="MySQL" scheme="http://www.wanganyu1996.com/categories/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
+    
+      <category term="分库分表" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
     
   </entry>
   
@@ -542,11 +542,11 @@
   </entry>
   
   <entry>
-    <title>如何设计才可以让系统从未分库分表动态切换到分库分表上？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</id>
+    <title>zookeeper 都有哪些使用场景</title>
+    <link href="http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html"/>
+    <id>http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</id>
     <published>2017-01-13T02:50:57.000Z</published>
-    <updated>2019-04-12T13:31:57.453Z</updated>
+    <updated>2019-02-23T12:18:53.124Z</updated>
     
     <summary type="html">
     
@@ -554,18 +554,17 @@
       
         
         
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;zookeeper 都有哪些使用场景？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a href=&quot;#面试官心理分析&quot;
         
       
     
     </summary>
     
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/categories/MySQL/"/>
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/categories/Zookeeper/"/>
     
     
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
-    
-      <category term="分库分表" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/"/>
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
   </entry>
   
