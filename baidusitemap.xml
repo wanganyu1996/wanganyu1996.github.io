@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</loc>
-    <lastmod>2019-04-13</lastmod>
-  </url>  <url>
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</loc>
     <lastmod>2019-04-13</lastmod>
   </url>  <url>
@@ -11,6 +8,9 @@
     <lastmod>2019-04-13</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</loc>
+    <lastmod>2019-04-13</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</loc>
     <lastmod>2019-04-13</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html</loc>
