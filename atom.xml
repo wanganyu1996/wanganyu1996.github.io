@@ -43,37 +43,6 @@
   </entry>
   
   <entry>
-    <title>缓存使用场景介绍</title>
-    <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
-    <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-03-02T12:16:26.577Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-      <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>redis 的持久化有哪几种方式？</title>
     <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
     <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
@@ -128,6 +97,37 @@
   </entry>
   
   <entry>
+    <title>缓存使用场景介绍</title>
+    <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
+    <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-03-02T12:16:26.577Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？&lt;/p&gt;
+&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+      <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>MySQL主从复制原理</title>
     <link href="http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html"/>
     <id>http://www.wanganyu1996.com/mysql/mysql-read-write-separation.html</id>
@@ -171,11 +171,11 @@
     </summary>
     
     
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
       <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
       <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
@@ -266,6 +266,31 @@
   </entry>
   
   <entry>
+    <title>分库分表之后，id 主键如何处理？</title>
+    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html"/>
+    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</id>
+    <published>2018-09-13T02:50:57.000Z</published>
+    <updated>2019-04-13T11:42:28.691Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;分库分表之后，id 主键如何处理？&lt;/p&gt;
+&lt;p&gt;其实这是分库分表之后你必然要面对的一个问题，就是 id 咋生成？因为要是分成多个表之后，每个表都是从 1 开始累加，那肯定不对啊，需要一个&lt;strong&gt;全局唯一&lt;/strong&gt;的 id
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://www.wanganyu1996.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何保证缓存与数据库的双写一致性？</title>
     <link href="http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html"/>
     <id>http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html</id>
@@ -289,31 +314,6 @@
     
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分库分表之后，id 主键如何处理？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</id>
-    <published>2018-09-13T02:50:57.000Z</published>
-    <updated>2019-04-13T11:42:28.691Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;分库分表之后，id 主键如何处理？&lt;/p&gt;
-&lt;p&gt;其实这是分库分表之后你必然要面对的一个问题，就是 id 咋生成？因为要是分成多个表之后，每个表都是从 1 开始累加，那肯定不对啊，需要一个&lt;strong&gt;全局唯一&lt;/strong&gt;的 id
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://www.wanganyu1996.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
@@ -483,6 +483,32 @@
   </entry>
   
   <entry>
+    <title>Redis常用知识点总结</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-zong-jie.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-zong-jie.html</id>
+    <published>2017-08-13T02:50:57.000Z</published>
+    <updated>2019-04-04T15:04:43.230Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h2&gt;&lt;p&gt;Redis
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
     <title>为什么 redis 单线程却能支撑高并发？</title>
     <link href="http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html"/>
     <id>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</id>
@@ -497,32 +523,6 @@
         
           &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;redis 和 memcached 有什么区别？redis 的线程模型是什么？为什么 redis 单线程却能支撑高并发？&lt;/p&gt;
 &lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis常用知识点总结</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-zong-jie.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-zong-jie.html</id>
-    <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-04-04T15:04:43.230Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h2&gt;&lt;p&gt;Redis
         
       
     
