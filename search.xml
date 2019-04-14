@@ -110,6 +110,35 @@
     
     
     <entry>
+      <title>缓存使用场景介绍</title>
+      <link href="/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
+      <url>/huan-cun/huan-cun-shi-yong-chang-jing.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。</p><p>只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？</p><p>这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试官一个合理的解答，那面试官对你印象肯定不太好，觉得你平时思考太少，就知道干活儿。</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="项目中缓存是如何使用的？"><a href="#项目中缓存是如何使用的？" class="headerlink" title="项目中缓存是如何使用的？"></a>项目中缓存是如何使用的？</h3><p>这个，需要结合自己项目的业务来。</p><h3 id="为什么要用缓存？"><a href="#为什么要用缓存？" class="headerlink" title="为什么要用缓存？"></a>为什么要用缓存？</h3><p>用缓存，主要有两个用途：<strong>高性能</strong>、<strong>高并发</strong>。</p><h4 id="高性能"><a href="#高性能" class="headerlink" title="高性能"></a>高性能</h4><p>假设这么个场景，你有个操作，一个请求过来，吭哧吭哧你各种乱七八糟操作 mysql，半天查出来一个结果，耗时 600ms。但是这个结果可能接下来几个小时都不会变了，或者变了也可以不用立即反馈给用户。那么此时咋办？</p><p>缓存啊，折腾 600ms 查出来的结果，扔缓存里，一个 key 对应一个 value，下次再有人查，别走 mysql 折腾 600ms 了，直接从缓存里，通过一个 key 查出来一个 value，2ms 搞定。性能提升 300 倍。</p><p>就是说对于一些需要复杂操作耗时查出来的结果，且确定后面不怎么变化，但是有很多读请求，那么结果直接放在缓存，后面直接读缓存就好。</p><h4 id="高并发"><a href="#高并发" class="headerlink" title="高并发"></a>高并发</h4><p>mysql 这么重的数据库，压根儿设计不是让你玩儿高并发的，虽然也可以玩儿，但是天然支持不好。mysql 单机支撑到 <code>2000QPS</code> 也开始容易报警了。</p><p>所以要是你有个系统，高峰期一秒钟过来的请求有 1万，那一个 mysql 单机绝对会死掉。你这个时候就只能上缓存，把很多数据放缓存，别放 mysql。缓存功能简单，说白了就是 key-value 式操作，单机支撑的并发量轻松一秒几万十几万，支撑高并发 so easy。单机承载并发量是 mysql 单机的几十倍。</p><blockquote><p>缓存是走内存的，内存天然就支撑高并发。</p></blockquote><h3 id="用了缓存之后会有什么不良后果？"><a href="#用了缓存之后会有什么不良后果？" class="headerlink" title="用了缓存之后会有什么不良后果？"></a>用了缓存之后会有什么不良后果？</h3><p>常见的缓存问题有以下几个：</p><ul><li><a href="/docs/high-concurrency/redis-consistence.md">缓存与数据库双写不一致</a></li><li><a href="/docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md">缓存雪崩、缓存穿透</a></li><li><a href="/docs/high-concurrency/redis-cas.md">缓存并发竞争</a></li></ul><p>后面再详细说明。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+            <tag> 分布式 </tag>
+            
+            <tag> 缓存 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>redis 的持久化有哪几种方式？</title>
       <link href="/redis/redis-chi-jiu-hua-fang-shi.html"/>
       <url>/redis/redis-chi-jiu-hua-fang-shi.html</url>
@@ -160,35 +189,6 @@
     
     
     <entry>
-      <title>缓存使用场景介绍</title>
-      <link href="/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
-      <url>/huan-cun/huan-cun-shi-yong-chang-jing.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。</p><p>只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？</p><p>这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试官一个合理的解答，那面试官对你印象肯定不太好，觉得你平时思考太少，就知道干活儿。</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="项目中缓存是如何使用的？"><a href="#项目中缓存是如何使用的？" class="headerlink" title="项目中缓存是如何使用的？"></a>项目中缓存是如何使用的？</h3><p>这个，需要结合自己项目的业务来。</p><h3 id="为什么要用缓存？"><a href="#为什么要用缓存？" class="headerlink" title="为什么要用缓存？"></a>为什么要用缓存？</h3><p>用缓存，主要有两个用途：<strong>高性能</strong>、<strong>高并发</strong>。</p><h4 id="高性能"><a href="#高性能" class="headerlink" title="高性能"></a>高性能</h4><p>假设这么个场景，你有个操作，一个请求过来，吭哧吭哧你各种乱七八糟操作 mysql，半天查出来一个结果，耗时 600ms。但是这个结果可能接下来几个小时都不会变了，或者变了也可以不用立即反馈给用户。那么此时咋办？</p><p>缓存啊，折腾 600ms 查出来的结果，扔缓存里，一个 key 对应一个 value，下次再有人查，别走 mysql 折腾 600ms 了，直接从缓存里，通过一个 key 查出来一个 value，2ms 搞定。性能提升 300 倍。</p><p>就是说对于一些需要复杂操作耗时查出来的结果，且确定后面不怎么变化，但是有很多读请求，那么结果直接放在缓存，后面直接读缓存就好。</p><h4 id="高并发"><a href="#高并发" class="headerlink" title="高并发"></a>高并发</h4><p>mysql 这么重的数据库，压根儿设计不是让你玩儿高并发的，虽然也可以玩儿，但是天然支持不好。mysql 单机支撑到 <code>2000QPS</code> 也开始容易报警了。</p><p>所以要是你有个系统，高峰期一秒钟过来的请求有 1万，那一个 mysql 单机绝对会死掉。你这个时候就只能上缓存，把很多数据放缓存，别放 mysql。缓存功能简单，说白了就是 key-value 式操作，单机支撑的并发量轻松一秒几万十几万，支撑高并发 so easy。单机承载并发量是 mysql 单机的几十倍。</p><blockquote><p>缓存是走内存的，内存天然就支撑高并发。</p></blockquote><h3 id="用了缓存之后会有什么不良后果？"><a href="#用了缓存之后会有什么不良后果？" class="headerlink" title="用了缓存之后会有什么不良后果？"></a>用了缓存之后会有什么不良后果？</h3><p>常见的缓存问题有以下几个：</p><ul><li><a href="/docs/high-concurrency/redis-consistence.md">缓存与数据库双写不一致</a></li><li><a href="/docs/high-concurrency/redis-caching-avalanche-and-caching-penetration.md">缓存雪崩、缓存穿透</a></li><li><a href="/docs/high-concurrency/redis-cas.md">缓存并发竞争</a></li></ul><p>后面再详细说明。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Redis </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Redis </tag>
-            
-            <tag> 分布式 </tag>
-            
-            <tag> 缓存 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分布式锁的两种实现方式及对比</title>
       <link href="/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html"/>
       <url>/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</url>
@@ -201,9 +201,9 @@
             
             <tag> Redis </tag>
             
-            <tag> Zookeeper </tag>
-            
             <tag> 分布式 </tag>
+            
+            <tag> Zookeeper </tag>
             
         </tags>
       
@@ -529,6 +529,31 @@
       <url>/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</url>
       
         <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>redis 和 memcached 有什么区别？redis 的线程模型是什么？为什么 redis 单线程却能支撑高并发？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>这个是问 redis 的时候，最基本的问题吧，redis 最基本的一个内部原理和特点，就是 redis 实际上是个<strong>单线程工作模型</strong>，你要是这个都不知道，那后面玩儿 redis 的时候，出了问题岂不是什么都不知道？</p><p>还有可能面试官会问问你 redis 和 memcached 的区别，但是 memcached 是早些年各大互联网公司常用的缓存方案，但是现在近几年基本都是 redis，没什么公司用 memcached 了。</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="redis-和-memcached-有啥区别？"><a href="#redis-和-memcached-有啥区别？" class="headerlink" title="redis 和 memcached 有啥区别？"></a>redis 和 memcached 有啥区别？</h3><h4 id="redis-支持复杂的数据结构"><a href="#redis-支持复杂的数据结构" class="headerlink" title="redis 支持复杂的数据结构"></a>redis 支持复杂的数据结构</h4><p>redis 相比 memcached 来说，拥有更多的数据结构，能支持更丰富的数据操作。如果需要缓存能够支持更复杂的结构和操作， redis 会是不错的选择。</p><h4 id="redis-原生支持集群模式"><a href="#redis-原生支持集群模式" class="headerlink" title="redis 原生支持集群模式"></a>redis 原生支持集群模式</h4><p>在 redis3.x 版本中，便能支持 cluster 模式，而 memcached 没有原生的集群模式，需要依靠客户端来实现往集群中分片写入数据。</p><h4 id="性能对比"><a href="#性能对比" class="headerlink" title="性能对比"></a>性能对比</h4><p>由于 redis 只使用单核，而 memcached 可以使用多核，所以平均每一个核上 redis 在存储小数据时比 memcached 性能更高。而在 100k 以上的数据中，memcached 性能要高于 redis，虽然 redis 最近也在存储大数据的性能上进行优化，但是比起 memcached，还是稍有逊色。</p><h3 id="redis-的线程模型"><a href="#redis-的线程模型" class="headerlink" title="redis 的线程模型"></a>redis 的线程模型</h3><p>redis 内部使用文件事件处理器 <code>file event handler</code>，这个文件事件处理器是单线程的，所以 redis 才叫做单线程的模型。它采用 IO 多路复用机制同时监听多个 socket，根据 socket 上的事件来选择对应的事件处理器进行处理。</p><p>文件事件处理器的结构包含 4 个部分：</p><ul><li>多个 socket</li><li>IO 多路复用程序</li><li>文件事件分派器</li><li>事件处理器（连接应答处理器、命令请求处理器、命令回复处理器）</li></ul><p>多个 socket 可能会并发产生不同的操作，每个操作对应不同的文件事件，但是 IO 多路复用程序会监听多个 socket，会将 socket 产生的事件放入队列中排队，事件分派器每次从队列中取出一个事件，把该事件交给对应的事件处理器进行处理。</p><p>来看客户端与 redis 的一次通信过程：</p><p><img src="http://img.wanganyu1996.com//redis/redis-single-thread-model.png" alt=""></p><p>客户端 socket01 向 redis 的 server socket 请求建立连接，此时 server socket 会产生一个 <code>AE_READABLE</code> 事件，IO 多路复用程序监听到 server socket 产生的事件后，将该事件压入队列中。文件事件分派器从队列中获取该事件，交给<strong>连接应答处理器</strong>。连接应答处理器会创建一个能与客户端通信的 socket01，并将该 socket01 的 <code>AE_READABLE</code> 事件与命令请求处理器关联。</p><p>假设此时客户端发送了一个 <code>set key value</code> 请求，此时 redis 中的 socket01 会产生 <code>AE_READABLE</code> 事件，IO 多路复用程序将事件压入队列，此时事件分派器从队列中获取到该事件，由于前面 socket01 的 <code>AE_READABLE</code> 事件已经与命令请求处理器关联，因此事件分派器将事件交给命令请求处理器来处理。命令请求处理器读取 socket01 的 <code>key value</code> 并在自己内存中完成 <code>key value</code> 的设置。操作完成后，它会将 socket01 的 <code>AE_WRITABLE</code> 事件与命令回复处理器关联。</p><p>如果此时客户端准备好接收返回结果了，那么 redis 中的 socket01 会产生一个 <code>AE_WRITABLE</code> 事件，同样压入队列中，事件分派器找到相关联的命令回复处理器，由命令回复处理器对 socket01 输入本次操作的一个结果，比如 <code>ok</code>，之后解除 socket01 的 <code>AE_WRITABLE</code> 事件与命令回复处理器的关联。</p><p>这样便完成了一次通信。</p><h3 id="为啥-redis-单线程模型也能效率这么高？"><a href="#为啥-redis-单线程模型也能效率这么高？" class="headerlink" title="为啥 redis 单线程模型也能效率这么高？"></a>为啥 redis 单线程模型也能效率这么高？</h3><ul><li>纯内存操作</li><li>核心是基于非阻塞的 IO 多路复用机制</li><li>单线程反而避免了多线程的频繁上下文切换问题</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Redis 的雪崩和穿透</title>
+      <link href="/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html"/>
+      <url>/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>了解什么是 redis 的雪崩和穿透？redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 redis 的穿透？</p><h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>其实这是问到缓存必问的，因为缓存雪崩和穿透，是缓存最大的两个问题，要么不出现，一旦出现就是致命性的问题，所以面试官一定会问你。</p><h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><p>对于系统 A，假设每天高峰期每秒 5000 个请求，本来缓存在高峰期可以扛住每秒 4000 个请求，但是缓存机器意外发生了全盘宕机。缓存挂了，此时 1 秒 5000 个请求全部落数据库，数据库必然扛不住，它会报一下警，然后就挂了。此时，如果没用什么特别的方案来处理这个故障，DBA 很着急，重启数据库，但是数据库立马又被新的流量给打死了。</p><p>这就是缓存雪崩。</p><p><img src="http://img.wanganyu1996.com/redis/redis-caching-avalanche.png" alt=""></p><p>大约在 3 年前，国内比较知名的一个互联网公司，曾因为缓存事故，导致雪崩，后台系统全部崩溃，事故从当天下午持续到晚上凌晨 3~4 点，公司损失了几千万。</p><p>缓存雪崩的事前事中事后的解决方案如下。</p><ul><li>事前：redis 高可用，主从+哨兵，redis cluster，避免全盘崩溃。</li><li>事中：本地 ehcache 缓存 + hystrix 限流&amp;降级，避免 MySQL 被打死。</li><li>事后：redis 持久化，一旦重启，自动从磁盘上加载数据，快速恢复缓存数据。</li></ul><p><img src="http://img.wanganyu1996.com/redis/redis-caching-avalanche-solution.png" alt=""></p><p>用户发送一个请求，系统 A 收到请求后，先查本地 ehcache 缓存，如果没查到再查 redis。如果 ehcache 和 redis 都没有，再查数据库，将数据库中的结果，写入 ehcache 和 redis 中。</p><p>限流组件，可以设置每秒的请求，有多少能通过组件，剩余的未通过的请求，怎么办？<strong>走降级</strong>！可以返回一些默认的值，或者友情提示，或者空白的值。</p><p>好处：</p><ul><li>数据库绝对不会死，限流组件确保了每秒只有多少个请求能通过。</li><li>只要数据库不死，就是说，对用户来说，2/5 的请求都是可以被处理的。</li><li>只要有 2/5 的请求可以被处理，就意味着你的系统没死，对用户来说，可能就是点击几次刷不出来页面，但是多点几次，就可以刷出来一次。</li></ul><h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><p>对于系统A，假设一秒 5000 个请求，结果其中 4000 个请求是黑客发出的恶意攻击。</p><p>黑客发出的那 4000 个攻击，缓存中查不到，每次你去数据库里查，也查不到。</p><p>举个栗子。数据库 id 是从 1 开始的，结果黑客发过来的请求 id 全部都是负数。这样的话，缓存中不会有，请求每次都“视缓存于无物”，直接查询数据库。这种恶意攻击场景的缓存穿透就会直接把数据库给打死。</p><p><img src="http://img.wanganyu1996.com/redis/redis-caching-penetration.png" alt=""></p><p>解决方式很简单，每次系统 A 从数据库中只要没查到，就写一个空值到缓存里去，比如 <code>set -999 UNKNOWN</code>。这样的话，下次便能走缓存了。</p>]]></content>
       
       
       <categories>
