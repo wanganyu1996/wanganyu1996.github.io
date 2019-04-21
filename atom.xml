@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wanganyu1996.com/"/>
-  <updated>2019-04-14T14:06:57.655Z</updated>
+  <updated>2019-04-21T15:22:41.260Z</updated>
   <id>http://www.wanganyu1996.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html"/>
     <id>http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</id>
     <published>2019-03-07T01:25:00.000Z</published>
-    <updated>2019-04-14T14:06:57.655Z</updated>
+    <updated>2019-04-21T15:22:41.260Z</updated>
     
     <summary type="html">
     
@@ -49,7 +49,7 @@
     <link href="http://www.wanganyu1996.com/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html"/>
     <id>http://www.wanganyu1996.com/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html</id>
     <published>2019-02-18T13:55:00.000Z</published>
-    <updated>2019-04-06T09:35:09.938Z</updated>
+    <updated>2019-04-21T13:41:32.437Z</updated>
     
     <summary type="html">
     
@@ -71,11 +71,11 @@
   </entry>
   
   <entry>
-    <title>MySQL主从复制原理</title>
-    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
-    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
+    <title>为什么要分库分表？</title>
+    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
+    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
     <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-04-14T13:35:39.369Z</updated>
+    <updated>2019-04-21T15:23:02.979Z</updated>
     
     <summary type="html">
     
@@ -83,7 +83,8 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL
+          &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;
+&lt;p&gt;其实这块肯定是扯到&lt;strong&gt;高并发&lt;/strong&gt;了，因为分库分表一定
         
       
     
@@ -99,11 +100,11 @@
   </entry>
   
   <entry>
-    <title>为什么要分库分表？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
+    <title>MySQL主从复制原理</title>
+    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
+    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
     <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-04-14T14:03:48.772Z</updated>
+    <updated>2019-04-14T13:35:39.369Z</updated>
     
     <summary type="html">
     
@@ -111,8 +112,7 @@
       
         
         
-          &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;
-&lt;p&gt;其实这块肯定是扯到&lt;strong&gt;高并发&lt;/strong&gt;了，因为分库分表一定
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL
         
       
     
@@ -163,7 +163,7 @@
     <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
     <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
     <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-03-31T12:18:59.157Z</updated>
+    <updated>2019-04-21T14:01:02.042Z</updated>
     
     <summary type="html">
     
@@ -190,7 +190,7 @@
     <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html"/>
     <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</id>
     <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-04T15:36:47.723Z</updated>
+    <updated>2019-04-21T14:19:28.223Z</updated>
     
     <summary type="html">
     
@@ -234,9 +234,9 @@
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
@@ -291,9 +291,9 @@
       <category term="多线程" scheme="http://www.wanganyu1996.com/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
     
-      <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
-    
       <category term="多线程" scheme="http://www.wanganyu1996.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
@@ -302,7 +302,7 @@
     <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html"/>
     <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html</id>
     <published>2018-10-15T01:26:24.000Z</published>
-    <updated>2019-03-17T01:45:28.879Z</updated>
+    <updated>2019-04-21T14:31:18.732Z</updated>
     
     <summary type="html">
     
@@ -414,7 +414,7 @@
     <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html"/>
     <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html</id>
     <published>2018-09-09T01:26:24.000Z</published>
-    <updated>2019-03-15T12:58:02.071Z</updated>
+    <updated>2019-04-21T13:52:30.653Z</updated>
     
     <summary type="html">
     
@@ -548,11 +548,11 @@
   </entry>
   
   <entry>
-    <title>Redis常用知识点总结</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-zong-jie.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-zong-jie.html</id>
+    <title>Redis 的雪崩和穿透</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html</id>
     <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-04-04T15:04:43.230Z</updated>
+    <updated>2019-04-15T14:10:08.729Z</updated>
     
     <summary type="html">
     
@@ -560,7 +560,8 @@
       
         
         
-          &lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h2&gt;&lt;p&gt;Redis
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;了解什么是 redis 的雪崩和穿透？redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 redis 的穿透？&lt;/p&gt;
+&lt;h2
         
       
     
