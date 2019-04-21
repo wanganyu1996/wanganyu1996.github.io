@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
+    <lastmod>2019-04-21</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</loc>
+    <lastmod>2019-04-21</lastmod>
+  </url>  <url>
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</loc>
     <lastmod>2019-04-21</lastmod>
   </url>  <url>
@@ -28,17 +34,11 @@
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
-    <loc>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</loc>
-    <lastmod>2019-04-14</lastmod>
-  </url>  <url>
     <loc>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</loc>
     <lastmod>2019-04-14</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</loc>
     <lastmod>2019-04-13</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
-    <lastmod>2019-04-06</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-zong-jie.html</loc>
     <lastmod>2019-04-04</lastmod>
