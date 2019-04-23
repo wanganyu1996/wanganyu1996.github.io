@@ -2,9 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</loc>
+    
+    <lastmod>2019-04-23T14:45:26.279Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html</loc>
+    
+    <lastmod>2019-04-23T14:36:12.139Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html</loc>
+    
+    <lastmod>2019-04-23T14:30:29.382Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</loc>
+    
+    <lastmod>2019-04-23T14:22:15.457Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</loc>
+    
+    <lastmod>2019-04-23T14:18:51.104Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</loc>
+    
+    <lastmod>2019-04-23T14:17:06.774Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html</loc>
+    
+    <lastmod>2019-04-23T14:12:10.870Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</loc>
+    
+    <lastmod>2019-04-23T14:00:03.159Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</loc>
+    
+    <lastmod>2019-04-23T13:46:36.326Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanganyu1996.com/duo-xian-cheng/cpu-duo-ji-huan-cun.html</loc>
     
-    <lastmod>2019-04-21T16:11:31.430Z</lastmod>
+    <lastmod>2019-04-21T16:13:35.110Z</lastmod>
     
   </url>
   
@@ -16,72 +79,9 @@
   </url>
   
   <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</loc>
-    
-    <lastmod>2019-04-21T15:23:02.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html</loc>
-    
-    <lastmod>2019-04-21T15:22:41.260Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-she-ji.html</loc>
-    
-    <lastmod>2019-04-21T14:31:18.732Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</loc>
-    
-    <lastmod>2019-04-21T14:19:28.223Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</loc>
-    
-    <lastmod>2019-04-21T14:01:02.042Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html</loc>
-    
-    <lastmod>2019-04-21T13:52:30.653Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html</loc>
-    
-    <lastmod>2019-04-21T13:41:32.437Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html</loc>
     
     <lastmod>2019-04-15T14:10:08.729Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</loc>
-    
-    <lastmod>2019-04-14T14:06:22.913Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</loc>
-    
-    <lastmod>2019-04-14T13:28:07.140Z</lastmod>
     
   </url>
   
