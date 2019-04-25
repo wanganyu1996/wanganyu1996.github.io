@@ -71,34 +71,6 @@
   </entry>
   
   <entry>
-    <title>MySQL主从复制原理</title>
-    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
-    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
-    <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-04-21T16:04:24.457Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL
-        
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="http://www.wanganyu1996.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="数据库" scheme="http://www.wanganyu1996.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
     <title>为什么要分库分表？</title>
     <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
     <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
@@ -128,11 +100,11 @@
   </entry>
   
   <entry>
-    <title>缓存使用场景介绍</title>
-    <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
-    <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-03-02T12:16:26.577Z</updated>
+    <title>MySQL主从复制原理</title>
+    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
+    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
+    <published>2019-02-07T01:25:00.000Z</published>
+    <updated>2019-04-21T16:04:24.457Z</updated>
     
     <summary type="html">
     
@@ -140,21 +112,18 @@
       
         
         
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？&lt;/p&gt;
-&lt;h2 id=&quot;面试官心理分析&quot;&gt;&lt;a
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL
         
       
     
     </summary>
     
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+      <category term="数据库" scheme="http://www.wanganyu1996.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+      <category term="数据库" scheme="http://www.wanganyu1996.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-      <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
+      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
     
   </entry>
   
@@ -182,6 +151,37 @@
     
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>缓存使用场景介绍</title>
+    <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
+    <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-04-25T14:47:33.573Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？&lt;/p&gt;
+&lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
@@ -548,11 +548,11 @@
   </entry>
   
   <entry>
-    <title>为什么 redis 单线程却能支撑高并发？</title>
-    <link href="http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html"/>
-    <id>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</id>
+    <title>Redis常用知识点总结</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-zong-jie.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-zong-jie.html</id>
     <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-03-30T15:00:24.091Z</updated>
+    <updated>2019-04-04T15:04:43.230Z</updated>
     
     <summary type="html">
     
@@ -560,8 +560,7 @@
       
         
         
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;redis 和 memcached 有什么区别？redis 的线程模型是什么？为什么 redis 单线程却能支撑高并发？&lt;/p&gt;
-&lt;h2
+          &lt;h2 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h2&gt;&lt;p&gt;Redis
         
       
     
