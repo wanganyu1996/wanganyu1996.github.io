@@ -128,6 +128,33 @@
   </entry>
   
   <entry>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-04-27T11:44:56.254Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
     <title>缓存使用场景介绍</title>
     <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
     <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
@@ -155,33 +182,6 @@
       <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-23T14:00:03.159Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
@@ -443,7 +443,7 @@
     <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-xing.html"/>
     <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-xing.html</id>
     <published>2018-08-14T01:26:24.000Z</published>
-    <updated>2019-03-17T01:45:38.114Z</updated>
+    <updated>2019-04-27T11:41:35.853Z</updated>
     
     <summary type="html">
     
@@ -470,7 +470,7 @@
     <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html"/>
     <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html</id>
     <published>2018-08-12T01:26:24.000Z</published>
-    <updated>2019-03-31T14:03:49.001Z</updated>
+    <updated>2019-04-27T11:50:16.453Z</updated>
     
     <summary type="html">
     
@@ -548,11 +548,11 @@
   </entry>
   
   <entry>
-    <title>为什么 redis 单线程却能支撑高并发？</title>
-    <link href="http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html"/>
-    <id>http://www.wanganyu1996.com/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html</id>
+    <title>Redis 的雪崩和穿透</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html</id>
     <published>2017-08-13T02:50:57.000Z</published>
-    <updated>2019-03-30T15:00:24.091Z</updated>
+    <updated>2019-04-27T10:53:03.556Z</updated>
     
     <summary type="html">
     
@@ -560,7 +560,7 @@
       
         
         
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;redis 和 memcached 有什么区别？redis 的线程模型是什么？为什么 redis 单线程却能支撑高并发？&lt;/p&gt;
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;了解什么是 redis 的雪崩和穿透？redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 redis 的穿透？&lt;/p&gt;
 &lt;h2
         
       
