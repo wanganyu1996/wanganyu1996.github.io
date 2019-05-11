@@ -128,11 +128,11 @@
   </entry>
   
   <entry>
-    <title>代理模式深入分析</title>
-    <link href="http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html"/>
-    <id>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</id>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
     <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-05-04T13:31:13.010Z</updated>
+    <updated>2019-04-27T11:44:56.254Z</updated>
     
     <summary type="html">
     
@@ -140,16 +140,17 @@
       
         
         
-          &lt;h2 id=&quot;代理模式深入分析&quot;&gt;&lt;a href=&quot;#代理模式深入分析&quot; class=&quot;headerlink&quot;
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
         
       
     
     </summary>
     
-      <category term="设计模式" scheme="http://www.wanganyu1996.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
     
     
-      <category term="设计模式" scheme="http://www.wanganyu1996.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
@@ -185,11 +186,11 @@
   </entry>
   
   <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
+    <title>代理模式深入分析</title>
+    <link href="http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html"/>
+    <id>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</id>
     <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-27T11:44:56.254Z</updated>
+    <updated>2019-05-04T13:31:13.010Z</updated>
     
     <summary type="html">
     
@@ -197,17 +198,16 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
+          &lt;h2 id=&quot;代理模式深入分析&quot;&gt;&lt;a href=&quot;#代理模式深入分析&quot; class=&quot;headerlink&quot;
         
       
     
     </summary>
     
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+      <category term="设计模式" scheme="http://www.wanganyu1996.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
     
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+      <category term="设计模式" scheme="http://www.wanganyu1996.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
@@ -317,9 +317,9 @@
       <category term="多线程" scheme="http://www.wanganyu1996.com/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
     
-      <category term="多线程" scheme="http://www.wanganyu1996.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
       <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
+    
+      <category term="多线程" scheme="http://www.wanganyu1996.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
@@ -520,10 +520,10 @@
   
   <entry>
     <title>消息队列使用场景介绍</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html</id>
+    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-shi-yong-chang-jing-jie-shao.html"/>
+    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-shi-yong-chang-jing-jie-shao.html</id>
     <published>2018-08-09T01:26:24.000Z</published>
-    <updated>2019-05-11T04:59:31.340Z</updated>
+    <updated>2019-05-11T05:52:13.081Z</updated>
     
     <summary type="html">
     

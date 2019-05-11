@@ -11,7 +11,7 @@
 Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？
 
 
-为什么使用消息队列消息队列常见的使用场景有很多，但是比较核心的有 3 个：解耦、异步">
+为什么使用消息队列消息队列常见的使用场景有很多，包括异步处理，应用解耦，流量削锋和消">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -408,7 +408,7 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
 <li>Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些场景？</li>
 </ul>
 </blockquote>
-<h3 id="为什么使用消息队列"><a href="#为什么使用消息队列" class="headerlink" title="为什么使用消息队列"></a>为什么使用消息队列</h3><p>消息队列常见的使用场景有很多，但是比较核心的有 3 个：<strong>解耦</strong>、<strong>异步</strong>、<strong>削峰</strong>。</p>
+<h3 id="为什么使用消息队列"><a href="#为什么使用消息队列" class="headerlink" title="为什么使用消息队列"></a>为什么使用消息队列</h3><p>消息队列常见的使用场景有很多，包括异步处理，应用解耦，流量削锋和消息通讯等，但是比较核心的有 3 个：<strong>解耦</strong>、<strong>异步</strong>、<strong>削峰</strong>。</p>
 <h4 id="解耦"><a href="#解耦" class="headerlink" title="解耦"></a>解耦</h4><p>看这么个场景。A 系统发送数据到 BCD 三个系统，通过接口调用发送。如果 E 系统也要这个数据呢？那如果 C 系统现在不需要了呢？A 系统负责人几乎崩溃……</p>
 <p><img src="https://res.cloudinary.com/dijk2pkfa/image/upload/v1544454712/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%93%E9%A2%98/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/mq-1.png" alt="img"></p>
 <p>在这个场景中，A 系统跟其它各种乱七八糟的系统严重耦合，A 系统产生一条比较关键的数据，很多系统都需要 A 系统将这个数据发送过来。A 系统要时时刻刻考虑 BCDE 四个系统如果挂了该咋办？要不要重发，要不要把消息存起来？头发都白了啊！</p>
@@ -647,7 +647,7 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                     </span>
                     <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/xiao-xi-dui-lie/wei-shi-me-shi-yong-xiao-xi-dui-lie.html" class="b-link-green">消息队列使用场景介绍</a>
+                    <a href="/xiao-xi-dui-lie/xiao-xi-dui-lie-shi-yong-chang-jing-jie-shao.html" class="b-link-green">消息队列使用场景介绍</a>
                 </p>
             </div>
         </div>
