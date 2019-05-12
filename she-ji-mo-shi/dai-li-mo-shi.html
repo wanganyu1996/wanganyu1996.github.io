@@ -240,7 +240,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/pattern/%E5%8E%8B%E7%BC%A9-725839.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/redis/where-redis.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -721,6 +721,9 @@
 我是程序员，需要买套房子，给家人住，要个别墅，靠近地铁
 房子已经找到，有时间来看房子
 </code></pre><p>到此我们自定义的模仿JDK的动态代理实现完成，主要通过自定义类加载器生成一个代理类。后续将有其他设计模式的分析。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p> <code>JDK</code>动态代理和<code>CGLIB</code>动态代理的区别：</p>
+<p>（1）<code>JDK</code>动态代理只能对实现了接口的类生成代理，而不能针对类</p>
+<p>（2）<code>CGLIB</code>是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法因为是继承，所以该类或方法最好不要声明成final</p>
 
             </div>
             <hr>
@@ -893,60 +896,6 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/huan-cun/huan-cun-shi-yong-chang-jing.html">
-                    <div class="card-image">
-                        
-                        <img src="http://img.wanganyu1996.com/redis/where-redis.jpg" class="responsive-img" alt="缓存使用场景介绍">
-                        
-                        <span class="card-title">缓存使用场景介绍</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">问题项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？
-分析这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。
-只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用</div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
-                    </a>
-                    
-                    <a href="/tags/分布式/" target="_blank">
-                        <span class="chip bg-color">分布式</span>
-                    </a>
-                    
-                    <a href="/tags/缓存/" target="_blank">
-                        <span class="chip bg-color">缓存</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
-            </div>
-            <div class="card">
                 <a href="/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html">
                     <div class="card-image">
                         
@@ -960,9 +909,9 @@
 面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
 现在面试，分布式系统成了</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -980,6 +929,55 @@
                     
                     <a href="/tags/分布式事务/" target="_blank">
                         <span class="chip bg-color">分布式事务</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html">
+                    <div class="card-image">
+                        
+                        <img src="http://img.wanganyu1996.com/lock/distribute-lock.jpg" class="responsive-img" alt="分布式锁的两种实现方式及对比">
+                        
+                        <span class="card-title">分布式锁的两种实现方式及对比</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">面试题一般实现分布式锁都有哪些方式？使用 redis 如何设计分布式锁？使用 zk 来设计分布式锁可以吗？这两种分布式锁的实现方式哪种效率比较高？
+面试官心理分析其实一般问问题，都是这么问的，先问问你 zk，然后其实是要过度到 zk 关联的</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-user fa-fw"></i>
+                            若愚
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Redis/" target="_blank">
+                        <span class="chip bg-color">Redis</span>
+                    </a>
+                    
+                    <a href="/tags/Zookeeper/" target="_blank">
+                        <span class="chip bg-color">Zookeeper</span>
+                    </a>
+                    
+                    <a href="/tags/分布式/" target="_blank">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
