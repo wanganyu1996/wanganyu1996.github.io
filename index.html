@@ -463,6 +463,40 @@ $(function () {
                     
 
                     
+                        <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
+<div class="video-player">
+    
+    <div class="title center-align">
+        <i class="fa fa-video-camera"></i>&nbsp;&nbsp;在命运为你安排的时区里，一切都准时
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="dplayer" class="dplayer-video"></div>
+        </div>
+    </div>
+</div>
+
+<script src="/libs/dplayer/DPlayer.min.js"></script>
+<script>
+    $(function () {
+        new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: 'false' === 'true',
+            theme: '#42b983',
+            loop: 'false' === 'true',
+            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
+            preload: 'auto',
+            volume: Number('0.7'),
+            video: {
+                url: 'http://img.wanganyu1996.com/index/dream.mp4',
+                pic: '',
+                thumbnails: ''
+            }
+        });
+    });
+</script>
+                    
 
                     <div id="recommend-sections" class="recommend">
                         
@@ -796,6 +830,53 @@ $(function () {
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/redis/redis-chi-jiu-hua-fang-shi.html">
+                        <div class="card-image">
+                            
+                            <img src="http://img.wanganyu1996.com/redis/redis-persistences.jpg" class="responsive-img" alt="redis 的持久化有哪几种方式？">
+                            
+                            <span class="card-title">redis 的持久化有哪几种方式？</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                面试题redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？
+面试官心理分析redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Redis/" class="post-category" target="_blank">
+                                    Redis
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Redis/" target="_blank">
+                            <span class="chip bg-color">Redis</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
                     <a href="/she-ji-mo-shi/dai-li-mo-shi.html">
                         <div class="card-image">
                             
@@ -834,6 +915,54 @@ $(function () {
                         
                         <a href="/tags/设计模式/" target="_blank">
                             <span class="chip bg-color">设计模式</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html">
+                        <div class="card-image">
+                            
+                            <img src="http://img.wanganyu1996.com/jta/database-shard-global-id-generate.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
+                            
+                            <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                问题分布式事务了解吗？你们是如何解决分布式事务问题的？
+面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
+现在面试，分布式系统成了
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/分布式事务/" class="post-category" target="_blank">
+                                    分布式事务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/分布式事务/" target="_blank">
+                            <span class="chip bg-color">分布式事务</span>
                         </a>
                         
                     </div>
@@ -899,101 +1028,6 @@ $(function () {
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/redis/redis-chi-jiu-hua-fang-shi.html">
-                        <div class="card-image">
-                            
-                            <img src="http://img.wanganyu1996.com/redis/redis-persistences.jpg" class="responsive-img" alt="redis 的持久化有哪几种方式？">
-                            
-                            <span class="card-title">redis 的持久化有哪几种方式？</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                面试题redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？
-面试官心理分析redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Redis/" target="_blank">
-                            <span class="chip bg-color">Redis</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html">
-                        <div class="card-image">
-                            
-                            <img src="http://img.wanganyu1996.com/jta/database-shard-global-id-generate.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
-                            
-                            <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                问题分布式事务了解吗？你们是如何解决分布式事务问题的？
-面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
-现在面试，分布式系统成了
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/分布式事务/" class="post-category" target="_blank">
-                                    分布式事务
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/分布式事务/" target="_blank">
-                            <span class="chip bg-color">分布式事务</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
-                <div class="card">
                     <a href="/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html">
                         <div class="card-image">
                             
@@ -1030,12 +1064,12 @@ $(function () {
                             <span class="chip bg-color">Redis</span>
                         </a>
                         
-                        <a href="/tags/Zookeeper/" target="_blank">
-                            <span class="chip bg-color">Zookeeper</span>
-                        </a>
-                        
                         <a href="/tags/分布式/" target="_blank">
                             <span class="chip bg-color">分布式</span>
+                        </a>
+                        
+                        <a href="/tags/Zookeeper/" target="_blank">
+                            <span class="chip bg-color">Zookeeper</span>
                         </a>
                         
                     </div>
@@ -1174,13 +1208,33 @@ $(function () {
 
 
 
+<style>
+.my-face {
+    animation: my-face 5s infinite ease-in-out;
+    display: inline-block;
+    margin: 0 5px;
+}
+#heart {
+    animation: heartAnimate 1.33s ease-in-out infinite;
+}
+.with-love {
+    margin: 0 5px;
+}
+</style>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-
-
-
+            Copyright&copy;2018-2019
+            <span class="with-love" id="heart">
+                  <i class="fa fa-heart" style="color:#ff71a8"></i>
+              </span>若愚博客
+            <div>
+              <span id="days"></span>
+              <span class="my-face">ღゝ◡╹)ノ♡</span>
+            </div>
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">48.3k</span>
             
 
             
@@ -1223,6 +1277,30 @@ $(function () {
 </footer>
 
 <div class="progress-bar"></div>
+
+ <script>function show_date_time() {
+              window.setTimeout("show_date_time()", 1e3),
+              BirthDay = new Date("11/25/2018 08:18:26"),
+              today = new Date,
+              timeold = today.getTime() - BirthDay.getTime(),
+              sectimeold = timeold / 1e3,
+              secondsold = Math.floor(sectimeold),
+              msPerDay = 864e5,
+              e_daysold = timeold / msPerDay,
+              daysold = Math.floor(e_daysold),
+              e_hrsold = 24 * (e_daysold - daysold),
+              hrsold = setzero(Math.floor(e_hrsold)),
+              e_minsold = 60 * (e_hrsold - hrsold),
+              minsold = setzero(Math.floor(60 * (e_hrsold - hrsold))),
+              seconds = setzero(Math.floor(60 * (e_minsold - minsold))),
+              document.getElementById("days").innerHTML = "本站已勉强运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒"
+            }
+            function setzero(e) {
+              return e < 10 && (e = "0" + e),
+              e
+            }
+            show_date_time()
+</script>
 
 
 <!-- 搜索遮罩框 -->

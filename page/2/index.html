@@ -763,21 +763,21 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html">
+                    <a href="/redis/redis-zong-jie.html">
                         <div class="card-image">
                             
-                            <img src="http://img.wanganyu1996.com/redis/redis-caching-avalanche.jpg" class="responsive-img" alt="Redis 的雪崩和穿透">
+                            <img src="http://img.wanganyu1996.com/redis/redis-introduction.jpg" class="responsive-img" alt="Redis常用知识点总结">
                             
-                            <span class="card-title">Redis 的雪崩和穿透</span>
+                            <span class="card-title">Redis常用知识点总结</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                问题了解什么是 redis 的雪崩和穿透？redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 redis 的穿透？
-背景因为缓存雪崩和穿透，是缓存最大的两个问题，要么不出现，一旦出现就是致命性的问题。
-深入剖析缓存雪崩对于系统 
+                                一、概述Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。
+键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。
+Redis 支持很多特性，例如将内存中的数据
                             
                         </div>
                         <div class="publish-info">
@@ -811,21 +811,21 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
             
             <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/redis/redis-zong-jie.html">
+                    <a href="/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html">
                         <div class="card-image">
                             
-                            <img src="http://img.wanganyu1996.com/redis/redis-introduction.jpg" class="responsive-img" alt="Redis常用知识点总结">
+                            <img src="http://img.wanganyu1996.com/redis/redis-caching-avalanche.jpg" class="responsive-img" alt="Redis 的雪崩和穿透">
                             
-                            <span class="card-title">Redis常用知识点总结</span>
+                            <span class="card-title">Redis 的雪崩和穿透</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                一、概述Redis 是速度非常快的非关系型（NoSQL）内存键值数据库，可以存储键和五种不同类型的值之间的映射。
-键的类型只能为字符串，值支持五种数据类型：字符串、列表、集合、散列表、有序集合。
-Redis 支持很多特性，例如将内存中的数据
+                                问题了解什么是 redis 的雪崩和穿透？redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 redis 的穿透？
+背景因为缓存雪崩和穿透，是缓存最大的两个问题，要么不出现，一旦出现就是致命性的问题。
+深入剖析缓存雪崩对于系统 
                             
                         </div>
                         <div class="publish-info">
@@ -887,13 +887,33 @@ Redis 支持很多特性，例如将内存中的数据
 
 
 
+<style>
+.my-face {
+    animation: my-face 5s infinite ease-in-out;
+    display: inline-block;
+    margin: 0 5px;
+}
+#heart {
+    animation: heartAnimate 1.33s ease-in-out infinite;
+}
+.with-love {
+    margin: 0 5px;
+}
+</style>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            &copy;<a href="https://wanganyu1996.com/" target="_blank">2018 Anyu博客</a>
-
-
-
+            Copyright&copy;2018-2019
+            <span class="with-love" id="heart">
+                  <i class="fa fa-heart" style="color:#ff71a8"></i>
+              </span>若愚博客
+            <div>
+              <span id="days"></span>
+              <span class="my-face">ღゝ◡╹)ノ♡</span>
+            </div>
+            
+                &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
+                <span class="white-color">48.3k</span>
             
 
             
@@ -936,6 +956,30 @@ Redis 支持很多特性，例如将内存中的数据
 </footer>
 
 <div class="progress-bar"></div>
+
+ <script>function show_date_time() {
+              window.setTimeout("show_date_time()", 1e3),
+              BirthDay = new Date("11/25/2018 08:18:26"),
+              today = new Date,
+              timeold = today.getTime() - BirthDay.getTime(),
+              sectimeold = timeold / 1e3,
+              secondsold = Math.floor(sectimeold),
+              msPerDay = 864e5,
+              e_daysold = timeold / msPerDay,
+              daysold = Math.floor(e_daysold),
+              e_hrsold = 24 * (e_daysold - daysold),
+              hrsold = setzero(Math.floor(e_hrsold)),
+              e_minsold = 60 * (e_hrsold - hrsold),
+              minsold = setzero(Math.floor(60 * (e_hrsold - hrsold))),
+              seconds = setzero(Math.floor(60 * (e_minsold - minsold))),
+              document.getElementById("days").innerHTML = "本站已勉强运行" + daysold + "天" + hrsold + "小时" + minsold + "分" + seconds + "秒"
+            }
+            function setzero(e) {
+              return e < 10 && (e = "0" + e),
+              e
+            }
+            show_date_time()
+</script>
 
 
 <!-- 搜索遮罩框 -->
