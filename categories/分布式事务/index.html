@@ -400,19 +400,43 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/ruoyu/in
     margin: 0 5px;
 }
 #heart {
-    animation: heartAnimate 1.33s ease-in-out infinite;
+    display: inline-block;
+    animation: beating 1s infinite;
+    animation-timing-function: ease-out;
+    margin: 0 3px;
 }
-.with-love {
-    margin: 0 5px;
+@keyframes beating {
+	0% {
+		transform: scale(1);
+	}
+
+	20% {
+		transform: scale(1.6);
+	}
+
+	30% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.6);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 </style>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright&copy;2018-2019
-            <span class="with-love" id="heart">
-                  <i class="fa fa-heart" style="color:#ff71a8"></i>
-              </span>若愚博客
+            Copyright&copy;2018-2019 若愚博客<br>
+            <!--<span class="with-love" id="heart"><i class="fa fa-heart" style="color:#ff71a8"></i> </span>-->
+            【事实并非理所当然<span id="heart">❤️</span>世界总是欲盖弥彰】
             <div>
               <span id="days"></span>
               <span class="my-face">ღゝ◡╹)ノ♡</span>
@@ -421,10 +445,9 @@ $('.bg-cover').css('background-image', 'url(http://img.wanganyu1996.com/ruoyu/in
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
                 <span class="white-color">48.3k</span>
             
-
             
 			
-                <br>
+                
                 
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>

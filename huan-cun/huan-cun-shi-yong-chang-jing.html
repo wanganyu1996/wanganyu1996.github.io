@@ -581,16 +581,44 @@
 
 <script src="/libs/share/js/social-share.min.js"></script>
 
-            <div class="reprint">
-                <p>
-                    <span class="reprint-tip">
-                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
-                    </span>
-                    <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
-                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/huan-cun/huan-cun-shi-yong-chang-jing.html" class="b-link-green">缓存使用场景介绍</a>
-                </p>
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt="" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
+                </a>
             </div>
+            <br>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
+                    《缓存使用场景介绍》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/huan-cun/huan-cun-shi-yong-chang-jing.html" property="cc:attributionName" rel="cc:attributionURL">
+                若愚
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
         </div>
     </div>
 
@@ -613,27 +641,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/redis/redis-chi-jiu-hua-fang-shi.html">
+                <a href="/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/redis/redis-persistences.jpg" class="responsive-img" alt="redis 的持久化有哪几种方式？">
+                        <img src="http://img.wanganyu1996.com/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8/why-database-shards.jpg" class="responsive-img" alt="为什么要分库分表？">
                         
-                        <span class="card-title">redis 的持久化有哪几种方式？</span>
+                        <span class="card-title">为什么要分库分表？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">面试题redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？
-面试官心理分析redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 </div>
+                    <div class="summary block-with-text">
+                        
+                            为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？
+其实这块肯定是扯到高并发了，因为分库分表一定是为了支撑高并
+                        
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
+                            <a href="/categories/数据库/" class="post-category" target="_blank">
+                                    数据库
                                 </a>
                             
                             
@@ -643,8 +675,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/数据库/" target="_blank">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/" target="_blank">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -658,18 +694,21 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html">
+                <a href="/she-ji-mo-shi/dai-li-mo-shi.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/jta/database-shard-global-id-generate.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
+                        <img src="http://img.wanganyu1996.com/redis/where-redis.jpg" class="responsive-img" alt="代理模式深入分析">
                         
-                        <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
+                        <span class="card-title">代理模式深入分析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">问题分布式事务了解吗？你们是如何解决分布式事务问题的？
-面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
-现在面试，分布式系统成了</div>
+                    <div class="summary block-with-text">
+                        
+                            代理模式深入分析代理模式：Proxy，不需要自己做事情，而让其他人帮你代理，最后由你决定。代理分为三类，静态代理、动态代理，动态代理又分为JDK动态代理和CGLib动态代理。
+静态代理源码分析我们通过一个买房子的例子来看一下什么是静态代理，
+                        
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-13
@@ -678,8 +717,8 @@
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/分布式事务/" class="post-category" target="_blank">
-                                    分布式事务
+                            <a href="/categories/设计模式/" class="post-category" target="_blank">
+                                    设计模式
                                 </a>
                             
                             
@@ -689,8 +728,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/分布式事务/" target="_blank">
-                        <span class="chip bg-color">分布式事务</span>
+                    <a href="/tags/设计模式/" target="_blank">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
                 </div>
@@ -740,17 +779,7 @@
     });
 </script>
 
-<!-- require APlayer -->
-                
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-                    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
 
-                    <div class="aplayer" data-id="2579380321" data-server="netease" data-type="playlist" data-fixed="true">
-                    </div>
-                
-
-                
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -856,19 +885,43 @@
     margin: 0 5px;
 }
 #heart {
-    animation: heartAnimate 1.33s ease-in-out infinite;
+    display: inline-block;
+    animation: beating 1s infinite;
+    animation-timing-function: ease-out;
+    margin: 0 3px;
 }
-.with-love {
-    margin: 0 5px;
+@keyframes beating {
+	0% {
+		transform: scale(1);
+	}
+
+	20% {
+		transform: scale(1.6);
+	}
+
+	30% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.6);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 </style>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright&copy;2018-2019
-            <span class="with-love" id="heart">
-                  <i class="fa fa-heart" style="color:#ff71a8"></i>
-              </span>若愚博客
+            Copyright&copy;2018-2019 若愚博客<br>
+            <!--<span class="with-love" id="heart"><i class="fa fa-heart" style="color:#ff71a8"></i> </span>-->
+            【事实并非理所当然<span id="heart">❤️</span>世界总是欲盖弥彰】
             <div>
               <span id="days"></span>
               <span class="my-face">ღゝ◡╹)ノ♡</span>
@@ -877,10 +930,9 @@
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
                 <span class="white-color">48.3k</span>
             
-
             
 			
-                <br>
+                
                 
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>

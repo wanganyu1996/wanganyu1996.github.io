@@ -583,16 +583,44 @@
 
 <script src="/libs/share/js/social-share.min.js"></script>
 
-            <div class="reprint">
-                <p>
-                    <span class="reprint-tip">
-                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
-                    </span>
-                    <a href="http://www.wanganyu1996.com" class="b-link-green">若愚博客</a>
-                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-dui-lie-de-gao-ke-yong.html" class="b-link-green">如何保证消息队列的高可用？</a>
-                </p>
+            
+
+    <div class="reprint" id="reprint-statement">
+        <p class="reprint-tip">
+            <i class="fa fa-exclamation-triangle"></i>&nbsp;&nbsp;
+            <span>转载规则</span>
+        </p>
+        
+            <div class="center-align">
+                <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                    <img alt="" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
+                </a>
             </div>
+            <br>
+            <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
+                    《如何保证消息队列的高可用？》
+                </span> 由
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-dui-lie-de-gao-ke-yong.html" property="cc:attributionName" rel="cc:attributionURL">
+                若愚
+            </a> 采用
+            <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
+                知识共享署名 4.0 国际许可协议
+            </a>进行许可。
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
         </div>
     </div>
 
@@ -624,11 +652,11 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">问题如果进行消息队列的架构设计？
-面试官心理分析其实聊到这个问题，一般面试官要考察两块：
-
-你有没有对某一个消息队列做过较为深入的原理的了解，或者从整体了解把握住一个消息队列的架构原理。
-看看你的设计能力，给你一个常见的系统，就是消息队列系</div>
+                    <div class="summary block-with-text">
+                        
+                            如果让你写一个消息队列，该如何进行架构设计？说一下你的思路。
+                        
+                    </div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-15
@@ -676,9 +704,13 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">问题如何保证缓存与数据库的双写一致性？
+                    <div class="summary block-with-text">
+                        
+                            问题如何保证缓存与数据库的双写一致性？
 导言你只要用缓存，就可能会涉及到缓存与数据库双存储双写，你只要是双写，就一定会有数据一致性的问题，那么你如何解决一致性问题？
-面试题剖析一般来说，如果允许缓存可以稍微的跟数据库偶尔有不一致的情况，也就</div>
+面试题剖析一般来说，如果允许缓存可以稍微的跟数据库偶尔有不一致的情况，也就
+                        
+                    </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018-09-13
@@ -749,17 +781,7 @@
     });
 </script>
 
-<!-- require APlayer -->
-                
-                    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-                    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
-                    <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
 
-                    <div class="aplayer" data-id="2579380321" data-server="netease" data-type="playlist" data-fixed="true">
-                    </div>
-                
-
-                
     </div>
     <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
         <div class="toc-widget">
@@ -865,19 +887,43 @@
     margin: 0 5px;
 }
 #heart {
-    animation: heartAnimate 1.33s ease-in-out infinite;
+    display: inline-block;
+    animation: beating 1s infinite;
+    animation-timing-function: ease-out;
+    margin: 0 3px;
 }
-.with-love {
-    margin: 0 5px;
+@keyframes beating {
+	0% {
+		transform: scale(1);
+	}
+
+	20% {
+		transform: scale(1.6);
+	}
+
+	30% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.6);
+	}
+
+	70% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
 }
 </style>
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright&copy;2018-2019
-            <span class="with-love" id="heart">
-                  <i class="fa fa-heart" style="color:#ff71a8"></i>
-              </span>若愚博客
+            Copyright&copy;2018-2019 若愚博客<br>
+            <!--<span class="with-love" id="heart"><i class="fa fa-heart" style="color:#ff71a8"></i> </span>-->
+            【事实并非理所当然<span id="heart">❤️</span>世界总是欲盖弥彰】
             <div>
               <span id="days"></span>
               <span class="my-face">ღゝ◡╹)ノ♡</span>
@@ -886,10 +932,9 @@
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
                 <span class="white-color">48.3k</span>
             
-
             
 			
-                <br>
+                
                 
                 <span id="busuanzi_container_site_pv">
                     <i class="fa fa-heart-o"></i>
