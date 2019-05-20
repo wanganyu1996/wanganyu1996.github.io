@@ -397,7 +397,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        697
+                        696
                     </div>
                     
 
@@ -424,7 +424,7 @@
 <h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>这个问题，互联网公司必问，要是一个人连缓存都不太清楚，那确实比较尴尬。</p>
 <p>只要问到缓存，上来第一个问题，肯定是先问问你项目哪里用了缓存？为啥要用？不用行不行？如果用了以后可能会有什么不良的后果？</p>
 <p>这就是看看你对缓存这个东西背后有没有思考，如果你就是傻乎乎的瞎用，没法给面试官一个合理的解答，那面试官对你印象肯定不太好，觉得你平时思考太少，就知道干活儿。</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="项目中缓存是如何使用的？"><a href="#项目中缓存是如何使用的？" class="headerlink" title="项目中缓存是如何使用的？"></a>项目中缓存是如何使用的？</h3><p>这个，需要结合自己项目的业务来。</p>
+<h2 id="深度剖析"><a href="#深度剖析" class="headerlink" title="深度剖析"></a>深度剖析</h2><h3 id="项目中缓存是如何使用的？"><a href="#项目中缓存是如何使用的？" class="headerlink" title="项目中缓存是如何使用的？"></a>项目中缓存是如何使用的？</h3><p>这个，需要结合自己项目的业务来。</p>
 <h3 id="为什么要用缓存？"><a href="#为什么要用缓存？" class="headerlink" title="为什么要用缓存？"></a>为什么要用缓存？</h3><p>用缓存，主要有两个用途：<strong>高性能</strong>、<strong>高并发</strong>。</p>
 <h4 id="高性能"><a href="#高性能" class="headerlink" title="高性能"></a>高性能</h4><p>假设这么个场景，你有个操作，一个请求过来，吭哧吭哧你各种乱七八糟操作 mysql，半天查出来一个结果，耗时 600ms。但是这个结果可能接下来几个小时都不会变了，或者变了也可以不用立即反馈给用户。那么此时咋办？</p>
 <p>缓存啊，折腾 600ms 查出来的结果，扔缓存里，一个 key 对应一个 value，下次再有人查，别走 mysql 折腾 600ms 了，直接从缓存里，通过一个 key 查出来一个 value，2ms 搞定。性能提升 300 倍。</p>
@@ -644,7 +644,7 @@
                 <a href="/she-ji-mo-shi/dai-li-mo-shi.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/redis/where-redis.jpg" class="responsive-img" alt="代理模式深入分析">
+                        <img src="http://img.wanganyu1996.com/pattern/proxy-725839.jpg" class="responsive-img" alt="代理模式深入分析">
                         
                         <span class="card-title">代理模式深入分析</span>
                     </div>
@@ -690,19 +690,20 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/redis/redis-chi-jiu-hua-fang-shi.html">
+                <a href="/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/redis/redis-persistences.jpg" class="responsive-img" alt="redis 的持久化有哪几种方式？">
+                        <img src="http://img.wanganyu1996.com/jta/database-shard-global-id-generate.jpg" class="responsive-img" alt="分布式事务的的五种解决方案及优劣对比">
                         
-                        <span class="card-title">redis 的持久化有哪几种方式？</span>
+                        <span class="card-title">分布式事务的的五种解决方案及优劣对比</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            面试题redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？
-面试官心理分析redis 如果仅仅只是将数据缓存在内存里面，如果 redis 宕机了再重启，内存里的数据就全部都弄丢了啊。你必须得用 
+                            问题分布式事务了解吗？你们是如何解决分布式事务问题的？
+面试官心理分析只要聊到你做了分布式系统，必问分布式事务，你对分布式事务一无所知的话，确实会很坑，你起码得知道有哪些方案，一般怎么来做，每个方案的优缺点是什么。
+现在面试，分布式系统成了
                         
                     </div>
                     <div class="publish-info">
@@ -713,8 +714,8 @@
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Redis/" class="post-category" target="_blank">
-                                    Redis
+                            <a href="/categories/分布式事务/" class="post-category" target="_blank">
+                                    分布式事务
                                 </a>
                             
                             
@@ -724,8 +725,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Redis/" target="_blank">
-                        <span class="chip bg-color">Redis</span>
+                    <a href="/tags/分布式事务/" target="_blank">
+                        <span class="chip bg-color">分布式事务</span>
                     </a>
                     
                 </div>

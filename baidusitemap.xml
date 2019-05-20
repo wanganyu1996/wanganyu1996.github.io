@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</loc>
+    <lastmod>2019-05-20</lastmod>
+  </url>  <url>
+    <loc>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</loc>
+    <lastmod>2019-05-20</lastmod>
+  </url>  <url>
     <loc>http://www.wanganyu1996.com/zookeeper/zookeeper-fen-bu-shi-suo-xiang-xi-shi-xian.html</loc>
     <lastmod>2019-05-18</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html</loc>
-    <lastmod>2019-05-18</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</loc>
     <lastmod>2019-05-18</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-shi-yong-chang-jing-jie-shao.html</loc>
@@ -36,9 +39,6 @@
   </url>  <url>
     <loc>http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html</loc>
     <lastmod>2019-04-27</lastmod>
-  </url>  <url>
-    <loc>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</loc>
-    <lastmod>2019-04-25</lastmod>
   </url>  <url>
     <loc>http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html</loc>
     <lastmod>2019-04-23</lastmod>

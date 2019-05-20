@@ -97,34 +97,6 @@
   </entry>
   
   <entry>
-    <title>MySQL主从复制原理</title>
-    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
-    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
-    <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-04-21T16:04:24.457Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL
-        
-      
-    
-    </summary>
-    
-      <category term="数据库" scheme="http://www.wanganyu1996.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="数据库" scheme="http://www.wanganyu1996.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
     <title>为什么要分库分表？</title>
     <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
     <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
@@ -154,11 +126,39 @@
   </entry>
   
   <entry>
+    <title>MySQL主从复制原理</title>
+    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
+    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
+    <published>2019-02-07T01:25:00.000Z</published>
+    <updated>2019-04-21T16:04:24.457Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL
+        
+      
+    
+    </summary>
+    
+      <category term="数据库" scheme="http://www.wanganyu1996.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="数据库" scheme="http://www.wanganyu1996.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="http://www.wanganyu1996.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>代理模式深入分析</title>
     <link href="http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html"/>
     <id>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</id>
     <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-05-18T17:02:02.096Z</updated>
+    <updated>2019-05-20T14:20:32.846Z</updated>
     
     <summary type="html">
     
@@ -184,7 +184,7 @@
     <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
     <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
     <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-25T14:47:33.573Z</updated>
+    <updated>2019-05-20T14:18:04.916Z</updated>
     
     <summary type="html">
     
@@ -207,33 +207,6 @@
       <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-27T11:44:56.254Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
@@ -265,6 +238,33 @@
   </entry>
   
   <entry>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-04-27T11:44:56.254Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
     <title>分布式锁的两种实现方式及对比</title>
     <link href="http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html"/>
     <id>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</id>
@@ -286,9 +286,9 @@
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
@@ -343,9 +343,9 @@
       <category term="多线程" scheme="http://www.wanganyu1996.com/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
     
-      <category term="多线程" scheme="http://www.wanganyu1996.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
-    
       <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
+    
+      <category term="多线程" scheme="http://www.wanganyu1996.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
   </entry>
   
