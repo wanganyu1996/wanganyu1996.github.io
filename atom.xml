@@ -97,11 +97,11 @@
   </entry>
   
   <entry>
-    <title>为什么要分库分表？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
+    <title>MySQL主从复制原理</title>
+    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
+    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
     <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-04-23T13:46:36.326Z</updated>
+    <updated>2019-05-20T14:25:31.543Z</updated>
     
     <summary type="html">
     
@@ -109,8 +109,8 @@
       
         
         
-          &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;
-&lt;p&gt;其实这块肯定是扯到&lt;strong&gt;高并发&lt;/strong&gt;了，因为分库分表一定
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如何实现 MySQL 的读写分离？MySQL 主从复制原理的是什么？如何解决 MySQL 主从同步的延时问题？&lt;/p&gt;
+&lt;h2
         
       
     
@@ -126,11 +126,11 @@
   </entry>
   
   <entry>
-    <title>MySQL主从复制原理</title>
-    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
-    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
+    <title>为什么要分库分表？</title>
+    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
+    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
     <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-04-21T16:04:24.457Z</updated>
+    <updated>2019-04-23T13:46:36.326Z</updated>
     
     <summary type="html">
     
@@ -138,7 +138,8 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;你们有没有做 MySQL 读写分离？如何实现 MySQL 的读写分离？MySQL 主从复制原理的是啥？如何解决 MySQL
+          &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;
+&lt;p&gt;其实这块肯定是扯到&lt;strong&gt;高并发&lt;/strong&gt;了，因为分库分表一定
         
       
     
@@ -176,6 +177,33 @@
     
     
       <category term="设计模式" scheme="http://www.wanganyu1996.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redis 的持久化有哪几种方式？</title>
+    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
+    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-04-27T11:44:56.254Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
   </entry>
   
@@ -238,33 +266,6 @@
   </entry>
   
   <entry>
-    <title>redis 的持久化有哪几种方式？</title>
-    <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
-    <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-27T11:44:56.254Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
     <title>分布式锁的两种实现方式及对比</title>
     <link href="http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html"/>
     <id>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</id>
@@ -286,9 +287,9 @@
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
-      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
-    
       <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
   </entry>
   
@@ -343,9 +344,9 @@
       <category term="多线程" scheme="http://www.wanganyu1996.com/categories/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
     
     
-      <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
-    
       <category term="多线程" scheme="http://www.wanganyu1996.com/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+      <category term="CPU缓存" scheme="http://www.wanganyu1996.com/tags/CPU%E7%BC%93%E5%AD%98/"/>
     
   </entry>
   
