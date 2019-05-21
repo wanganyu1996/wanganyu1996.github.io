@@ -424,7 +424,7 @@
 <li>数据明明过期了，怎么还占用着内存？</li>
 </ul>
 <p>这是由 redis 的过期策略来决定。</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><h3 id="redis-过期策略"><a href="#redis-过期策略" class="headerlink" title="redis 过期策略"></a>redis 过期策略</h3><p>redis 过期策略是：<strong>定期删除+惰性删除</strong>。</p>
+<h2 id="深度剖析"><a href="#深度剖析" class="headerlink" title="深度剖析"></a>深度剖析</h2><h3 id="redis-过期策略"><a href="#redis-过期策略" class="headerlink" title="redis 过期策略"></a>redis 过期策略</h3><p>redis 过期策略是：<strong>定期删除+惰性删除</strong>。</p>
 <p>所谓<strong>定期删除</strong>，指的是 redis 默认是每隔 100ms 就随机抽取一些设置了过期时间的 key，检查其是否过期，如果过期就删除。</p>
 <p>假设 redis 里放了 10w 个 key，都设置了过期时间，你每隔几百毫秒，就检查 10w 个 key，那 redis 基本上就死了，cpu 负载会很高的，消耗在你的检查过期 key 上了。注意，这里可不是每隔 100ms 就遍历所有的设置过期时间的 key，那样就是一场性能上的<strong>灾难</strong>。实际上 redis 是每隔 100ms <strong>随机抽取</strong>一些 key 来检查和删除的。</p>
 <p>但是问题是，定期删除可能会导致很多过期 key 到了时间并没有被删除掉，那咋整呢？所以就是惰性删除了。这就是说，在你获取某个 key 的时候，redis 会检查一下 ，这个 key 如果设置了过期时间那么是否过期了？如果过期了此时就会删除，不会给你返回任何东西。</p>
@@ -719,19 +719,20 @@ Kafka、ActiveMQ、RabbitMQ、RocketMQ 都有什么区别，以及适合哪些�
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/redis/wei-shi-me-redis-dan-xian-cheng-mo-xing-ye-neng-xiao-lu-zhe-me-gao.html">
+                <a href="/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/redis/redis-629480.jpg" class="responsive-img" alt="为什么 redis 单线程却能支撑高并发？">
+                        <img src="http://img.wanganyu1996.com/redis/redis-caching-avalanche.jpg" class="responsive-img" alt="Redis 的雪崩和穿透">
                         
-                        <span class="card-title">为什么 redis 单线程却能支撑高并发？</span>
+                        <span class="card-title">Redis 的雪崩和穿透</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题redis 和 memcached 有什么区别？redis 的线程模型是什么？为什么 redis 单线程却能支撑高并发？
-面试官心理分析这个是问 redis 的时候，最基本的问题吧，redis 最基本的一个内部原理和特点，就是 redi
+                            问题了解什么是 redis 的雪崩和穿透？redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 redis 的穿透？
+背景因为缓存雪崩和穿透，是缓存最大的两个问题，要么不出现，一旦出现就是致命性的问题。
+深入剖析缓存雪崩对于系统 
                         
                     </div>
                     <div class="publish-info">

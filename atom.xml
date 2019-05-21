@@ -155,32 +155,6 @@
   </entry>
   
   <entry>
-    <title>代理模式深入分析</title>
-    <link href="http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html"/>
-    <id>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-05-20T15:16:03.203Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;代理模式深入分析&quot;&gt;&lt;a href=&quot;#代理模式深入分析&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="设计模式" scheme="http://www.wanganyu1996.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-      <category term="设计模式" scheme="http://www.wanganyu1996.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>缓存使用场景介绍</title>
     <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
     <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
@@ -216,7 +190,7 @@
     <link href="http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html"/>
     <id>http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html</id>
     <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-04-27T11:44:56.254Z</updated>
+    <updated>2019-05-21T15:22:04.799Z</updated>
     
     <summary type="html">
     
@@ -224,8 +198,8 @@
       
         
         
-          &lt;h2 id=&quot;面试题&quot;&gt;&lt;a href=&quot;#面试题&quot; class=&quot;headerlink&quot; title=&quot;面试题&quot;&gt;&lt;/a&gt;面试题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
-&lt;h2
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;redis 的持久化有哪几种方式？不同的持久化机制都有什么优缺点？持久化机制具体底层是如何实现的？&lt;/p&gt;
+&lt;h2 id=&quot;分析&quot;&gt;&lt;a
         
       
     
@@ -266,6 +240,32 @@
   </entry>
   
   <entry>
+    <title>代理模式深入分析</title>
+    <link href="http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html"/>
+    <id>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-05-20T15:16:03.203Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;代理模式深入分析&quot;&gt;&lt;a href=&quot;#代理模式深入分析&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="设计模式" scheme="http://www.wanganyu1996.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="http://www.wanganyu1996.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>分布式锁的两种实现方式及对比</title>
     <link href="http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html"/>
     <id>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</id>
@@ -289,9 +289,9 @@
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
-      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
-    
       <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
     
   </entry>
   
@@ -415,7 +415,7 @@
     <link href="http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html"/>
     <id>http://www.wanganyu1996.com/redis/ru-he-bao-zheng-huan-cun-yu-shu-ju-ku-de-shuang-xie-yi-zhi-xing.html</id>
     <published>2018-09-13T02:50:57.000Z</published>
-    <updated>2019-03-31T12:48:21.606Z</updated>
+    <updated>2019-05-21T15:22:31.173Z</updated>
     
     <summary type="html">
     
