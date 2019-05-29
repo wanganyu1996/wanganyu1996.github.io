@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="zookeeper 都有哪些使用场景, 若愚博客">
     <meta name="description" content="问题zookeeper 都有哪些使用场景？
-面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它">
+分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -388,7 +389,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        761
+                        755
                     </div>
                     
 
@@ -412,10 +413,10 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>zookeeper 都有哪些使用场景？</p>
-<h2 id="面试官心理分析"><a href="#面试官心理分析" class="headerlink" title="面试官心理分析"></a>面试官心理分析</h2><p>现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。</p>
 <p>分布式锁这个东西，很常用的，你做 Java 系统开发，分布式系统，可能会有一些场景会用到。最常用的分布式锁就是基于 zookeeper 来实现的。</p>
 <p>其实说实话，问这个问题，一般就是看看你是否了解 zookeeper，因为 zookeeper 是分布式系统中很常见的一个基础系统。而且问的话常问的就是说 zookeeper 的使用场景是什么？看你知道不知道一些基本的使用场景。但是其实 zookeeper 挖深了自然是可以问的很深很深的。</p>
-<h2 id="面试题剖析"><a href="#面试题剖析" class="headerlink" title="面试题剖析"></a>面试题剖析</h2><p>大致来说，zookeeper 的使用场景如下，我就举几个简单的，大家能说几个就好了：</p>
+<h2 id="深度剖析"><a href="#深度剖析" class="headerlink" title="深度剖析"></a>深度剖析</h2><p>大致来说，zookeeper 的使用场景如下，我就举几个简单的，大家能说几个就好了：</p>
 <ul>
 <li>分布式协调</li>
 <li>分布式锁</li>
@@ -630,19 +631,20 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/redis/redis-de-xian-cheng-mo-xing.html">
+                <a href="/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/redis/redis-629480.jpg" class="responsive-img" alt="为什么 redis 单线程却能支撑高并发？">
+                        <img src="http://img.wanganyu1996.com/redis/redis-caching-avalanche.jpg" class="responsive-img" alt="Redis 的雪崩和穿透">
                         
-                        <span class="card-title">为什么 redis 单线程却能支撑高并发？</span>
+                        <span class="card-title">Redis 的雪崩和穿透</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题redis 和 memcached 有什么区别？redis 的线程模型是什么？为什么 redis 单线程却能支撑高并发？
-分析这个是问 redis 的时候，最基本的问题，redis 最基本的一个内部原理和特点，就是 redis 实际上是
+                            问题了解什么是 redis 的雪崩和穿透？redis 崩溃之后会怎么样？系统该如何应对这种情况？如何处理 redis 的穿透？
+背景因为缓存雪崩和穿透，是缓存最大的两个问题，要么不出现，一旦出现就是致命性的问题。
+深入剖析缓存雪崩对于系统 
                         
                     </div>
                     <div class="publish-info">
@@ -691,7 +693,8 @@
                     <div class="summary block-with-text">
                         
                             问题zookeeper 都有哪些使用场景？
-面试官心理分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它
+分析现在聊的 topic 是分布式系统，面试官跟你聊完了 dubbo 相关的一些问题之后，已经确认你对分布式服务框架/RPC框架基本都有一些认知了。那么他可能开始要跟你聊分布式相关的其它问题了。
+
                         
                     </div>
                     <div class="publish-info">
