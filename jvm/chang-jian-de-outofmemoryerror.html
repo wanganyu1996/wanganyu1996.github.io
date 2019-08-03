@@ -4,14 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="zookeeper分布式锁实现原理, 若愚博客">
-    <meta name="description" content="zookeeper分布式锁实现原理针对分布式锁的实现目前有三种方案：
-
-基于数据库实现分布式锁
-基于缓存（redis，memcached）实现分布式锁
-基于Zookeeper实现分布式锁
-
-大致思想：每个客户端对某个方法加锁时，在zooke">
+    <meta name="keywords" content="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结, 若愚博客">
+    <meta name="description" content="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结19年7月份面试Paypal的时候，面试官问了我Java内存溢出常见的情况，那时候我还没有一个清楚的认识，随口从一个说到另一个，后来面试官说我">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>zookeeper分布式锁实现原理 | 若愚博客</title>
+    <title>Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结 | 若愚博客</title>
     <link rel="icon" type="image/png" href="/boys.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -245,13 +239,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/zookeeper/zookeeper-distribute-lock.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/jvm/jvm-outofmemoryerror.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        zookeeper分布式锁实现原理
+                        Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结
                     </div>
                 </div>
             </div>
@@ -362,8 +356,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Zookeeper/" target="_blank">
-                                <span class="chip bg-color">Zookeeper</span>
+                            <a href="/tags/JVM/" target="_blank">
+                                <span class="chip bg-color">JVM</span>
                             </a>
                         
                     </div>
@@ -374,8 +368,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Zookeeper/" class="post-category" target="_blank">
-                                Zookeeper
+                            <a href="/categories/JVM/" class="post-category" target="_blank">
+                                JVM
                             </a>
                         
                     </div>
@@ -386,21 +380,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-02-13
+                    2019-05-13
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.4k
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        6 分
+                        8 分
                     </div>
                     
                 
@@ -416,217 +410,171 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="zookeeper分布式锁实现原理"><a href="#zookeeper分布式锁实现原理" class="headerlink" title="zookeeper分布式锁实现原理"></a>zookeeper分布式锁实现原理</h2><p>针对分布式锁的实现目前有三种方案：</p>
-<ul>
-<li>基于数据库实现分布式锁</li>
-<li>基于缓存（<code>redis</code>，<code>memcached</code>）实现分布式锁</li>
-<li>基于<code>Zookeeper</code>实现分布式锁</li>
-</ul>
-<p>大致思想：每个客户端对某个方法加锁时，在<code>zookeeper</code>上的与该方法对应的指定节点的目录下，生成一个唯一的<br>瞬时有序节点。 判断是否获取锁的方式很简单，只需要判断有序节点中序号最小的一个，如果不是最小的，则监听比它更小的节点，直到前一个节点释放锁或等待超时。当释放锁的时候，只需将这个瞬时节点删除即可。同时，其可以避免服务宕机导致的锁无法释放，而产生的死锁问题。<br>具体性实现代码：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>CreateMode<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>KeeperException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>ZooDefs<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>ZooKeeper<span class="token punctuation">;</span>
+                <h1 id="Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结"><a href="#Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结" class="headerlink" title="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结"></a>Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</h1><p>19年7月份面试Paypal的时候，面试官问了我Java内存溢出常见的情况，那时候我还没有一个清楚的认识，随口从一个说到另一个，后来面试官说我没有条理，今天，结合网上的一些资料，把常见的OutOfMemoryOfError总结一下,以下是常见异常。</p>
+<h2 id="1-java-lang-OutOfMemoryError-Java-heap-space"><a href="#1-java-lang-OutOfMemoryError-Java-heap-space" class="headerlink" title="1.java.lang.OutOfMemoryError:Java heap space"></a>1.java.lang.OutOfMemoryError:Java heap space</h2><p>这是最常见的一种Java堆溢出异常，我们用一个简单的Demo来演示一下Java的堆内存溢出，<br>首先我们设置参数 -Xms5m -Xmx5m ，堆溢出代码如下</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Random<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaHeapSpace</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
+        String str <span class="token operator">=</span> <span class="token string">"ruo yu heap outofmemory"</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            str <span class="token operator">+=</span> str <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">888888</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            str<span class="token punctuation">.</span><span class="token function">intern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//2</span>
+        <span class="token comment" spellcheck="true">//byte[] bytes = new byte[100 * 1024 * 1024];</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>抛出的异常如下：</p>
+<pre><code>Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space
+    at java.util.Arrays.copyOf(Arrays.java:3332)
+    at java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:124)
+    at java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:674)
+    at java.lang.StringBuilder.append(StringBuilder.java:208)
+    at com.test.outofmemory.JavaHeapSpace.main(JavaHeapSpace.java:10)
+</code></pre><h2 id="2-java-lang-OutOfMemoryError-GC-overhead-limit-ecceeded"><a href="#2-java-lang-OutOfMemoryError-GC-overhead-limit-ecceeded" class="headerlink" title="2. java.lang.OutOfMemoryError:GC overhead limit ecceeded"></a>2. java.lang.OutOfMemoryError:GC overhead limit ecceeded</h2><p>GC回收时间过长时，会抛出这个异常，过长是指，超过98%的时间用来做GC并且回收了不到2%的堆内存，连续多次GC都只回收了不到2%的极端情况下才会抛出。假如不抛出GC overhead limit 错误，会导致GC清理完内存，内存又很快被填满，迫使GC再次执行，形成恶心循环，CPU使用率一直是100%，GC回收却没有效果。<br>演示异常时，我们需要设置JVM参数：-Xms10m -Xmx10m -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m<br>代码示例：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Random<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>SortedSet<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>TreeSet<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>CountDownLatch<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>TimeUnit<span class="token punctuation">;</span>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DistributeLock</span> <span class="token punctuation">{</span>
-
-
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> String ROOT_LOCKS <span class="token operator">=</span> <span class="token string">"/LOCKS"</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//根节点</span>
-
-    <span class="token keyword">private</span> ZooKeeper zooKeeper<span class="token punctuation">;</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">int</span> sessionTimeout<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//会话超时时间</span>
-
-    <span class="token keyword">private</span> String lockID<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//记录锁节点id</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//节点的数据</span>
-
-    <span class="token keyword">private</span> CountDownLatch countDownLatch <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CountDownLatch</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token function">DistributeLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> InterruptedException <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>zooKeeper <span class="token operator">=</span> ZookeeperClient<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>sessionTimeout <span class="token operator">=</span> ZookeeperClient<span class="token punctuation">.</span><span class="token function">getSessionTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token comment" spellcheck="true">//获取锁的方法</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GCOverHeadLimitExceeded</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//LOCKS/00000001</span>
-            lockID <span class="token operator">=</span> zooKeeper<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>ROOT_LOCKS <span class="token operator">+</span> <span class="token string">"/"</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> ZooDefs<span class="token punctuation">.</span>Ids<span class="token punctuation">.</span>
-                    OPEN_ACL_UNSAFE<span class="token punctuation">,</span> CreateMode<span class="token punctuation">.</span>EPHEMERAL_SEQUENTIAL<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"->成功创建了lock节点["</span> <span class="token operator">+</span> lockID <span class="token operator">+</span> <span class="token string">"], 开始去竞争锁"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-            List<span class="token operator">&lt;</span>String<span class="token operator">></span> childrenNodes <span class="token operator">=</span> zooKeeper<span class="token punctuation">.</span><span class="token function">getChildren</span><span class="token punctuation">(</span>ROOT_LOCKS<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取根节点下的所有子节点</span>
-            <span class="token comment" spellcheck="true">//排序，从小到大</span>
-            SortedSet<span class="token operator">&lt;</span>String<span class="token operator">></span> sortedSet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeSet</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span>String children <span class="token operator">:</span> childrenNodes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                sortedSet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>ROOT_LOCKS <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> children<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">intern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
-            String first <span class="token operator">=</span> sortedSet<span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//拿到最小的节点</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>lockID<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>first<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">//表示当前就是最小的节点</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"->成功获得锁，lock节点为:["</span> <span class="token operator">+</span> lockID <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token comment" spellcheck="true">//获取所有小于lockId节点的集合</span>
-            SortedSet<span class="token operator">&lt;</span>String<span class="token operator">></span> lessThanLockId <span class="token operator">=</span> sortedSet<span class="token punctuation">.</span><span class="token function">headSet</span><span class="token punctuation">(</span>lockID<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>lessThanLockId<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">//拿到比当前LOCKID这个几点更小的上一个节点</span>
-                String prevLockID <span class="token operator">=</span> lessThanLockId<span class="token punctuation">.</span><span class="token function">last</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                zooKeeper<span class="token punctuation">.</span><span class="token function">exists</span><span class="token punctuation">(</span>prevLockID<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">LockWatcher</span><span class="token punctuation">(</span>countDownLatch<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                countDownLatch<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span>sessionTimeout<span class="token punctuation">,</span> TimeUnit<span class="token punctuation">.</span>MILLISECONDS<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token comment" spellcheck="true">//上面这段代码意味着如果会话超时或者节点被删除（释放）了</span>
-                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 成功获取锁：["</span> <span class="token operator">+</span> lockID <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">KeeperException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>最后输出结果如下，可以看到经过多次FullGC,回收的内存都很少：</p>
+<pre><code>...省略
+[Full GC (Ergonomics) [PSYoungGen: 2047K-&gt;2047K(2560K)] [ParOldGen: 7096K-&gt;7096K(7168K)] 9144K-&gt;9144K(9728K), [Metaspace: 3446K-&gt;3446K(1056768K)], 0.0485657 secs] [Times: user=0.22 sys=0.00, real=0.05 secs] 
+[PSYoungGen: 2047K-&gt;0K(2560K)] [ParOldGen: 7127K-&gt;637K(7168K)] 9175K-&gt;637K(9728K), [Metaspace: 3471K-&gt;3471K(1056768K)], 0.0171048 secs] [Times: user=0.00 sys=0.00, real=0.02 secs] 
+    at java.lang.String.valueOf(String.java:3099)
+Heap
+    at com.test.outofmemory.GCOverHeadLimitExceeded.main(GCOverHeadLimitExceeded.java:12)
+ PSYoungGen      total 2560K, used 57K [0x00000000ffd00000, 0x0000000100000000, 0x0000000100000000)
+  eden space 2048K, 2% used [0x00000000ffd00000,0x00000000ffd0e4e0,0x00000000fff00000)
+  from space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+  to   space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
+ ParOldGen       total 7168K, used 637K [0x00000000ff600000, 0x00000000ffd00000, 0x00000000ffd00000)
+  object space 7168K, 8% used [0x00000000ff600000,0x00000000ff69f490,0x00000000ffd00000)
+ Metaspace       used 3478K, capacity 4496K, committed 4864K, reserved 1056768K
+  class space    used 379K, capacity 388K, committed 512K, reserved 1048576K
+</code></pre><h2 id="3-java-lang-OutOfMemoryError-Direct-buffer-memory"><a href="#3-java-lang-OutOfMemoryError-Direct-buffer-memory" class="headerlink" title="3. java.lang.OutOfMemoryError:Direct buffer memory"></a>3. java.lang.OutOfMemoryError:Direct buffer memory</h2><p>直接内存溢出，一般在Netty中比较常见。导致的原因是，NIO程序中经常使用ByteBuffer来读取写入数据，这是一种基于通道（Channel）与缓冲区（Buffer）的I/O方式，它使用Native函数库直接分配堆外内存，然后通过<br>一个存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在Java堆和Native堆中来回复制对象。</p>
+<p>ByteBuffer.allocate(capability)第一种方式是分配JVM堆内存，属于GC管辖范围，由于需要拷贝，所以速度相对较慢。</p>
+<p>ByteBuffer.allocateDircet(capability)第二种方式是分配OS本地内存，不属于GC管辖范围，由于不需要内存拷贝，所以速度相对较快。<br>但如果不断的分配本地内存，堆内存很少使用，那么JVM就不需要执行GC,DirectByteBuffer对象们就不会被回收，这时候堆内存充足，但本地内存可能已经使用光了，再次尝试分配本地内存就会出现OutOfMemoryError,程序就会直接崩溃。<br>演示 示例，使用的JVM参数：-Xms10m -Xmx10m -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m<br>代码示例：</p>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>nio<span class="token punctuation">.</span>ByteBuffer<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DirectBufferMemoryDemo</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"配置的maxDirectMemory "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>sun<span class="token punctuation">.</span>misc<span class="token punctuation">.</span>VM<span class="token punctuation">.</span><span class="token function">maxDirectMemory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> <span class="token number">1024</span> <span class="token operator">/</span> <span class="token number">1024</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"MB"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        ByteBuffer bb <span class="token operator">=</span> ByteBuffer<span class="token punctuation">.</span><span class="token function">allocateDirect</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>输出结果如下：</p>
+<pre><code>配置的maxDirectMemory 5.0MB
+[GC (System.gc()) [PSYoungGen: 1954K-&gt;488K(2560K)] 1954K-&gt;784K(9728K), 0.0041828 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
+[Full GC (System.gc()) [PSYoungGen: 488K-&gt;0K(2560K)] [ParOldGen: 296K-&gt;697K(7168K)] 784K-&gt;697K(9728K), [Metaspace: 3458K-&gt;3458K(1056768K)], 0.0129401 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] 
+Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Direct buffer memory
+Heap
+    at java.nio.Bits.reserveMemory(Bits.java:694)
+ PSYoungGen      total 2560K, used 58K [0x00000000ffd00000, 0x0000000100000000, 0x0000000100000000)
+    at java.nio.DirectByteBuffer.&lt;init&gt;(DirectByteBuffer.java:123)
+  eden space 2048K, 2% used [0x00000000ffd00000,0x00000000ffd0e8e8,0x00000000fff00000)
+    at java.nio.ByteBuffer.allocateDirect(ByteBuffer.java:311)
+  from space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
+    at com.test.outofmemory.DirectBufferMemoryDemo.main(DirectBufferMemoryDemo.java:13)
+  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
+ ParOldGen       total 7168K, used 697K [0x00000000ff600000, 0x00000000ffd00000, 0x00000000ffd00000)
+  object space 7168K, 9% used [0x00000000ff600000,0x00000000ff6ae468,0x00000000ffd00000)
+ Metaspace       used 3490K, capacity 4496K, committed 4864K, reserved 1056768K
+  class space    used 380K, capacity 388K, committed 512K, reserved 1048576K
+</code></pre><h2 id="4-java-lang-OutOfMemoryError-unable-to-create-new-native-thread"><a href="#4-java-lang-OutOfMemoryError-unable-to-create-new-native-thread" class="headerlink" title="4.java.lang.OutOfMemoryError:unable to create new native thread"></a>4.java.lang.OutOfMemoryError:unable to create new native thread</h2><p>高并发请求服务器时，经常会出现这个异常，java.lang.OutOfMemoryError: unable to create new native thread，navtive thread异常与对应平台有关。</p>
+<p>导致的原因：</p>
+<p>1.应用创建了太多线程了，一个应用进程创建多个线程，超过系统承载极限。</p>
+<p>2.服务器不允许应用创建这么多线程，linux系统默认允许单个进程可以创建的线程数是1024个，如果你的应用创建超过这个数量，就会报java.lang.OutOfMemoryError: unable to create new native thread</p>
+<p>解决方法：</p>
+<p>1.想办法降低应用程序创建线程的数量，分析应用是否真的需要创建这么多线程，如果不是，改代码将线程数降到最低</p>
+<p>2.对于有些应用，确实需要创建很多线程，远超过linux系统的默认1024个线程的限制，可以通过修改linux服务器配置，扩大linux默认限制<br>Java示例如下：</p>
+<pre><code>public class UnableCreateNewThread {
+    public static void main(String[] args) {
+        for (int i = 1;; i++) {
+            System.out.println(&quot;*****i=&quot;+i);
+            new Thread(()-&gt;{
+                try {
+                    Thread.sleep(Integer.MAX_VALUE);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"->开始释放锁:["</span> <span class="token operator">+</span> lockID <span class="token operator">+</span> <span class="token string">"]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            zooKeeper<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>lockID<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"节点["</span> <span class="token operator">+</span> lockID <span class="token operator">+</span> <span class="token string">"]成功被删除"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">KeeperException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            },&quot;&quot;+i).start();
+        }
+    }
+}
+</code></pre><p>输出结果如下：</p>
+<pre><code>*****i=35079
+Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: unable to create new native thread
+    at java.lang.Thread.start0(Native Method)
+    at java.lang.Thread.start(Thread.java:717)
+    at com.test.outofmemory.UnableCreateNewThread.main(UnableCreateNewThread.java:14)
+</code></pre><p>5.java.lang.OutOfMemoryError:Metaspace</p>
+<p>Java8及之后的版本使用Metaspace来替代永久代。<br>Mataspace是方法区在HotSpot中的实现，它与持久代最大的区别在于：Metaspace并不存在虚拟机内存中而是使用本地内存，也即在java8中，class metadata(the virtual machines internal presentation of Java class),被存储在叫做Metaspace的native memory</p>
+<p>永久代（java8后被元空间Metaspace取代了）存放一下信息：</p>
+<p>虚拟机加载的类信息</p>
+<p>常量池</p>
+<p>静态变量</p>
+<p>即时编译后的代码</p>
+<p>我们通过不断的往类的元空间灌数据，类占据的空间总是会超过Metaspace指定的空间大小，从而模拟Metaspace空间的溢出。</p>
+<p>模拟代码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>proxy<span class="token punctuation">.</span>Enhancer<span class="token punctuation">;</span>
+<span class="token keyword">import</span> net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>proxy<span class="token punctuation">.</span>MethodInterceptor<span class="token punctuation">;</span>
+<span class="token keyword">import</span> net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>proxy<span class="token punctuation">.</span>MethodProxy<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MetaspaceOOM</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">OOM</span> <span class="token punctuation">{</span>
+
     <span class="token punctuation">}</span>
-
 
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">final</span> CountDownLatch latch <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CountDownLatch</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Random random <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">{</span>
-                DistributeLock lock <span class="token operator">=</span> null<span class="token punctuation">;</span>
-                <span class="token keyword">try</span> <span class="token punctuation">{</span>
-                    lock <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DistributeLock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    latch<span class="token punctuation">.</span><span class="token function">countDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    latch<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    lock<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>random<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">IOException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">if</span> <span class="token punctuation">(</span>lock <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                        lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                i<span class="token operator">++</span><span class="token punctuation">;</span>
+                Enhancer enhancer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Enhancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                enhancer<span class="token punctuation">.</span><span class="token function">setSuperclass</span><span class="token punctuation">(</span>OOM<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                enhancer<span class="token punctuation">.</span><span class="token function">setUseCache</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                enhancer<span class="token punctuation">.</span><span class="token function">setCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MethodInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token annotation punctuation">@Override</span>
+                    <span class="token keyword">public</span> Object <span class="token function">intercept</span><span class="token punctuation">(</span>Object o<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> objects<span class="token punctuation">,</span> MethodProxy methodProxy<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+                        <span class="token keyword">return</span> methodProxy<span class="token punctuation">.</span><span class="token function">invokeSuper</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
                     <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>我们还需要一个连接Zookeeper的客户端类</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>WatchedEvent<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>Watcher<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>ZooKeeper<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>CountDownLatch<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ZookeeperClient</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> String CONNECTSTRING<span class="token operator">=</span> <span class="token string">"192.168.1.111:2181,192.168.1.112:2181,"</span><span class="token operator">+</span><span class="token string">"192.168.1.114:2181,192.168.1.115:2181"</span><span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> sessionTimeout<span class="token operator">=</span><span class="token number">5000</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//获取连接</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> ZooKeeper <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> InterruptedException <span class="token punctuation">{</span>
-        <span class="token keyword">final</span> CountDownLatch conectStatus<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">CountDownLatch</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        ZooKeeper zooKeeper<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ZooKeeper</span><span class="token punctuation">(</span>CONNECTSTRING<span class="token punctuation">,</span> sessionTimeout<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Watcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span>WatchedEvent event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span> Event<span class="token punctuation">.</span>KeeperState<span class="token punctuation">.</span>SyncConnected<span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    conectStatus<span class="token punctuation">.</span><span class="token function">countDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                enhancer<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        conectStatus<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> zooKeeper<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">getSessionTimeout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> sessionTimeout<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>我们需要监听zookeeper的节点删除事件，只有当前一个节点删除了，我们的节点才能获取锁：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>WatchedEvent<span class="token punctuation">;</span>
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>zookeeper<span class="token punctuation">.</span>Watcher<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span>CountDownLatch<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LockWatcher</span> <span class="token keyword">implements</span> <span class="token class-name">Watcher</span><span class="token punctuation">{</span>
-
-    <span class="token keyword">private</span> CountDownLatch latch<span class="token punctuation">;</span>
-
-    <span class="token keyword">public</span> <span class="token function">LockWatcher</span><span class="token punctuation">(</span>CountDownLatch latch<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>latch <span class="token operator">=</span> latch<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span>WatchedEvent event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span><span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">==</span> Event<span class="token punctuation">.</span>EventType<span class="token punctuation">.</span>NodeDeleted<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            latch<span class="token punctuation">.</span><span class="token function">countDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> throwable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"循环"</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">"次后，出现异常"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            throwable<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>最后测试输出结果如下：</p>
-<pre><code>Thread-1-&gt;成功创建了lock节点[/LOCKS/0000000004], 开始去竞争锁
-Thread-3-&gt;成功创建了lock节点[/LOCKS/0000000000], 开始去竞争锁
-Thread-7-&gt;成功创建了lock节点[/LOCKS/0000000003], 开始去竞争锁
-Thread-9-&gt;成功创建了lock节点[/LOCKS/0000000005], 开始去竞争锁
-Thread-6-&gt;成功创建了lock节点[/LOCKS/0000000006], 开始去竞争锁
-Thread-2-&gt;成功创建了lock节点[/LOCKS/0000000007], 开始去竞争锁
-Thread-4-&gt;成功创建了lock节点[/LOCKS/0000000001], 开始去竞争锁
-Thread-8-&gt;成功创建了lock节点[/LOCKS/0000000002], 开始去竞争锁
-Thread-5-&gt;成功创建了lock节点[/LOCKS/0000000008], 开始去竞争锁
-Thread-0-&gt;成功创建了lock节点[/LOCKS/0000000009], 开始去竞争锁
-Thread-3-&gt;成功获得锁，lock节点为:[/LOCKS/0000000000]
-Thread-3-&gt;开始释放锁:[/LOCKS/0000000000]
-Thread-4 成功获取锁：[/LOCKS/0000000001]
-节点[/LOCKS/0000000000]成功被删除
-Thread-4-&gt;开始释放锁:[/LOCKS/0000000001]
-Thread-8 成功获取锁：[/LOCKS/0000000002]
-节点[/LOCKS/0000000001]成功被删除
-Thread-8-&gt;开始释放锁:[/LOCKS/0000000002]
-节点[/LOCKS/0000000002]成功被删除
-Thread-7 成功获取锁：[/LOCKS/0000000003]
-Thread-7-&gt;开始释放锁:[/LOCKS/0000000003]
-Thread-1 成功获取锁：[/LOCKS/0000000004]
-节点[/LOCKS/0000000003]成功被删除
-Thread-1-&gt;开始释放锁:[/LOCKS/0000000004]
-Thread-9 成功获取锁：[/LOCKS/0000000005]
-节点[/LOCKS/0000000004]成功被删除
-Thread-9-&gt;开始释放锁:[/LOCKS/0000000005]
-Thread-6 成功获取锁：[/LOCKS/0000000006]
-节点[/LOCKS/0000000005]成功被删除
-Thread-6-&gt;开始释放锁:[/LOCKS/0000000006]
-Thread-2 成功获取锁：[/LOCKS/0000000007]
-节点[/LOCKS/0000000006]成功被删除
-Thread-2-&gt;开始释放锁:[/LOCKS/0000000007]
-Thread-5 成功获取锁：[/LOCKS/0000000008]
-节点[/LOCKS/0000000007]成功被删除
-Thread-5-&gt;开始释放锁:[/LOCKS/0000000008]
-Thread-0 成功获取锁：[/LOCKS/0000000009]
-节点[/LOCKS/0000000008]成功被删除
-Thread-0-&gt;开始释放锁:[/LOCKS/0000000009]
-节点[/LOCKS/0000000009]成功被删除
+<p>输出结果：</p>
+<pre><code>循环410次后，出现异常
+java.lang.OutOfMemoryError: Metaspace
 </code></pre>
             </div>
             <hr>
@@ -782,9 +730,9 @@ Thread-0-&gt;开始释放锁:[/LOCKS/0000000009]
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《zookeeper分布式锁实现原理》
+                    《Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/zookeeper/zookeeper-fen-bu-shi-suo-xiang-xi-shi-xian.html" property="cc:attributionName" rel="cc:attributionURL">
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/jvm/chang-jian-de-outofmemoryerror.html" property="cc:attributionName" rel="cc:attributionURL">
                 若愚
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
@@ -825,44 +773,45 @@ Thread-0-&gt;开始释放锁:[/LOCKS/0000000009]
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html">
+                <a href="/jvm/chang-jian-de-outofmemoryerror.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/lock/synchronized.jpg" class="responsive-img" alt="synchronized源码分析">
+                        <img src="http://img.wanganyu1996.com/jvm/jvm-outofmemoryerror.jpg" class="responsive-img" alt="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结">
                         
-                        <span class="card-title">synchronized源码分析</span>
+                        <span class="card-title">Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                             本系列文章将对HotSpot的synchronized锁实现进行全面分析，内容包括偏向锁、轻量级锁、重量级锁的加锁、解锁、锁升级流程的原理及源码分析，希望给在研究synchronized路上的同学一些帮助。主要包括以下几篇文章：
- 死磕S
+                            Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结19年7月份面试Paypal的时候，面试官问了我Java内存溢出常见的情况，那时候我还没有一个清楚的认识，随口从一个说到另一个，后来面试官说我
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/锁/" class="post-category" target="_blank">
-                                    锁
+                            <a href="/categories/JVM/" class="post-category" target="_blank">
+                                    JVM
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/锁/" target="_blank">
-                        <span class="chip bg-color">锁</span>
+                    <a href="/tags/JVM/" target="_blank">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>
@@ -876,24 +825,24 @@ Thread-0-&gt;开始释放锁:[/LOCKS/0000000009]
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html">
+                <a href="/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/ruoyu/index.jpg" class="responsive-img" alt="MySQL主从复制原理">
+                        <img src="http://img.wanganyu1996.com/database/dynamic-table.jpg" class="responsive-img" alt="如何设计才可以让系统从未分库分表动态切换到分库分表上？">
                         
-                        <span class="card-title">MySQL主从复制原理</span>
+                        <span class="card-title">如何设计才可以让系统从未分库分表动态切换到分库分表上？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题如何实现 MySQL 的读写分离？MySQL 主从复制原理的是什么？如何解决 MySQL 主从同步的延时问题？
-场景分析高并发这个阶段，肯定是需要做读写分离的，因为实际上大部分的互联网公司，一些网站，或者是 app，其实都是读多写少。所
+                            问题现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？
+前言你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直拆分、分表
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-07
                             </span>
                         <span class="publish-author">
                             

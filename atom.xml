@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wanganyu1996.com/"/>
-  <updated>2019-04-23T14:22:15.457Z</updated>
+  <updated>2019-08-03T17:17:49.789Z</updated>
   <id>http://www.wanganyu1996.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</title>
+    <link href="http://www.wanganyu1996.com/jvm/chang-jian-de-outofmemoryerror.html"/>
+    <id>http://www.wanganyu1996.com/jvm/chang-jian-de-outofmemoryerror.html</id>
+    <published>2019-05-13T11:50:57.000Z</published>
+    <updated>2019-08-03T17:17:49.789Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结&quot;&gt;&lt;a href=&quot;#Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JVM" scheme="http://www.wanganyu1996.com/categories/JVM/"/>
+    
+    
+      <category term="JVM" scheme="http://www.wanganyu1996.com/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>如何设计才可以让系统从未分库分表动态切换到分库分表上？</title>
@@ -155,37 +181,6 @@
   </entry>
   
   <entry>
-    <title>缓存使用场景介绍</title>
-    <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
-    <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-05-22T13:51:47.053Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？&lt;/p&gt;
-&lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
-    
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-      <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
-    
-  </entry>
-  
-  <entry>
     <title>代理模式深入分析</title>
     <link href="http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html"/>
     <id>http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html</id>
@@ -208,33 +203,6 @@
     
     
       <category term="设计模式" scheme="http://www.wanganyu1996.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分布式事务的的五种解决方案及优劣对比</title>
-    <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html"/>
-    <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</id>
-    <published>2019-01-13T02:50:57.000Z</published>
-    <updated>2019-05-21T14:31:54.734Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;分布式事务了解吗？你们是如何解决分布式事务问题的？&lt;/p&gt;
-&lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="分布式事务" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
-    
-    
-      <category term="分布式事务" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
     
   </entry>
   
@@ -266,6 +234,64 @@
   </entry>
   
   <entry>
+    <title>分布式事务的的五种解决方案及优劣对比</title>
+    <link href="http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html"/>
+    <id>http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-05-21T14:31:54.734Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;分布式事务了解吗？你们是如何解决分布式事务问题的？&lt;/p&gt;
+&lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="分布式事务" scheme="http://www.wanganyu1996.com/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+    
+      <category term="分布式事务" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>缓存使用场景介绍</title>
+    <link href="http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html"/>
+    <id>http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html</id>
+    <published>2019-01-13T02:50:57.000Z</published>
+    <updated>2019-05-22T13:51:47.053Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;项目中缓存是如何使用的？为什么要用缓存？缓存使用不当会造成什么后果？&lt;/p&gt;
+&lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/categories/Redis/"/>
+    
+    
+      <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+      <category term="缓存" scheme="http://www.wanganyu1996.com/tags/%E7%BC%93%E5%AD%98/"/>
+    
+  </entry>
+  
+  <entry>
     <title>分布式锁的两种实现方式及对比</title>
     <link href="http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html"/>
     <id>http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html</id>
@@ -289,9 +315,9 @@
     
       <category term="Redis" scheme="http://www.wanganyu1996.com/tags/Redis/"/>
     
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
       <category term="Zookeeper" scheme="http://www.wanganyu1996.com/tags/Zookeeper/"/>
+    
+      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
   </entry>
   
@@ -534,33 +560,6 @@
         
           &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如何保证消息的顺序性？&lt;/p&gt;
 &lt;h2 id=&quot;分析&quot;&gt;&lt;a href=&quot;#分析&quot; class=&quot;headerlink&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="消息队列" scheme="http://www.wanganyu1996.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-    
-      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何保证消息不被重复消费？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html</id>
-    <published>2018-08-12T01:26:24.000Z</published>
-    <updated>2019-04-27T11:50:16.453Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如何保证消息不被重复消费？或者说，如何保证消息消费的幂等性？&lt;/p&gt;
-&lt;h2 id=&quot;导言&quot;&gt;&lt;a href=&quot;#导言&quot;
         
       
     
