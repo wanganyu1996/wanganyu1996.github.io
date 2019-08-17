@@ -21,7 +21,7 @@ http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-de-shun-xu-x
 http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-bao-zheng-xiao-xi-bu-bei-chong-fu-xiao-fei.html
 http://www.wanganyu1996.com/xiao-xi-dui-lie/xiao-xi-dui-lie-shi-yong-chang-jing-jie-shao.html
 http://www.wanganyu1996.com/redis/redis-de-guo-qi-ce-lue-yu-lur-shi-xian.html
-http://www.wanganyu1996.com/redis/redis-zong-jie.html
-http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html
 http://www.wanganyu1996.com/redis/redis-de-xian-cheng-mo-xing.html
+http://www.wanganyu1996.com/redis/redis-de-xue-beng-chuan-tou-he-ji-chuan.html
+http://www.wanganyu1996.com/redis/redis-zong-jie.html
 http://www.wanganyu1996.com/zookeeper/zookeeper-du-you-na-xie-shi-yong-chang-jing.html
