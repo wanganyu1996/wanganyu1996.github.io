@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结, 若愚博客">
-    <meta name="description" content="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结19年7月份面试Paypal的时候，面试官问了我Java内存溢出常见的情况，那时候我还没有一个清楚的认识，随口从一个说到另一个，后来面试官说我">
+    <meta name="keywords" content="Java8 新特性Lambda表达式的使用与研究, 若愚博客">
+    <meta name="description" content="Lambda表达式的研究一、Lambda表达式简介1.1 什么是Lamdba表达式? Lambda表达式是Java 8 添加的一个新特性，可以认为，Lambda是一个匿名函数（相似于匿名内部类）,作用是返回一个实现了接口的对象（这个观点非常">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结 | 若愚博客</title>
+    <title>Java8 新特性Lambda表达式的使用与研究 | 若愚博客</title>
     <link rel="icon" type="image/gif" href="/me.gif">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -239,13 +239,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/jvm/jvm-outofmemoryerror.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.wanganyu1996.com/java8/java8-lambda.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结
+                        Java8 新特性Lambda表达式的使用与研究
                     </div>
                 </div>
             </div>
@@ -356,8 +356,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JVM/" target="_blank">
-                                <span class="chip bg-color">JVM</span>
+                            <a href="/tags/Java/" target="_blank">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/Lambda/" target="_blank">
+                                <span class="chip bg-color">Lambda</span>
                             </a>
                         
                     </div>
@@ -368,8 +372,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/JVM/" class="post-category" target="_blank">
-                                JVM
+                            <a href="/categories/Java/" class="post-category" target="_blank">
+                                Java
                             </a>
                         
                     </div>
@@ -380,21 +384,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-13
+                    2020-03-16
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        1.8k
+                        5.5k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        8 分
+                        21 分
                     </div>
                     
                 
@@ -410,172 +414,438 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结"><a href="#Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结" class="headerlink" title="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结"></a>Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</h1><p>19年7月份面试Paypal的时候，面试官问了我Java内存溢出常见的情况，那时候我还没有一个清楚的认识，随口从一个说到另一个，后来面试官说我没有条理，今天，结合网上的一些资料，把常见的OutOfMemoryOfError总结一下,以下是常见异常。</p>
-<h2 id="1-java-lang-OutOfMemoryError-Java-heap-space"><a href="#1-java-lang-OutOfMemoryError-Java-heap-space" class="headerlink" title="1.java.lang.OutOfMemoryError:Java heap space"></a>1.java.lang.OutOfMemoryError:Java heap space</h2><p>这是最常见的一种Java堆溢出异常，我们用一个简单的Demo来演示一下Java的堆内存溢出，<br>首先我们设置参数 -Xms5m -Xmx5m ，堆溢出代码如下</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Random<span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaHeapSpace</span> <span class="token punctuation">{</span>
+                <h1 id="Lambda表达式的研究"><a href="#Lambda表达式的研究" class="headerlink" title="Lambda表达式的研究"></a>Lambda表达式的研究</h1><h2 id="一、Lambda表达式简介"><a href="#一、Lambda表达式简介" class="headerlink" title="一、Lambda表达式简介"></a>一、Lambda表达式简介</h2><h3 id="1-1-什么是Lamdba表达式"><a href="#1-1-什么是Lamdba表达式" class="headerlink" title="1.1 什么是Lamdba表达式?"></a>1.1 什么是Lamdba表达式?</h3><p> Lambda表达式是Java 8 添加的一个新特性，可以认为，Lambda是一个匿名函数（相似于匿名内部类）,作用是返回一个实现了接口的对象（这个观点非常重要，贯穿于Lambda表达式的整个使用过程）。</p>
+<h3 id="1-2-为什么使用Lambada表达式？"><a href="#1-2-为什么使用Lambada表达式？" class="headerlink" title="1.2 为什么使用Lambada表达式？"></a>1.2 为什么使用Lambada表达式？</h3><p> 使用Lambda表达式对比于其他接口实现方式显得非常简洁。（详见3种接口实现的方法代码块CodeBlock-1）</p>
+<h3 id="1-3-Lambda对接口的要求？"><a href="#1-3-Lambda对接口的要求？" class="headerlink" title="1.3 Lambda对接口的要求？"></a>1.3 Lambda对接口的要求？</h3><p> 虽然Lambda表达式对某些接口进行简单的实现，但是并不是所有的接口都可以使用Lambda表达式来实现，要求接口中定义的必须要实现的抽象方法只能是一个（注意：具体方法可以多个或者没有）。</p>
+<p>在Java 8 中对接口增加了新特性：default，提供了一个默认的抽象方法，但是Lambda对此没有特殊的影响，方法可以按Lambda所表达的来。</p>
+<h3 id="1-4注意事项："><a href="#1-4注意事项：" class="headerlink" title="1.4注意事项："></a>1.4注意事项：</h3><p> @FunctionalInterface<br> 这个注解用于修饰函数式接口，即意味着接口中的抽象方法只能有一个，否则编译器会报错。<br>我们总是需要对象来实现接口，Lambda表达式就是帮助我们简化这个过程，而对象中的单独的方法在对象的创建接口对象的创建过程中并不会执行。4.2小节中构造方法在Lambda表达式中的调用，其更像一种工厂方法返回一个对象的引用，在创建实现接口的对象的时候工厂方法并不被执行。</p>
+<h3 id="1-5-Lambda表达式的延迟执行原因"><a href="#1-5-Lambda表达式的延迟执行原因" class="headerlink" title="1.5 Lambda表达式的延迟执行原因"></a>1.5 Lambda表达式的延迟执行原因</h3><p>（以下来源于Java 核心技术 卷一）<br> 使用lambda表达式的重点是延迟执行（deffered execution)。毕竟，如果想要立即执行代码，完全可以直接执行，而无需将它包装到一个lambda表达式中。之所以希望以后再执行代码，这有很多原因，比如：</p>
+<p>在一个单独的线程中运行代码<br>多次运行代码、在算法的适当位置运行代码（例如，排序的比较操作）<br>发生某种情况时执行代码（如，点击了一个按钮，数据到达，等等）】<br>只在必要时才运行代码</p>
+<h3 id="1-6-接口实现的不同方式"><a href="#1-6-接口实现的不同方式" class="headerlink" title="1.6 接口实现的不同方式"></a>1.6 接口实现的不同方式</h3><p> 实现接口的对象创建方式有三种，如progam-1代码所示，分为：</p>
+<p>使用接口实现类（接口对象指向已实现了接口的类对象）<br>使用匿名内部类实现接口<br>使用lambda表达式来实现接口</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        String str <span class="token operator">=</span> <span class="token string">"ruo yu heap outofmemory"</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            str <span class="token operator">+=</span> str <span class="token operator">+</span> <span class="token keyword">new</span> <span class="token class-name">Random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token number">888888</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            str<span class="token punctuation">.</span><span class="token function">intern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//2</span>
-        <span class="token comment" spellcheck="true">//byte[] bytes = new byte[100 * 1024 * 1024];</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>抛出的异常如下：</p>
-<pre><code>Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Java heap space
-    at java.util.Arrays.copyOf(Arrays.java:3332)
-    at java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:124)
-    at java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:674)
-    at java.lang.StringBuilder.append(StringBuilder.java:208)
-    at com.test.outofmemory.JavaHeapSpace.main(JavaHeapSpace.java:10)
-</code></pre><h2 id="2-java-lang-OutOfMemoryError-GC-overhead-limit-ecceeded"><a href="#2-java-lang-OutOfMemoryError-GC-overhead-limit-ecceeded" class="headerlink" title="2. java.lang.OutOfMemoryError:GC overhead limit ecceeded"></a>2. java.lang.OutOfMemoryError:GC overhead limit ecceeded</h2><p>GC回收时间过长时，会抛出这个异常，过长是指，超过98%的时间用来做GC并且回收了不到2%的堆内存，连续多次GC都只回收了不到2%的极端情况下才会抛出。假如不抛出GC overhead limit 错误，会导致GC清理完内存，内存又很快被填满，迫使GC再次执行，形成恶心循环，CPU使用率一直是100%，GC回收却没有效果。<br>演示异常时，我们需要设置JVM参数：-Xms10m -Xmx10m -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m<br>代码示例：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GCOverHeadLimitExceeded</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">intern</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Comparator comparator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyComparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Comparator comparator1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Comparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+        Comparator comparator2 <span class="token operator">=</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token punctuation">(</span>a <span class="token operator">-</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre>
-<p>最后输出结果如下，可以看到经过多次FullGC,回收的内存都很少：</p>
-<pre><code>...省略
-[Full GC (Ergonomics) [PSYoungGen: 2047K-&gt;2047K(2560K)] [ParOldGen: 7096K-&gt;7096K(7168K)] 9144K-&gt;9144K(9728K), [Metaspace: 3446K-&gt;3446K(1056768K)], 0.0485657 secs] [Times: user=0.22 sys=0.00, real=0.05 secs] 
-[PSYoungGen: 2047K-&gt;0K(2560K)] [ParOldGen: 7127K-&gt;637K(7168K)] 9175K-&gt;637K(9728K), [Metaspace: 3471K-&gt;3471K(1056768K)], 0.0171048 secs] [Times: user=0.00 sys=0.00, real=0.02 secs] 
-    at java.lang.String.valueOf(String.java:3099)
-Heap
-    at com.test.outofmemory.GCOverHeadLimitExceeded.main(GCOverHeadLimitExceeded.java:12)
- PSYoungGen      total 2560K, used 57K [0x00000000ffd00000, 0x0000000100000000, 0x0000000100000000)
-  eden space 2048K, 2% used [0x00000000ffd00000,0x00000000ffd0e4e0,0x00000000fff00000)
-  from space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
-  to   space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
- ParOldGen       total 7168K, used 637K [0x00000000ff600000, 0x00000000ffd00000, 0x00000000ffd00000)
-  object space 7168K, 8% used [0x00000000ff600000,0x00000000ff69f490,0x00000000ffd00000)
- Metaspace       used 3478K, capacity 4496K, committed 4864K, reserved 1056768K
-  class space    used 379K, capacity 388K, committed 512K, reserved 1048576K
-</code></pre><h2 id="3-java-lang-OutOfMemoryError-Direct-buffer-memory"><a href="#3-java-lang-OutOfMemoryError-Direct-buffer-memory" class="headerlink" title="3. java.lang.OutOfMemoryError:Direct buffer memory"></a>3. java.lang.OutOfMemoryError:Direct buffer memory</h2><p>直接内存溢出，一般在Netty中比较常见。导致的原因是，NIO程序中经常使用ByteBuffer来读取写入数据，这是一种基于通道（Channel）与缓冲区（Buffer）的I/O方式，它使用Native函数库直接分配堆外内存，然后通过<br>一个存储在Java堆里面的DirectByteBuffer对象作为这块内存的引用进行操作。这样能在一些场景中显著提高性能，因为避免了在Java堆和Native堆中来回复制对象。</p>
-<p>ByteBuffer.allocate(capability)第一种方式是分配JVM堆内存，属于GC管辖范围，由于需要拷贝，所以速度相对较慢。</p>
-<p>ByteBuffer.allocateDircet(capability)第二种方式是分配OS本地内存，不属于GC管辖范围，由于不需要内存拷贝，所以速度相对较快。<br>但如果不断的分配本地内存，堆内存很少使用，那么JVM就不需要执行GC,DirectByteBuffer对象们就不会被回收，这时候堆内存充足，但本地内存可能已经使用光了，再次尝试分配本地内存就会出现OutOfMemoryError,程序就会直接崩溃。<br>演示 示例，使用的JVM参数：-Xms10m -Xmx10m -XX:+PrintGCDetails -XX:MaxDirectMemorySize=5m<br>代码示例：</p>
-<pre class=" language-java"><code class="language-java">
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>nio<span class="token punctuation">.</span>ByteBuffer<span class="token punctuation">;</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DirectBufferMemoryDemo</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"配置的maxDirectMemory "</span> <span class="token operator">+</span> <span class="token punctuation">(</span>sun<span class="token punctuation">.</span>misc<span class="token punctuation">.</span>VM<span class="token punctuation">.</span><span class="token function">maxDirectMemory</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span> <span class="token number">1024</span> <span class="token operator">/</span> <span class="token number">1024</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"MB"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            Thread<span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        ByteBuffer bb <span class="token operator">=</span> ByteBuffer<span class="token punctuation">.</span><span class="token function">allocateDirect</span><span class="token punctuation">(</span><span class="token number">6</span> <span class="token operator">*</span> <span class="token number">1024</span> <span class="token operator">*</span> <span class="token number">1024</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>输出结果如下：</p>
-<pre><code>配置的maxDirectMemory 5.0MB
-[GC (System.gc()) [PSYoungGen: 1954K-&gt;488K(2560K)] 1954K-&gt;784K(9728K), 0.0041828 secs] [Times: user=0.00 sys=0.00, real=0.00 secs] 
-[Full GC (System.gc()) [PSYoungGen: 488K-&gt;0K(2560K)] [ParOldGen: 296K-&gt;697K(7168K)] 784K-&gt;697K(9728K), [Metaspace: 3458K-&gt;3458K(1056768K)], 0.0129401 secs] [Times: user=0.00 sys=0.00, real=0.01 secs] 
-Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: Direct buffer memory
-Heap
-    at java.nio.Bits.reserveMemory(Bits.java:694)
- PSYoungGen      total 2560K, used 58K [0x00000000ffd00000, 0x0000000100000000, 0x0000000100000000)
-    at java.nio.DirectByteBuffer.&lt;init&gt;(DirectByteBuffer.java:123)
-  eden space 2048K, 2% used [0x00000000ffd00000,0x00000000ffd0e8e8,0x00000000fff00000)
-    at java.nio.ByteBuffer.allocateDirect(ByteBuffer.java:311)
-  from space 512K, 0% used [0x00000000fff00000,0x00000000fff00000,0x00000000fff80000)
-    at com.test.outofmemory.DirectBufferMemoryDemo.main(DirectBufferMemoryDemo.java:13)
-  to   space 512K, 0% used [0x00000000fff80000,0x00000000fff80000,0x0000000100000000)
- ParOldGen       total 7168K, used 697K [0x00000000ff600000, 0x00000000ffd00000, 0x00000000ffd00000)
-  object space 7168K, 9% used [0x00000000ff600000,0x00000000ff6ae468,0x00000000ffd00000)
- Metaspace       used 3490K, capacity 4496K, committed 4864K, reserved 1056768K
-  class space    used 380K, capacity 388K, committed 512K, reserved 1048576K
-</code></pre><h2 id="4-java-lang-OutOfMemoryError-unable-to-create-new-native-thread"><a href="#4-java-lang-OutOfMemoryError-unable-to-create-new-native-thread" class="headerlink" title="4.java.lang.OutOfMemoryError:unable to create new native thread"></a>4.java.lang.OutOfMemoryError:unable to create new native thread</h2><p>高并发请求服务器时，经常会出现这个异常，java.lang.OutOfMemoryError: unable to create new native thread，navtive thread异常与对应平台有关。</p>
-<p>导致的原因：</p>
-<p>1.应用创建了太多线程了，一个应用进程创建多个线程，超过系统承载极限。</p>
-<p>2.服务器不允许应用创建这么多线程，linux系统默认允许单个进程可以创建的线程数是1024个，如果你的应用创建超过这个数量，就会报java.lang.OutOfMemoryError: unable to create new native thread</p>
-<p>解决方法：</p>
-<p>1.想办法降低应用程序创建线程的数量，分析应用是否真的需要创建这么多线程，如果不是，改代码将线程数降到最低</p>
-<p>2.对于有些应用，确实需要创建很多线程，远超过linux系统的默认1024个线程的限制，可以通过修改linux服务器配置，扩大linux默认限制<br>Java示例如下：</p>
-<pre><code>public class UnableCreateNewThread {
-    public static void main(String[] args) {
-        for (int i = 1;; i++) {
-            System.out.println(&quot;*****i=&quot;+i);
-            new Thread(()-&gt;{
-                try {
-                    Thread.sleep(Integer.MAX_VALUE);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
 
-            },&quot;&quot;+i).start();
-        }
-    }
+<span class="token keyword">class</span> <span class="token class-name">MyComparator</span> <span class="token keyword">implements</span> <span class="token class-name">Comparator</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@FunctionalInterface</span>
+<span class="token keyword">interface</span> <span class="token class-name">Comparator</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h1 id="二、Lambda表达式的基础语法"><a href="#二、Lambda表达式的基础语法" class="headerlink" title="二、Lambda表达式的基础语法"></a>二、Lambda表达式的基础语法</h1><h3 id="2-1基本语法注意事项"><a href="#2-1基本语法注意事项" class="headerlink" title="2.1基本语法注意事项"></a>2.1基本语法注意事项</h3><ol>
+<li>Lambda表达式是一个匿名函数</li>
+<li>关注重点：参数列表 方法体</li>
+<li>小括号():=用来描述一个参数列表(形参)</li>
+<li>大括号{} 来描述一个方法体</li>
+<li><p>-&gt;：即Lambda运算符，读作goes to ，用于分割参数列表和方法体  </p>
+<h2 id="2-2代码实例"><a href="#2-2代码实例" class="headerlink" title="2.2代码实例"></a>2.2代码实例</h2><p> 我们用Lambda表达式的多种形式，分为有无返回值的普通方法（构造方法后面再讲），无参、一参、多参方法，总共有6个方法。所以定义了多个拥有不同方法的接口。从接口的命名方式就可以知道其意味着的含义(如果不在同一包种，注意import)。<br>Program-2:6种不同的接口定义：</p>
+<pre class=" language-java"><code class="language-java"> <span class="token comment" spellcheck="true">//1.无返回值的多参接口</span>
+ <span class="token annotation punctuation">@FunctionalInterface</span>
+ <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">LambdaNoneReturnMultipleParameter</span> <span class="token punctuation">{</span>
+     <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//2.无返回值的无参接口</span>
+ <span class="token annotation punctuation">@FunctionalInterface</span>
+ <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">LambdaNoneReturnNoneParameter</span> <span class="token punctuation">{</span>
+     <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//3.无返回值的一参接口</span>
+ <span class="token annotation punctuation">@FunctionalInterface</span>
+ <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">LambdaNoneReturnSingleParameter</span> <span class="token punctuation">{</span>
+     <span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//4.有返回值的多参接口</span>
+ <span class="token annotation punctuation">@FunctionalInterface</span>
+ <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">LambdaSingleReturnMultipleParameter</span> <span class="token punctuation">{</span>
+     <span class="token keyword">int</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//5.有返回值的无参接口</span>
+ <span class="token annotation punctuation">@FunctionalInterface</span>
+ <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">LambdaSingleReturnNoneParameter</span> <span class="token punctuation">{</span>
+     <span class="token keyword">int</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+ <span class="token comment" spellcheck="true">//6.有返回值的一参接口</span>
+ <span class="token annotation punctuation">@FunctionalInterface</span>
+ <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">LambdaSingleReturnSingleParameter</span> <span class="token punctuation">{</span>
+     <span class="token keyword">int</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<p>Program-3:6种不同的接口的Lambda表达式应用：<br><code>`</code>java<br>public static void main(String[] args) {</p>
+<pre><code> /**
+  * 1.无参无返回的Lambda表达式使用样例
+  */
+ LambdaNoneReturnNoneParameter lambda1 = () -&gt; {
+     System.out.println(&quot;lambda1:&quot; + &quot;Hello World!&quot;);
+ };
+ lambda1.print();
+
+ /**
+  * 2.无返回值的单参数的Lambda表达式使用样例
+  */
+
+ LambdaNoneReturnSingleParameter lambda2 = (int i) -&gt; {
+     System.out.println(&quot;lambda2:&quot; + i);
+ };
+ lambda2.print(1024);
+</code></pre></li>
+</ol>
+<pre><code>    /**
+     * 3.无返回值的多参数的Lambda表达式使用样例
+     */
+    LambdaNoneReturnMultipleParameter lambda3 = (int a, int b) -&gt;
+    {
+        System.out.println(&quot;lambda3:&quot; + (a + b));
+    };
+    lambda3.print(1000, 24);
+
+    /**
+     * 4.有返回值的无参数的Lambda表达式使用样例
+     */
+
+    LambdaSingleReturnNoneParameter lambda4 = () -&gt; {
+        return 1024;
+    };
+    int res = lambda4.print();
+    System.out.println(&quot;lambda4:&quot; + res);
+
+    /**
+     * 5.有返回值，单个参数的Lambdad的表达式使用
+     */
+
+    LambdaSingleReturnSingleParameter lambda5 = (int a) -&gt; {
+        return a;
+    };
+    int res2 = lambda5.print(1024);
+    System.out.println(&quot;lambda5:&quot; + res2);
+
+    /**
+     * 6.有返回值，多个参数的Lambdad的表达式使用
+     */
+    LambdaSingleReturnMultipleParameter lambda6 = (int a, int b) -&gt; {
+        int sum = a + b;
+        return sum;
+    };
+    int res3 = lambda6.print(1000, 24);
+    System.out.println(&quot;lambda6:&quot; + res3);
+
+
 }
-</code></pre><p>输出结果如下：</p>
-<pre><code>*****i=35079
-Exception in thread &quot;main&quot; java.lang.OutOfMemoryError: unable to create new native thread
-    at java.lang.Thread.start0(Native Method)
-    at java.lang.Thread.start(Thread.java:717)
-    at com.test.outofmemory.UnableCreateNewThread.main(UnableCreateNewThread.java:14)
-</code></pre><p>5.java.lang.OutOfMemoryError:Metaspace</p>
-<p>Java8及之后的版本使用Metaspace来替代永久代。<br>Mataspace是方法区在HotSpot中的实现，它与持久代最大的区别在于：Metaspace并不存在虚拟机内存中而是使用本地内存，也即在java8中，class metadata(the virtual machines internal presentation of Java class),被存储在叫做Metaspace的native memory</p>
-<p>永久代（java8后被元空间Metaspace取代了）存放一下信息：</p>
-<p>虚拟机加载的类信息</p>
-<p>常量池</p>
-<p>静态变量</p>
-<p>即时编译后的代码</p>
-<p>我们通过不断的往类的元空间灌数据，类占据的空间总是会超过Metaspace指定的空间大小，从而模拟Metaspace空间的溢出。</p>
-<p>模拟代码如下：</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>proxy<span class="token punctuation">.</span>Enhancer<span class="token punctuation">;</span>
-<span class="token keyword">import</span> net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>proxy<span class="token punctuation">.</span>MethodInterceptor<span class="token punctuation">;</span>
-<span class="token keyword">import</span> net<span class="token punctuation">.</span>sf<span class="token punctuation">.</span>cglib<span class="token punctuation">.</span>proxy<span class="token punctuation">.</span>MethodProxy<span class="token punctuation">;</span>
+</code></pre><pre><code># 三、Lambda表达式语法精简
+ 从Lambda表达式的基础语法样例中我们几乎没有看Lambda语法的优势，特别是和匿名内部类对比，更是没发现Lambda带来的代码的优雅和简化。但是，Lambda语法提供了合理的代码化简方式，我们在第三章中进行Lambda表达式的简化的学习。
 
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>reflect<span class="token punctuation">.</span>Method<span class="token punctuation">;</span>
+## 3.1Lambda表达式精简的方式：
+1. 参数类型的精简：
+ 由于在接口中已经定义了参数，所以在Lambda表达式中参数的类型可以省略；
+ 备注：如果需要进行省略类型,那么所有参数的类型都必须都得省略，省略部分会报错；
+ 匿名内部类中省略参数类型是不可取的，这是Lambda表达式的优势；
+1. 小括号的精简：
+ 如果参数列表中，参数的个数有且只有一个（多了少了都不行），那么小括号可以省略，且仍然可以省略参数的类型
+1. 方法大括号的精简：
+ 类似于if,while语句，如果语句块只有一条语句，那么此时大括号可以省略
+1. return的省略：
+如果出现接口只有唯一方法且方法中只有唯一语句，且是返回语句，那么如果要省略，只能一起省略掉大括号以及return,不能省略其中之一，否则会报错。
+## 3.2 代码实例
+ 此处所使用到的接口仍然是program代码块所定义的。
+```java
+   public static void main(String[] args) {
+        /**
+         * 参数精简
+         * 1.参数的精简
+         * 由于在接口中已经定义了参数，所以在Lambda表达式中参数的类型可以省略
+         * 备注：如果需要进行省略类型,但是所有参数的类型必须都得省略，省略部分会报错
+         * 匿名内部类中省略参数类型是不可取的
+         */
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MetaspaceOOM</span> <span class="token punctuation">{</span>
-    <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">OOM</span> <span class="token punctuation">{</span>
+        LambdaNoneReturnMultipleParameter lambda1 = (a, b) -&gt; {
+            System.out.println(a + b);
 
+        };
+        /**
+         * 2.精简参数小括号
+         * 如果参数列表中，参数的个数有且只有一个（多了少了都不行），那么小括号可以省略
+         * 且仍然可以省略参数的类型
+         */
+        LambdaNoneReturnSingleParameter lambda2 = a -&gt; {
+            System.out.println(a);
+        };
+
+        /**
+         * 3.方法大括号的省略
+         * 类似于if,while语句，如果语句块只有一条语句，那么此时大括号可以省略、
+         * 前面的省略方式仍然成立
+         */
+        LambdaNoneReturnSingleParameter lambda3 = a -&gt;
+                System.out.println(a);
+        /**
+         * 4.如果接口的唯一方法只有唯一返回语句，那么可以省略大括号，但是在省略大号的同时必须省略return
+         */
+        LambdaSingleReturnNoneParameter lambda4 = () -&gt; 10;
+    }
+</code></pre><h1 id="四、-Lambda表达式进阶之函数引用"><a href="#四、-Lambda表达式进阶之函数引用" class="headerlink" title="四、 Lambda表达式进阶之函数引用"></a>四、 Lambda表达式进阶之函数引用</h1><p>方法引用的提出：<br>由于如果存在一种情况，我们新建了多个接口的实现对象，其方法都是相同的，但是如果方法需要修改，那么修改的复杂度就随着对象数量的上升而上升。  </p>
+<p>方法引用的定义：<br>快速将一个Lambda表达式的实现指向一个已经写好的方法<br>方法引用可以看作是lambda表达式的特殊形式，或者称之为语法糖。一般方法已经存在才可以使用方法引用，而方法若未存在，则只能使用lambda表达式。</p>
+<p> 我们可以采用两种方式来在Lambda表达式中调用其他方法，第一种如一般的方法调用，第二种就是方法引用。<br> <br>方法引用的语法说明：  </p>
+<p> 即：“方法的隶属者::方法名”。方法的隶属者，即静态方法隶属者为类，非静态方法的隶属者是对象（隶属者不是接口，而是定义引用方法的类或者对象）。<br> 注意事项：</p>
+<ol>
+<li> 被引用的方法的参数数量以及类型一定要和接口中的方法参数数目一致；</li>
+<li> 被引用的方法的返回值一定要和接口中的方法返回值一致，方法引用这个整体表达式可以返回函数式接口的实现对象，但其调用/引用的方法其返回类型绝不是接口实例对象；</li>
+<li> 方法名的后面没有括号“（）”；</li>
+<li> 方法的引用是可以有多个参数入口的，虽然再::表达式中没有体现（由于没有小括号），但是接口中对其已有所规定了；</li>
+</ol>
+<p>4.1 普通方法在Lambda表达式中的调用<br>Program-5:2种不同的普通方法调用的样例说明：</p>
+<pre class=" language-java"><code class="language-java">  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/**
+         *方法引用：可以快速将一个Lambda表达式的实现指向一个已经写好的方法
+         *语法：方法的隶属者，静态方法隶属者为类，非静态方法的隶属者是对象
+         * 即：“方法的隶属者：方法名”
+         * 注意事项：
+         * 1.被引用的方法的参数数量以及类型一定要和接口中的方法参数数目一致
+         * 2.被引用的方法的返回值一定要和接口中的方法返回值一致
+         *
+         *
+         * 假如我们在程序中对于某个接口方法需要调用许多次，那么用以下的方法创建对象，来调用方法就是不太好的
+         * 缺点：如果将来要对方法进行改变，那么所有用Lambda表达式定义的对象都要更改，这在设计模式上就是有问题的；
+         **/</span>
+        LambdaSingleReturnSingleParameter lambda1 <span class="token operator">=</span> a <span class="token operator">-</span><span class="token operator">></span> a <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        LambdaSingleReturnSingleParameter lambda2 <span class="token operator">=</span> a <span class="token operator">-</span><span class="token operator">></span> a <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**
+         * 我们一般是写一个通用的方法，并将其引用至Lambda表达式中
+         *
+         * */</span>
+
+        LambdaSingleReturnSingleParameter lambda3 <span class="token operator">=</span> a <span class="token operator">-</span><span class="token operator">></span> <span class="token function">change</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//在Lambda表达式中使用一般方法的调用方式</span>
+        LambdaSingleReturnSingleParameter lambda4 <span class="token operator">=</span> Program3<span class="token operator">:</span><span class="token operator">:</span>change<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//在Lambda表达式种使用方法引用（方法隶属于类）</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>lambda4<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Program3 syntax3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Program3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//非静态方法需要对象才能被调用</span>
+        LambdaSingleReturnSingleParameter lambda5 <span class="token operator">=</span> syntax3<span class="token operator">:</span><span class="token operator">:</span>change2<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//在Lambda表达式种使用方法引用（方法隶属于对象）</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>lambda5<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        LambdaSingleReturnMultipleParameter lambda6 <span class="token operator">=</span> syntax3<span class="token operator">:</span><span class="token operator">:</span>change3<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//多参数的引用方法使用</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>lambda6<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">try</span> <span class="token punctuation">{</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                i<span class="token operator">++</span><span class="token punctuation">;</span>
-                Enhancer enhancer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Enhancer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                enhancer<span class="token punctuation">.</span><span class="token function">setSuperclass</span><span class="token punctuation">(</span>OOM<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                enhancer<span class="token punctuation">.</span><span class="token function">setUseCache</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                enhancer<span class="token punctuation">.</span><span class="token function">setCallback</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MethodInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token annotation punctuation">@Override</span>
-                    <span class="token keyword">public</span> Object <span class="token function">intercept</span><span class="token punctuation">(</span>Object o<span class="token punctuation">,</span> Method method<span class="token punctuation">,</span> Object<span class="token punctuation">[</span><span class="token punctuation">]</span> objects<span class="token punctuation">,</span> MethodProxy methodProxy<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
-                        <span class="token keyword">return</span> methodProxy<span class="token punctuation">.</span><span class="token function">invokeSuper</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                enhancer<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> throwable<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"循环"</span> <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token string">"次后，出现异常"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            throwable<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">change</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">change2</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">change3</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> b <span class="token operator">*</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="4-2-构造方法在Lambda表达式中的调用"><a href="#4-2-构造方法在Lambda表达式中的调用" class="headerlink" title="4.2 构造方法在Lambda表达式中的调用"></a>4.2 构造方法在Lambda表达式中的调用</h2><p> Person类具有无参和有参构造方法。<br>Program-6:定义一个类，构造方法创建的对象</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Person类的无参构造方法执行了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//语句用于判断无参构造器是否执行了</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token function">Person</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Person类的有参构造方法执行了"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//语句用于判断有参构造器是否执行了</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>输出结果：</p>
-<pre><code>循环410次后，出现异常
-java.lang.OutOfMemoryError: Metaspace
+<p>program-7:Lambda表达式中引用构造方法的样例：</p>
+<pre class=" language-java"><code class="language-java">   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        PersonCreater person <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">/**构造方法的引用
+         * 有参和无参构造器的调用区别在于所定义的接口中构造方法的参数区别
+         */</span>
+
+        PersonCreater creater1 <span class="token operator">=</span> Person<span class="token operator">:</span><span class="token operator">:</span><span class="token keyword">new</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//无参</span>
+        Person person1 <span class="token operator">=</span> creater1<span class="token punctuation">.</span><span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//有参</span>
+        PersonCreater2 creater2 <span class="token operator">=</span> Person<span class="token operator">:</span><span class="token operator">:</span><span class="token keyword">new</span><span class="token punctuation">;</span>
+        Person person2 <span class="token operator">=</span> creater2<span class="token punctuation">.</span><span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token string">"Fisherman"</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
+<p>注意事项：</p>
+<ol>
+<li>在Lambda表达式中，一个接口要么对应一个无参构造方法，要么含有一个有参构造方式，其在接口中所定义的抽象返回Person对象的方法已经决定有参还是无参了。</li>
+<li>构造方法和静态方法一样都是隶属于类的方法</li>
+<li>构造方法不同于一般静态方法“类名::方法名一样调用”，而是采用”类名::new”的方式来进行构造方法的调用。<br>使用new关键字是为了明确地知道调用的是构造函数。而其并不需要入口参数的原因是因为编译器完全可以通过接口的定义推断出参数类型和个数。构造方法的方法引用和普通方法引用并没有本质的区别，比如program-5中用change(a)来实现原接口中定义的返回整形数据的print方法，而new关键字使用对应形参的构造器来实现接口中定义的返回Person对象的getPerson方法。<h2 id="4-3-方法引用的格式总结："><a href="#4-3-方法引用的格式总结：" class="headerlink" title="4.3 方法引用的格式总结："></a>4.3 方法引用的格式总结：</h2></li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>引用方法的类型</th>
+<th>格式规定</th>
+<th>方法的发出者</th>
+<th>等价lambda表达式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>引用静态方法</td>
+<td>ClassName::staticMethodNam</td>
+<td>类</td>
+<td>(s) -&gt; String.valueOf(s)</td>
+</tr>
+<tr>
+<td>引用某个对象的实例（非静态）方法</td>
+<td>ObjectName::instanceMethodName</td>
+<td>当前对象</td>
+<td>ObjectName.instanceMethodName</td>
+</tr>
+<tr>
+<td>引用某个类型的任意对象的实例方法</td>
+<td>ClassName::methodName</td>
+<td>任意此类或子类的对象</td>
+<td>(任意对象，s) -&gt; methodName(任意对象,s)   </td>
+</tr>
+<tr>
+<td>引用构造方法</td>
+<td>ClassName::new</td>
+<td>类</td>
+<td>(s) -&gt; new ClassName(s);</td>
+</tr>
+</tbody>
+</table>
+<p>上述s代表形参，限于篇幅，只象征性地写了一个。其数目可以不为1，为0，2，3…都可以。</p>
+<h2 id="4-4-方法引用和Lambda表达式的对比："><a href="#4-4-方法引用和Lambda表达式的对比：" class="headerlink" title="4.4 方法引用和Lambda表达式的对比："></a>4.4 方法引用和Lambda表达式的对比：</h2><p> 方法引用比Lambda表达式更加简洁，但同时也更难理解其语法，所以我们以下用做对比的方法来理解表达式。</p>
+<h3 id="4-4-1-静态方法引用"><a href="#4-4-1-静态方法引用" class="headerlink" title="4.4.1 静态方法引用"></a>4.4.1 静态方法引用</h3><p>组成语法格式：ClassName::staticMethodName</p>
+<p>静态方法引用比较容易理解，和静态方法调用的lambda表达式相比，只是把 .换为 ::  </p>
+<p>在目标类型兼容的任何地方，都可以使用静态方法引用。此时，类是静态方法动作的发起者。  </p>
+<p>例子：<br><code>String::valueOf</code>等价于lambda表达式 <code>(s) -&gt; String.valueOf(s)</code><br><code>Math::pow</code>等价于lambda表达式<code>(x, y) -&gt; Math.pow(x, y)</code>;</p>
+<h3 id="4-4-2-特定实例对象的方法引用"><a href="#4-4-2-特定实例对象的方法引用" class="headerlink" title="4.4.2 特定实例对象的方法引用"></a>4.4.2 特定实例对象的方法引用</h3><p>实例方法引用又分以下三种类型：  </p>
+<p>1.实例上的实例方法引用  </p>
+<p>这种语法与用于静态方法的语法类似，只不过这里使用对象引用而不是类名。此时，对象是方法动作的发起者。  </p>
+<p>语法格式：instanceReference::methodName  </p>
+<p>例子：  </p>
+<p>instanceReference::methodName相当于(无参或有参)-&gt;instanceReference.methodName（数目相同的参数）<br>由于对象需要构造，故在下面给出代码示例。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Program5</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        Power powerObject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Power</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Function<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Integer<span class="token operator">></span> function1 <span class="token operator">=</span> a <span class="token operator">-</span><span class="token operator">></span> powerObject<span class="token punctuation">.</span><span class="token function">power</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Function<span class="token operator">&lt;</span>Integer<span class="token punctuation">,</span> Integer<span class="token operator">></span> function2 <span class="token operator">=</span> powerObject<span class="token operator">:</span><span class="token operator">:</span>power<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">/**
+         *不管哪种实现，方法的调用是相同的，都用接口的已实现抽象方法名调用。
+         */</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>function1<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>function2<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Power</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">power</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> a <span class="token operator">*</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>2.超类上的实例方法引用<br>语法格式：super::methodName<br>方法的名称由methodName指定，通过使用super，可以引用方法的超类版本。<br>例子：<br>还可以捕获this 指针，this :: equals 等价于lambda表达式 x -&gt; this.equals(x);</p>
+<p>3.类上的实例方法引用（特定类的任意对象的方法引用）<br>语法格式：ClassName::methodName<br>这里和类调用静态方法以及对象调用实例都不相同， ：：前的类不在是实例方法的发出者，那发出者是谁呢？我们凭借此方法引用的格式也找不到究竟谁是动作的发起者?实际上真正的发起者是ClassName类锁创建的任意一个对象，只不过，在方法调用的时候需要将引用对象作为参数输入到方法中，并且规定，此对象一定要位于方法参数的第一个。  </p>
+<p>代码案例：  </p>
+<p>注意:  </p>
+<p> 若类型的实例方法是泛型的，就需要在::分隔符前提供类型参数，或者（多数情况下）利用目标类型推导出其类型，并不需要加类型参数，但是遇到分隔符前使用了强制类型转换应当看得懂其用意。<br>例子：<br> String::toString等价于lambda表达式 (s) -&gt; s.toString()而绝不等于String.toString()，因为非静态方法只允许对象调用，而不能是类。但是即使这样讲，你可能还是不明白，那我给以下浅显易懂的例子，你一定都能够掌握它。</p>
+<p> 我们定义一个计算平方的方法，输入参数为”几“次方，而对于Power接口的不同实现，实现了求幂的底数规定，比如：PowerOfTwo类实现power(i)方法是求2的i次幂，PowerOfThree类实现power(i)方法是求3的i次幂。<br> <br>类：：实例方法的Program-1:</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>function<span class="token punctuation">.</span>BiFunction<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>function<span class="token punctuation">.</span>Function<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Power</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> <span class="token function">power</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PowerOfTwo</span> <span class="token keyword">implements</span> <span class="token class-name">Power</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">power</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PowerOfThree</span> <span class="token keyword">implements</span> <span class="token class-name">Power</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">power</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">/**
+         * 之所以使用BiFunction作为函数式接口，是因为其为2输入参数，1个返回值。
+         * 正好符合此例中，类名.实例方法的调用规则
+         */</span>
+        Power powerObject1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PowerOfTwo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Power powerObject2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PowerOfThree</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        BiFunction<span class="token operator">&lt;</span>Power<span class="token punctuation">,</span> Integer<span class="token punctuation">,</span> Integer<span class="token operator">></span> function <span class="token operator">=</span> Power<span class="token operator">:</span><span class="token operator">:</span>power<span class="token punctuation">;</span>
+
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>function<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>powerObject1<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输出"2"的4次方：16</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>function<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>powerObject2<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输出"3"的4次方：81</span>
+
+
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<p> 只需要一个BiFunction接口的实现类，就能实现方法调用的多态（同一的方法名，由于对象名的不同而有不一样的操作）。这里多态的形成也是由于父类接口指向不同子类对象实现形成的。<br> <br> 我们应当将BiFunction&lt;Power, Integer, Integer&gt; function = Power::power;以及function.apply(powerObject1, 4)这两个步骤结合起来看，而不是孤立的。前者规定了方法输入参数类型，返回值类型，且规定了方法第一个参数必须得是实际调用该方法的对象，实现了后者的apply方法（代码实现，并未执行）。后者则输入了对应参数，执行相关程序。<br> <br> 如果你问我为什么需要这样的方法引用形式，那么最大的原因就其在具体方法调用时将对象作为参数输入到方法调用中呢，这增加了多态在方法引用中的便利性，如上述例子所示。如果采用其他方法引用方式，将产生多个接口的实例，而此方式只需要一个接口的实例。</p>
+<p> 类上实例方法的引用的第二个例子：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LowercaseToUppercase</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> Arrays<span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span> <span class="token string">"world"</span><span class="token punctuation">,</span> <span class="token string">"hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>String<span class="token operator">:</span><span class="token operator">:</span>toUpperCase<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>out<span class="token operator">:</span><span class="token operator">:</span>println<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>如果你还没学过流，不影响这里的理解。我们Crtl+左键+::，可以看到map类所需实现的是一个Function接口，即一个输入，一个输出。但是String::toUpperCase作为一个方法引用，返回值是确定的，因为toUpperCase方法显然会返回一个String类型对象：大写的String对象；但是输入参数是哪个呢，这似乎难以判断了，因为toUpperCase方法是一个无参的函数。但是JVM模型告诉我们：所有实例的实例方法，第一个参数都是一个隐式的this。map方法，对流的元素进行了映射（小写至大写），而方法中隐式的参数this即这每一个对象。    </p>
+<p> 分步骤结合JDK源码解释：  
+ </p>
+<p>1.map(String::toUpperCase),向map方法内传入一个方法引用所形成的接口实现对象<br>2.<r> Stream<r> map(Function&lt;? super T, ? extends R&gt; mapper);，map是一个返回Stream对象，输入为实现Function接口的对象即1中的方法引用<br>3.R apply(T t);此是Function接口所要实现的方法，即使用toUpperCase()方法去实现它。<br>4.public String toUpperCase() { return toUpperCase(Locale.getDefault());}，这是toUpperCase()方法的源码，其是一个无参返回String类对象的非静态方法。<br>5.接口所需实现的方法的形参Tt则对应任意一个String对象。<br> 如果你有关于“为何例子1中的apply方法调用中方法的第一个参数为执行操作对象的引用，而第二个例子中却从未输入过对象的引用”的疑惑，那么说明你理解到关键位置了。实际上后者是map调用Function接口对象返回给stream，最后被流中的迭代方法调用了apply方法，其最终也是将对象引用作为第一个输入参数调用了apply方法，所以两个例子通过同一种方式达成了类名::实例方法，只不过一个显式，一个隐式。</r></r></p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5. 总结"></a>5. 总结</h2><p>总结： Lambda表达式和方法引用的目的都是使用具体的方法来代替接口中抽象的方法，但是在实际使用中，调用的是接口中被实现的方法名,lambda表达式和方法引用只应用于接口实例的方式实现了的构造过程，例如在Program-6/7中的代码：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">//1.这是需要被实现的抽象方法，方法名：getPerson</span>
+<span class="token keyword">interface</span> <span class="token class-name">PersonCreater</span> <span class="token punctuation">{</span>
+    Person <span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//2.这是使用方法引用实现了抽象方法的对象（返回的是一个被实现了抽象方法的接口的实例）</span>
+    PersonCreater creater1 <span class="token operator">=</span> Person<span class="token operator">:</span><span class="token operator">:</span><span class="token keyword">new</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//3.这是调用接口实例的实现方法，返回一个Person对象，分为有参和无参。</span>
+    Person person1 <span class="token operator">=</span> creater1<span class="token punctuation">.</span><span class="token function">getPerson</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+<h2 id="6-补充：常用函数式接口"><a href="#6-补充：常用函数式接口" class="headerlink" title="6.补充：常用函数式接口"></a>6.补充：常用函数式接口</h2><p><img src="http://img.wanganyu1996.com//java8lambda-function.png" alt="image"></p>
+
             </div>
             <hr>
 
@@ -730,9 +1000,9 @@ java.lang.OutOfMemoryError: Metaspace
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结》
+                    《Java8 新特性Lambda表达式的使用与研究》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/jvm/chang-jian-de-outofmemoryerror.html" property="cc:attributionName" rel="cc:attributionURL">
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/java8/java1.8-lambda-biao-da-shi.html" property="cc:attributionName" rel="cc:attributionURL">
                 若愚
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
@@ -773,7 +1043,8 @@ java.lang.OutOfMemoryError: Metaspace
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/java8/java1.8-lambda-biao-da-shi.html">
                     <div class="card-image">
@@ -790,9 +1061,9 @@ java.lang.OutOfMemoryError: Metaspace
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-03-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -805,6 +1076,7 @@ java.lang.OutOfMemoryError: Metaspace
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -827,31 +1099,30 @@ java.lang.OutOfMemoryError: Metaspace
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/fen-ku-fen-biao/dong-tai-fen-ku-fen-biao.html">
+                <a href="/jvm/chang-jian-de-outofmemoryerror.html">
                     <div class="card-image">
                         
-                        <img src="http://img.wanganyu1996.com/database/dynamic-table.jpg" class="responsive-img" alt="如何设计才可以让系统从未分库分表动态切换到分库分表上？">
+                        <img src="http://img.wanganyu1996.com/jvm/jvm-outofmemoryerror.jpg" class="responsive-img" alt="Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结">
                         
-                        <span class="card-title">如何设计才可以让系统从未分库分表动态切换到分库分表上？</span>
+                        <span class="card-title">Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            问题现在有一个未分库分表的系统，未来要分库分表，如何设计才可以让系统从未分库分表动态切换到分库分表上？
-前言你看看，你现在已经明白为啥要分库分表了，你也知道常用的分库分表中间件了，你也设计好你们如何分库分表的方案了（水平拆分、垂直拆分、分表
+                            Java 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结19年7月份面试Paypal的时候，面试官问了我Java内存溢出常见的情况，那时候我还没有一个清楚的认识，随口从一个说到另一个，后来面试官说我
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-07
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/数据库/" class="post-category" target="_blank">
-                                    数据库
+                            <a href="/categories/JVM/" class="post-category" target="_blank">
+                                    JVM
                                 </a>
                             
                             
@@ -861,12 +1132,8 @@ java.lang.OutOfMemoryError: Metaspace
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/数据库/" target="_blank">
-                        <span class="chip bg-color">数据库</span>
-                    </a>
-                    
-                    <a href="/tags/MySQL/" target="_blank">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/JVM/" target="_blank">
+                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>
