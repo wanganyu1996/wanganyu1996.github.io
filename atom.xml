@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.wanganyu1996.com/"/>
-  <updated>2020-03-22T14:23:25.895Z</updated>
+  <updated>2020-03-29T08:44:45.002Z</updated>
   <id>http://www.wanganyu1996.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java2 内存溢出（java.lang.OutOfMemoryError）的常见情况和处理方式总结</title>
+    <link href="http://www.wanganyu1996.com/java8/chang-jian-de-outofmemoryerror123213.html"/>
+    <id>http://www.wanganyu1996.com/java8/chang-jian-de-outofmemoryerror123213.html</id>
+    <published>2029-05-13T11:50:57.000Z</published>
+    <updated>2020-03-29T08:44:45.002Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结&quot;&gt;&lt;a href=&quot;#Java-内存溢出（java-lang-OutOfMemoryError）的常见情况和处理方式总结&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="JVM2" scheme="http://www.wanganyu1996.com/categories/JVM2/"/>
+    
+    
+      <category term="JVM" scheme="http://www.wanganyu1996.com/tags/JVM/"/>
+    
+  </entry>
   
   <entry>
     <title>Java8 新特性Lambda表达式的使用与研究</title>
@@ -151,11 +177,11 @@
   </entry>
   
   <entry>
-    <title>为什么要分库分表？</title>
-    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
-    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
+    <title>MySQL主从复制原理</title>
+    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
+    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
     <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-04-23T13:46:36.326Z</updated>
+    <updated>2019-05-20T14:37:23.374Z</updated>
     
     <summary type="html">
     
@@ -163,8 +189,8 @@
       
         
         
-          &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;
-&lt;p&gt;其实这块肯定是扯到&lt;strong&gt;高并发&lt;/strong&gt;了，因为分库分表一定
+          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如何实现 MySQL 的读写分离？MySQL 主从复制原理的是什么？如何解决 MySQL 主从同步的延时问题？&lt;/p&gt;
+&lt;h2
         
       
     
@@ -180,11 +206,11 @@
   </entry>
   
   <entry>
-    <title>MySQL主从复制原理</title>
-    <link href="http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html"/>
-    <id>http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html</id>
+    <title>为什么要分库分表？</title>
+    <link href="http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html"/>
+    <id>http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html</id>
     <published>2019-02-07T01:25:00.000Z</published>
-    <updated>2019-05-20T14:37:23.374Z</updated>
+    <updated>2019-04-23T13:46:36.326Z</updated>
     
     <summary type="html">
     
@@ -192,8 +218,8 @@
       
         
         
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如何实现 MySQL 的读写分离？MySQL 主从复制原理的是什么？如何解决 MySQL 主从同步的延时问题？&lt;/p&gt;
-&lt;h2
+          &lt;p&gt;为什么要分库分表（设计高并发系统的时候，数据库层面该如何设计）？用过哪些分库分表中间件？不同的分库分表中间件都有什么优点和缺点？你们具体是如何对数据库如何进行垂直拆分或水平拆分的？&lt;/p&gt;
+&lt;p&gt;其实这块肯定是扯到&lt;strong&gt;高并发&lt;/strong&gt;了，因为分库分表一定
         
       
     
@@ -539,35 +565,6 @@
     
       <category term="消息队列" scheme="http://www.wanganyu1996.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
-    
-      <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何处理消息丢失的问题？</title>
-    <link href="http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html"/>
-    <id>http://www.wanganyu1996.com/xiao-xi-dui-lie/ru-he-chu-li-xiao-xi-diu-shi-de-wen-ti.html</id>
-    <published>2018-09-09T01:26:24.000Z</published>
-    <updated>2019-05-29T04:28:46.672Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h2&gt;&lt;p&gt;如何保证消息的可靠性传输？或者说，如何处理消息丢失的问题？&lt;/p&gt;
-&lt;h2 id=&quot;初步分析&quot;&gt;&lt;a href=&quot;#初步分析&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="消息队列" scheme="http://www.wanganyu1996.com/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
-    
-    
-      <category term="分布式" scheme="http://www.wanganyu1996.com/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
       <category term="消息队列" scheme="http://www.wanganyu1996.com/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/"/>
     
