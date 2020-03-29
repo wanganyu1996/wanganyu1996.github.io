@@ -5,10 +5,10 @@ http://www.wanganyu1996.com/duo-xian-cheng/synchronized-yuan-ma-fen-xi.html
 http://www.wanganyu1996.com/zookeeper/zookeeper-fen-bu-shi-suo-xiang-xi-shi-xian.html
 http://www.wanganyu1996.com/fen-ku-fen-biao/wei-shi-me-yao-fen-ku-fen-biao.html
 http://www.wanganyu1996.com/mysql/mysql-zhu-cong-fu-zhi-yuan-li.html
-http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html
-http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html
-http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html
 http://www.wanganyu1996.com/huan-cun/huan-cun-shi-yong-chang-jing.html
+http://www.wanganyu1996.com/she-ji-mo-shi/dai-li-mo-shi.html
+http://www.wanganyu1996.com/fen-bu-shi-shi-wu/fen-bu-shi-shi-wu-jie-jue-fang-an.html
+http://www.wanganyu1996.com/redis/redis-chi-jiu-hua-fang-shi.html
 http://www.wanganyu1996.com/distributed-system/fen-bu-shi-suo-de-liang-chong-shi-xian-fang-shi-ji-dui-bi.html
 http://www.wanganyu1996.com/fen-ku-fen-biao/fen-ku-fen-biao-id-zhu-jian-chu-li.html
 http://www.wanganyu1996.com/redis/redis-shao-bing-ji-zhi.html
