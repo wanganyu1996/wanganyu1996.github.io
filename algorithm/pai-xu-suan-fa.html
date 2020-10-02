@@ -5,8 +5,8 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="常见的排序算法, 若愚博客">
-    <meta name="description" content="常见算法一、冒泡排序冒泡排序的基本思想是，每次相邻两个元素比较，然后一趟下来把最大的元素放在数据末尾（n-1）位置，接下来继续对n-2的数组执行相同的比较操作，直到数据有序。代码如下：
-  public static void bubble">
+    <meta name="description" content="常见排序算法分析实现一、冒泡排序冒泡排序的基本思想是，每次相邻两个元素比较，然后一趟下来把最大的元素放在数据末尾（n-1）位置，接下来继续对n-2的数组执行相同的比较操作，直到数据有序。代码如下：
+  public static void ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -392,7 +392,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        605
+                        611
                     </div>
                     
 
@@ -415,7 +415,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="常见算法"><a href="#常见算法" class="headerlink" title="常见算法"></a>常见算法</h1><h2 id="一、冒泡排序"><a href="#一、冒泡排序" class="headerlink" title="一、冒泡排序"></a>一、冒泡排序</h2><p>冒泡排序的基本思想是，每次相邻两个元素比较，然后一趟下来把最大的元素放在数据末尾（n-1）位置，接下来继续对n-2的数组执行相同的比较操作，直到数据有序。<br>代码如下：</p>
+                <h1 id="常见排序算法分析实现"><a href="#常见排序算法分析实现" class="headerlink" title="常见排序算法分析实现"></a>常见排序算法分析实现</h1><h2 id="一、冒泡排序"><a href="#一、冒泡排序" class="headerlink" title="一、冒泡排序"></a>一、冒泡排序</h2><p>冒泡排序的基本思想是，每次相邻两个元素比较，然后一趟下来把最大的元素放在数据末尾（n-1）位置，接下来继续对n-2的数组执行相同的比较操作，直到数据有序。<br>代码如下：</p>
 <pre class=" language-java"><code class="language-java">  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">bubbleSort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>arr <span class="token operator">==</span> null <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span><span class="token punctuation">;</span>
@@ -435,7 +435,7 @@
         arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">^</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="二、选择排序"><a href="#二、选择排序" class="headerlink" title="二、选择排序"></a>二、选择排序</h1><p>选择排序的基本思想是先选中数组的第一个元素，然后遍历后面的数组，找到比第一个元素大的元素，两个位置元素交换，数组第一个位置元素确定后，继续遍历剩余的数组执行相同的操作，代码如下：</p>
+<h2 id="二、选择排序"><a href="#二、选择排序" class="headerlink" title="二、选择排序"></a>二、选择排序</h2><p>选择排序的基本思想是先选中数组的第一个元素，然后遍历后面的数组，找到比第一个元素大的元素，两个位置元素交换，数组第一个位置元素确定后，继续遍历剩余的数组执行相同的操作，代码如下：</p>
 <pre class=" language-java"><code class="language-java">     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">selectionSort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>arr <span class="token operator">==</span> null <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span><span class="token punctuation">;</span>
@@ -457,7 +457,7 @@
         arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">^</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="三、插入排序"><a href="#三、插入排序" class="headerlink" title="三、插入排序"></a>三、插入排序</h1><p>排序思想，当数组只有一个元素是有序的，然后遍历数组剩下的元素，插入到已经排序好的数组中，直到整个数组有序。</p>
+<h2 id="三、插入排序"><a href="#三、插入排序" class="headerlink" title="三、插入排序"></a>三、插入排序</h2><p>排序思想，当数组只有一个元素是有序的，然后遍历数组剩下的元素，插入到已经排序好的数组中，直到整个数组有序。</p>
 <pre class=" language-java"><code class="language-java">      <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">insertionSort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>arr <span class="token operator">==</span> null <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span><span class="token punctuation">;</span>
@@ -475,7 +475,7 @@
         arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">^</span> arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="四、-归并排序"><a href="#四、-归并排序" class="headerlink" title="四、 归并排序"></a>四、 归并排序</h1><p>算法思想，先分治，最后只剩下一个元素再合并，时间复杂度O(nlogn)</p>
+<h2 id="四、-归并排序"><a href="#四、-归并排序" class="headerlink" title="四、 归并排序"></a>四、 归并排序</h2><p>算法思想，先分治，最后只剩下一个元素再合并，时间复杂度O(nlogn)</p>
 <pre class=" language-java"><code class="language-java">     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">mergeSort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>arr <span class="token operator">==</span> null <span class="token operator">||</span> arr<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span><span class="token punctuation">;</span>
